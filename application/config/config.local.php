@@ -1,20 +1,19 @@
 <?php
-/*
-* HS­Ulm, WF5, SS2015, Prof. Klippel, Wirtschaftsinformatik­Projekt
-* Projekt: Lehrveranstaltungssoftware
-* Name: Kilian Kraus
-* Gruppe: 01
-* Version: 1
+/**
+* SPRINT 01
+*
+* @author: Kilian Kraus
+* @Matrikel:
 * Datum: 08.04.2015
 *
-* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
+* UserÂ­Story (Nr. 20 ): Als Dozent mÃ¶chte ich mich zur Verwaltung meiner Daten online einloggen kÃ¶nnen. (42 Points)
 * Zeit: 0.5
 */
 ?>
 
 <?php
 /**
- * Gibt die Konfiguration zurück.
+ * Gibt die Konfiguration zurÃ¼ck.
  */
 return array(
 	/**
@@ -30,7 +29,7 @@ return array(
 	'URL' => 'http://' . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])),
 	
 	/**
-	 * Pfade für den Controller & View
+	 * Pfade fÃ¼r den Controller & View
 	 */
 	'PATH_CONTROLLER' => realpath(dirname(__FILE__).'/../../') . '/application/controller/',
 	'PATH_VIEW' => realpath(dirname(__FILE__).'/../../') . '/application/view/',
@@ -53,9 +52,9 @@ return array(
 	 * DB_NAME 
 	 * ==> Name der Datenbank (lokal ==> "wasAuchImmer"; hochschule ==> "wfprj_wf5_0X")
 	 * DB_USER 
-	 * ==> Nutzername (lokal ==> "'root' wenn nicht geändert"; hochschule ==> "wfprj_wf5_0X@i-intra-03.informatik.hs-ulm.de")
+	 * ==> Nutzername (lokal ==> "'root' wenn nicht geÃ¤ndert"; hochschule ==> "wfprj_wf5_0X@i-intra-03.informatik.hs-ulm.de")
 	 * DB_PASS 
-	 * ==> Passwort (lokal ==> "Kein Passwort, falls nicht geändert"; hochschule ==> "euer DB Passwort")
+	 * ==> Passwort (lokal ==> "Kein Passwort, falls nicht geÃ¤ndert"; hochschule ==> "euer DB Passwort")
 	 * DB_PORT 
 	 * ==> Port (sollte "3306" sein)
 	 * DB_CHARSET 
