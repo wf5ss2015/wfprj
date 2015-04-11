@@ -1,13 +1,12 @@
 <?php
-/*
-* HS­Ulm, WF5, SS2015, Prof. Klippel, Wirtschaftsinformatik­Projekt
-* Projekt: Lehrveranstaltungssoftware
-* Name: Kilian Kraus
-* Gruppe: 01
-* Version: 1
+/**
+* SPRINT 01
+*
+* @author: Kilian Kraus
+* @Matrikel:
 * Datum: 08.04.2015
 *
-* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
+* UserÂ­Story (Nr. 20 ): Als Dozent mÃ¶chte ich mich zur Verwaltung meiner Daten online einloggen kÃ¶nnen. (42 Points)
 * Zeit: 0.5
 */
 ?>
@@ -20,7 +19,7 @@
  */
 class Controller
 {
-    /** @var View Variable für ein Objekt der View */
+    /** @var View Variable fÃ¼r ein Objekt der View */
     public $View;
 
     /**
