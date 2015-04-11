@@ -1,13 +1,12 @@
 <?php
-/*
-* HS­Ulm, WF5, SS2015, Prof. Klippel, Wirtschaftsinformatik­Projekt
-* Projekt: Lehrveranstaltungssoftware
-* Name: Kilian Kraus
-* Gruppe: 01
-* Version: 1
+/**
+* SPRINT 01
+*
+* @author: Kilian Kraus
+* @Matrikel:
 * Datum: 08.04.2015
 *
-* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
+* UserÂ­Story (Nr. 20 ): Als Dozent mÃ¶chte ich mich zur Verwaltung meiner Daten online einloggen kÃ¶nnen. (42 Points)
 * Zeit: 1
 */
 ?>
@@ -19,7 +18,7 @@
  * Dieses Ding startet die ganze Anwendung.
  */
  
- // Die ganzen require ließen sich mit dem Composer schöner handeln.
+ // Die ganzen require lieÃŸen sich mit dem Composer schÃ¶ner handeln.
  require '../application/core/request.php';
  require '../application/core/config.php';
  require '../application/core/controller.php';
@@ -41,10 +40,10 @@ class Application
     /** @var array URL Parameter der Controller Funktionen/Methoden */
     private $parameters = array();
 
-    /** @var string Controller Name, falls man in der View eine Abfrage machen möchte wo man ist. */
+    /** @var string Controller Name, falls man in der View eine Abfrage machen mÃ¶chte wo man ist. */
     private $controller_name;
 
-    /** @var string Controller Methode, falls man in der View eine Abfrage machen möchte wo man ist. */
+    /** @var string Controller Methode, falls man in der View eine Abfrage machen mÃ¶chte wo man ist. */
     private $action_name;
 
     /**
@@ -57,14 +56,14 @@ class Application
 
 	    $this->createController();
 
-        // überprüft ob controller besteht.
+        // Ã¼berprÃ¼ft ob controller besteht.
         if (file_exists(Config::get('PATH_CONTROLLER') . $this->controller_name . '.php')) {
 
-            // lädt den pfad des Controller aus der Config und erstellt den Controller
+            // lÃ¤dt den pfad des Controller aus der Config und erstellt den Controller
             require Config::get('PATH_CONTROLLER') . $this->controller_name . '.php';
             $this->controller = new $this->controller_name();
 
-            // überprüft, ob die Methode im entsprechenden Controller vorhanden ist.
+            // Ã¼berprÃ¼ft, ob die Methode im entsprechenden Controller vorhanden ist.
             if (method_exists($this->controller, $this->action_name)) {
                 if (!empty($this->parameters)) {
                     call_user_func_array(array($this->controller, $this->action_name), $this->parameters);
@@ -114,7 +113,7 @@ class Application
 			$this->action_name = Config::get('DEFAULT_ACTION');
 		}
 
-		// Hängt and den Controllername "Controller" ran, da diese Files so heißen ("xxxController.php")
+		// HÃ¤ngt and den Controllername "Controller" ran, da diese Files so heiÃŸen ("xxxController.php")
 		$this->controller_name = ucwords($this->controller_name) . 'Controller';
 	}
 }
