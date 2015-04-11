@@ -1,13 +1,12 @@
 <?php
-/*
-* HS­Ulm, WF5, SS2015, Prof. Klippel, Wirtschaftsinformatik­Projekt
-* Projekt: Lehrveranstaltungssoftware
-* Name: Kilian Kraus
-* Gruppe: 01
-* Version: 1
+/**
+* SPRINT 01
+*
+* @author: Kilian Kraus
+* @Matrikel:
 * Datum: 08.04.2015
 *
-* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
+* UserÂ­Story (Nr. 20 ): Als Dozent mÃ¶chte ich mich zur Verwaltung meiner Daten online einloggen kÃ¶nnen. (42 Points)
 * Zeit: 1
 */
 ?>
@@ -33,7 +32,7 @@ class Session
     /**
      * @author Kilian Kraus
      *
-     * @param mixed $key Schlüssel
+     * @param mixed $key SchlÃ¼ssel
      * @param mixed $value Wert
      */
     public static function set($key, $value)
@@ -44,7 +43,7 @@ class Session
     /**
      * @author Kilian Kraus
      *
-     * @param mixed $key Schlüssel
+     * @param mixed $key SchlÃ¼ssel
      */
     public static function get($key)
     {
@@ -57,9 +56,9 @@ class Session
 
 	 /**
      * @author Kilian Kraus
-     * Fügt einem Schlüssel einen Wert hinzu
+     * FÃ¼gt einem SchlÃ¼ssel einen Wert hinzu
 	 *
-     * @param mixed $key Schlüssel
+     * @param mixed $key SchlÃ¼ssel
 	 * @param mixed $value Wert
      */
     public static function add($key, $value)
@@ -69,7 +68,7 @@ class Session
 
     /**
 	 * @author Kilian Kraus
-     * Schließt die Session
+     * SchlieÃŸt die Session
      */
     public static function destroy()
     {
@@ -78,7 +77,7 @@ class Session
 
     /**
      * @author Kilian Kraus
-	 * Überprüft ob der User eingeloggt ist
+	 * ÃœberprÃ¼ft ob der User eingeloggt ist
      *
      * @return bool true=eingeloggt false=nicht eingeloggt
      */
