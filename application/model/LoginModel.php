@@ -1,27 +1,26 @@
 <?php
-/*
-* HS­Ulm, WF5, SS2015, Prof. Klippel, Wirtschaftsinformatik­Projekt
-* Projekt: Lehrveranstaltungssoftware
-* Name: Kilian Kraus
-* Gruppe: 01
-* Version: 1
+/**
+* SPRINT 01
+*
+* @author: Kilian Kraus
+* @Matrikel:
 * Datum: 08.04.2015
 *
-* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
+* UserÂ­Story (Nr. 20 ): Als Dozent mÃ¶chte ich mich zur Verwaltung meiner Daten online einloggen kÃ¶nnen. (42 Points)
 * Zeit: 1.5
 */
 ?>
 <?php
 /**
  * @author Kilian Kraus
- * Das LoginModel stellt Funktionen für den Loginvorgang bereit.
+ * Das LoginModel stellt Funktionen fÃ¼r den Loginvorgang bereit.
  */
 
 class LoginModel
 {
     /**
      * @author Kilian Kraus
-	 * Model für den Login
+	 * Model fÃ¼r den Login
 	 *
      * @param $user_name string Nutzername
      * @param $user_password string Passwort
@@ -51,13 +50,13 @@ class LoginModel
             $result->user_id, $result->user_name, $result->user_role
         );
 
-		// gibt letztendlich true zurück für erfolgreichen login
+		// gibt letztendlich true zurÃ¼ck fÃ¼r erfolgreichen login
         return true;
     }
 
 	/**
 	 * @author Kilian Kraus
-	 * Überpüft ob der Login erfolgreich war.
+	 * ÃœberpÃ¼ft ob der Login erfolgreich war.
 	 *
 	 * @param $user_name
 	 * @param $user_password
@@ -69,12 +68,12 @@ class LoginModel
 		// holt sich die Daten des Nutzers
 		$result = UserModel::getUserData($user_name);
 
-		// Überprüft ob der Nutzer besteht.
+		// ÃœberprÃ¼ft ob der Nutzer besteht.
 		if (!$result) {
 			return false;
 		}
 
-		// falls der in der Datenbank gespeicherte Hash nicht mit dem Hash des Passworts übereinstimmt.
+		// falls der in der Datenbank gespeicherte Hash nicht mit dem Hash des Passworts Ã¼bereinstimmt.
 		if (!password_verify($user_password, $result->user_password_hash)) {
 			return false;
 		}
@@ -86,7 +85,7 @@ class LoginModel
 
     /**
      * @author Kilian Kraus
-	 * Löscht Session
+	 * LÃ¶scht Session
      */
     public static function logout()
     {
@@ -129,7 +128,7 @@ class LoginModel
 
     /**
      * @author Kilian Kraus
-	 * gibt true zurück, falls Nutzer eingeloggt ist
+	 * gibt true zurÃ¼ck, falls Nutzer eingeloggt ist
      *
      * @return bool Status des Login
      */
