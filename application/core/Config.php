@@ -9,11 +9,9 @@
 * User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
 * Zeit: 0.5
 */
-?>
 
-<?php
 
-require '/environment.php';
+require 'Environment.php';
 
 	
 class Config

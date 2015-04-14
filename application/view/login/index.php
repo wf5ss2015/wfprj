@@ -15,7 +15,7 @@
         <div class="table-wrapper">
             <div class="login-box">
                 <h2>Login here</h2>
-                <form action="<?php echo Config::get('URL'); ?>login/login" method="post">
+                <form action="index.php?url=login/login" method="post">
                     <input type="text" name="user_name" placeholder="Nutzername" required />
                     <input type="password" name="user_password" placeholder="Passwort" required />
                     <input type="submit" class="login-submit-button" value="Einloggen"/>

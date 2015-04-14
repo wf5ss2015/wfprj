@@ -9,9 +9,7 @@
 * User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
 * Zeit: 0.5
 */
-?>
 
-<?php
 /**
  * @author Kilian Kraus
  * Model für den Nutzer. In diesem fall nur um Nutzerdaten anhand des Nutzernames zu bekommen.
