@@ -9,7 +9,9 @@
 * User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
 * Zeit: 1.5
 */
+?>
 
+<?php
 /**
  * @author Kilian Kraus
  * Diese Klasse erstellt eine Datenbankverbindung mit PDO.

@@ -9,7 +9,9 @@
 * User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
 * Zeit: 0.1
 */
+?>
 
+<?php
 
 /**
 * @author Kilian Kraus
@@ -26,6 +28,6 @@ class Redirect
 	 */
 	public static function to($path)
 	{
-		header("location: " . "index.php?url=" . $path);
+		header("location: " . Config::get('URL') . $path);
 	}
 }

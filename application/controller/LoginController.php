@@ -9,7 +9,9 @@
 * User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
 * Zeit: 1
 */
+?>
 
+<?php
 
 /**
  * @author Kilian Kraus
@@ -39,8 +41,6 @@ class LoginController extends Controller
 	 * @author Kilian Kraus
      * Funktion die den Login ausführt.
      */
-	 // ACHTUNG. BLEIBT AUF HS-SERVER HIER HÄNGEN WENN MAN SICH MIT EINEM BESTEHENDEN USERNAME EINLOGGEN MÖCHTE. 
-	 // Es werden Funktionen aus php 5.5 verwendet. Auf dem HS-Server ist jedoch 5.4, worin die Funtkionen noch nicht enthalten sind.
     public function login()
     {
         $login_successful = LoginModel::login(Request::post('user_name'), Request::post('user_password')
@@ -48,9 +48,9 @@ class LoginController extends Controller
 
         // falls Login fehlgeschlagen, dann wird nochmal der login aufgerufen.
         if ($login_successful) {
-            Redirect::to('login/hello'); 
+            Redirect::to('login/hello');
         } else {
-            Redirect::to('login/hello'); //normal redirect auf login/index
+            Redirect::to('login/index');
         }
     }
 	
@@ -60,7 +60,7 @@ class LoginController extends Controller
      */
     public function hello()
     {
-		Auth::checkAuthentication();
+	    Auth::checkAuthentication();
 		$this->View->render('login/loggedin');
     }
 

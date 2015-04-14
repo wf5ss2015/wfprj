@@ -9,7 +9,8 @@
 * User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
 * Zeit: 1.5
 */
-
+?>
+<?php
 /**
  * @author Kilian Kraus
  * Das LoginModel stellt Funktionen für den Loginvorgang bereit.
@@ -73,7 +74,7 @@ class LoginModel
 		}
 
 		// falls der in der Datenbank gespeicherte Hash nicht mit dem Hash des Passworts übereinstimmt.
-		if (!password_verify($user_password, $result->user_password_hash)) { // Funktion nicht in PHP 5.4 enthalten
+		if (!password_verify($user_password, $result->user_password_hash)) {
 			return false;
 		}
 

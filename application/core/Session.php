@@ -9,7 +9,10 @@
 * User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
 * Zeit: 1
 */
+?>
 
+
+<?php
 /**
  * @author Kilian Kraus
  * Unsere Session Klasse. Damit kann eine Session erstellt bzw geschlossen werden, Session-Variablen gesetzt und ausgelesen werden. 
@@ -21,7 +24,7 @@ class Session
      */
     public static function init()
     {
-        if (session_id() == null) {
+        if (session_id() == '') {
             session_start();
         }
     }

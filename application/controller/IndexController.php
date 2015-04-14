@@ -9,11 +9,9 @@
 * User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
 * Zeit: 0.1
 */
+?>
 
-/**
- * @author Kilian Kraus
- * Das ist der Index Controller. Steuert die Startseite.
- */
+<?php
 class IndexController extends Controller
 {
     /**
