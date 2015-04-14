@@ -9,9 +9,6 @@
 * User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
 * Zeit: 1
 */
-?>
-
-<?php
 
 /**
  * @author Kilian Kraus
@@ -19,16 +16,17 @@
  */
  
  // Die ganzen require ließen sich mit dem Composer schöner handeln.
- require '../application/core/request.php';
- require '../application/core/config.php';
- require '../application/core/controller.php';
- require '../application/core/session.php';
- require '../application/core/view.php';
- require '../application/model/loginmodel.php';
- require '../application/core/redirect.php';
- require '../application/model/usermodel.php';
- require '../application/core/databasefactory.php';
- require '../application/core/auth.php';
+ // vorsicht. Casesensitive kann hier bei richtigen Servern Probleme machen.
+ require '../application/core/Request.php';
+ require '../application/core/Config.php';
+ require '../application/core/Controller.php';
+ require '../application/core/Session.php';
+ require '../application/core/View.php';
+ require '../application/model/LoginModel.php';
+ require '../application/core/Redirect.php';
+ require '../application/model/UserModel.php';
+ require '../application/core/DatabaseFactory.php';
+ require '../application/core/Auth.php';
 
 
  

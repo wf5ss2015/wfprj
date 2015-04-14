@@ -9,9 +9,7 @@
 * User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
 * Zeit: 0.5
 */
-?>
 
-<?php
 
 /**
  * @author Kilian Kraus
@@ -28,7 +26,7 @@ class Auth
         // Falls Nutzer nicht eingeloggt ist.
         if (!Session::userIsLoggedIn()) {
             Session::destroy();
-            header('location: ' . Config::get('URL') . 'login');
+            header('location: ' . "index.php?url=". 'login');
             exit();
         }
     }
