@@ -50,7 +50,7 @@ return array(
 	 * DB_NAME 
 	 * ==> Name der Datenbank (lokal ==> "wasAuchImmer"; hochschule ==> "wfprj_wf5_0X")
 	 * DB_USER 
-	 * ==> Nutzername (lokal ==> "'root' wenn nicht geändert"; hochschule ==> "wfprj_wf5_0X@i-intra-03.informatik.hs-ulm.de")
+	 * ==> Nutzername (lokal ==> "'root' wenn nicht geändert"; hochschule ==> "wfprj_wf5_0X")
 	 * DB_PASS 
 	 * ==> Passwort (lokal ==> "Kein Passwort, falls nicht geändert"; hochschule ==> "euer DB Passwort")
 	 * DB_PORT 

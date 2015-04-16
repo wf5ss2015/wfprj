@@ -47,10 +47,10 @@ class LoginController extends Controller
         );
 
         // falls Login fehlgeschlagen, dann wird nochmal der login aufgerufen.
-        if ($login_successful) {
+        if ($login_successful==1) {
             Redirect::to('login/hello'); 
         } else {
-            Redirect::to('login/hello'); //normal redirect auf login/index
+            Redirect::to('login/index'); //normal redirect auf login/index
         }
     }
 	

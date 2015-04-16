@@ -27,6 +27,7 @@
  require '../application/model/UserModel.php';
  require '../application/core/DatabaseFactory.php';
  require '../application/core/Auth.php';
+ require '../application/lib/phppasswordlib/passwordLib.php';
 
 
  

@@ -15,6 +15,12 @@
         <h3>Start</h3>
         <p>
             Hallo. Bitte einloggen.
-        </p>
+			<?php
+			$result=UserModel::getUserData('dozent');
+			echo $match = password_verify('dozent', $result->user_password_hash);
+			
+			echo $result->user_name;
+			?>
+		</p>
     </div>
 </div>

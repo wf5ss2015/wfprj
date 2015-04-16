@@ -33,7 +33,7 @@ class LoginModel
             return false;
         }
 
-	    // falls Benutzer nicht in der DB besteht
+	    // falls Benutzer nicht in der DB besteht bzw. Passwort nicht stimmt.
 	    $result = self::validateAndGetUser($user_name, $user_password);
 
 	    if (!$result) {
@@ -72,8 +72,11 @@ class LoginModel
 			return false;
 		}
 
+		// sprint02 start
+		$match = password_verify($user_password, $result->user_password_hash);
+		// sprint02 ende
 		// falls der in der Datenbank gespeicherte Hash nicht mit dem Hash des Passworts übereinstimmt.
-		if (!password_verify($user_password, $result->user_password_hash)) { // Funktion nicht in PHP 5.4 enthalten
+		if ($match==null) { 
 			return false;
 		}
 
