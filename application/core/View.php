@@ -20,6 +20,12 @@ class View
 {
     public function render($filename, $data = null)
     {
+		if ($data) {
+            foreach ($data as $key => $value) {
+                $this->{$key} = $value;
+            }
+        }
+		
 		// lädt den header
         require Config::get('PATH_VIEW') . '_templates/header.php';
 		// lädt den content
@@ -27,5 +33,7 @@ class View
 		// lädt den footer
         require Config::get('PATH_VIEW') . '_templates/footer.php';
     }
+	
+	
  
 }

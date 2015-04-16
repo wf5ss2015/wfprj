@@ -61,7 +61,9 @@ class LoginController extends Controller
     public function hello()
     {
 		Auth::checkAuthentication();
-		$this->View->render('login/loggedin');
+		$this->View->render('login/loggedin', array(
+            'userlist' => UserModel::getUserDataAll())
+		);
     }
 
     /**

@@ -14,13 +14,15 @@
     <div class="box">
         <h3>Start</h3>
         <p>
-            Hallo. Bitte einloggen.
-			<?php
-			$result=UserModel::getUserData('dozent');
-			echo $match = password_verify('dozent', $result->user_password_hash);
+            Login: dozent<br>
+			Passwort: dozent<br>
+			==> funktioniert da richtige Rolle. Weitere Rollen sind nicht implementiert.<br>
+			<br>
+			Login: student<br>
+			Passwort: student<br>
+			==> funtioniert nicht, da falsche Rolle.<br>
 			
-			echo $result->user_name;
-			?>
+			
 		</p>
     </div>
 </div>

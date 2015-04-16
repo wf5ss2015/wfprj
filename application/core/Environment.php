@@ -23,6 +23,9 @@ class Environment
 	if(getenv('HTTP_HOST') == 'localhost'){
 		return 'local';
 	}
+	if(getenv('HTTP_HOST') == 'kilian-kraus.de'){
+		return 'kilian';
+	}
 	if(getenv('HTTP_HOST') == 'wfprj-wf5.informatik.hs-ulm.de' && substr($_SERVER['PHP_SELF'],1,2) == '01') {
 		return 'private';
 	}

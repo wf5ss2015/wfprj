@@ -37,6 +37,18 @@ class UserModel
 
         return $query->fetch();
     }
+	
+	public static function getUserDataAll()
+    {
+        $database = DatabaseFactory::getFactory()->getConnection();
+
+       $sql = "SELECT * FROM user";
+        $query = $database->prepare($sql);
+
+        $query->execute();
+
+        return $query->fetchAll();
+    }
 
 
 }
