@@ -18,17 +18,69 @@
  */
 class Auth
 {
-    public static function checkAuthentication()
+    public static function checkAuthenticationStudent()
     {
         // Initialisiert eine Session, falls noch keine Vorhanden ist.
         Session::init();
 
         // Falls Nutzer nicht eingeloggt ist.
-        if (!Session::userIsLoggedIn()) {
-            Session::destroy();
+        if (Session::userIsLoggedIn()&&Session::get('user_role')=="student") {
+			return true;
+        }
+		else{
+			Session::destroy();
             header('location: ' . "index.php?url=". 'login');
             exit();
+		}
+    }
+	
+	public static function checkAuthenticationDocent()
+    {
+        // Initialisiert eine Session, falls noch keine Vorhanden ist.
+        Session::init();
+
+        // Falls Nutzer nicht eingeloggt ist.
+        if (Session::userIsLoggedIn()&&Session::get('user_role')=="docent") {
+		return true;
         }
+		else{
+			Session::destroy();
+            header('location: ' . "index.php?url=". 'login');
+            exit();
+		}
+    }
+	
+	public static function checkAuthenticationTutor()
+    {
+        // Initialisiert eine Session, falls noch keine Vorhanden ist.
+        Session::init();
+
+        // Falls Nutzer nicht eingeloggt ist.
+        if (Session::userIsLoggedIn()&&Session::get('user_role')=="tutor") {
+		return true;
+        }
+		else{
+			Session::destroy();
+            header('location: ' . "index.php?url=". 'login');
+            exit();
+		}
+		
+    }
+	
+	public static function checkAuthenticationEmployee()
+    {
+        // Initialisiert eine Session, falls noch keine Vorhanden ist.
+        Session::init();
+
+        // Falls Nutzer nicht eingeloggt ist.
+        if (Session::userIsLoggedIn()&&Session::get('user_role')=="employee") {
+		return true;
+        }
+		else{
+			Session::destroy();
+            header('location: ' . "index.php?url=". 'login');
+            exit();
+		}
     }
 	
 }

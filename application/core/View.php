@@ -26,12 +26,45 @@ class View
             }
         }
 		
+		if(Session::userIsLoggedIn()&&Session::get('user_role')=="student"){
+			// lädt den header
+			require Config::get('PATH_VIEW') . '_templates/headerStudent.php';
+			// lädt den content
+			require Config::get('PATH_VIEW') . $filename . '.php';
+			// lädt den footer
+			require Config::get('PATH_VIEW') . '_templates/footer.php';
+			
+		}elseif(Session::userIsLoggedIn()&&Session::get('user_role')=="employee"){
+			// lädt den header
+			require Config::get('PATH_VIEW') . '_templates/headerEmployee.php';
+			// lädt den content
+			require Config::get('PATH_VIEW') . $filename . '.php';
+			// lädt den footer
+			require Config::get('PATH_VIEW') . '_templates/footer.php';
+			
+		}elseif(Session::userIsLoggedIn()&&Session::get('user_role')=="docent"){
+			// lädt den header
+			require Config::get('PATH_VIEW') . '_templates/headerDocent.php';
+			// lädt den content
+			require Config::get('PATH_VIEW') . $filename . '.php';
+			// lädt den footer
+			require Config::get('PATH_VIEW') . '_templates/footer.php';
+			
+		}elseif(Session::userIsLoggedIn()&&Session::get('user_role')=="tutor"){
+			// lädt den header
+			require Config::get('PATH_VIEW') . '_templates/headerTutor.php';
+			// lädt den content
+			require Config::get('PATH_VIEW') . $filename . '.php';
+			// lädt den footer
+			require Config::get('PATH_VIEW') . '_templates/footer.php';
+		}else{
 		// lädt den header
         require Config::get('PATH_VIEW') . '_templates/header.php';
 		// lädt den content
         require Config::get('PATH_VIEW') . $filename . '.php';
 		// lädt den footer
         require Config::get('PATH_VIEW') . '_templates/footer.php';
+		}
     }
 	
 	

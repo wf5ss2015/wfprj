@@ -48,9 +48,19 @@ class LoginController extends Controller
 
         // falls Login fehlgeschlagen, dann wird nochmal der login aufgerufen.
         if ($login_successful==1) {
-            Redirect::to('login/hello'); 
+			if(Session::get('user_role')=="employee"){
+			Redirect::to('login/helloEmployee');
+			}elseif (Session::get('user_role')=="student"){
+			Redirect::to('login/helloStudent');
+			}elseif (Session::get('user_role')=="docent"){
+			Redirect::to('login/helloDocent');
+			}elseif (Session::get('user_role')=="tutor"){
+			Redirect::to('login/helloTutor');
+			}else{
+			Redirect::to('login/index'); 
+			}
         } else {
-            Redirect::to('login/index'); //normal redirect auf login/index
+            Redirect::to('login/index'); 
         }
     }
 	
@@ -58,10 +68,46 @@ class LoginController extends Controller
      * @author Kilian Kraus
 	 * Zeigt eine einfache Seite an nach dem erfolgreichen Login
      */
-    public function hello()
+    public function helloEmployee()
     {
-		Auth::checkAuthentication();
-		$this->View->render('login/loggedin', array(
+		Auth::checkAuthenticationEmployee();
+		$this->View->render('login/loggedinEmployee', array(
+            'userlist' => UserModel::getUserDataAll())
+		);
+    }
+	
+	/**
+     * @author Kilian Kraus
+	 * Zeigt eine einfache Seite an nach dem erfolgreichen Login
+     */
+    public function helloStudent()
+    {
+		Auth::checkAuthenticationStudent();
+		$this->View->render('login/loggedinStudent', array(
+            'userlist' => UserModel::getUserDataAll())
+		);
+    }
+	
+		 /**
+     * @author Kilian Kraus
+	 * Zeigt eine einfache Seite an nach dem erfolgreichen Login
+     */
+    public function helloTutor()
+    {
+		Auth::checkAuthenticationTutor();
+		$this->View->render('login/loggedinTutor', array(
+            'userlist' => UserModel::getUserDataAll())
+		);
+    }
+	
+		 /**
+     * @author Kilian Kraus
+	 * Zeigt eine einfache Seite an nach dem erfolgreichen Login
+     */
+    public function helloDocent()
+    {
+		Auth::checkAuthenticationDocent();
+		$this->View->render('login/loggedinDocent', array(
             'userlist' => UserModel::getUserDataAll())
 		);
     }

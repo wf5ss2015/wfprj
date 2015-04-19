@@ -27,6 +27,6 @@
                 <a href="index.php?url=index/index">Start</a>
             </li>
 			<li>
-                <a href="index.php?url=login/index">Einloggen</a>
-			</li>  
+                <a href="index.php?url=login/logout">AusloggenTutor</a>
+			</li>
         </ul>

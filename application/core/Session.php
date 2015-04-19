@@ -80,7 +80,7 @@ class Session
      */
     public static function userIsLoggedIn()
     {
-        if(Session::get('user_logged_in')&&Session::get('user_role')==1){
+        if(Session::get('user_logged_in')){
         return true;
 		}else{
 		return false;

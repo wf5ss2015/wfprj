@@ -16,11 +16,19 @@
         <p>
             Login: dozent<br>
 			Passwort: dozent<br>
-			==> funktioniert da richtige Rolle. Weitere Rollen sind nicht implementiert.<br>
+			
 			<br>
 			Login: student<br>
 			Passwort: student<br>
-			==> funtioniert nicht, da falsche Rolle.<br>
+			
+			<br>
+			Login: mitarbeiter<br>
+			Passwort: mitarbeiter<br>
+			
+			<br>
+			Login: tutor<br>
+			Passwort: tutor<br>
+			
 			
 			
 		</p>
