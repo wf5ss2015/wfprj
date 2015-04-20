@@ -28,6 +28,7 @@
  require '../application/core/DatabaseFactory.php';
  require '../application/core/Auth.php';
  require '../application/lib/phppasswordlib/passwordLib.php';
+ require '../application/core/DatabaseFactoryMysql.php';
 
 
  
@@ -35,9 +36,6 @@ class Application
 {
     /** @var mixed Instanzen des Controllers*/
     private $controller;
-
-    /** @var array URL Parameter der Controller Funktionen/Methoden */
-    private $parameters = array();
 
     /** @var string Controller Name, falls man in der View eine Abfrage machen möchte wo man ist. */
     private $controller_name;
@@ -64,15 +62,14 @@ class Application
 
             // überprüft, ob die Methode im entsprechenden Controller vorhanden ist.
             if (method_exists($this->controller, $this->action_name)) {
-                if (!empty($this->parameters)) {
-                    call_user_func_array(array($this->controller, $this->action_name), $this->parameters);
-                } else {                   
-                    $this->controller->{$this->action_name}();
-                }
-            } else {
+				$this->controller->{$this->action_name}();  
+            } else {    
+				//fehlerseite keine funktion im controller
             }
         } else {
-        }
+			//fehlerseite kein controller
+		}
+        
     }
 
     /**
@@ -92,7 +89,6 @@ class Application
 
             unset($url[0], $url[1]);
 
-            $this->parameters = array_values($url);
         }
     }
 

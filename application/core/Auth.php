@@ -18,9 +18,14 @@
  */
 class Auth
 {
+	/**
+	* @author Kilian Kraus
+	* Überprüft ob ein Student eingeloggt ist und die entsprechnede Rolle besitzt, ansonsten wird er zur Login-Seite verlinkt und die Session zerstört.
+	* Sollte am Anfang eines Controllers verwendet werden, wenn dieser nur für eingeloggte Nutzer sichtbar sein sollte.
+	*/
     public static function checkAuthenticationStudent()
     {
-        // Initialisiert eine Session, falls noch keine Vorhanden ist.
+        // Initialisiert eine Session.
         Session::init();
 
         // Falls Nutzer nicht eingeloggt ist.
@@ -33,10 +38,14 @@ class Auth
             exit();
 		}
     }
-	
+	/**
+	* @author Kilian Kraus
+	* Überprüft ob ein Dozent eingeloggt ist und die entsprechnede Rolle besitzt, ansonsten wird er zur Login-Seite verlinkt und die Session zerstört.
+	* Sollte am Anfang eines Controllers verwendet werden, wenn dieser nur für eingeloggte Nutzer sichtbar sein sollte.
+	*/
 	public static function checkAuthenticationDocent()
     {
-        // Initialisiert eine Session, falls noch keine Vorhanden ist.
+        // Initialisiert eine Session.
         Session::init();
 
         // Falls Nutzer nicht eingeloggt ist.
@@ -49,10 +58,14 @@ class Auth
             exit();
 		}
     }
-	
+	/**
+	* @author Kilian Kraus
+	* Überprüft ob ein Tutor eingeloggt ist und die entsprechnede Rolle besitzt, ansonsten wird er zur Login-Seite verlinkt und die Session zerstört.
+	* Sollte am Anfang eines Controllers verwendet werden, wenn dieser nur für eingeloggte Nutzer sichtbar sein sollte.
+	*/
 	public static function checkAuthenticationTutor()
     {
-        // Initialisiert eine Session, falls noch keine Vorhanden ist.
+        // Initialisiert eine Session.
         Session::init();
 
         // Falls Nutzer nicht eingeloggt ist.
@@ -66,10 +79,14 @@ class Auth
 		}
 		
     }
-	
+	/**
+	* @author Kilian Kraus
+	* Überprüft ob ein Mitarbeiter eingeloggt ist und die entsprechnede Rolle besitzt, ansonsten wird er zur Login-Seite verlinkt und die Session zerstört.
+	* Sollte am Anfang eines Controllers verwendet werden, wenn dieser nur für eingeloggte Nutzer sichtbar sein sollte.
+	*/
 	public static function checkAuthenticationEmployee()
     {
-        // Initialisiert eine Session, falls noch keine Vorhanden ist.
+        // Initialisiert eine Session
         Session::init();
 
         // Falls Nutzer nicht eingeloggt ist.

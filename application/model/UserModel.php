@@ -27,7 +27,7 @@ class UserModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-       $sql = "SELECT user_id, user_name, user_email, user_password_hash, user_role               
+       $sql = "SELECT user_name, user_email, user_password_hash, user_role               
                  FROM user
                  WHERE (user_name = :user_name)   
                  LIMIT 1";
@@ -38,17 +38,33 @@ class UserModel
         return $query->fetch();
     }
 	
+
+	/* //Beispiel für PDO
 	public static function getUserDataAll()
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-       $sql = "SELECT * FROM user";
+        $sql = "SELECT * FROM user";
         $query = $database->prepare($sql);
 
         $query->execute();
-
+		
         return $query->fetchAll();
     }
-
+	*/
+	
+	// Beispiel für Mysqli
+	public static function getUserDataAll()
+    {
+        $database = new DatabaseFactoryMysql();
+		
+		$sql = "SELECT * FROM user";
+		
+		$array = $database->query($sql);
+		
+		return $array;
+		
+    }
+	
 
 }

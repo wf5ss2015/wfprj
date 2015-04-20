@@ -123,8 +123,8 @@ class LoginModel
 
         $sql = "UPDATE user SET user_last_login_timestamp = :user_last_login_timestamp
                 WHERE user_name = :user_name LIMIT 1";
-        $sth = $database->prepare($sql);
-        $sth->execute(array(':user_name' => $user_name, ':user_last_login_timestamp' => time()));
+        $query = $database->prepare($sql);
+        $query->execute(array(':user_name' => $user_name, ':user_last_login_timestamp' => time()));
     }
 
 

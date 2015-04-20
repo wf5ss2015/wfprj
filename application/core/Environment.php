@@ -14,10 +14,13 @@
 /**
  * @author Kilian Kraus
  * Klasse um die Umgebung zu steuern.
- * TODO ==> noch nicht fertig.
  */
 class Environment
 {
+	/**
+	* @author Kilian Kraus
+	* gibt
+	*/
 	public static function get()
 	{
 	if(getenv('HTTP_HOST') == 'localhost'){
