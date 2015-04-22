@@ -1,12 +1,4 @@
 <?php
-/*===============================================
- Sprint: 2
- @author: Kilian Kraus
- Datum: 20.04.2015
- Zeitaufwand (in Stunden): 5.0
- User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
- Task: auth anpassen
- ===============================================*/
 /**
 * SPRINT 01
 *
@@ -22,15 +14,10 @@
 /**
  * @author Kilian Kraus
  * Überprüft ob ein Nutzer eingeloggt ist, ansonsten wird er zur Login-Seite verlinkt.
- * Sollte am Anfang eines Controllers bzw Funktion im Controller verwendet werden, wenn diese nur für eingeloggte Nutzer sichtbar sein sollte.
+ * Sollte am Anfang eines Controllers verwendet werden, wenn dieser nur für eingeloggte Nutzer sichtbar sein sollte.
  */
 class Auth
 {
-/*===============================================
- Start Sprint: 2
- @author: Kilian Kraus
- User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
- ===============================================*/
 	/**
 	* @author Kilian Kraus
 	* Überprüft ob ein Student eingeloggt ist und die entsprechnede Rolle besitzt, ansonsten wird er zur Login-Seite verlinkt und die Session zerstört.
@@ -112,9 +99,5 @@ class Auth
             exit();
 		}
     }
-/*===============================================
- Ende Sprint: 2
- @author: Kilian Kraus
- User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
- ===============================================*/	
+	
 }
