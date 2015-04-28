@@ -1,4 +1,12 @@
 <?php
+/*===============================================
+ Sprint: 2
+ @author: Kilian Kraus
+ Datum: 20.04.2015
+ Zeitaufwand (in Stunden): 5.0
+ User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
+ Task: loginController anpassen
+ ===============================================*/
 /**
 * SPRINT 01
 *
@@ -39,13 +47,16 @@ class LoginController extends Controller
 	 * @author Kilian Kraus
      * Funktion die den Login ausführt.
      */
-	 // ACHTUNG. BLEIBT AUF HS-SERVER HIER HÄNGEN WENN MAN SICH MIT EINEM BESTEHENDEN USERNAME EINLOGGEN MÖCHTE. 
-	 // Es werden Funktionen aus php 5.5 verwendet. Auf dem HS-Server ist jedoch 5.4, worin die Funtkionen noch nicht enthalten sind.
     public function login()
     {
         $login_successful = LoginModel::login(Request::post('user_name'), Request::post('user_password')
         );
 
+ /*===============================================
+ Start Sprint: 2
+ @author: Kilian Kraus
+ User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
+ ===============================================*/		
         // falls Login fehlgeschlagen, dann wird nochmal der login aufgerufen.
         if ($login_successful==1) {
 			if(Session::get('user_role')=="employee"){
@@ -56,14 +67,26 @@ class LoginController extends Controller
 			Redirect::to('login/helloDocent');
 			}elseif (Session::get('user_role')=="tutor"){
 			Redirect::to('login/helloTutor');
+ /*===============================================
+ Ende Sprint: 2
+ @author: Kilian Kraus
+ User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
+ ===============================================*/	
 			}else{
 			Redirect::to('login/index'); 
+			Session::add('response_warning', 'Keine Berechtigung Sich mit diesem Account einzuloggen.');
 			}
         } else {
             Redirect::to('login/index'); 
+			Session::add('response_negative', 'Nutzer existiert nicht oder falsches Kennwort.');
         }
     }
-	
+
+ /*===============================================
+ Start Sprint: 2
+ @author: Kilian Kraus
+ User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
+ ===============================================*/	
 	 /**
      * @author Kilian Kraus
 	 * Zeigt eine einfache Seite an nach dem erfolgreichen Login
@@ -88,7 +111,7 @@ class LoginController extends Controller
 		);
     }
 	
-		 /**
+	/**
      * @author Kilian Kraus
 	 * Zeigt eine einfache Seite an nach dem erfolgreichen Login
      */
@@ -111,7 +134,11 @@ class LoginController extends Controller
             'userlist' => UserModel::getUserDataAll())
 		);
     }
-
+ /*===============================================
+ Ende Sprint: 2
+ @author: Kilian Kraus
+ User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
+ ===============================================*/	
     /**
      * @author Kilian Kraus
 	 * Zeigt eine einfache Seite an nach dem Logout

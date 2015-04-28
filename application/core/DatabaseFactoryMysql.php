@@ -1,14 +1,12 @@
 <?php
-/**
-* SPRINT 02
-*
-* @author: Kilian Kraus
-* @Matrikel:
-* Datum: 08.04.2015
-*
-* User­Story (Nr. 20 ): einheitliche datenbankverbindung.
-* Zeit: 2.0
-*/
+/*===============================================
+ Sprint: 2
+ @author: Kilian Kraus
+ Datum: 20.04.2015
+ Zeitaufwand (in Stunden): 4.5
+ User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
+ Task: zusätzlich zu PDO verbindung noch MySQLi hinzufügen 
+ ===============================================*/
 
 /**
  * @author Kilian Kraus
@@ -28,22 +26,25 @@ class DatabaseFactoryMysql extends MySQLi
     );
  
     if (mysqli_connect_error()) {
-      throw new MySQLi_ConnectionException(
-        mysqli_connect_error(),
-        mysqli_connect_errno()
-      );
+	Redirect::to('error/error');//sprint3
+	Session::add('response_negative', 'Error: '. mysqli_connect_error());
+	Session::add('response_negative', 'Errno: '. mysqli_connect_errno());
     }
   }
  
-	// macht die query.
+	/**
+	* @author Kilian Kraus
+	* macht die query
+	* @param $query string sql
+    * @return array mit results
+	*/
 	public function query($query) {
     $result = parent::query($query);
  
     if ($this->error) {
-      throw new MySQLi_QueryException(
-        $this->error,
-        $this->errno
-      );
+		Redirect::to('error/error');//sprint3
+		Session::add('response_negative', 'Error: '. mysqli_connect_error());
+		Session::add('response_negative', 'Errno: '. mysqli_connect_errno());
     }
 	
 	// baut einen array mit objekten. genau so wie in PDO, nur hab ich dazu keine methode in mysqli gefunden bisher
@@ -53,7 +54,8 @@ class DatabaseFactoryMysql extends MySQLi
 		$array[$i] = $obj;
 		$i++;
 		}
-	// gibt mit objekten zurück
+	$this->close();
+	// gibt array mit objekten zurück
 	return $array;
   }
 }
