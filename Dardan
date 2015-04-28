@@ -1,0 +1,209 @@
+<!--/*
+ Möglichkeit Fakultät einzutragen 
+
+* Wirtschaftsinformatik­Projekt
+* Projekt: Lehrveranstaltungssoftware
+* Name: Dardan Sadiku
+* Gruppe: 01
+* Version: 2
+* Datum:19.04.15
+* ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­
+*
+* User­Story: Als Mitarbeiter möchte ich Studiengänge und Fakultäten anlegen können.
+*/
+-->
+
+<html>
+<head>
+<title></title>
+</head>
+<body>
+
+<form action ="speichernFakultaet.php" method="post">
+Bitte geben Sie den Studiengang und die Fakultaet ein: <br/>
+
+Fakultaet<input type= "text" name = "fakultaet">
+<input type="submit" value= "Anlegen">	
+</form>
+
+</body>
+</html>
+
+
+<!--/*
+// Möglichkeit Studiengang und dazugehörige Fakultät einzutragen 
+
+
+* Wirtschaftsinformatik­Projekt
+* Projekt: Lehrveranstaltungssoftware
+* Name: Dardan Sadiku
+* Gruppe: 01
+* Version: 2
+* Datum:20.04.15
+* ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­
+*
+* User­Story: Als Mitarbeiter möchte ich Studiengänge und Fakultäten anlegen können.
+*/
+-->
+
+<html>
+<head>
+<title> Studiengang und Fakultäten anlegen </title>
+</head>
+<body>
+
+<form action ="speichernStudiengang3.php" method="post">
+ echo Bitte geben Sie den Studiengang und die Fakultaet ein: <br/>
+
+Studiengang<input type= "text" name ="studiengang">
+Fakultaet<input type= "text" name = "fakultaet">
+<input type="submit" value= "Speichern">	
+</form>
+</body>
+</html>
+
+
+
+<?php /*
+
+Fakultät speichern
+ Wirtschaftsinformatik­Projekt
+ Projekt: Lehrveranstaltungssoftware
+ Name: Dardan Sadiku
+ Gruppe: 01
+ Version: 3
+ Sprint: 2
+ Datum:20.04.15
+ Zeitaufwand: 6h
+ ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­
+
+ User­Story: Als Mitarbeiter möchte ich Studiengänge und Fakultäten anlegen können.
+*/
+?>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<?php
+
+//$verbindung = mysql_connect("i-intra-03.informatik.hs-ulm.de","wfprj_wf5_06","sadiku","wfprj","3306")
+$dbCon = mysqli_connect("localhost","root", "","lehrveranstaltung")
+or die ("Fehler im System");
+// mysqli_select_db("lehrveranstaltung");
+
+// mysql_select_db("wfprj_wf5_06")
+// or die ("Verbindung zur Datenbank war nicht möglich!");
+
+$fakultaet = $_POST["fakultaet"];
+
+
+
+if($fakultaet == "" ){
+echo "Sie haben nicht alle Felder ausgefüllt!";
+}
+else {
+	$eintrag = "INSERT INTO fakultaet(FaName) 
+	VALUES
+	('$fakultaet')";
+	echo $eintrag;
+	 $eintragen = $dbCon->query($eintrag);
+	
+	if($dbCon->query($eintrag)){
+	 if($eintragen == true){
+	echo " Der Eintrag wurde gespeichert";
+	
+	}
+	}
+	
+	else  "Der Eintrag konnte nicht gespeichert werden";
+	
+	 
+	$dbCon->commit();
+	}
+	mysql_error();
+	
+	$dbCon->close();
+
+?> 
+</body>
+ </html>
+ 
+ 
+ 
+ 
+ 
+<?php /*
+
+Studiengang und dazugehörige Fakultät speichern 
+
+ Wirtschaftsinformatik­Projekt
+ Projekt: Lehrveranstaltungssoftware
+ Name: Dardan Sadiku
+ Gruppe: 01
+ Version: 3
+ Sprint: 2
+ Datum:20.04.15
+ Zeitaufwand: 6h
+ ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­
+
+ User­Story: Als Mitarbeiter möchte ich Studiengänge und Fakultäten anlegen können.
+*/
+?>
+
+<html>
+<head>
+<title></title>
+</head>
+<body>
+<?php
+
+//$verbindung = mysql_connect("i-intra-03.informatik.hs-ulm.de","wfprj_wf5_06","sadiku","wfprj","3306")
+$dbCon = mysqli_connect("localhost","root", "","lehrveranstaltung")
+or die ("Fehler im System");
+
+ //mysql_select_db("lehrveranstaltung");
+
+// mysql_select_db("wfprj_wf5_06")
+// or die ("Verbindung zur Datenbank war nicht möglich!");
+
+$studiengang = $_POST["studiengang"];
+$fak = $_POST["fakultaet"];
+
+
+
+
+if($studiengang == "") {
+	
+  echo "Sie haben nicht alle Felder ausgefüllt!";
+}
+
+  
+
+  $eintrag = "INSERT INTO studiengang(StudName, FaID) 
+  VALUES
+  ('$studiengang', '$fak');";
+
+  echo $eintrag;
+  
+
+  $eintragen = $dbCon->query($eintrag);
+    
+print $dbCon->error;
+echo mysql_error();
+    
+  if($eintragen == true) {
+    echo " Der Eintrag wurde gespeichert";
+  
+  } else {
+    echo "Der Eintrag konnte nicht gespeichert werden";
+    print $dbCon->error;
+  }
+
+
+  $dbCon->close();
+
+
+?> 
+</body>
+ </html>
