@@ -29,6 +29,7 @@
  require '../application/core/Auth.php';
  require '../application/lib/phppasswordlib/passwordLib.php';
  require '../application/core/DatabaseFactoryMysql.php';
+ require '../application/model/raumAnlegenModel.php';
 
 
  
