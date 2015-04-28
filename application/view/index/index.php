@@ -16,7 +16,6 @@
         <p>
             Login: dozent<br>
 			Passwort: dozent<br>
-			asdf
 			
 			<br>
 			Login: student<br>
@@ -29,9 +28,7 @@
 			<br>
 			Login: tutor<br>
 			Passwort: tutor<br>
-			
-			
-			
+	
 		</p>
     </div>
 </div>

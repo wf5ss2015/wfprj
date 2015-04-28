@@ -31,6 +31,8 @@
  require '../application/core/DatabaseFactoryMysql.php';
 
 
+
+
  
 class Application
 {
@@ -64,10 +66,10 @@ class Application
             if (method_exists($this->controller, $this->action_name)) {
 				$this->controller->{$this->action_name}();  
             } else {    
-				//fehlerseite keine funktion im controller
+				header('location:index.php?url=error'); // SPRINT3
             }
         } else {
-			//fehlerseite kein controller
+			header('location:index.php?url=error');// SPRINT3
 		}
         
     }

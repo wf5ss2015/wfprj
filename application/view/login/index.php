@@ -11,7 +11,7 @@
 */
 ?><!--TODO HTML5 umsetzen-->
 <div class="container">
-    
+    <?php $this->renderResponse(); ?>
         <div class="table-wrapper">
             <div class="login-box">
                 <h2>Login here</h2>

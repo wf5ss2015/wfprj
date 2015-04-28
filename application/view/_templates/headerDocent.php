@@ -1,15 +1,12 @@
 <!--
-/**
-* SPRINT 01
-*
-* @author: Kilian Kraus
-* @Matrikel:
-* Datum: 08.04.2015
-*
-* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
-* Zeit: 0.5
-*/
--->
+/*===============================================
+ Sprint: 2
+ @author: Kilian Kraus
+ Datum: 20.04.2015
+ Zeitaufwand (in Stunden): 5.0
+ User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
+ Task: header erstellen
+ ===============================================*/
 <!--TODO HTML5 umsetzen-->
 
 <!doctype html>

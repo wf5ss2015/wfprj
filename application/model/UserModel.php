@@ -1,4 +1,12 @@
 <?php
+/*===============================================
+ Sprint: 2
+ @author: Kilian Kraus
+ Datum: 20.04.2015
+ Zeitaufwand (in Stunden): 4.5
+ User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
+ Task: zusätzlich zu PDO verbindung noch MySQLi hinzufügen 
+ ===============================================*/
 /**
 * SPRINT 01
 *
@@ -38,7 +46,11 @@ class UserModel
         return $query->fetch();
     }
 	
-
+/*===============================================
+ Start Sprint: 2
+ @author: Kilian Kraus
+ User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
+ ===============================================*/
 	/* //Beispiel für PDO
 	public static function getUserDataAll()
     {
@@ -60,11 +72,15 @@ class UserModel
 		
 		$sql = "SELECT * FROM user";
 		
-		$array = $database->query($sql);
+		$result = $database->query($sql);
 		
-		return $array;
+		return $result;
 		
     }
-	
+/*===============================================
+ Ende Sprint: 2
+ @author: Kilian Kraus
+ User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
+ ===============================================*/
 
 }

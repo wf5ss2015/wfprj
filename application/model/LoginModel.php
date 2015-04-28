@@ -46,9 +46,8 @@ class LoginModel
         // falls Nutzer erfolgreich eingeloggt ist, dann werden notwendige Parameter in die Session Variablen geschrieben
 		// Loggt Nutzer final ein
         self::doLogin(
-            $result->user_id, $result->user_name, $result->user_role
+             $result->user_name, $result->user_role
         );
-
 		// gibt letztendlich true zurück für erfolgreichen login
         return true;
     }
@@ -71,10 +70,9 @@ class LoginModel
 		if (!$result) {
 			return false;
 		}
-
-		// sprint02 start
+		
+		// überprüft ob passwort mit hash übereinstimmt.
 		$match = password_verify($user_password, $result->user_password_hash);
-		// sprint02 ende
 		// falls der in der Datenbank gespeicherte Hash nicht mit dem Hash des Passworts übereinstimmt.
 		if ($match==null) { 
 			return false;
@@ -102,10 +100,9 @@ class LoginModel
      * @param $user_name 
      * @param $user_role
      */
-    public static function doLogin($user_id, $user_name, $user_role)
+    public static function doLogin($user_name, $user_role)
     {
         Session::init();
-        Session::set('user_id', $user_id);
         Session::set('user_name', $user_name);
 		Session::set('user_role', $user_role);
         Session::set('user_logged_in', true);

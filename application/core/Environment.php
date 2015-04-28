@@ -1,4 +1,12 @@
 <?php
+/*===============================================
+ Sprint: 2
+ @author: Kilian Kraus
+ Datum: 20.04.2015
+ Zeitaufwand (in Stunden): 4.5
+ User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
+ Task: Config file automatisch Auswählen, jenachdem aus welcher Umgebung die Application gestartet wird. 
+ ===============================================*/
 /**
 * SPRINT 01
 *
@@ -17,6 +25,11 @@
  */
 class Environment
 {
+/*===============================================
+ Start Sprint: 2
+ @author: Kilian Kraus
+ User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
+ ===============================================*/
 	/**
 	* @author Kilian Kraus
 	* gibt
@@ -56,6 +69,10 @@ class Environment
 	if(getenv('HTTP_HOST') == 'wfprj-wf5.informatik.hs-ulm.de' && substr($_SERVER['PHP_SELF'],1,2) == '09') {
 		return 'group';
 	}
-
+/*===============================================
+ Ende Sprint: 2
+ @author: Kilian Kraus
+ User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
+ ===============================================*/
 	}
 }
