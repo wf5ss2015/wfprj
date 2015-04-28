@@ -1,8 +1,7 @@
 <!--
     autor: Kris Klamser
-    datum: 5.4.2015
+    datum: 28.4.2015
     projekt: lehrveranstaltungsmanagement
-	version: 02
 	sprint: 02
 	zeitaufwand: 0,5
 	user story: Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
@@ -30,7 +29,7 @@
 							echo htmlentities($value->hausnummer); echo "</option>";
 						}
 					} else{
-						
+						echo "Es ist ein Fehler aufgetretten.";
 					}
 				  ?>
 				</select>
@@ -41,12 +40,13 @@
 			-->
 			<p>
 				<?php
-					$sql = 'Select ausstattung_bezeichnung from Ausstattung';
-					$result = mysqli_query($database, $sql);
-					while($row = mysqli_fetch_array($result)){
-						echo $row['ausstattung_bezeichnung']; 
-						$bez = $row['ausstattung_bezeichnung']; 
-						echo ' <input type="checkbox" name="$bez" value="1"> Anzahl:<input class="tf" type = "text" name = "$bez +1"/><br>';
+					if ($this->ausstattung_list){
+						foreach($this->ausstattung_list as $key => $value){
+							echo htmlentities($value->ausstattung_bezeichnung); 
+							echo '<input type="checkbox" name="" value="1"> Anzahl:<input class="tf" type = "text" name = "1"/><br>'; 
+						}
+					} else{
+						echo "Es ist ein Fehler aufgetretten.";
 					}
 				?>
 			</p>

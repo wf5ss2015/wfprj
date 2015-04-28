@@ -27,8 +27,8 @@
 			if(isset($_POST)){
 				switch ($raumtyp) {
 					case "vorlesungsraum":
-						$this->View->render('raumanlegen/vorlesungsraumAnlegen', array(
-							'geblist' => raumAnlegenModel::getGebäude()));
+						$this->View->render('raumanlegen/vorlesungsraumAnlegen', 
+							array('geblist' => raumAnlegenModel::getGebäude(), 'ausstattung_list' => raumAnlegenModel::getAusstattung()));
 						break;
 					case "buero":
 						$this->View->render('raumanlegen/bueroAnlegen');
@@ -46,6 +46,11 @@
 			else {
 				echo "Kein Raumtyp ausgewählt!";
 			} 
+		}
+		
+		public function name()
+		{
+			$this->View->render('');
 		}
 }
 
