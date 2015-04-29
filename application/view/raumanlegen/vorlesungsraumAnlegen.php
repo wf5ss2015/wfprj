@@ -15,7 +15,7 @@
         <h1>Vorlesungsraum anlegen</h1>
     </header>
 	<!-- vorlesungsraumAnlegen.php wird ausgeführt nach der Bestätigung -->
-    <form action="index.php?url=raumAnlegen/setStammdaten" method="post"/>
+    <form action="index.php?url=raumAnlegen/setVorlesungsraum" method="post"/>
 		<div>
 			<!-- included das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
 			<?php

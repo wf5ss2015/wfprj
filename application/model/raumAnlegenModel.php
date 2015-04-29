@@ -65,7 +65,7 @@
 			$query2->execute();
 		}
 		
-		public static function laborAnlegen ($bezeichnung, $gebäude_char){
+		public static function laborAnlegen ($bezeichnung, $gebäude_char, $laborart_ID){
 			$database = DatabaseFactory::getFactory()->getConnection();
 			$insert_sql1 = "INSERT INTO raum(raum_bezeichnung, geb_bezeichnung) 
 							VALUES ('$bezeichnung', '$gebäude_char')";

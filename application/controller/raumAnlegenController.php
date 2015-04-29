@@ -49,31 +49,69 @@
 			} 
 		}
 		
-		public function setStammdaten(){
+		public function setVorlesungsraum(){
 			if(isset($_POST['bezeichnung']) and isset($_POST['gebäude'])){
 				$bezeichnung = $_POST['bezeichnung'];
 				$gebäude_string = $_POST['gebäude'];
 				$gebäude_array = explode(",", $gebäude_string);
 				$gebäude_char = $gebäude_array[0];
-				switch ($raumtyp) {
-					case "vorlesungsraum":
-						raumAnlegenModel::vorlesungsraumAnlegen($bezeichnung, $gebäude_char);
-						break;
-					case "buero":
-						raumAnlegenModel::bueroAnlegen($bezeichnung, $gebäude_char);
-						break;
-					case "labor":
-						raumAnlegenModel::laborAnlegen($bezeichnung, $gebäude_char);
-						break;
-					case "bibliothek":
-						raumAnlegenModel::bibliothekAnlegen($bezeichnung, $gebäude_char);
-						break;
-					default:
-						echo "Kein Raumtyp ausgewählt!";
-				}
+				raumAnlegenModel::vorlesungsraumAnlegen($bezeichnung, $gebäude_char);
+				echo "Raum erfolgreich angelegt.";
+				echo '<input type="button" value="Zurück" onClick="history.back();">';
+			} else{
+				//Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man dies gemeldet.
+				echo "Ein Fehler ist aufgetretten!<br><br>";
+				echo '<input type="button" value="Zurück" onClick="history.back();">';
 			}
-			
 		}
-}
-
+		public function setLabor(){
+			if(isset($_POST['bezeichnung']) and isset($_POST['gebäude'])){
+				$bezeichnung = $_POST['bezeichnung'];
+				$gebäude_string = $_POST['gebäude'];
+				$gebäude_array = explode(",", $gebäude_string);
+				$gebäude_char = $gebäude_array[0];
+				//Laborart Info muss aufgespalten werden, weil nur lArt_ID eingetragen werden muss
+				$labor_string = $_POST['laborart'];
+				$labor_array = explode(",", $labor_string);
+				$laborart_ID = $labor_array[0];
+				raumAnlegenModel::laborAnlegen($bezeichnung, $gebäude_char, $laborart_ID);
+				echo "Raum erfolgreich angelegt.";
+				echo '<input type="button" value="Zurück" onClick="history.back();">';
+			} else{
+				//Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man dies gemeldet.
+				echo "Ein Fehler ist aufgetretten!<br><br>";
+				echo '<input type="button" value="Zurück" onClick="history.back();">';
+			}
+		}
+		public function setBibliothek(){
+			if(isset($_POST['bezeichnung']) and isset($_POST['gebäude'])){
+				$bezeichnung = $_POST['bezeichnung'];
+				$gebäude_string = $_POST['gebäude'];
+				$gebäude_array = explode(",", $gebäude_string);
+				$gebäude_char = $gebäude_array[0];
+				raumAnlegenModel::bibliothekAnlegen($bezeichnung, $gebäude_char);
+				echo "Raum erfolgreich angelegt.";
+				echo '<input type="button" value="Zurück" onClick="history.back();">';
+			} else{
+				//Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man dies gemeldet.
+				echo "Ein Fehler ist aufgetretten!<br><br>";
+				echo '<input type="button" value="Zurück" onClick="history.back();">';
+			}
+		}
+		public function setBuero(){
+			if(isset($_POST['bezeichnung']) and isset($_POST['gebäude'])){
+				$bezeichnung = $_POST['bezeichnung'];
+				$gebäude_string = $_POST['gebäude'];
+				$gebäude_array = explode(",", $gebäude_string);
+				$gebäude_char = $gebäude_array[0];
+				raumAnlegenModel::bueroAnlegen($bezeichnung, $gebäude_char);
+				echo "Raum erfolgreich angelegt.";
+				echo '<input type="button" value="Zurück" onClick="history.back();">';
+			} else{
+				//Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man dies gemeldet.
+				echo "Ein Fehler ist aufgetretten!<br><br>";
+				echo '<input type="button" value="Zurück" onClick="history.back();">';
+			}
+		}	
+	}
 ?>
