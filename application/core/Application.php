@@ -31,6 +31,7 @@
  require '../application/core/DatabaseFactoryMysql.php';
  require '../application/model/raumAnlegenModel.php';
  require '../application/model/veranstaltungErweiternModel.php';
+ require '../application/model/DozentModel.php';
 
 
 
