@@ -23,6 +23,10 @@
             <li  >
                 <a href="index.php?url=index/index">Start</a>
             </li>
+			<li  >
+			
+                <a href="index.php?url=Dozent/auswahlVorlesung">Teilnehmerliste</a>
+            </li>
 			<li>
                 <a href="index.php?url=login/logout">AusloggenDozent</a>
 			</li>
