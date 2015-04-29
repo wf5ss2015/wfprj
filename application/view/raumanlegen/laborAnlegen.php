@@ -17,34 +17,22 @@
         <h1>Labor/Werkstatt anlegen</h1>
     </header>
 	<!-- laborAnlegen.php wird ausgeführt nach der Bestätigung -->
-    <form action="laborAnlegen.php" method="post"/>
+    <form action="index.php?url=raumAnlegen/setStammdaten" method="post"/>
 		<div>
-			Bezeichnung <input class="tf" type = "text" name = "bezeichnung" /><br>
-			<!-- Alle Gebäude werden in einer Liste zur Auswahl angezeigt. Mit Bezeichnung und Anschrift. -->
-			<p> Geb&auml;ude 
-				<select name="gebäude">
-				  <?php
-					$sql = 'Select g.geb_bezeichnung, a.straßenname, a.hausnummer from gebaeude g join adresse a on g.geb_bezeichnung = a.geb_bezeichnung';
-					$result = mysqli_query($database, $sql);
-					while($row = mysqli_fetch_array($result)){
-						echo "<option>"; echo $row['geb_bezeichnung']; echo " , "; 
-						echo $row['straßenname']; echo " , "; 
-						echo $row['hausnummer']; echo "</option>";
-					}
-				  ?>
-				</select>
-			</p>
-			<!--
-				dynamisch aus Tabelle Laborart nach der zutreffenden Laborart abfragen
-			-->
+			<!-- included das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
+			<?php
+				include 'raumStammdaten.php';
+			?>
 			<p>	Laborart 
 				<select name = "laborart">
 					<?php
-						$sql = 'Select lArt_ID, lArt_bezeichnung from Laborart';
-						$result = mysqli_query($database, $sql);
-						while($row = mysqli_fetch_array($result)){
-							echo "<option>"; echo $row['lArt_ID']; echo " , "; 
-							echo $row['lArt_bezeichnung']; echo "</option>";
+						if ($this->labArt_list){
+							foreach($this->labArt_list as $key => $value){
+								echo "<option>"; echo htmlentities($value->lArt_ID); echo " , "; 
+								echo htmlentities($value->lArt_bezeichnung); echo "</option>";
+							}
+						} else{
+							echo "Es ist ein Fehler aufgetretten.";
 						}
 					?>
 				</select>	
@@ -55,12 +43,13 @@
 			-->
 			<p>
 				<?php
-					$sql = 'Select ausstattung_bezeichnung from Ausstattung';
-					$result = mysqli_query($database, $sql);
-					while($row = mysqli_fetch_array($result)){
-						echo $row['ausstattung_bezeichnung']; 
-						$bez = $row['ausstattung_bezeichnung']; 
-						echo ' <input type="checkbox" name="$bez" value="1"> Anzahl:<input class="tf" type = "text" name = "$bez +1"/><br>';
+					if ($this->ausstattung_list){
+						foreach($this->ausstattung_list as $key => $value){
+							echo htmlentities($value->ausstattung_bezeichnung); 
+							echo '<input type="checkbox" name="" value="1"> Anzahl:<input class="tf" type = "text" name = "1"/><br>'; 
+						}
+					} else{
+						echo "Es ist ein Fehler aufgetretten.";
 					}
 				?>
 			</p>
@@ -69,7 +58,7 @@
 			<?php
 				echo '<input type="button" value="Zurück" onClick="history.back();">';
 			?>
-			<input type="submit" name="labAnlegen"  value="Labor/Werkstatt anlegen">
+			<input type="submit" name="anlegen" value="Labor anlegen">
 		</p>
     </form>
 </body>

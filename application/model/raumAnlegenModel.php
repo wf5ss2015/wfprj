@@ -27,38 +27,66 @@
 		
 		public static function getLaborart(){
 			$database = DatabaseFactory::getFactory()->getConnection();
-			$sql = '';
+			$sql = 'Select lArt_ID, lArt_bezeichnung from Laborart';
 			$query = $database->prepare($sql);
 			$query->execute();
 			return $query->fetchAll();
 		}
 		
-		public static function bibliothekAnlegen (){
+		public static function getBuchkategorie(){
 			$database = DatabaseFactory::getFactory()->getConnection();
-			$sql = '';
+			$sql = 'Select buchKat_bezeichnung from Buchkategorie';
 			$query = $database->prepare($sql);
 			$query->execute();
+			return $query->fetchAll();
 		}
 		
-		public static function bueroAnlegen (){
+		public static function bibliothekAnlegen ($bezeichnung, $gebäude_char){
 			$database = DatabaseFactory::getFactory()->getConnection();
-			$sql = '';
-			$query = $database->prepare($sql);
-			$query->execute();
+			$insert_sql1 = "INSERT INTO raum (raum_bezeichnung, geb_bezeichnung) 
+							VALUES ('$bezeichnung', '$gebäude_char')";
+			$insert_sql2 = "INSERT INTO bibliothek (raum_bezeichnung) 
+							VALUES ('$bezeichnung')";
+			$query1 = $database->prepare($insert_sql1);
+			$query2 = $database->prepare($insert_sql2);
+			$query1->execute();
+			$query2->execute();
 		}
 		
-		public static function laborAnlegen (){
+		public static function bueroAnlegen ($bezeichnung, $gebäude_char){
 			$database = DatabaseFactory::getFactory()->getConnection();
-			$sql = '';
-			$query = $database->prepare($sql);
-			$query->execute();
+			$insert_sql1 = "INSERT INTO raum(raum_bezeichnung, geb_bezeichnung)
+							VALUES ('$bezeichnung', '$gebäude_char')";
+			$insert_sql2 = "INSERT INTO buero (raum_bezeichnung)
+							VALUES ('$bezeichnung')";
+			$query1 = $database->prepare($insert_sql1);
+			$query2 = $database->prepare($insert_sql2);
+			$query1->execute();
+			$query2->execute();
 		}
 		
-		public static function vorlesungsraumAnlegen (){
+		public static function laborAnlegen ($bezeichnung, $gebäude_char){
 			$database = DatabaseFactory::getFactory()->getConnection();
-			$sql = '';
-			$query = $database->prepare($sql);
-			$query->execute();
+			$insert_sql1 = "INSERT INTO raum(raum_bezeichnung, geb_bezeichnung) 
+							VALUES ('$bezeichnung', '$gebäude_char')";
+			$insert_sql2 = "INSERT INTO laborraum(raum_bezeichnung, lArt_ID) 
+							VALUES ('$bezeichnung', '$laborart_ID')";
+			$query1 = $database->prepare($insert_sql1);
+			$query2 = $database->prepare($insert_sql2);
+			$query1->execute();
+			$query2->execute();
+		}
+		
+		public static function vorlesungsraumAnlegen ($bezeichnung, $gebäude_char){
+			$database = DatabaseFactory::getFactory()->getConnection();
+			$insert_sql1 = "INSERT INTO raum (raum_bezeichnung, geb_bezeichnung) 
+							VALUES ('$bezeichnung', '$gebäude_char')";
+			$insert_sql2 = "INSERT INTO vorlesungsraum (raum_bezeichnung) 
+							VALUES ('$bezeichnung')";
+			$query1 = $database->prepare($insert_sql1);
+			$query2 = $database->prepare($insert_sql2);
+			$query1->execute();
+			$query2->execute();
 		}
 	}
 ?>

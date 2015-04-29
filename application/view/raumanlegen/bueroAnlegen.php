@@ -16,24 +16,12 @@
         <h1>B&uuml;ro anlegen</h1>
     </header>
 	<!-- bueroAnlegen.php wird ausgeführt nach der Bestätigung -->
-    <form action="bueroAnlegen.php" method="post"/>
+    <form action="index.php?url=raumAnlegen/setStammdaten" method="post"/>
 		<div>
-			<p>
-				<!-- Bezeichnung im Textfeld eingeben. -->
-				Bezeichnung <input class="tf" type = "text" name = "bezeichnung" /><br>
-			</p>
-			<!-- Alle Gebäude werden in einer Liste zur Auswahl angezeigt. Mit Bezeichnung und Anschrift. -->
-			<p> Geb&auml;ude 
-				<select name="gebäude">
-				  <?php
-					while($query = fetch()){
-						echo "<option>"; echo $row['geb_bezeichnung']; echo " , "; 
-						echo $row['straßenname']; echo " , "; 
-						echo $row['hausnummer']; echo "</option>";
-					}
-				  ?>
-				</select>
-			</p>
+			<!-- included das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
+			<?php
+				include 'raumStammdaten.php';
+			?>
 		</div>
 		<p>
 			<?php

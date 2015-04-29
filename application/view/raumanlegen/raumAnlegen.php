@@ -8,11 +8,11 @@
 -->
 <html>
 <head>
-    <title>Raum anlegen</title>   
+    <title>Kategorie auswählen</title>   
 </head>
 <body> 
     <header>
-        <h1>Raum anlegen</h1>
+        <h1>Raumkategorie auswählen</h1>
     </header>
     <form action="index.php?url=raumAnlegen/raumSelected" method="post"/>
     <div>

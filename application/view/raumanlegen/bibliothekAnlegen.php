@@ -17,38 +17,29 @@
         <h1>Bibliothek anlegen</h1>
     </header>
 	<!-- bibliothekAnlegen.php wird ausgeführt nach der Bestätigung -->
-    <form action="bibliothekAnlegen.php" method="post"/>
+    <form action="index.php?url=raumAnlegen/setStammdaten" method="post"/>
 		<div>
-			<!-- Bezeichnung im Textfeld eingeben. -->
-			Bezeichnung <input class="tf" type = "text" name = "bezeichnung" /><br>
-			<!-- Alle Gebäude werden in einer Liste zur Auswahl angezeigt. Mit Bezeichnung und Anschrift. -->
-			<p> Geb&auml;ude 
-				<select name="gebäude">
-				  <?php
-					$sql = 'Select g.geb_bezeichnung, a.straßenname, a.hausnummer from gebaeude g join adresse a on g.geb_bezeichnung = a.geb_bezeichnung';
-					$result = mysqli_query($con, $sql);
-					while($row = mysqli_fetch_array($result)){
-						echo "<option>"; echo $row['geb_bezeichnung']; echo " , "; 
-						echo $row['straßenname']; echo " , "; 
-						echo $row['hausnummer']; echo "</option>";
-					}
-				  ?>
-				</select>
-			</p>
+			<!-- included das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
+			<?php
+				include 'raumStammdaten.php';
+			?>
 			<!-- 
 				dynamisch aus Tabelle Buchkategorie abfragen welche Kategorien es gibt
 				um per Checkbox anzugeben welche Kategorien in der Bibliothek verfügbar sind.	
 			-->
-			<p>
+			<p>	Folgende Buchkategorien liegen in der Bibliothek vor: <br>
 				<?php
-					$sql = 'Select buchKat_bezeichnung from Buchkategorie';
-					$result = mysqli_query($con, $sql);
-					while($row = mysqli_fetch_array($result)){
-						echo $row['buchKat_bezeichnung']; 
-						$BKAT_bez = $row['buchKat_bezeichnung']; 
-						echo '<input type="checkbox" name="$BKAT_bez" value="1"><br>';
+					if ($this->buchKat_list){
+						echo "<p>";
+						foreach($this->buchKat_list as $key => $value){
+							echo htmlentities($value->buchKat_bezeichnung); 
+							echo '<input type="checkbox" name="" value="1"><br>'; 
+						}
+						echo "</p>";
+					} else{
+							echo "Es ist ein Fehler aufgetretten.";
 					}
-				?>
+				?>	
 			</p>
 		</div>
 		<p>

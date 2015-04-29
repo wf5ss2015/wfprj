@@ -15,25 +15,12 @@
         <h1>Vorlesungsraum anlegen</h1>
     </header>
 	<!-- vorlesungsraumAnlegen.php wird ausgeführt nach der Bestätigung -->
-    <form action="vorlesungsraumAnlegen.php" method="post"/>
+    <form action="index.php?url=raumAnlegen/setStammdaten" method="post"/>
 		<div>
-			Bezeichnung <input class="tf" type = "text" name = "bezeichnung" /><br>
-			<!-- Alle Gebäude werden in einer Liste zur Auswahl angezeigt. Mit Bezeichnung und Anschrift. -->
-			<p> Geb&auml;ude 
-				<select name="gebäude">
-				  <?php
-					if ($this->geblist){
-						foreach($this->geblist as $key => $value){
-							echo "<option>"; echo htmlentities($value->geb_bezeichnung); echo " , "; 
-							echo htmlentities($value->straßenname); echo " , "; 
-							echo htmlentities($value->hausnummer); echo "</option>";
-						}
-					} else{
-						echo "Es ist ein Fehler aufgetretten.";
-					}
-				  ?>
-				</select>
-			</p>
+			<!-- included das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
+			<?php
+				include 'raumStammdaten.php';
+			?>
 			<!--
 				dynamisch aus Tabelle Ausstattung. Die im Raum vorhandene Ausstattung kann in Checkboxen und 
 				Textfeldern für die Anzahl angegeben.
