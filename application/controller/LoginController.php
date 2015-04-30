@@ -3,20 +3,20 @@
  Sprint: 2
  @author: Kilian Kraus
  Datum: 20.04.2015
- Zeitaufwand (in Stunden): 5.0
+ Zeitaufwand (in Stunden): 1.0
+ User Story Nr.: 270
  User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
  Task: loginController anpassen
  ===============================================*/
-/**
-* SPRINT 01
-*
-* @author: Kilian Kraus
-* @Matrikel:
-* Datum: 08.04.2015
-*
-* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
-* Zeit: 1
-*/
+ /*===============================================
+ Sprint: 1
+ @author: Kilian Kraus
+ Datum: 08.04.2015
+ Zeitaufwand (in Stunden): 1.0
+ User Story Nr.: 140
+ User Story: Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können.
+ Task: xxx
+ ===============================================*/
 
 
 /**
@@ -59,13 +59,17 @@ class LoginController extends Controller
  ===============================================*/		
         // falls Login fehlgeschlagen, dann wird nochmal der login aufgerufen.
         if ($login_successful==1) {
-			if(Session::get('user_role')=="employee"){
+			if(Session::get('user_role')==3){
+			Session::add('response_positive', 'Erfolgreich eingeloggt');
 			Redirect::to('login/helloEmployee');
-			}elseif (Session::get('user_role')=="student"){
+			}elseif (Session::get('user_role')==1){
+			Session::add('response_positive', 'Erfolgreich eingeloggt');
 			Redirect::to('login/helloStudent');
-			}elseif (Session::get('user_role')=="docent"){
+			}elseif (Session::get('user_role')==2){
+			Session::add('response_positive', 'Erfolgreich eingeloggt');
 			Redirect::to('login/helloDocent');
-			}elseif (Session::get('user_role')=="tutor"){
+			}elseif (Session::get('user_role')==4){
+			Session::add('response_positive', 'Erfolgreich eingeloggt');
 			Redirect::to('login/helloTutor');
  /*===============================================
  Ende Sprint: 2

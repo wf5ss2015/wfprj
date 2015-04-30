@@ -7,16 +7,15 @@
  User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
  Task: zusätzlich zu PDO verbindung noch MySQLi hinzufügen 
  ===============================================*/
-/**
-* SPRINT 01
-*
-* @author: Kilian Kraus
-* @Matrikel:
-* Datum: 08.04.2015
-*
-* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
-* Zeit: 0.5
-*/
+ /*===============================================
+ Sprint: 1
+ @author: Kilian Kraus
+ Datum: 08.04.2015
+ Zeitaufwand (in Stunden): 0.5
+ User Story Nr.: 140
+ User Story: Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können.
+ Task: xxx
+ ===============================================*/
 
 /**
  * @author Kilian Kraus
@@ -35,7 +34,7 @@ class UserModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-       $sql = "SELECT user_name, user_email, user_password_hash, user_role               
+       $sql = "SELECT user_name, passwortHash, rolle_ID               
                  FROM user
                  WHERE (user_name = :user_name)   
                  LIMIT 1";

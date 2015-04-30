@@ -1,6 +1,17 @@
-<div class="container">
-    <h1>Page not found</h1>
-    <div class="box">
-        <p class="red-text">This page does not exist.</p>
+<?php
+/*===============================================
+ Sprint: 3
+ @author: Kilian Kraus
+ Datum: 25.04.2015
+ Zeitaufwand (in Stunden): 0.25
+ User Story Nr.: 
+ User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
+ Task: errorView erstellen 
+ ===============================================*/
+ ?>
+<div>
+    <h1>404 - Seite nicht gefunden</h1>
+    <div>
+        <p>Diese Seite existiert nicht.</p>
     </div>
 </div>

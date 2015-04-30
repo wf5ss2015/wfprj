@@ -16,16 +16,16 @@
  * Beschreibung: View um Teilnehmer einer Vorlesung anzuzeigen
  *
  */
-
+?>
 <div class="container">
 
         <div class="table-wrapper">
 		
-		// Schleife um die Einträge in der DB Tabelle auszulesen -->
+		<!-- Schleife um die Einträge in der DB Tabelle auszulesen -->
 		<?php $this->renderResponse(); ?>
             <div >
              
-			// Prüfen ob array leer -->
+			<!--Prüfen ob array leer -->
 			<?php if ($this->teilnehmer) { ?>
 			
 			<h2>Teilnehmerliste </h2>	
@@ -38,7 +38,7 @@
                 </thead>
                 <tbody>
 				
-					// Schleife um die Einträge in der DB Tabelle auszulesen -->
+					<!-- Schleife um die Einträge in der DB Tabelle auszulesen -->
                     <?php foreach($this->teilnehmer as $key => $value) { ?>
                         <tr>
 							<td><?= htmlentities($value->user_name);?></td>
@@ -49,7 +49,7 @@
                 </tbody>
             </table>
 			
-			// Ansonsten Fehlermeldung -->
+			<!-- Ansonsten Fehlermeldung -->
             <?php }else { ?>
                 <div>Kkein array übergeben.</div>
             <?php } ?>				
@@ -57,10 +57,10 @@
         </div>
 
 </div>
-
+<!--
 /*
 * 		Diese Codezeile muss noch in den Standardheader eingefügt werden um Link herzustellen 
 *		<li>
 *			<a href="index.php?url=Dozent/auswahlVorlesung">Teilnehmerliste</a>
 *       </li>
-*/
+*/-->
