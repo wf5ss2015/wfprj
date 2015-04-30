@@ -8,7 +8,7 @@
 	- Sprint: 				3
 */
 
-
+-- alle Tabellen auf dem aktuellsten Stand:
 
 -- -----------------------------------------------------
 -- Table `Rolle`
