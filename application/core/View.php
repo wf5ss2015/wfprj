@@ -1,32 +1,22 @@
 <?php
 /*===============================================
- Sprint: 3
- @author: Kilian Kraus
- Datum: 25.04.2015
- Zeitaufwand (in Stunden): 0.5
- User Story Nr.: 
- User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
- Task: response in core/view.php integrieren 
- ===============================================*/
-/*===============================================
  Sprint: 2
  @author: Kilian Kraus
  Datum: 20.04.2015
- Zeitaufwand (in Stunden): 1.5
- User Story Nr.: 270
+ Zeitaufwand (in Stunden): 5.0
  User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
  Task: core/view.php anpassen
  ===============================================*/
- /*===============================================
- Sprint: 1
- @author: Kilian Kraus
- Datum: 08.04.2015
- Zeitaufwand (in Stunden): 0.1
- User Story Nr.: 140
- User Story: Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können.
- Task: xxx
- ===============================================*/
-
+/**
+* SPRINT 01
+*
+* @author: Kilian Kraus
+* @Matrikel:
+* Datum: 08.04.2015
+*
+* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
+* Zeit: 0.1
+*/
 
 
 /**
@@ -50,7 +40,7 @@ class View
  User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
  ===============================================*/		
 		//falls student
-		if(Session::userIsLoggedIn()&&Session::get('user_role')==1){
+		if(Session::userIsLoggedIn()&&Session::get('user_role')=="student"){
 			// lädt den header
 			require Config::get('PATH_VIEW') . '_templates/headerStudent.php';
 			// lädt den content
@@ -60,7 +50,7 @@ class View
 			
 		}
 		//falls mitarbeiter
-		elseif(Session::userIsLoggedIn()&&Session::get('user_role')==3){
+		elseif(Session::userIsLoggedIn()&&Session::get('user_role')=="employee"){
 			// lädt den header
 			require Config::get('PATH_VIEW') . '_templates/headerEmployee.php';
 			// lädt den content
@@ -70,7 +60,7 @@ class View
 			
 		}
 		//falls dozent
-		elseif(Session::userIsLoggedIn()&&Session::get('user_role')==2){
+		elseif(Session::userIsLoggedIn()&&Session::get('user_role')=="docent"){
 			// lädt den header
 			require Config::get('PATH_VIEW') . '_templates/headerDocent.php';
 			// lädt den content
@@ -80,7 +70,7 @@ class View
 			
 		}
 		//falls tutor
-		elseif(Session::userIsLoggedIn()&&Session::get('user_role')==4){
+		elseif(Session::userIsLoggedIn()&&Session::get('user_role')=="tutor"){
 			// lädt den header
 			require Config::get('PATH_VIEW') . '_templates/headerTutor.php';
 			// lädt den content
@@ -102,29 +92,21 @@ class View
 		}
     }
 	
-/*===============================================
- Start Sprint: 3
- @author: Kilian Kraus
- User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
- ===============================================*/	
- 
 	/**
-	* @author Kilian Kraus
-	* rendert eine Response Message
-	*/
+     * SPRINT3
+     */
     public function renderResponse()
     {
+        // echo out the feedback messages (errors and success messages etc.),
+        // they are in $_SESSION["feedback_positive"] and $_SESSION["feedback_negative"]
         require Config::get('PATH_VIEW') . '_templates/response.php';
-        // setzt die Response auf Null, damit sie nicht zweimal angezeigt wird.
+
+        // delete these messages (as they are not needed anymore and we want to avoid to show them twice
         Session::set('response_positive', null);
         Session::set('response_negative', null);
 		Session::set('response_warning', null);
     }
-/*===============================================
- Ende Sprint: 3
- @author: Kilian Kraus
- User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
- ===============================================*/	
+	
 
 	
 	

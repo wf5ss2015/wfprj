@@ -1,23 +1,14 @@
 <?php
-/*===============================================
- Sprint: 3
- @author: Kilian Kraus
- Datum: 25.04.2015
- Zeitaufwand (in Stunden): 0.25
- User Story Nr.: 
- User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
- Task: Application.php anpassen, damit errorController geladen wird. 
- ===============================================*/
- /*===============================================
- Sprint: 1
- @author: Kilian Kraus
- Datum: 08.04.2015
- Zeitaufwand (in Stunden): 1.0
- User Story Nr.: 140
- User Story: Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können.
- Task: xxx
- ===============================================*/
-
+/**
+* SPRINT 01
+*
+* @author: Kilian Kraus
+* @Matrikel:
+* Datum: 08.04.2015
+*
+* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
+* Zeit: 1
+*/
 
 /**
  * @author Kilian Kraus
@@ -78,21 +69,12 @@ class Application
             if (method_exists($this->controller, $this->action_name)) {
 				$this->controller->{$this->action_name}();  
             } else {    
-/*===============================================
- Start Sprint: 3
- @author: Kilian Kraus
- User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
- ===============================================*/		
-				header('location:index.php?url=error');
+				header('location:index.php?url=error'); // SPRINT3
             }
         } else {
-			header('location:index.php?url=error');
+			header('location:index.php?url=error');// SPRINT3
 		}
-/*===============================================
- Ende Sprint: 3
- @author: Kilian Kraus
- User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
- ===============================================*/		      
+        
     }
 
     /**

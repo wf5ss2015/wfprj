@@ -1,13 +1,14 @@
 <?php
- /*===============================================
- Sprint: 1
- @author: Kilian Kraus
- Datum: 08.04.2015
- Zeitaufwand (in Stunden): 1.5
- User Story Nr.: 140
- User Story: Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können.
- Task: xxx
- ===============================================*/
+/**
+* SPRINT 01
+*
+* @author: Kilian Kraus
+* @Matrikel:
+* Datum: 08.04.2015
+*
+* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
+* Zeit: 1.5
+*/
 
 /**
  * @author Kilian Kraus
@@ -45,7 +46,7 @@ class LoginModel
         // falls Nutzer erfolgreich eingeloggt ist, dann werden notwendige Parameter in die Session Variablen geschrieben
 		// Loggt Nutzer final ein
         self::doLogin(
-             $result->user_name, $result->rolle_ID
+             $result->user_name, $result->user_role
         );
 		// gibt letztendlich true zurück für erfolgreichen login
         return true;
@@ -71,7 +72,7 @@ class LoginModel
 		}
 		
 		// überprüft ob passwort mit hash übereinstimmt.
-		$match = password_verify($user_password, $result->passwortHash);
+		$match = password_verify($user_password, $result->user_password_hash);
 		// falls der in der Datenbank gespeicherte Hash nicht mit dem Hash des Passworts übereinstimmt.
 		if ($match==null) { 
 			return false;
@@ -117,7 +118,7 @@ class LoginModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE user SET lastLogin = :user_last_login_timestamp
+        $sql = "UPDATE user SET user_last_login_timestamp = :user_last_login_timestamp
                 WHERE user_name = :user_name LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':user_name' => $user_name, ':user_last_login_timestamp' => time()));

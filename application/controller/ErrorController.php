@@ -1,27 +1,21 @@
 <?php
-/*===============================================
- Sprint: 3
- @author: Kilian Kraus
- Datum: 25.04.2015
- Zeitaufwand (in Stunden): 0.25
- User Story Nr.: 
- User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
- Task: errorController erstellen.  
- ===============================================*/
- 
+// SPRINT3
 /**
- * @author Kilian Kraus
- * Dieses Controller startet eine Simple fehlerseite.
+ * Class Error
+ * This controller simply shows a page that will be displayed when a controller/method is not found. Simple 404.
  */
 class ErrorController extends Controller
 {
+    /**
+     * Construct this object by extending the basic Controller class
+     */
     public function __construct()
     {
         parent::__construct();
     }
 
     /**
-     * 404
+     * This method controls what happens / what the user sees when a page does not exist (404)
      */
     public function index()
     {
@@ -29,9 +23,8 @@ class ErrorController extends Controller
         $this->View->render('error/index');
     }
 	
-	//TODO
 	 /**
-     * 404
+     * This method controls what happens / what the user sees when a page does not exist (404)
      */
     public function error()
     {

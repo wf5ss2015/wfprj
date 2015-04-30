@@ -1,14 +1,14 @@
 <?php
- /*===============================================
- Sprint: 1
- @author: Kilian Kraus
- Datum: 08.04.2015
- Zeitaufwand (in Stunden): 1.0
- User Story Nr.: 140
- User Story: Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können.
- Task: xxx
- ===============================================*/
- 
+/**
+* SPRINT 01
+*
+* @author: Kilian Kraus
+* @Matrikel:
+* Datum: 08.04.2015
+*
+* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
+* Zeit: 1
+*/
 
 /**
  * @author Kilian Kraus

@@ -3,8 +3,7 @@
  Sprint: 2
  @author: Kilian Kraus
  Datum: 20.04.2015
- Zeitaufwand (in Stunden): 0.5
- User Story Nr.: 270
+ Zeitaufwand (in Stunden): 5.0
  User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
  Task: header erstellen
  ===============================================*/
