@@ -29,4 +29,7 @@
 			<li>
                 <a href="index.php?url=login/index">Einloggen</a>
 			</li>  
+				    <li  >
+                <a href="index.php?url=veranstaltung/index">Veranstaltungen verwalten</a>
+            </li>
         </ul>

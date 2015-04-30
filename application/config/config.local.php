@@ -61,7 +61,7 @@ return array(
 	 */
 	'DB_TYPE' => 'mysql',
 	'DB_HOST' => 'localhost',
-	'DB_NAME' => 'projekt',
+	'DB_NAME' => 'lehrveranstaltung',
 	'DB_USER' => 'root',
 	'DB_PASS' => '',
 	'DB_PORT' => '3306',

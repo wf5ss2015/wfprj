@@ -30,8 +30,8 @@
  require '../application/lib/phppasswordlib/passwordLib.php';
  require '../application/core/DatabaseFactoryMysql.php';
 
-
-
+//Roland Schmid
+require '../application/model/VeranstaltungModel.php';
 
  
 class Application
