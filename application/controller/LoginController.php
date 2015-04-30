@@ -60,12 +60,16 @@ class LoginController extends Controller
         // falls Login fehlgeschlagen, dann wird nochmal der login aufgerufen.
         if ($login_successful==1) {
 			if(Session::get('user_role')==3){
+			Session::add('response_positive', 'Erfolgreich eingeloggt');
 			Redirect::to('login/helloEmployee');
 			}elseif (Session::get('user_role')==1){
+			Session::add('response_positive', 'Erfolgreich eingeloggt');
 			Redirect::to('login/helloStudent');
 			}elseif (Session::get('user_role')==2){
+			Session::add('response_positive', 'Erfolgreich eingeloggt');
 			Redirect::to('login/helloDocent');
 			}elseif (Session::get('user_role')==4){
+			Session::add('response_positive', 'Erfolgreich eingeloggt');
 			Redirect::to('login/helloTutor');
  /*===============================================
  Ende Sprint: 2
