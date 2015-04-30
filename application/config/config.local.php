@@ -60,7 +60,11 @@ return array(
 	 */
 	'DB_TYPE' => 'mysql',
 	'DB_HOST' => 'localhost',
+<<<<<<< HEAD
+	'DB_NAME' => 'lehrveranstaltung',
+=======
 	'DB_NAME' => 'wfprj_wf5_09',
+>>>>>>> c64b070f1a046410f9deb16c0f7f25c4a11a663c
 	'DB_USER' => 'root',
 	'DB_PASS' => '',
 	'DB_PORT' => '3306',
