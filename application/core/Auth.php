@@ -3,21 +3,20 @@
  Sprint: 2
  @author: Kilian Kraus
  Datum: 20.04.2015
- Zeitaufwand (in Stunden): 5.0
+ Zeitaufwand (in Stunden): 1.5
+ User Story Nr.: 270
  User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
  Task: core/auth.php anpassen
  ===============================================*/
-/**
-* SPRINT 01
-*
-* @author: Kilian Kraus
-* @Matrikel:
-* Datum: 08.04.2015
-*
-* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
-* Zeit: 0.5
-*/
-
+ /*===============================================
+ Sprint: 1
+ @author: Kilian Kraus
+ Datum: 08.04.2015
+ Zeitaufwand (in Stunden): 0.5
+ User Story Nr.: 140
+ User Story: Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können.
+ Task: xxx
+ ===============================================*/
 
 /**
  * @author Kilian Kraus
@@ -42,7 +41,7 @@ class Auth
         Session::init();
 
         // Falls Nutzer nicht eingeloggt ist.
-        if (Session::userIsLoggedIn()&&Session::get('user_role')=="student") {
+        if (Session::userIsLoggedIn()&&Session::get('user_role')==1) {
 			return true;
         }
 		else{
@@ -62,7 +61,7 @@ class Auth
         Session::init();
 
         // Falls Nutzer nicht eingeloggt ist.
-        if (Session::userIsLoggedIn()&&Session::get('user_role')=="docent") {
+        if (Session::userIsLoggedIn()&&Session::get('user_role')==2) {
 		return true;
         }
 		else{
@@ -82,7 +81,7 @@ class Auth
         Session::init();
 
         // Falls Nutzer nicht eingeloggt ist.
-        if (Session::userIsLoggedIn()&&Session::get('user_role')=="tutor") {
+        if (Session::userIsLoggedIn()&&Session::get('user_role')==4) {
 		return true;
         }
 		else{
@@ -103,7 +102,7 @@ class Auth
         Session::init();
 
         // Falls Nutzer nicht eingeloggt ist.
-        if (Session::userIsLoggedIn()&&Session::get('user_role')=="employee") {
+        if (Session::userIsLoggedIn()&&Session::get('user_role')==3) {
 		return true;
         }
 		else{

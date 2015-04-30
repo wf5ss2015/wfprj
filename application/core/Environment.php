@@ -3,20 +3,20 @@
  Sprint: 2
  @author: Kilian Kraus
  Datum: 20.04.2015
- Zeitaufwand (in Stunden): 4.5
+ Zeitaufwand (in Stunden): 2.30
+ User Story Nr.: 170
  User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
  Task: Config file automatisch Auswählen, jenachdem aus welcher Umgebung die Application gestartet wird. 
  ===============================================*/
-/**
-* SPRINT 01
-*
-* @author: Kilian Kraus
-* @Matrikel:
-* Datum: 08.04.2015
-*
-* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
-* Zeit: 0.1
-*/
+ /*===============================================
+ Sprint: 1
+ @author: Kilian Kraus
+ Datum: 08.04.2015
+ Zeitaufwand (in Stunden): 1.0
+ User Story Nr.: 140
+ User Story: Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können.
+ Task: xxx
+ ===============================================*/
 
 
 /**
