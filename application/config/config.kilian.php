@@ -1,13 +1,14 @@
 <?php
- /*===============================================
- Sprint: 1
- @author: Kilian Kraus
- Datum: 08.04.2015
- Zeitaufwand (in Stunden): 0.5
- User Story Nr.: 140
- User Story: Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können.
- Task: xxx
- ===============================================*/
+/**
+* SPRINT 01
+*
+* @author: Kilian Kraus
+* @Matrikel:
+* Datum: 08.04.2015
+*
+* User­Story (Nr. 20 ): Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können. (42 Points)
+* Zeit: 0.5
+*/
 
 /**
  * Gibt die Konfiguration zurück.
@@ -59,10 +60,10 @@ return array(
 	 * @see http://www.w3schools.com/charsets/ref_html_utf8.asp
 	 */
 	'DB_TYPE' => 'mysql',
-	'DB_HOST' => '',
-	'DB_NAME' => '',
-	'DB_USER' => '',
-	'DB_PASS' => '',
+	'DB_HOST' => 'dd16418.kasserver.com',
+	'DB_NAME' => 'd01de4ff',
+	'DB_USER' => 'd01de4ff',
+	'DB_PASS' => 'fRT7yaRDTpHyPfPz',
 	'DB_PORT' => '3306',
 	'DB_CHARSET' => 'utf8',
 );

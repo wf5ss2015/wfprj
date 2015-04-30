@@ -1,9 +1,19 @@
 <?php
 /*===============================================
+ Sprint: 3
+ @author: Kilian Kraus
+ Datum: 25.04.2015
+ Zeitaufwand (in Stunden): 0.5
+ User Story Nr.: 
+ User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
+ Task: 
+ ===============================================*/
+/*===============================================
  Sprint: 2
  @author: Kilian Kraus
  Datum: 20.04.2015
- Zeitaufwand (in Stunden): 4.5
+ Zeitaufwand (in Stunden): 2.0
+ User Story Nr.: 170
  User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
  Task: zusätzlich zu PDO verbindung noch MySQLi hinzufügen 
  ===============================================*/
@@ -13,7 +23,6 @@
  * Diese Klasse erstellt eine Datenbankverbindung mit Mysqli
  * 
  */
-
 class DatabaseFactoryMysql extends MySQLi
 {
 	public function __construct() {
@@ -26,10 +35,20 @@ class DatabaseFactoryMysql extends MySQLi
     );
  
     if (mysqli_connect_error()) {
-	Redirect::to('error/error');//sprint3
+/*===============================================
+ Start Sprint: 3
+ @author: Kilian Kraus
+ User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
+ ===============================================*/		
+	Redirect::to('error/error');
 	Session::add('response_negative', 'Error: '. mysqli_connect_error());
 	Session::add('response_negative', 'Errno: '. mysqli_connect_errno());
     }
+/*===============================================
+ Ende Sprint: 3
+ @author: Kilian Kraus
+ User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
+ ===============================================*/		
   }
  
 	/**
@@ -42,9 +61,19 @@ class DatabaseFactoryMysql extends MySQLi
     $result = parent::query($query);
  
     if ($this->error) {
-		Redirect::to('error/error');//sprint3
+/*===============================================
+ Start Sprint: 3
+ @author: Kilian Kraus
+ User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
+ ===============================================*/		
+		Redirect::to('error/error');
 		Session::add('response_negative', 'Error: '. mysqli_connect_error());
 		Session::add('response_negative', 'Errno: '. mysqli_connect_errno());
+/*===============================================
+ Ende Sprint: 3
+ @author: Kilian Kraus
+ User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
+ ===============================================*/		
     }
 	
 	// baut einen array mit objekten. genau so wie in PDO, nur hab ich dazu keine methode in mysqli gefunden bisher
