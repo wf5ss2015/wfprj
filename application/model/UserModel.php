@@ -72,7 +72,28 @@ class UserModel
 		$sql = "SELECT * FROM user";
 		
 		$result = $database->query($sql);
+		return $result;
 		
+    }
+	
+		public static function getUserDataAll2()
+    {
+        $database = new DatabaseFactoryMysql();
+		
+		$sql = "SELECT user_name  FROM user";
+		
+		$result = $database->query($sql);
+		return $result;
+		
+    }
+	
+			public static function getUserDataAll3()
+    {
+        $database = new DatabaseFactoryMysql();
+		
+		$sql = "SELECT user_name, passwortHash  FROM user";
+		
+		$result = $database->query($sql);
 		return $result;
 		
     }
