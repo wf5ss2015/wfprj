@@ -26,6 +26,9 @@
                 <a href="index.php?url=index/index">Start</a>
             </li>
 			<li>
+				<a href="index.php?url=veranstaltungerweitern/veranstaltungErweitern">Start</a>
+			</li>
+			<li>
                 <a href="index.php?url=login/logout">AusloggenMitarbeiter</a>
 			</li>
         </ul>

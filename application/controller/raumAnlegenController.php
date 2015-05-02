@@ -14,19 +14,17 @@
 			parent::__construct();
 		}
 
-
 		public function raumAnlegen(){
 			$this->View->render('raumanlegen/raumAnlegen');
 		}
 		
 		public function raumSelected(){
-			global $raumtyp;
 			$raumtyp = $_POST['typ'];
 			if(isset($_POST)){
 				switch ($raumtyp) {
 					case "vorlesungsraum":
 						$this->View->render('raumanlegen/vorlesungsraumAnlegen', 
-							array('geb_list' => raumAnlegenModel::getGebäude(), 'ausstattung_list' => raumAnlegenModel::getAusstattung()));
+							array('geb_list' => raumAnlegenModel::getGebäude(), 'ausstattung_list' => raumAnlegenModel::getAusstattung()), array('raumtyp' => $raumtyp));
 						break;
 					case "buero":
 						$this->View->render('raumanlegen/bueroAnlegen', 
@@ -49,69 +47,41 @@
 			} 
 		}
 		
-		public function setVorlesungsraum(){
+		public function saveRaum(){
 			if(isset($_POST['bezeichnung']) and isset($_POST['gebäude'])){
 				$bezeichnung = $_POST['bezeichnung'];
 				$gebäude_string = $_POST['gebäude'];
 				$gebäude_array = explode(",", $gebäude_string);
 				$gebäude_char = $gebäude_array[0];
-				raumAnlegenModel::vorlesungsraumAnlegen($bezeichnung, $gebäude_char);
+				$raumtyp = $_POST['raumtyp'];
+				switch ($raumtyp) {
+					case "vorlesungsraum":
+						raumAnlegenModel::raumStammdaten($bezeichnung, $gebäude_char);
+						raumAnlegenModel::vorlesungsraumAnlegen($bezeichnung);
+						break;
+					case "buero":
+						raumAnlegenModel::raumStammdaten($bezeichnung, $gebäude_char);	
+						raumAnlegenModel::bueroAnlegen($bezeichnung);
+						break;
+					case "labor":
+						raumAnlegenModel::raumStammdaten($bezeichnung, $gebäude_char);
+						raumAnlegenModel::laborAnlegen($bezeichnung, $laborart_ID);
+						break;
+					case "bibliothek":
+						raumAnlegenModel::raumStammdaten($bezeichnung, $gebäude_char);
+						raumAnlegenModel::bibliothekAnlegen($bezeichnung);
+						break;
+					default:
+						echo "Fehler beim Raumtyp eintragen!";
+						exit;
+				}
 				echo "Raum erfolgreich angelegt.";
 				echo '<input type="button" value="Zurück" onClick="history.back();">';
-			} else{
+			} else {
 				//Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man dies gemeldet.
 				echo "Ein Fehler ist aufgetretten!<br><br>";
 				echo '<input type="button" value="Zurück" onClick="history.back();">';
 			}
 		}
-		public function setLabor(){
-			if(isset($_POST['bezeichnung']) and isset($_POST['gebäude'])){
-				$bezeichnung = $_POST['bezeichnung'];
-				$gebäude_string = $_POST['gebäude'];
-				$gebäude_array = explode(",", $gebäude_string);
-				$gebäude_char = $gebäude_array[0];
-				//Laborart Info muss aufgespalten werden, weil nur lArt_ID eingetragen werden muss
-				$labor_string = $_POST['laborart'];
-				$labor_array = explode(",", $labor_string);
-				$laborart_ID = $labor_array[0];
-				raumAnlegenModel::laborAnlegen($bezeichnung, $gebäude_char, $laborart_ID);
-				echo "Raum erfolgreich angelegt.";
-				echo '<input type="button" value="Zurück" onClick="history.back();">';
-			} else{
-				//Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man dies gemeldet.
-				echo "Ein Fehler ist aufgetretten!<br><br>";
-				echo '<input type="button" value="Zurück" onClick="history.back();">';
-			}
-		}
-		public function setBibliothek(){
-			if(isset($_POST['bezeichnung']) and isset($_POST['gebäude'])){
-				$bezeichnung = $_POST['bezeichnung'];
-				$gebäude_string = $_POST['gebäude'];
-				$gebäude_array = explode(",", $gebäude_string);
-				$gebäude_char = $gebäude_array[0];
-				raumAnlegenModel::bibliothekAnlegen($bezeichnung, $gebäude_char);
-				echo "Raum erfolgreich angelegt.";
-				echo '<input type="button" value="Zurück" onClick="history.back();">';
-			} else{
-				//Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man dies gemeldet.
-				echo "Ein Fehler ist aufgetretten!<br><br>";
-				echo '<input type="button" value="Zurück" onClick="history.back();">';
-			}
-		}
-		public function setBuero(){
-			if(isset($_POST['bezeichnung']) and isset($_POST['gebäude'])){
-				$bezeichnung = $_POST['bezeichnung'];
-				$gebäude_string = $_POST['gebäude'];
-				$gebäude_array = explode(",", $gebäude_string);
-				$gebäude_char = $gebäude_array[0];
-				raumAnlegenModel::bueroAnlegen($bezeichnung, $gebäude_char);
-				echo "Raum erfolgreich angelegt.";
-				echo '<input type="button" value="Zurück" onClick="history.back();">';
-			} else{
-				//Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man dies gemeldet.
-				echo "Ein Fehler ist aufgetretten!<br><br>";
-				echo '<input type="button" value="Zurück" onClick="history.back();">';
-			}
-		}	
 	}
 ?>
