@@ -33,11 +33,11 @@
                 <tbody>
                     <?php foreach($this->userlist as $key => $value) { ?>
                         <tr>
-							<td><?= htmlentities($value->user_name);?></td>
-							<td><?= htmlentities($value->user_password_hash);?></td>
-                            <td><?= htmlentities($value->user_email); ?></td>
-							<td><?= htmlentities($value->user_role); ?></td>
-							<td><?= htmlentities($value->user_last_login_timestamp); ?></td>
+							<td></td>
+							<td></td>
+                            <td></td>
+							<td></td>
+							<td>?></td>
 							<td>toter link "Ändern"</td>
 							<td>toter link2 "Löschen"</td>
 						</tr>
