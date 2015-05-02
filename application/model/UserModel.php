@@ -34,9 +34,9 @@ class UserModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-       $sql = "SELECT user_name, passwortHash, rolle_ID               
+       $sql = "SELECT nutzer_name, passwortHash, rolle_ID               
                  FROM user
-                 WHERE (user_name = :user_name)   
+                 WHERE (nutzer_name = :user_name)   
                  LIMIT 1";
         $query = $database->prepare($sql);
 
@@ -69,7 +69,7 @@ class UserModel
     {
         $database = new DatabaseFactoryMysql();
 		
-		$sql = "SELECT * FROM user";
+		$sql = "SELECT * FROM nutzer";
 		
 		$result = $database->query($sql);
 		return $result;
@@ -80,7 +80,7 @@ class UserModel
     {
         $database = new DatabaseFactoryMysql();
 		
-		$sql = "SELECT user_name  FROM user";
+		$sql = "SELECT user_name  FROM nutzer";
 		
 		$result = $database->query($sql);
 		return $result;
@@ -91,7 +91,7 @@ class UserModel
     {
         $database = new DatabaseFactoryMysql();
 		
-		$sql = "SELECT user_name, passwortHash  FROM user";
+		$sql = "SELECT nutzer_name, passwortHash  FROM nutzer";
 		
 		$result = $database->query($sql);
 		return $result;

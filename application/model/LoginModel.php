@@ -40,12 +40,12 @@ class LoginModel
 	    }
 
         // setzt Timestamp des letzten Login 
-        self::saveTimestamp($result->user_name);
+        self::saveTimestamp($result->nutzer_name);
 
         // falls Nutzer erfolgreich eingeloggt ist, dann werden notwendige Parameter in die Session Variablen geschrieben
 		// Loggt Nutzer final ein
         self::doLogin(
-             $result->user_name, $result->rolle_ID
+             $result->nutzer_name, $result->rolle_ID
         );
 		// gibt letztendlich true zurück für erfolgreichen login
         return true;
@@ -117,8 +117,8 @@ class LoginModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 
-        $sql = "UPDATE user SET lastLogin = :user_last_login_timestamp
-                WHERE user_name = :user_name LIMIT 1";
+        $sql = "UPDATE nutzer SET letzterLogin = :user_last_login_timestamp
+                WHERE nutzer_name = :user_name LIMIT 1";
         $query = $database->prepare($sql);
         $query->execute(array(':user_name' => $user_name, ':user_last_login_timestamp' => time()));
     }

@@ -25,7 +25,7 @@ INSERT INTO gebaeude VALUES
 -- Daten für Tabelle 'user'
 --
 
-INSERT INTO user VALUES
+INSERT INTO Nutzer VALUES
 ('dozent', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', '1430339080', 2),
 ('mitarbeiter', '$2y$10$PfLvMjTQ/6xNaodgDPcdP.edJJ17bK3vvexaF6sknagAvW.YBeu1.', NULL, 3),
 ('student', '$2y$10$8pEgYNZX7GW8FYfp8Mzbz.g./61axiS/wx2np.bWw92N361fBFNp6', '1430327378', 1),
