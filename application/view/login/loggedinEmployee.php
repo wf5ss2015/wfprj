@@ -14,35 +14,22 @@
         <div class="table-wrapper">
             <div >
                 <h2>Hallo "<?php echo Session::get('user_name')?>"</h2>	
-			<?php if ($this->userlist) { ?>
-            <table style="width: 100%" >
-                <thead>
-                <tr>
-					<td>Nutzername</td>
-                    <td>Passwort Hash</td>
-					<td>Email</td>
-                    <td>Rolle</td>
-					<td>Letzter Login (nicht konvertiert in Datum)</td>
-                    <td>Ändern</td>
-                    <td>Löschen</td>
-                </tr>
-                </thead>
-                <tbody>
-                    <?php foreach($this->userlist as $key => $value) { ?>
-                        <tr>
-							<td><?= htmlentities($value->user_name);?></td>
-							<td><?= htmlentities($value->user_password_hash);?></td>
-                            <td><?= htmlentities($value->user_email); ?></td>
-							<td><?= htmlentities($value->user_role); ?></td>
-							<td><?= htmlentities($value->user_last_login_timestamp); ?></td>
-							<td>toter link "Ändern"</td>
-							<td>toter link2 "Löschen"</td>
-						</tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-            <?php }else { ?>
-                <div>Keine Nutzer in DB - Sinnlos, da wenn Eingeloggt mindestens einer in DB ist.</div>
+			<?php if ($this->userlist) {
+				$table = new Table();
+				
+				// ohne alias
+				$table->table(array('table' =>$this->userlist));
+				echo "TEST";	
+				// mit alias
+				$alias = array(
+				"0" => "Nutzer",
+				"1" => "Passwort",
+				"2" => "Letzter Login",
+				"3" => "Rolle",);
+				$alias = (object) $alias;
+				$table->table(array('table' =>$this->userlist, 'alias' => array($alias)));
+            }else { ?>
+                <div>kein array übergeben</div>
             <?php } ?>				
             </div>
         </div>

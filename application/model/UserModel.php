@@ -64,7 +64,7 @@ class UserModel
     }
 	*/
 	
-	// Beispiel für Mysqli
+	// dummy
 	public static function getUserDataAll()
     {
         $database = new DatabaseFactoryMysql();
@@ -76,18 +76,20 @@ class UserModel
 		
     }
 	
-		public static function getUserDataAll2()
+	// dummy
+	public static function getUserDataAll2()
     {
         $database = new DatabaseFactoryMysql();
 		
-		$sql = "SELECT user_name  FROM nutzer";
+		$sql = "SELECT nutzer_name FROM nutzer";
 		
 		$result = $database->query($sql);
 		return $result;
 		
     }
 	
-			public static function getUserDataAll3()
+	// dummy
+	public static function getUserDataAll3()
     {
         $database = new DatabaseFactoryMysql();
 		

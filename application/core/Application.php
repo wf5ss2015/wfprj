@@ -31,6 +31,7 @@
  require '../application/core/Controller.php';
  require '../application/core/Session.php';
  require '../application/core/View.php';
+ require '../application/core/Table.php';
  require '../application/model/LoginModel.php';
  require '../application/core/Redirect.php';
  require '../application/model/UserModel.php';
