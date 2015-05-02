@@ -87,4 +87,54 @@ class DatabaseFactoryMysql extends MySQLi
 	// gibt array mit objekten zurück
 	return $array;
   }
+  
+  
+  /*
+   * Sprint 3 Anfang
+   *
+   *     */
+  
+  /*
+   * 
+   * @author Roland Schmid
+   * 
+   * Führt eine Query mit einem INSERT INTO String aus.
+   * liefert TRUE zurück, falls die Eintragung erfolgreich war.
+   * 
+   *    */
+  public function insert($insertString) {
+      $success = parent::query($insertString);
+      echo "\nin DabaFactory : " . $success . " var type: ". gettype($success) . "\n";
+//      return $success;
+      return 0;
+      /*
+    $result = parent::query($query);
+ 
+    if ($this->error) {
+		Redirect::to('error/error');//sprint3
+		Session::add('response_negative', 'Error: '. mysqli_connect_error());
+		Session::add('response_negative', 'Errno: '. mysqli_connect_errno());
+    }
+	
+	// baut einen array mit objekten. genau so wie in PDO, nur hab ich dazu keine methode in mysqli gefunden bisher
+	$array = array();
+		$i =0;
+		while ($obj = $result->fetch_object()) {
+		$array[$i] = $obj;
+		$i++;
+		}
+	$this->close();
+	// gibt array mit objekten zurück
+	return $array;
+       * 
+       * */
+      
+  }
+  
+  
+  /*
+   * Sprint 3 Ende
+   *
+   *     */
+  
 }

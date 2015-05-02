@@ -42,8 +42,8 @@
  require '../application/model/veranstaltungErweiternModel.php';
  require '../application/model/DozentModel.php';
 
-
-
+//Roland Schmid
+require '../application/model/VeranstaltungModel.php';
 
  
 class Application

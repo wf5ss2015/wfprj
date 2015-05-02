@@ -59,9 +59,19 @@ return array(
 	 * @see http://www.w3schools.com/charsets/ref_html_utf8.asp
 	 */
 	'DB_TYPE' => 'mysql',
+<<<<<<< HEAD
 	'DB_HOST' => '',
 	'DB_NAME' => '',
 	'DB_USER' => '',
+=======
+	'DB_HOST' => 'localhost',
+<<<<<<< HEAD
+	'DB_NAME' => 'lehrveranstaltung',
+=======
+	'DB_NAME' => 'wfprj_wf5_09',
+>>>>>>> c64b070f1a046410f9deb16c0f7f25c4a11a663c
+	'DB_USER' => 'root',
+>>>>>>> origin/master
 	'DB_PASS' => '',
 	'DB_PORT' => '3306',
 	'DB_CHARSET' => 'utf8',

@@ -127,15 +127,26 @@ class LoginController extends Controller
 		);
     }
 	
-		 /**
+	/**
      * @author Kilian Kraus
 	 * Zeigt eine einfache Seite an nach dem erfolgreichen Login
      */
     public function helloDocent()
     {
 		Auth::checkAuthenticationDocent();
-		$this->View->render('login/loggedinDocent', array(
-            'userlist' => UserModel::getUserDataAll())
+		// Das hier ist ein Beispiel wie man sich die Tabellen erzeugen kann.
+		$alias0 = array(
+			"0" => "Nutzer",
+			"1" => "Passwort",
+			"2" => "Letzter Login",
+			"3" => "Rolle",);
+		$alias0 = (object) $alias0;
+		$alias2 = array(
+			"0" => "Nutzer",
+			"1" => "Passwort",);
+		$alias2 = (object) $alias2;
+		$this->View->renderMulti(array('login/loggedinDocent', '_templates/table'), array(
+            'table0' => UserModel::getUserDataAll(),'alias0' => array($alias0),'table2' => UserModel::getUserDataAll3(),'alias2' => array($alias2),'table1' => UserModel::getUserDataAll2(),)
 		);
     }
  /*===============================================
