@@ -70,6 +70,8 @@
             foreach($this->vArten as $key => $value) {                 
                 echo "\n\t<option value=\"" . $value->vArt_ID . "\">";                
                 echo $value->vArt_bezeichnung . "</option>";                
+//                echo htmlentities($value->vArt_bezeichnung) . "</option>";                
+                
             }	
         ?>
 

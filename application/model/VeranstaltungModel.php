@@ -16,9 +16,8 @@
  */
 class VeranstaltungModel {
     /**
-     * @author Kilian Kraus
+     * @author Roland Schmid
      *
-     * @param $user_name string Nutzername
      *
      */
      
@@ -26,50 +25,50 @@ class VeranstaltungModel {
     
     
     
-//------------------ need work ---------------------------------------------------- 
+//------------------ needs work ---------------------------------------------------- 
     
-   public function ausstattungEintragen($vid, $dbCon) {
+   public function ausstattungEintragen($vid) {
 
-  //POST-Inhalt auslesen
-  $insertValues = "";
-  $veranstaltungAusstattung = $_POST["veranstaltung_ausstattung"];
+    //POST-Inhalt auslesen
+    $insertValues = "";
+    $veranstaltungAusstattung = $_POST["veranstaltung_ausstattung"];
 
-  // vorhandene Einträge löschen (für Veranstaltung aktualisieren
-  //$deleteString = "delete from VeranstaltungBrauchtAusstattung where VeranstaltungID = " . $vid . ";";
-  $deleteString = "delete from Veranstaltung_erfordert_Ausstattung where veranst_ID = " . $vid . ";";
-  if($dbCon->query($deleteString)) {
-	  $dbCon->commit();
-  } else {
-    echo "\nERROR: " . $dbCon->error;
-  }
-  
-  
-  $noOfRows = 0;
-  
-  // Plausibilität prüfen
-  for($i = 0; $i < count($veranstaltungAusstattung); $i++) {
-  //prüft, ob eingegebener Wert wirklich eine Zahl ist
-    if(is_numeric($veranstaltungAusstattung[$i])) {
-    
-    //prüft, ob die angebenen Zahlen sinnvoll sind
-      if($veranstaltungAusstattung[$i] < 100 && $veranstaltungAusstattung[$i] > 0) {
-	$insertValues = $vid . ", " . ($i+1) . ", " . $veranstaltungAusstattung[$i];
-	
-	//insert für mysql vorbereiten
-	$insertString = "INSERT INTO Veranstaltung_erfordert_Ausstattung"
-			. " (veranst_ID, ausstattung_ID, anzahl)"
-			. " VALUES (" . $insertValues . ");";
+    // TODO vorhandene Einträge löschen (für Veranstaltung aktualisieren
+    //$deleteString = "delete from VeranstaltungBrauchtAusstattung where VeranstaltungID = " . $vid . ";";
+    $deleteString = "delete from Veranstaltung_erfordert_Ausstattung where veranst_ID = " . $vid . ";";
+//    if($dbCon->query($deleteString)) {
+//            $dbCon->commit();
+//    } else {
+//      echo "\nERROR: " . $dbCon->error;
+//    }
 
-	if($dbCon->query($insertString)) {
-	  $dbCon->commit();
-	} else {
-	  echo "\nERROR: " . $dbCon->error;
-	}
-	
+
+    //Datenbankverbindung
+    $database = new DatabaseFactoryMysql();
+
+    //$noOfRows = 0;
+
+    // Plausibilität prüfen
+    for($i = 0; $i < count($veranstaltungAusstattung); $i++) {
+    //prüft, ob eingegebener Wert wirklich eine Zahl ist
+      if(is_numeric($veranstaltungAusstattung[$i])) {
+
+      //prüft, ob die angebenen Zahlen sinnvoll sind
+        if($veranstaltungAusstattung[$i] < 100 && $veranstaltungAusstattung[$i] > 0) {
+          $insertValues = $vid . ", " . ($i+1) . ", " . $veranstaltungAusstattung[$i];
+
+          //insert für mysql vorbereiten
+          $insertString = "INSERT INTO Veranstaltung_erfordert_Ausstattung"
+                          . " (veranst_ID, ausstattung_ID, anzahl)"
+                          . " VALUES (" . $insertValues . ");";
+
+          if(!$database->insert($insertString)) {
+            // error ausgeben
+          }
+        }
       }
     }
   }
-}
 
 
 /* sprint 3 Anfang*/
@@ -136,29 +135,25 @@ public function veranstaltungAnlegen() {
 /* sprint 3 Ende*/
 
   //wenn alle Prüfungen positiv, führe insert aus
-  if($valid == true) {
-  
+  if($valid) {
   
     $insertString = "INSERT INTO Veranstaltung (`veranst_bezeichnung`, `veranst_kurztext`, `credits`, `SWS`, "
 		    . "`maxTeilnehmer`, `vArt_ID`) "
 		    . "VALUES ('$bez', '$kurztext', '$credits', '$sws', '$maxNo', '$art');";
 
-
-    
     if($database->insert($insertString)) {
         
-    
-        $vID = $database->insert_id;
-//	    
-//      TODO  //Ausstattung wird eingetragen
-//        ausstattungEintragen($vID);
-//   
-        return $vID;
+        
+//echo "<br>im model, in methode vAnlegen, nach insert<br>";
+//echo "<br>$database->insert_id<br>";
+
+//holt die letzte eingetragene ID
+        return $database->insert_id;
+
     } else {
         return -1;
     }
   }
-
 }
     
  
@@ -243,10 +238,10 @@ public function veranstaltungAnlegen() {
      //gibt ein array zurück mit allen vorhandenen Veranstaltungen
      public function getAlleVeranstaltungen() {
        // query-String 
-       $q = "SELECT VeranstaltungID, Bezeichnung, Kurztext, Credits, SWS, " 
+     /*  $q = "SELECT VeranstaltungID, Bezeichnung, Kurztext, Credits, SWS, " 
 	       . "max_Teilnehmer, Veranstaltungsart "
 	       . "from Veranstaltung;";
-	       
+	*/       
         // erzeugt ein Resultset, benutzt dazu die Methode abfrage($q)
         $result = $this->abfrage($q);
         
@@ -255,11 +250,22 @@ public function veranstaltungAnlegen() {
 	
     //holt die veranstaltung mit id = $vID
     public function getVeranstaltung($vID) {
-        
+/*
         $q = "SELECT VeranstaltungID, Bezeichnung, Kurztext, Credits, SWS, " 
            . "max_Teilnehmer, Veranstaltungsart "
-           . "from Veranstaltung WHERE VeranstaltungID = " . $vID . " LIMIT 1;";
+           . "from Veranstaltung WHERE VeranstaltungID = " . $vID . ";"; // . " LIMIT 1;";*/
         
+/*        
+        $q = "SELECT veranst_ID, veranst_bezeichnung, veranst_kurztext, credits, SWS, "
+             . "maxTeilnehmer, vArt_ID from Veranstaltung WHERE veranst_ID = " . $vID . ";";
+*/      
+        
+        $q = "select Veranstaltung.veranst_ID, Veranstaltung.veranst_bezeichnung, Veranstaltung.veranst_kurztext, Veranstaltung.credits, Veranstaltung.SWS, "
+            ."Veranstaltung.maxTeilnehmer, Veranstaltungsart.vArt_bezeichnung as Veranstaltungsart "
+            . "from Veranstaltung join Veranstaltungsart on Veranstaltung.vArt_ID = Veranstaltungsart.vArt_ID"
+            ." where Veranstaltung.veranst_ID = $vID;";
+
+
         $result = $this->abfrage($q);
         
         return $result;     
@@ -282,7 +288,7 @@ public function veranstaltungAnlegen() {
      */
     public function getVeranstaltungsarten() {
         //query-string
-        $q = "SELECT vArt_ID, vArt_bezeichnung from Veranstaltungsart";
+        $q = "SELECT vArt_ID, vArt_bezeichnung from Veranstaltungsart;";
         
         // erzeugt ein Resultset, benutzt dazu die Methode abfrage($q)
         $result = $this->abfrage($q);

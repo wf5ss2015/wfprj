@@ -91,7 +91,7 @@ class DatabaseFactoryMysql extends MySQLi
   
   /*
    * Sprint 3 Anfang
-   *
+   * Änderung: Roland Schmid
    *     */
   
   /*
@@ -99,14 +99,15 @@ class DatabaseFactoryMysql extends MySQLi
    * @author Roland Schmid
    * 
    * Führt eine Query mit einem INSERT INTO String aus.
-   * liefert TRUE zurück, falls die Eintragung erfolgreich war.
+   * liefert 1 zurück, falls die Eintragung erfolgreich war.
    * 
    *    */
   public function insert($insertString) {
+//echo "\nin insert\n\n\n";
       $success = parent::query($insertString);
-      echo "\nin DabaFactory : " . $success . " var type: ". gettype($success) . "\n";
-//      return $success;
-      return 0;
+//echo "\nin DabaFactory : " . $success . " var type: ". gettype($success) . "\n";
+//return $success;
+      return $success;
       /*
     $result = parent::query($query);
  
@@ -134,7 +135,7 @@ class DatabaseFactoryMysql extends MySQLi
   
   /*
    * Sprint 3 Ende
-   *
+   * Änderung: Roland Schmid
    *     */
   
 }
