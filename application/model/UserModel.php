@@ -70,15 +70,12 @@ class UserModel
 	   START
 	*/
 	public static function getUserDataAll(){
-        $database = DatabaseFactory::getFactory()->getConnection();
-		$sql = "Select u.user_name, rolle_bezeichnung, email_name, straßenname, hausnummer, plz, stadt, land 
-				from user u 
-				join rolle r on r.rolle_ID = u.rolle_ID 
-				join email e on e.user_name = u.user_name 
-				join adresse a on a.user_name = u.user_name";
-		$query = $database->prepare($sql);
-		$query->execute();
-		return $query->fetchAll();
+       $database = new DatabaseFactoryMysql();
+		
+		$sql = "SELECT * FROM nutzer";
+		
+		$result = $database->query($sql);
+		return $result;
     }
 	/* ENDE Änderungen Klamser */
 	
