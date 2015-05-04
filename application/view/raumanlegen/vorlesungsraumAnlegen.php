@@ -25,7 +25,7 @@
 			<?php
 				include 'raumAusstattung.php';
 			?>
-			<input type="hidden" name="raumtyp" value="$raumtyp" />
+			<input type="hidden" name="raumtyp" value="vorlesungsraum"/>
 		</div>
 		<p>
 			<?php

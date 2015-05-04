@@ -24,7 +24,7 @@
 				switch ($raumtyp) {
 					case "vorlesungsraum":
 						$this->View->render('raumanlegen/vorlesungsraumAnlegen', 
-							array('geb_list' => raumAnlegenModel::getGebäude(), 'ausstattung_list' => raumAnlegenModel::getAusstattung()), array('raumtyp' => $raumtyp));
+							array('geb_list' => raumAnlegenModel::getGebäude(), 'ausstattung_list' => raumAnlegenModel::getAusstattung()));
 						break;
 					case "buero":
 						$this->View->render('raumanlegen/bueroAnlegen', 
@@ -48,27 +48,24 @@
 		}
 		
 		public function saveRaum(){
-			if(isset($_POST['bezeichnung']) and isset($_POST['gebäude'])){
+			if(isset($_POST['bezeichnung']) and isset($_POST['gebäude']) and isset($_POST['raumtyp'])){
 				$bezeichnung = $_POST['bezeichnung'];
 				$gebäude_string = $_POST['gebäude'];
 				$gebäude_array = explode(",", $gebäude_string);
 				$gebäude_char = $gebäude_array[0];
 				$raumtyp = $_POST['raumtyp'];
+				raumAnlegenModel::raumStammdaten($bezeichnung, $gebäude_char);
 				switch ($raumtyp) {
 					case "vorlesungsraum":
-						raumAnlegenModel::raumStammdaten($bezeichnung, $gebäude_char);
 						raumAnlegenModel::vorlesungsraumAnlegen($bezeichnung);
 						break;
 					case "buero":
-						raumAnlegenModel::raumStammdaten($bezeichnung, $gebäude_char);	
 						raumAnlegenModel::bueroAnlegen($bezeichnung);
 						break;
 					case "labor":
-						raumAnlegenModel::raumStammdaten($bezeichnung, $gebäude_char);
 						raumAnlegenModel::laborAnlegen($bezeichnung, $laborart_ID);
 						break;
 					case "bibliothek":
-						raumAnlegenModel::raumStammdaten($bezeichnung, $gebäude_char);
 						raumAnlegenModel::bibliothekAnlegen($bezeichnung);
 						break;
 					default:

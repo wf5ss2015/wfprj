@@ -17,7 +17,7 @@
         <h1>Bibliothek anlegen</h1>
     </header>
 	<!-- bibliothekAnlegen.php wird ausgeführt nach der Bestätigung -->
-    <form action="index.php?url=raumAnlegen/setStammdaten" method="post"/>
+    <form action="index.php?url=raumAnlegen/saveRaum" method="post"/>
 		<div>
 			<!-- included das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
 			<?php
@@ -41,6 +41,7 @@
 					}
 				?>	
 			</p>
+			<input type="hidden" name="raumtyp" value="bibliothek"/>
 		</div>
 		<p>
 			<?php

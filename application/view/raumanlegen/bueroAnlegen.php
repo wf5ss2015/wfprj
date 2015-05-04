@@ -16,12 +16,13 @@
         <h1>B&uuml;ro anlegen</h1>
     </header>
 	<!-- bueroAnlegen.php wird ausgeführt nach der Bestätigung -->
-    <form action="index.php?url=raumAnlegen/setStammdaten" method="post"/>
+    <form action="index.php?url=raumAnlegen/saveRaum" method="post"/>
 		<div>
 			<!-- included das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
 			<?php
 				include 'raumStammdaten.php';
 			?>
+			<input type="hidden" name="raumtyp" value="buero"/>
 		</div>
 		<p>
 			<?php

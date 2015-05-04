@@ -16,7 +16,7 @@
         <h1>Labor/Werkstatt anlegen</h1>
     </header>
 	<!-- laborAnlegen.php wird ausgeführt nach der Bestätigung -->
-    <form action="index.php?url=raumAnlegen/setStammdaten" method="post"/>
+    <form action="index.php?url=raumAnlegen/saveRaum" method="post"/>
 		<div>
 			<!-- included das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
 			<?php
@@ -45,6 +45,7 @@
 					include 'raumAusstattung.php';
 				?>
 			</p>
+			<input type="hidden" name="raumtyp" value="labor"/>
 		</div>
 		<p>
 			<?php
