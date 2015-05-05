@@ -6,7 +6,7 @@
 * @author: Damian Wysocki
 * Datum: 29.04.2015
 *
-* User­Story (Nr. 90 ): Als Dozent möchte ich Teilnehmerlisten erzeugen können (Nacharbeit). (13 Points)
+* User­Story (Nr. 90a ): Als Dozent möchte ich Teilnehmerlisten erzeugen können (Nacharbeit). (13 Points)
 * Zeit: 0.25
 */
 
@@ -21,38 +21,43 @@
 
         <div class="table-wrapper">
 		
-		<!-- Schleife um die Einträge in der DB Tabelle auszulesen -->
 		<?php $this->renderResponse(); ?>
-            <div >
-             
-			<!--Prüfen ob array leer -->
-			<?php if ($this->teilnehmer) { ?>
-			
-			<h2>Teilnehmerliste </h2>	
-            <table style="width: 100%" >
-                <thead>
-                <tr>
-					<td><h3>Nutzername</h3></td>
-                    <td></td>
-                </tr>
-                </thead>
-                <tbody>
+           <div >
+                <h2>Teilnehmerliste für Kurs "<?php echo $_POST['id']; ?>"</h2>	
+			<?php if ($this->teilnehmer) {
 				
-					<!-- Schleife um die Einträge in der DB Tabelle auszulesen -->
-                    <?php foreach($this->teilnehmer as $key => $value) { ?>
-                        <tr>
-							<td><?= htmlentities($value->user_name);?></td>
-							<td><?= htmlentities($value->veranst_bezeichnung)?></td>
-						</tr>
-                    <?php } ?>
-					
-                </tbody>
-            </table>
-			
-			<!-- Ansonsten Fehlermeldung -->
-            <?php }else { ?>
-                <div>Kkein array übergeben.</div>
-            <?php } ?>				
+				$table = new Table();
+				
+				/*
+				IN ARBEIT ;=)
+				*/
+				
+				echo "Mit Alias & Link bzw Action übergabe";	
+				// mit alias & link
+				$dozentTeilnehmer = array(
+				"0" => "Nutzername",
+				"1" => "Email",
+				"2" => "Vorname",
+				"3" => "Nachname",
+				"4" => "Telefonnummer",
+				"5" => "Studiengang",
+				"6" => "Selbst ausloggen",
+				"7" => "Gehe index");
+				
+				#$alias = array_flip($alias);
+				#$alias = array_reverse($alias);
+				$dozentTeilnehmer = (object) $dozentTeilnehmer;
+				
+				
+				// key=name des links - value=action
+				$link = array(
+				"Logout" => "index.php?url=login/logout",
+				"Index" => "index.php?url=index");
+				$link = (object) $link;
+				$table->table(array('table' =>$this->teilnehmer, 'dozentTeilnehmer' => array($dozentTeilnehmer), 'link' => array($link)));
+            }else { ?>
+                <div>kein array übergeben</div>
+            <?php } ?>			
             </div>
         </div>
 
