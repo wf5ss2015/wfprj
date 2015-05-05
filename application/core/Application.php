@@ -4,7 +4,7 @@
  @author: Kilian Kraus
  Datum: 25.04.2015
  Zeitaufwand (in Stunden): 0.25
- User Story Nr.: 
+ User Story Nr.: 320
  User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
  Task: Application.php anpassen, damit errorController geladen wird. 
  ===============================================*/

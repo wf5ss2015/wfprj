@@ -4,7 +4,7 @@
  @author: Kilian Kraus
  Datum: 25.04.2015
  Zeitaufwand (in Stunden): 0.5
- User Story Nr.: 
+ User Story Nr.: 350
  User Story: generische Tabellen
  Task:  core/view.php erweitern
  ===============================================*/
@@ -13,7 +13,7 @@
  @author: Kilian Kraus
  Datum: 25.04.2015
  Zeitaufwand (in Stunden): 0.5
- User Story Nr.: 
+ User Story Nr.: 330
  User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
  Task: response in core/view.php integrieren 
  ===============================================*/
