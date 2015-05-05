@@ -39,6 +39,7 @@
  require '../application/core/Auth.php';
  require '../application/lib/phppasswordlib/passwordLib.php';
  require '../application/core/DatabaseFactoryMysql.php';
+ //require '../application/lib/html2pdf/html2pdf.class.php';
  require '../application/model/raumAnlegenModel.php';
  require '../application/model/veranstaltungErweiternModel.php';
  require '../application/model/DozentModel.php';
