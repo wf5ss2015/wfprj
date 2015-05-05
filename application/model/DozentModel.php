@@ -24,7 +24,6 @@ class DozentModel
     {
         $database = DatabaseFactory::getFactory()->getConnection();
 		
-		// Jeder angelegte User sollte eine hinterlegte Email Adresse haben, da sonst nicht angezeigt
 		// Pivot-Funktion in MySQL nicht verfügbar
         $sql = "SELECT  ubv.nutzer_name AS Nutzername, e.email_name AS Email,
 				coalesce(MAX(case when w.eigenschaft_ID = 2 then w.inhalt end), 0) as Matrikel,
