@@ -17,37 +17,43 @@
  *
  */
 ?>
-<div class="container">
-
-        <div class="table-wrapper">
+<?php $this->renderResponse(); ?>
+	<header>
+				<h1>Teilnehmerliste</h1>
+				<p>(Angemeldet als Nutzer:"<?php echo Session::get('user_name')?>")</p>
+			</header>
 		
 		<!--  -->
-		<?php $this->renderResponse(); ?>
-            
-			<!-- Prüfen ob Array leer (Wichtig, Namen für Select Tag vergeben ;=)-->
-			<?php if ($this->vorlesung) { ?>
-			
-			<form action="index.php?url=Dozent/teilnehmerListe" method="post"/>
-			<select name="id">
-			
-			<!--Veranstaltung in dropdownmenü anzeigen -->
-			<?php foreach($this->vorlesung as $key => $value) { ?>
-			
-			<option value="<?php echo htmlentities($value->veranst_ID);?>"><?php echo htmlentities($value->veranst_bezeichnung); ?></option>
-			
-			<?php } ?>
-			</select>
-	 		<input type="submit" value="weiter">
-			</form>
-			
-			<!-- sonst Fehlermeldung -->
-            <?php }else { ?>
-                <div>kein array übergeben</div>
-            <?php } ?>				
-            </div>
-        </div>
-
-</div>
+		
+         <section>
+				<article>   
+					<article>
+						<p>Hier sehen Sie ihre zugeordneten Kurse. Bitte auswählen um Teilnehmerlisten zu erzeugen</p>
+					</article>
+					<!-- Prüfen ob Array leer (Wichtig, Namen für Select Tag vergeben ;=)-->
+					<?php if ($this->vorlesung) { ?>
+				
+					<form action="index.php?url=Dozent/teilnehmerListe" method="post"/>
+					<select name="id">
+					
+					<!--Veranstaltung in dropdownmenü anzeigen -->
+					<?php foreach($this->vorlesung as $key => $value) { ?>
+					
+					<option value="<?php echo htmlentities($value->veranst_ID);?>">
+					<?php echo htmlentities($value->veranst_bezeichnung); ?></option>
+					
+					<?php } ?>
+					</select>
+					<input type="submit" value="weiter">
+					</form>
+					
+					<!-- sonst Fehlermeldung -->
+					<?php }else { ?>
+						kein Array übergeben
+					<?php } ?>				
+				</article>
+		</section>
+		
 <!--
 /*
 * 		Diese Codezeile muss noch in den Standardheader eingefügt werden um Link herzustellen 
