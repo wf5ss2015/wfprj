@@ -15,7 +15,7 @@
 		}
 
 		public function nutzerlisteDrucken(){
-			$this->View->render('nutzerlistedrucken/nutzerliste', array('user_list' => UserModel::getUserDataAll()));
+			$this->View->render('nutzerlistedrucken/nutzerliste', array('user_list' => UserModel::getUserDataAll4()));
 		}
 		
 		public function printUser(){

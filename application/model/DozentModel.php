@@ -61,7 +61,7 @@ class DozentModel
         $database = DatabaseFactory::getFactory()->getConnection();
 		
 		
-		*/
+		
 		
 		$query = $database->prepare($sql);
 
@@ -69,7 +69,7 @@ class DozentModel
 
         return $query->fetchAll();
     }		
-			
+			*/
 	// Funktion, die anhand des Nutzernamens des Dozenten die zugehörigen Vorlesungen ausliest
 	public static function getVorlesung()
     {

@@ -18,14 +18,14 @@
     <div>
 		<p>Im Folgenden sehen Sie eine Liste von allen Nutzern: </p>
 		<table border="1px">
-			<tr>
+			<!--<tr>
 				<th>Username</th> <th>Rolle</th> <th>E-Mail</th> <th>Strassenname</th> <th>Hausnummer</th> <th>PLZ</th> <th>Stadt</th> <th>Land</th> 
-			</tr>
+			</tr>-->
         <?php
 			if ($this->user_list){
-				foreach($this->user_list as $key => $value){
+				/*foreach($this->user_list as $key => $value){
 					echo "<tr>"; 
-					echo "<td>"; echo htmlentities($value->user_name); echo "</td>";
+					echo "<td>"; echo htmlentities($value->nutzer_name); echo "</td>";
 					echo "<td>"; echo htmlentities($value->rolle_bezeichnung); echo "</td>";
 					echo "<td>"; echo htmlentities($value->email_name); echo "</td>";
 					echo "<td>"; echo htmlentities($value->straßenname); echo "</td>";
@@ -34,7 +34,18 @@
 					echo "<td>"; echo htmlentities($value->stadt); echo "</td>";
 					echo "<td>"; echo htmlentities($value->land); echo "</td>";
 					echo "</tr>";
-				}
+				}*/
+				$table = new Table();
+				$userInfo = array(
+					"0" => "Nutzername",
+					"1" => "Rolle",
+					"2" => "E-Mail",
+					"3" => "Straßenname",
+					"4" => "Hausnummer",
+					"5" => "PLZ",
+					"6" => "Stadt",
+					"7" => "Land");
+				$table->table(array('table' =>$this->user_list, 'alias' => array($userInfo)));
 			} else{
 				echo "Es ist ein Fehler aufgetretten.";
 			}

@@ -64,11 +64,7 @@ class UserModel
     }
 	*/
 	
-	/* Erweiterung um Nutzerdaten von allen usern zu bekommen.
-	   autor: Kris Klamser 
-	   datum: 4.5.2015
-	   START
-	*/
+	//dummy
 	public static function getUserDataAll(){
        $database = new DatabaseFactoryMysql();
 		
@@ -77,7 +73,6 @@ class UserModel
 		$result = $database->query($sql);
 		return $result;
     }
-	/* ENDE Änderungen Klamser */
 	
 	// dummy
 	public static function getUserDataAll2()
@@ -108,4 +103,23 @@ class UserModel
  User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
  ===============================================*/
 
+	/* Erweiterung um Nutzerdaten von allen usern zu bekommen.
+	   autor: Kris Klamser 
+	   datum: 4.5.2015
+	   START
+	*/
+	public static function getUserDataAll4(){
+        $database = DatabaseFactory::getFactory()->getConnection();
+		$sql = "Select u.nutzer_name, rolle_bezeichnung, email_name, straßenname, hausnummer, plz, stadt, land 
+				from nutzer u 
+				join rolle r on r.rolle_ID = u.rolle_ID 
+				join email e on e.nutzer_name = u.nutzer_name 
+				join adresse a on a.nutzer_name = u.nutzer_name;";
+		
+		$query = $database->prepare($sql);
+		$query->execute();
+		return $query->fetchAll();
+    }
+	/* ENDE Änderungen Klamser */
+	
 }
