@@ -15,7 +15,7 @@
 <div class="menue">
 	<nav>
 		<ul>
-            <li><a href="index.php?url=index/index">Startseite |</a></li>
+            <li><a href="index.php?url=index/index">Startseite </a></li>
             <li><a href="index.php?url=login/index">Einloggen </a></li>
 		</ul>
 	</nav>
