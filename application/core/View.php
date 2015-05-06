@@ -55,12 +55,17 @@ class View
                 $this->{$key} = $value;
             }
         }
-		// lädt den richtigen header
-		self::getRightHeader();
+		// lädt den header
+		require Config::get('PATH_VIEW') . '_templates/header.php';
+		// lädt das richtie menue
+		self::getRightMenue();
 		// lädt den content
         require Config::get('PATH_VIEW') . $filename . '.php';
+		// lädt die Sitebar
+		require Config::get('PATH_VIEW') . '_templates/Site.php';
 		// lädt den footer
         require Config::get('PATH_VIEW') . '_templates/footer.php';
+
     }
 	
 /*===============================================
@@ -109,12 +114,16 @@ class View
             }
         }
 
-		// lädt den richtigen header
-		self::getRightHeader();
+		// lädt den header
+		require Config::get('PATH_VIEW') . '_templates/header.php';
+		// lädt das richtie menue
+		self::getRightMenue();
 		// lädt die verschiedenen views
         foreach($filenames as $filename) {
             require Config::get('PATH_VIEW') . $filename . '.php';
         }
+		// lädt die Sitebar
+		require Config::get('PATH_VIEW') . '_templates/Site.php';
 		// lädt den footer
         require Config::get('PATH_VIEW') . '_templates/footer.php';
 	}
@@ -131,29 +140,32 @@ Start Sprint: 2
  @author: Kilian Kraus
  User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
  ===============================================*/	
-	public function getRightHeader(){
+	public function getRightMenue(){
 		//falls student
 		if(Session::userIsLoggedIn()&&Session::get('user_role')==1){
 			// lädt den header
-			require Config::get('PATH_VIEW') . '_templates/headerStudent.php';
+			require Config::get('PATH_VIEW') . '_templates/menueStudent.php';
+			echo "test";
 		}
 		//falls mitarbeiter
 		elseif(Session::userIsLoggedIn()&&Session::get('user_role')==3){
 			// lädt den header
-			require Config::get('PATH_VIEW') . '_templates/headerEmployee.php';	
+			require Config::get('PATH_VIEW') . '_templates/menueEmployee.php';	
 		}
 		//falls dozent
 		elseif(Session::userIsLoggedIn()&&Session::get('user_role')==2){
 			// lädt den header
-			require Config::get('PATH_VIEW') . '_templates/headerDocent.php';
+			require Config::get('PATH_VIEW') . '_templates/menueDocent.php';
 		}
 		//falls tutor
 		elseif(Session::userIsLoggedIn()&&Session::get('user_role')==4){
 			// lädt den header
-			require Config::get('PATH_VIEW') . '_templates/headerTutor.php';
+			require Config::get('PATH_VIEW') . '_templates/menueTutor.php';
 		}else{
 		// lädt den standardheader
-        require Config::get('PATH_VIEW') . '_templates/header.php';
+        //require Config::get('PATH_VIEW') . '_templates/header.php';
+		require Config::get('PATH_VIEW') . '_templates/menue.php';
+		// standard menue oder keins
 		}	
 	}
 /*===============================================
