@@ -1,16 +1,26 @@
 <?php
- /*===============================================
- Sprint: 1
- @author: Kilian Kraus
- Datum: 08.04.2015
- Zeitaufwand (in Stunden): 
- User Story Nr.: 140
- User Story: Als Dozent möchte ich mich zur Verwaltung meiner Daten online einloggen können.
- Task: xxx
- ===============================================*/
+/**
+* SPRINT 03
+*
+* @author: Renato Cabriolu
+* @Matrikel:
+* Datum: 29.04.2015
+*
+* User­Story (Nr. 20 ): Als Entwickler möchte ich eine einheitliche Optik und einen einheitlichen Aufbau der Webseiten haben. (Nacharbeit)   (13 Points)
+* Zeit: 0.5
+*/
+
+
 ?>
 <!--TODO HTML5 umsetzen-->
-        <div class="footer"></div>
-    </div>
+
+ <!-- einheitlicher Footer Renato Cabriolu sprint -->
+
+
+<div id="footer">
+
+	<p> copyright und andere informationen über diese seite</p>
+</div>
+</div>
 </body>
 </html>

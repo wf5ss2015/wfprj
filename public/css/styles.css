@@ -1,0 +1,124 @@
+/* 
+Gruppe:			1
+Sprint:			3
+Bemerkung		
+User Story: 	        Als Entwickler möchte ich eine einheitliche Optik und einen einheitlichen Aufbau der Webseiten haben.
+Task: 			
+Autor: 			Renato Cabriolu
+Datum:			21.04.2014
+Gewichtung: 	13
+Version : 		1.0
+Zeitaufwand:            5h
+*/
+
+/*skizze starseite*/
+
+
+thml {
+	font-size: 100%;
+	font-family: Verdana, sans-serif;	
+}
+body{
+	
+	
+	margin-top: 5px;
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+	background: white;
+        
+}
+.menuebar a {
+	color: white;
+	text-decoration: none;
+}
+.header a {
+	color: white;
+	text-decoration: none;
+}
+.Seitenbar a{
+	color: white;
+	text-decoration: none;
+}
+
+#wrapper {
+	width: 960px;
+	margin: 0 auto;
+	background:yellow;
+}
+
+.header {
+	margin: 0 auto;
+        background: black;
+        height: 100px;
+}
+
+nav.header {
+    float:right;
+    //padding-top:10px;
+    height:30px;
+}
+
+ul.header {
+    text-align: center;
+}
+
+li.header{
+    display: inline-block;
+}
+
+
+#menue
+{
+float: left;
+width: 100%; /* optionale Weitenangabe */
+background: #aaa;
+}
+.menuebar
+{
+background: #aaa;
+text-decoration: none;
+
+}
+nav.menuebar {
+   float: left;
+}
+
+ul.menuebar {
+    text-align: center;
+    
+}
+
+li.menuebar{
+    display: inline-block;
+}
+
+
+#content_left
+{
+float: left;
+width: 20%; /* optionale Weitenangabe */
+background:#aaa ;
+}
+ 
+#content_right
+{
+float: right;
+width: 80%; /* optionale Weitenangabe */
+background: white;
+min-hight: 300px;;
+}
+
+#footer
+{
+float: right;
+width: 100%; /* optionale Weitenangabe */
+background: black;
+color: #aaa;
+}
+
+
+
+
+
+
+
