@@ -14,7 +14,7 @@ $response_positive = Session::get('response_positive');
 $response_negative = Session::get('response_negative');
 $response_warning = Session::get('response_warning');
 
-
+echo "<div class=\"response\">";
 // output positive Rückmeldung
 if (isset($response_positive)) {
     foreach ($response_positive as $response) {
@@ -35,3 +35,4 @@ if (isset($response_warning)) {
         echo '<div style="background:orange">'.$response.'</div>';
     }
 }
+echo "</div>";

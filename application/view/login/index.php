@@ -24,8 +24,6 @@
 	<div class="content_right">
 	<?php $this->renderResponse(); ?>
 	<section>
-
-		
                 <h2>Login here</h2>
                 <form action="index.php?url=login/login" method="post">
                     <input type="text" name="user_name" placeholder="Nutzername" required />

@@ -32,8 +32,8 @@ body{
 }
 
 .wrapper section {
-	margin-left: 10px;
-	margin-top:0px;
+	margin-left: 20px;
+	margin-top: 0px;
 }
 	
 
@@ -122,9 +122,9 @@ body{
 /*content right = inhalt*/
 .content_right
 {
-
 	float:right;
 	width: 85%; /* optionale Weitenangabe */
+	margin-bottom: 10px;
 }
 
 /*footer*/
@@ -138,6 +138,12 @@ body{
 
 .footer section {
 	text-align: center;
+}
+
+.response {
+	margin-top: 10px;
+	margin-left: 20px;
+	margin-right: 10px;
 }
 
 
