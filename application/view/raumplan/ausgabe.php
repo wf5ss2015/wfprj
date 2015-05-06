@@ -1,3 +1,23 @@
+<!-- ---------- Autor: Alexander Mayer ---------- 
+
+	- Projekt: 				Lehrveranstaltungssoftware (WF5-WFPRJ)
+	- Gruppe: 				01
+	
+	- Datum: 				06.05.2015
+	- Sprint: 				3
+	
+	--------------------------------------------------
+	
+	- User Story (Nr. 290):	Als Mitarbeiter/Dozent/Student möchte ich mir Raumpläne anzeigen lassen können.
+	- User Story Punkte:	13	
+	- User Story Aufwand:	4h
+	
+	- Task: View erstellen
+	
+	//////////////////////////////////////////////////
+-->	
+
+<!-- Tabelle, welche den Raumplan darstellt: -->
 
 <?php
 	
@@ -20,31 +40,47 @@
 	echo "</colgroup>";
 	
 	
+	//erster Veranstaltungstermin holen:
 	if($veranstTermin = $this->veranstaltungstermine->fetch_assoc());
 
-	for ($zeile = 1; $zeile <= 7; $zeile++) 
+	for ($stunde = 1; $stunde <= 7; $stunde++) 
 	{
+		//neue Zeile:
 		echo "<tr>";
 		
-		for ($spalte = 0; $spalte <= 7; $spalte++) 
+		for ($tag = 0; $tag <= 7; $tag++) 
 		{
-			if($spalte == 0 && ($stundenzeit = $this->stundenzeiten->fetch_assoc()))
+			if($tag == 0 && ($stundenzeit = $this->stundenzeiten->fetch_assoc()))
 			{
+				//Stundenzeit wird in der ersten Spalte der Zeile eingetragen:
 				$zeit_von = $stundenzeit['stdZeit_von'];
 				$zeit_bis = $stundenzeit['stdZeit_bis'];
 				echo "<td style='background:yellow'> $zeit_von - $zeit_bis </td>";
 			}
 			else
 			{
-				if($veranstTermin['stdZeit_ID'] == $zeile && $veranstTermin['tag_ID'] == $spalte)
+				/*	überprüfe, ob der Veranstaltungstermin in dieser Stunde ($stunde entspricht Zeile) 
+					und an diesem Tag ($tag entspricht Spalte)
+					stattfindet:
+					
+					-> JA: 		trage den Veranstaltungstermin in die Zelle ein und hole nächsten Veranstaltungstermin
+					-> NEIN: 	leerer Eintrag (solange, bis an richtiger Stunde bzw. Zeile und an richtigem Tag bzw. Spalte 
+								angekommen)
+				
+				*/
+				
+				if($veranstTermin['stdZeit_ID'] == $stunde && $veranstTermin['tag_ID'] == $tag)
 				{
+					//Veranstaltungstermin in die Zelle eintragen:
 					$veranst_bezeichnung = $veranstTermin['veranst_bezeichnung'];
 					echo "<td> $veranst_bezeichnung </td>";
+					
+					//nächster Veranstaltungstermin holen:
 					if($veranstTermin = $this->veranstaltungstermine->fetch_assoc());
 				}
 				else
 				{
-					//leerer Spalteneintrag:
+					//leerer Eintrag:
 					echo "<td> </td>";
 				}
 			}

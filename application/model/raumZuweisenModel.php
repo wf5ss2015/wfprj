@@ -1,22 +1,29 @@
+<!-- ---------- Autor: Alexander Mayer ---------- 
+
+	- Projekt: 				Lehrveranstaltungssoftware (WF5-WFPRJ)
+	- Gruppe: 				01
+	
+	- Datum: 				06.05.2015
+	- Sprint: 				3
+	
+	--------------------------------------------------
+	
+	- User Story (Nr. 340): Als Entwickler möchte ich im MVC-Pattern programmieren können.
+	- User Story Punkte:	40	
+	- User Story Aufwand:	6h
+	
+	- Task: Model erstellen, indem User Stories aus den ersten beiden Sprints angepasst werden	
+	
+	//////////////////////////////////////////////////
+-->		
+
+
 <?php
 
-
-
-/**
- * @author Alexander Mayer
- * Model für Raumzuweisung
- */
 class raumZuweisenModel 
 {
-    /**
-     * @author Kilian Kraus
-     *
-     * @param $user_name string Nutzername
-     *
-     */
-
-
-    //gibt ein array zurück mit allen vorhandenen Veranstaltungen
+    
+    //gibt ein array zurück mit allen vorhandenen Veranstaltungen:
     public function getVeranstaltungen() 
 	{
 		$query = "SELECT veranst_ID, veranst_bezeichnung FROM Veranstaltung";
@@ -26,6 +33,7 @@ class raumZuweisenModel
 		
 		return $veranstaltungen;
     }
+	
 	
 	//gibt ein array zurück mit allen Wochentagen
     public function getWochentage() 
@@ -38,6 +46,7 @@ class raumZuweisenModel
         return $tage;
     }
 	
+	
 	//gibt ein array zurück mit allen Stundenzeiten
     public function getStundenzeiten() 
 	{
@@ -49,12 +58,14 @@ class raumZuweisenModel
         return $stdZeiten;
     }
 	
+	
 	//gibt ein array zurück mit allen verfügbaren Vorlesungsräumen:
     public function getVerfuegbareVorlesungsraeume($veranst_ID, $wochentag_ID, $stdZeit_ID) 
 	{
 		//alle Vorlesungsräume selektieren, welche zur ausgewählten Zeit noch nicht belegt sind:
 		$query  = "SELECT raum_bezeichnung FROM Vorlesungsraum WHERE raum_bezeichnung NOT IN 
-					(SELECT raum_bezeichnung FROM Veranstaltungstermin WHERE stdZeit_ID = '$stdZeit_ID' AND tag_ID = '$wochentag_ID');"; 
+					(SELECT raum_bezeichnung FROM Veranstaltungstermin 
+					WHERE stdZeit_ID = '$stdZeit_ID' AND tag_ID = '$wochentag_ID');"; 
 	       
         // erzeugt ein Resultset, benutzt dazu die Methode abfrage($query)
         $result_raeume = $this->abfrage($query);
@@ -62,13 +73,17 @@ class raumZuweisenModel
 		$verfuegbareRaeume = array();
 		$index = 0;
 		
-		//für jeden Vorlesungsraum wird geprüft, ob er die erforderliche Ausstattung erfüllt
-		while ($row = $result_raeume -> fetch_assoc()) //at least one dataset should be supplied!
+		/*	im array $verfuegbareRaeume werden nur die Räume aus dem Reusultset $result_raeume abgespeichert,
+			wenn sie die erforderliche Ausstattung erfüllen, es muss also für jeden Vorlesungsraum in der
+			while-Schleife die Ausstattung überprüft werden:
+		*/
+		while ($row = $result_raeume -> fetch_assoc()) 
 		{
 			$raum_bezeichnung = $row['raum_bezeichnung'];
 			
 			if($this->pruefeAusstattung_vorlesungsraum($raum_bezeichnung, $veranst_ID))
 			{
+				//Raum erfüllt Ausstattung, welche von der Veranstaltung erfordert wird:
 				$verfuegbareRaeume[$index] = $row;
 				$index++;
 			}	
@@ -81,8 +96,11 @@ class raumZuweisenModel
     public function getVerfuegbareLaborraeume($veranst_ID, $wochentag_ID, $stdZeit_ID) 
 	{
        //alle Laborräume selektieren, welche zur ausgewählten Zeit noch nicht belegt sind:
-		$query  = "SELECT raum_bezeichnung FROM Laborraum WHERE raum_bezeichnung NOT IN 
-					(SELECT raum_bezeichnung FROM Veranstaltungstermin WHERE stdZeit_ID = '$stdZeit_ID' AND tag_ID = '$wochentag_ID');";
+		$query  = "SELECT lr.raum_bezeichnung, la.lArt_bezeichnung 
+					   FROM Laborraum lr JOIN Laborart la ON (lr.lArt_ID = la.lArt_ID)
+					   WHERE lr.raum_bezeichnung NOT IN 
+							(SELECT raum_bezeichnung FROM Veranstaltungstermin 
+							WHERE stdZeit_ID = '$stdZeit_ID' AND tag_ID = '$wochentag_ID');";
 	       
         // erzeugt ein Resultset, benutzt dazu die Methode abfrage($query)
         $result_raeume = $this->abfrage($query);
@@ -90,13 +108,17 @@ class raumZuweisenModel
 		$verfuegbareRaeume = array();
 		$index = 0;
 		
-		//für jeden Laborraum wird geprüft, ob er die erforderliche Ausstattung erfüllt
-		while ($row = $result_raeume -> fetch_assoc()) //at least one dataset should be supplied!
+		/*	im array $verfuegbareRaeume werden nur die Räume aus dem Reusultset $result_raeume abgespeichert,
+			wenn sie die erforderliche Ausstattung erfüllen, es muss also für jeden Vorlesungsraum in der
+			while-Schleife die Ausstattung überprüft werden:
+		*/
+		while ($row = $result_raeume -> fetch_assoc()) 
 		{
 			$raum_bezeichnung = $row['raum_bezeichnung'];
 			
 			if($this->pruefeAusstattung_laborraum($raum_bezeichnung, $veranst_ID))
 			{
+				//Raum erfüllt Ausstattung, welche von der Veranstaltung erfordert wird:
 				$verfuegbareRaeume[$index] = $row;
 				$index++;
 			}	
@@ -106,9 +128,10 @@ class raumZuweisenModel
     }
 	
 	
+	//legt einen neuen Veranstaltungstermin in der Tabelle Veranstaltungstermin an:
 	public function veranstaltungsterminAnlegen($raum_bezeichnung, $veranst_ID, $wochentag_ID, $stdZeit_ID) 
 	{
-		//ausgewählter Raum der ausgewählten Veranstaltung zuweisen (neuer Datensatz in Veranstaltungstermin):
+		//ausgewählter Raum der ausgewählten Veranstaltung zur ausgewählten Zeit zuweisen: 
 			
 		//Datenbankverbindung
 		$db = new DatabaseFactoryMysql();
@@ -130,7 +153,11 @@ class raumZuweisenModel
 		}
 	}
     
-     
+	
+    /*	wird in der Funktion getVerfuegbareVorlesungsraeume() aufgerufen und überprüft, ob
+		der Vorlesungsraum die Ausstattung erfüllt, welche von der Veranstaltung erfordert wird
+		(boolean wird zurückgegeben)
+	*/
     private function pruefeAusstattung_vorlesungsraum($raum_bezeichnung, $veranst_ID)
 	{
 		$query  = 	"SELECT v.anzahl AS anzahl_erforderlich, vr.anzahl AS anzahl_inRaum, v.ausstattung_ID AS a_ID
@@ -177,7 +204,12 @@ class raumZuweisenModel
 		
 		return $ausstattungOk;
 	}
-	 
+	
+	
+	/*	wird in der Funktion getVerfuegbareLaborraeume() aufgerufen und überprüft, ob
+		der Vorlesungsraum die Ausstattung erfüllt, welche von der Veranstaltung erfordert wird
+		(boolean wird zurückgegeben)
+	*/
 	private function pruefeAusstattung_laborraum($raum_bezeichnung, $veranst_ID)
 	{
 		$query  = 	"SELECT v.anzahl AS anzahl_erforderlich, lr.anzahl AS anzahl_inRaum, v.ausstattung_ID AS a_ID
@@ -225,6 +257,8 @@ class raumZuweisenModel
 		return $ausstattungOk;
 	}
 	 
+	 
+	//Funktion zur Datenabfrage, sodass nur an dieser Stelle die Verbindung zur DB hergestellt wird
 	private function abfrage($query) 
 	{
         //Datenbankverbindung

@@ -3,24 +3,21 @@
 	- Projekt: 				Lehrveranstaltungssoftware (WF5-WFPRJ)
 	- Gruppe: 				01
 	
-	- Datum: 				22.04.2015
-	- Sprint: 				2
+	- Datum: 				06.05.2015
+	- Sprint: 				3
 	
 	--------------------------------------------------
 	
-	- User Story (Nr. 160): Als Mitarbeiter möchte ich einer Veranstaltung einen Raum unter Berücksichtigung 
-							der Ausstattung zuordnen können.
-	- User Story Punkte:	13	
-	- User Story Aufwand:	4h
+	- User Story (Nr. 340): Als Entwickler möchte ich im MVC-Pattern programmieren können.
+	- User Story Punkte:	40	
+	- User Story Aufwand:	6h
+	
+	- Task: View erstellen, indem User Stories aus den ersten beiden Sprints angepasst werden
 	
 	//////////////////////////////////////////////////
-	
-	- User-Story (Nr. 20a): Als Mitarbeiter möchte ich einer Veranstaltung einen Raum manuell zuordnen können.  
-							(Berücksichtigung der Zeit)
-	- User Story Punkte:	13
-	- User Story Aufwand:	4h
--->						
+-->					
 
+<!-- Formular zur Auswahl von Veranstaltung, Wochentag und Stundenzeit: -->
 
 <h1>Raum einer Veranstaltung zuweisen</h1>
 
@@ -33,7 +30,7 @@
 		<select class='input' name='waehleVeranstaltung' id='veranstaltung' size='4' style='width: 22em'>
 			<?php
 		
-			//erzeugt die Liste mit "option"-HTML-Elementen aus dem Array veranstaltungen
+			//alle Veranstaltungen in Option-List anzeigen:
 			
 			foreach ($this->veranstaltungen as $veranstaltung) 
 			{
@@ -51,7 +48,7 @@
 		<select class='input' name='waehleWochentag' id='wochentag' style='width: 22em'>
 			<?php
 		
-			//erzeugt die Liste mit "option"-HTML-Elementen aus dem Array wochentage
+			//alle Wochentage in Option-List anzeigen:
 			
 			foreach ($this->wochentage as $tag) 
 			{
@@ -69,7 +66,7 @@
 		<select class='input' name='waehleZeit' id='stundenzeit' style='width: 22em'>
 			<?php
 		
-			//erzeugt die Liste mit "option"-HTML-Elementen aus dem Array stundenZeiten
+			//alle Stundenzeiten in Option-List anzeigen:
 			
 			foreach ($this->stundenZeiten as $stundenzeit) 
 			{

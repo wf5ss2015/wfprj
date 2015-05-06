@@ -1,19 +1,27 @@
+<!-- ---------- Autor: Alexander Mayer ---------- 
+
+	- Projekt: 				Lehrveranstaltungssoftware (WF5-WFPRJ)
+	- Gruppe: 				01
+	
+	- Datum: 				06.05.2015
+	- Sprint: 				3
+	
+	--------------------------------------------------
+	
+	- User Story (Nr. 290):	Als Mitarbeiter/Dozent/Student möchte ich mir Raumpläne anzeigen lassen können.
+	- User Story Punkte:	13	
+	- User Story Aufwand:	4h
+	
+	- Task: Model erstellen
+	
+	//////////////////////////////////////////////////
+-->	
+
+
 <?php
 
-
-
-/**
- * @author Alexander Mayer
- * Model für Raumplan-Anzeige
- */
 class raumplanModel 
 {
-    /**
-     * @author Kilian Kraus
-     *
-     * @param $user_name string Nutzername
-     *
-     */
 
     //gibt ein array zurück mit allen vorhandenen Vorlesungsräumen
     public function getVorlesungsraeume() 
@@ -25,6 +33,7 @@ class raumplanModel
 		
 		return $vorlesungsraeume;
 	}
+	
 	
 	//gibt ein array zurück mit allen vorhandenen Laborräumen
     public function getLaborraeume() 
@@ -38,8 +47,14 @@ class raumplanModel
 		return $laborraeume;
 	}
 	
+	
+	//gibt ein array zurück mit allen Veranstaltungsterminen in einem bestimmten Raum:
 	public function getVeranstaltungstermine($raum_bezeichnung)
 	{
+		/*	ORDER BY: die Datensätze werden sortiert nach Stundenzeit und Wochentag, sodass später beim
+			Anlegen der Tabelle im View die Veranstaltungstermine Reihe für Reihe im Raumplan eingefügt werden
+			können!
+		*/
 		$query = "SELECT vt.tag_ID, vt.stdZeit_ID, v.veranst_bezeichnung 
 							FROM Veranstaltungstermin vt JOIN Veranstaltung v ON (vt.veranst_ID = v.veranst_ID)
 							WHERE vt.raum_bezeichnung = '$raum_bezeichnung' 
@@ -51,6 +66,8 @@ class raumplanModel
 		return $veranstaltungstermine;
 	}
 	
+	
+	//Funktion zur Datenabfrage, sodass nur an dieser Stelle die Verbindung zur DB hergestellt wird
 	private function abfrage($query) 
 	{
         //Datenbankverbindung

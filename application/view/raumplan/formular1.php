@@ -3,24 +3,21 @@
 	- Projekt: 				Lehrveranstaltungssoftware (WF5-WFPRJ)
 	- Gruppe: 				01
 	
-	- Datum: 				22.04.2015
-	- Sprint: 				2
+	- Datum: 				06.05.2015
+	- Sprint: 				3
 	
 	--------------------------------------------------
 	
-	- User Story (Nr. 160): Als Mitarbeiter möchte ich einer Veranstaltung einen Raum unter Berücksichtigung 
-							der Ausstattung zuordnen können.
+	- User Story (Nr. 290):	Als Mitarbeiter/Dozent/Student möchte ich mir Raumpläne anzeigen lassen können.
 	- User Story Punkte:	13	
 	- User Story Aufwand:	4h
 	
-	//////////////////////////////////////////////////
+	- Task: View erstellen
 	
-	- User-Story (Nr. 20a): Als Mitarbeiter möchte ich einer Veranstaltung einen Raum manuell zuordnen können.  
-							(Berücksichtigung der Zeit)
-	- User Story Punkte:	13
-	- User Story Aufwand:	4h
--->						
+	//////////////////////////////////////////////////
+-->					
 
+<!-- Formular zur Auswahl eines Raumes, von welchem der Raumplan angezeigt werden soll: -->
 
 <h1>Raumplan anzeigen</h1>
 
@@ -37,7 +34,7 @@
 			
 			echo "<optgroup label='".utf8_encode('Vorlesungsräume')."'>";
 		
-			//erzeugt die Liste mit "option"-HTML-Elementen aus dem Array vorlesungsraeume
+			//alle Vorlesungsräume in Option-List anzeigen:
 			
 			foreach ($this->vorlesungsraeume as $vorlesungsraum) 
 			{
@@ -52,7 +49,7 @@
 			
 			echo "<optgroup label='".utf8_encode('Laborräume')."'>";
 		
-			//erzeugt die Liste mit "option"-HTML-Elementen aus dem Array laborraeume
+			//alle Laborräume in Option-List anzeigen:
 			
 			foreach ($this->laborraeume as $laborraum) 
 			{

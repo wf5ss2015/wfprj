@@ -3,24 +3,21 @@
 	- Projekt: 				Lehrveranstaltungssoftware (WF5-WFPRJ)
 	- Gruppe: 				01
 	
-	- Datum: 				22.04.2015
-	- Sprint: 				2
+	- Datum: 				06.05.2015
+	- Sprint: 				3
 	
 	--------------------------------------------------
 	
-	- User Story (Nr. 160): Als Mitarbeiter möchte ich einer Veranstaltung einen Raum unter Berücksichtigung 
-							der Ausstattung zuordnen können.
-	- User Story Punkte:	13	
-	- User Story Aufwand:	4h
+	- User Story (Nr. 340): Als Entwickler möchte ich im MVC-Pattern programmieren können.
+	- User Story Punkte:	40	
+	- User Story Aufwand:	6h
+	
+	- Task: View erstellen, indem User Stories aus den ersten beiden Sprints angepasst werden
 	
 	//////////////////////////////////////////////////
-	
-	- User-Story (Nr. 20a): Als Mitarbeiter möchte ich einer Veranstaltung einen Raum manuell zuordnen können.  
-							(Berücksichtigung der Zeit)
-	- User Story Punkte:	13
-	- User Story Aufwand:	4h
--->						
+-->							
 
+<!-- gibt eine Bestätigung für die Erstellung eines neuen Veranstaltungstermin aus -->
 
 <h1>Raum einer Veranstaltung zuweisen</h1>
 
