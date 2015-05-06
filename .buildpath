@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="application/config"/>
+	<buildpathentry kind="src" path="application/controller"/>
+	<buildpathentry kind="src" path="application/core"/>
+	<buildpathentry kind="src" path="application/lib/phppasswordlib"/>
+	<buildpathentry kind="src" path="application/model"/>
+	<buildpathentry kind="src" path="application/view/_templates"/>
+	<buildpathentry kind="src" path="application/view/dozent"/>
+	<buildpathentry kind="src" path="application/view/error"/>
+	<buildpathentry kind="src" path="application/view/index"/>
+	<buildpathentry kind="src" path="application/view/login"/>
+	<buildpathentry kind="src" path="application/view/raumanlegen"/>
+	<buildpathentry kind="src" path="application/view/veranstaltung"/>
+	<buildpathentry kind="src" path="application/view/veranstaltungerweitern"/>
+	<buildpathentry kind="src" path="public"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+</buildpath>
