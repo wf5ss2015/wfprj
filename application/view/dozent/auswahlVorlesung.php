@@ -6,58 +6,48 @@
 * @author: Damian Wysocki
 * Datum: 29.04.2015
 *
-* User­Story (Nr. 90 ): Als Dozent möchte ich Teilnehmerlisten erzeugen können (Nacharbeit). (13 Points)
-* Zeit: 0.25
+* User­Story (Nr. 150a): Als Dozent möchte ich Teilnehmerlisten erzeugen können. (13 Points)
+* Zeit: 1,5
 */
 
 /**
  * @author Damian Wysocki
  *
- * Beschreibung: View um verfügbare Vorlesungen eines Dozenten anzuzeigen
+ * Beschreibung: View um zugeordnete Vorlesungen eines Dozenten anzuzeigen
  *
  */
 ?>
-<?php $this->renderResponse(); ?>
 	<header>
-				<h1>Teilnehmerliste</h1>
-				<p>(Angemeldet als Nutzer:"<?php echo Session::get('user_name')?>")</p>
-			</header>
+		<h2>Teilnehmerliste</h2>
 		
-		<!--  -->
+	</header>
 		
          <section>
 				<article>   
 					<article>
-						<p>Hier sehen Sie ihre zugeordneten Kurse. Bitte auswählen um Teilnehmerlisten zu erzeugen</p>
+						<p>Hier sehen Sie ihre zugeordneten Kurse. Bitte auswählen um Teilnehmerlisten zu erzeugen</p><br>
 					</article>
+					
 					<!-- Prüfen ob Array leer (Wichtig, Namen für Select Tag vergeben ;=)-->
 					<?php if ($this->vorlesung) { ?>
 				
-					<form action="index.php?url=Dozent/teilnehmerListe" method="post"/>
-					<select name="id">
-					
-					<!--Veranstaltung in dropdownmenü anzeigen -->
-					<?php foreach($this->vorlesung as $key => $value) { ?>
-					
-					<option value="<?php echo htmlentities($value->veranst_ID);?>">
-					<?php echo htmlentities($value->veranst_bezeichnung); ?></option>
-					
-					<?php } ?>
-					</select>
-					<input type="submit" value="weiter">
+					<form action="index.php?url=dozent/teilnehmerListe" method="post"/>
+						<select name="id">
+							
+							<!--Veranstaltung in dropdownmenü anzeigen -->
+							<?php foreach($this->vorlesung as $key => $value) { ?>
+							<option value="<?php echo htmlentities($value->veranst_ID);?>">
+							<?php echo htmlentities($value->veranst_bezeichnung); ?></option>
+							<?php } ?>
+							
+						</select>
+						<input type="submit" value="weiter">
 					</form>
 					
 					<!-- sonst Fehlermeldung -->
 					<?php }else { ?>
-						kein Array übergeben
+							Kein Array vorhanden
 					<?php } ?>				
 				</article>
 		</section>
 		
-<!--
-/*
-* 		Diese Codezeile muss noch in den Standardheader eingefügt werden um Link herzustellen 
-*		<li>
-*			<a href="index.php?url=Dozent/auswahlVorlesung">Teilnehmerliste</a>
-*       </li>
-*/ -->

@@ -1,13 +1,12 @@
 <?php
-
 /**
 * SPRINT 03
 *
 * @author: Damian Wysocki
 * Datum: 29.04.2015
 *
-* User­Story (Nr. 90 ): Als Dozent möchte ich Teilnehmerlisten erzeugen können (Nacharbeit). (13 Points)
-* Zeit: 0.5
+* User­Story (Nr. 150a): Als Dozent möchte ich Teilnehmerlisten erzeugen können. (13 Points)
+* Zeit: 1
 */
 
 /**
@@ -16,7 +15,9 @@
  * Beschreibung: Controller um die Daten aus dem Model in der View zu steuern
  *
  */
+ ?>
  
+<?php 
 class DozentController extends Controller
 {
 
@@ -24,8 +25,17 @@ class DozentController extends Controller
     {
         Auth::checkAuthenticationDocent();
 		parent::__construct();	
-		
     }
+	
+	/*
+	// ausgewählt Vorlesung anzeigen
+    public function anzeigenVorlesung()
+    {
+		$this->View->render('dozent/teilnehmerListe', array(
+            'zeigeVorlesung' => DozentModel::getNameVorlesung(Request::post('id'))
+		);
+    }
+	*/
 	
 	// Funktion zur Auswahl der hinterlegten Vorlesungen eines Dozenten
     public function auswahlVorlesung()
