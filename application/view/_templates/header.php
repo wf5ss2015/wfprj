@@ -23,34 +23,32 @@
 	<link rel ="stylesheet" href="<?php echo Config::get('URL'); ?>public/css/styles.css">
 </head>
 
-<div id="wrapper">
+<div class="wrapper">
 <div class="header">
 	
-		<a href ="index.php?url=index/index" title="home">
-		<img src ="../public/css/Grafiken/hs_ulm_logo.png" width="133" height="77" alt="hsulm logo">
-		</a>
+	<a href ="index.php?url=index/index" title="home">
+	<img src ="../public/css/Grafiken/hs_ulm_logo.png" width="133" height="77" alt="hsulm logo">
+	</a>
 	
-	
-	<nav class="header">
-		<ul class="header">
-			<li class="header"><a href="index.php?url=login/login">Login</a></li>
-		
-		
-			<li class="header">
-		<form action="#">
-			<label for="Suchfeld"></label>
-			<input type="search"
-					name="suchfeld"
-					id="suchfeld"
-					size= "10"
-					maxlength="60"
-					placeholder="Suchbegriff">
-			<input type="image"
-					class="suchbutton"
-					src="../public/css/Grafiken/icon_suche.gif">
-		</form>
+	<nav>
+		<ul>
+			<li><a href="index.php?url=login/index">Login</a>
+			</li>
+			<li>
+				<form action="#">
+					<label for="Suchfeld"></label>
+						<input type="search"
+						name="suchfeld"
+						id="suchfeld"
+						size= "10"
+						maxlength="60"
+						placeholder="Suchbegriff">
+						<input type="image"
+						class="suchbutton"
+						src="../public/css/Grafiken/icon_suche.gif">
+				</form>
 			</li>
 		</ul>
 	</nav>
-	
 </div>
+

@@ -19,106 +19,125 @@ thml {
 	font-family: Verdana, sans-serif;	
 }
 body{
-	
-	
 	margin-top: 5px;
 	font-size: 14px;
 	font-family: Arial, sans-serif;
-	background: white;
-        
+    background: white;
 }
-.menuebar a {
-	color: white;
-	text-decoration: none;
+
+/*breite*/
+.wrapper {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.wrapper section {
+	margin-left: 10px;
+	margin-top:0px;
+}
+	
+
+/*header*/
+.header {
+	margin: 0 auto;
+    background: black;
+}
+
+.header nav{
+	list-style-type: none;
+    float:right;
+}
+
+.header ul{
+    text-align: center;
+}
+
+.header li{
+    display: inline-block;
 }
 .header a {
 	color: white;
 	text-decoration: none;
 }
-.Seitenbar a{
+
+/*menue unter header*/
+.menue
+{
+	float: left;
+	width: 100%; /* optionale Weitenangabe */
+	background: #aaa;
+}
+
+.menue a {
 	color: white;
 	text-decoration: none;
 }
 
-#wrapper {
-	width: 960px;
-	margin: 0 auto;
-	background:yellow;
+.menue nav {
+	list-style-type: none;
+    float: left;
 }
 
-.header {
-	margin: 0 auto;
-        background: black;
-        height: 100px;
+.menue ul{
+	list-style-type: none;
+    text-align: center; 
 }
 
-nav.header {
-    float:right;
-    //padding-top:10px;
-    height:30px;
-}
-
-ul.header {
-    text-align: center;
-}
-
-li.header{
+.menue li{
     display: inline-block;
 }
 
-
-#menue
+.content {
+	width: 100%;
+}
+/*content left = menue links*/
+.content_left
 {
-float: left;
-width: 100%; /* optionale Weitenangabe */
-background: #aaa;
-}
-.menuebar
-{
-background: #aaa;
-text-decoration: none;
 
-}
-nav.menuebar {
-   float: left;
+	float: left;
+	width: 15%; /* optionale Weitenangabe */
+	background:#aaa ;
 }
 
-ul.menuebar {
-    text-align: center;
-    
+.content_left nav{
+	list-style-type: none;
+	text-decoration: none;
+	text-align: left;
 }
 
-li.menuebar{
+.content_left ul{
+    text-align: left; 
+}
+
+.content_left li{
+	text-align: left;
     display: inline-block;
 }
 
-
-#content_left
-{
-float: left;
-width: 20%; /* optionale Weitenangabe */
-background:#aaa ;
-}
- 
-#content_right
-{
-float: right;
-width: 80%; /* optionale Weitenangabe */
-background: white;
-min-hight: 300px;;
+.content_left a {
+	color: white;
+	text-decoration: none;
 }
 
-#footer
+/*content right = inhalt*/
+.content_right
 {
-float: right;
-width: 100%; /* optionale Weitenangabe */
-background: black;
-color: #aaa;
+
+	float:right;
+	width: 85%; /* optionale Weitenangabe */
 }
 
+/*footer*/
+.footer
+{
+	float: right;
+	width: 100%; /* optionale Weitenangabe */
+	background: black;
+	color: #aaa;
+}
 
-
-
-
+.footer section {
+	text-align: center;
+}
 
 

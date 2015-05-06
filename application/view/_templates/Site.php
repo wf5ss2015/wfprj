@@ -15,15 +15,15 @@
 
  
     <!--individuelle sitebar je nach dem welche rolle angemeldet ist-->
-    <div id="content_left">
+    <div class="content_left">
     	<section class ="Site">
-			<nav class="Seitenbar">
+			<nav>
 			<ul>
-                            <li class="Seitenbar"><a href='#'>Navigation 1 | </a></li>
-                    <li class="Seitenbar"><a href='#'>Navigation 2 | </a></li>
-                    <li class="Seitenbar"><a href='#'>Navigation 3 | </a></li>
-                    <li class="Seitenbar"><a href='#'>Navigation 4 | </a></li>
-                    <li class="Seitenbar"><a href='#'>Navigation 5 | </a></li>
+                    <li><a href='#'>Navigation 1 | </a></li>
+                    <li><a href='#'>Navigation 2 | </a></li>
+                    <li><a href='#'>Navigation 3 | </a></li>
+                    <li><a href='#'>Navigation 4 | </a></li>
+                    <li><a href='#'>Navigation 5 | </a></li>
                         
 			</ul>
 			</nav>

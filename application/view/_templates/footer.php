@@ -16,10 +16,11 @@
 
  <!-- einheitlicher Footer Renato Cabriolu sprint -->
 
-
-<div id="footer">
-
-	<p> copyright und andere informationen über diese seite</p>
+</div>
+<div class="footer">
+	<section>
+	<p>copyright und andere informationen über diese seite</p>
+	</section>
 </div>
 </div>
 </body>

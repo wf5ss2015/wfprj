@@ -12,12 +12,13 @@
 -->
 
 <!-- Individuelle menübar -->
-<div id="menue">
-	<nav class="menuebar">
-		<ul class="menuebar">
-                    <li class="menuebar"><a href="index.php?url=index/index">Startseite |</a></li>
-                    <li class="menuebar"><a href="index.php?url=login/login">Einloggen </a></li>
+<div class="menue">
+	<nav>
+		<ul>
+            <li><a href="index.php?url=index/index">Startseite |</a></li>
+            <li><a href="index.php?url=login/index">Einloggen </a></li>
 		</ul>
 	</nav>
 </div>
+<div class="content">
 

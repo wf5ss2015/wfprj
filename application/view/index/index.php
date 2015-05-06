@@ -10,8 +10,9 @@
 * Zeit: 
 */
 ?><!--TODO HTML5 umsetzen-->
-<div class="container">
-    <div class="box">
+<div class="content_right">
+	<?php $this->renderResponse(); ?>
+	<section>
         <h3>Start</h3>
         <p>
             Login: dozent<br>
@@ -30,5 +31,6 @@
 			Passwort: tutor<br>
 	
 		</p>
-    </div>
+  	</section>
 </div>
+
