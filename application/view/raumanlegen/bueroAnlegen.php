@@ -5,7 +5,7 @@
 	version: 02
 	sprint: 02
 	zeitaufwand: 0,5
-	user story: Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
+	user story (Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
 -->
 <html>
 <head>
@@ -15,7 +15,7 @@
     <header>
         <h1>B&uuml;ro anlegen</h1>
     </header>
-	<!-- bueroAnlegen.php wird ausgeführt nach der Bestätigung -->
+	<!-- saveRaum-function im Controller wird ausgeführt nach der Bestätigung -->
     <form action="index.php?url=raumAnlegen/saveRaum" method="post"/>
 		<div>
 			<!-- included das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->

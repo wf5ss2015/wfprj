@@ -3,8 +3,8 @@
     datum: 28.4.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 03	
-	zeitaufwand: 
-	user story (Nr. ): Als Mitarbeiter möchte ich Lehrverantwortlicher / Dozent / Tutor zu Veranstaltung hinzufügen können. (20 Pkt.)
+	zeitaufwand: 0.5
+	user story (Nr. 30b): Als Mitarbeiter möchte ich Lehrverantwortlicher / Dozent / Tutor zu Veranstaltung hinzufügen können. (20 Pkt.)
 -->
 <html>
 <head>
@@ -14,7 +14,7 @@
     <header>
         <h1>Person zu Veranstaltung hinzufügen</h1>
     </header>
-	<!-- Sobald der "Veranstaltung erweitern"-Button geclickt wird -->
+	<!-- Sobald der "Veranstaltung erweitern"-Button geclickt wird, wird die selected-function ausgeführt-->
     <form action="index.php?url=veranstaltungErweitern/selected" method="post"/>
 		<!-- Zur Auswahl der Veranstaltung eine Liste mit allen Veranstaltung und deren ID -->
 		<p> Veranstaltung 
@@ -40,7 +40,7 @@
 					if ($this->user_list){
 						foreach($this->user_list as $key => $value){
 							echo '<option>';
-							echo htmlentities($value->user_name); echo ",";
+							echo htmlentities($value->nutzer_name); echo ", ";
 							echo htmlentities($value->rolle_bezeichnung);
 							echo '</option>'; 
 						}

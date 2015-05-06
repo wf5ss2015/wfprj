@@ -5,7 +5,7 @@
     projekt: lehrveranstaltungsmanagement
 	sprint: 03
 	zeitaufwand: 0,5
-	user story: Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
+	user story (Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
 -->
 <html>
 <head>
@@ -15,7 +15,7 @@
     <header>
         <h1>Labor/Werkstatt anlegen</h1>
     </header>
-	<!-- laborAnlegen.php wird ausgeführt nach der Bestätigung -->
+	<!-- saveRaum-function wird ausgeführt nach der Bestätigung -->
     <form action="index.php?url=raumAnlegen/saveRaum" method="post"/>
 		<div>
 			<!-- included das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
@@ -37,9 +37,7 @@
 					?>
 				</select>	
 			</p>
-			<!--
-				includet die Ausstattungsabfrage
-			-->
+			<!-- includet die Ausstattungsabfrage raumAusstattung.php -->
 			<p>
 				<?php
 					include 'raumAusstattung.php';

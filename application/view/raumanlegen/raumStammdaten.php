@@ -3,12 +3,13 @@
     datum: 29.4.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 03
-	zeitaufwand:
-	user story: Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
+	zeitaufwand: 0.5
+	user story (Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
 -->
 <?php
+		//Für die Stammdaten, die jeder Raum hat
 			// Bezeichnung im Textfeld eingeben. 
-			echo "Bezeichnung"; echo '<input class="tf" type = "text" name = "bezeichnung" /><br>';
+			echo "<p>Bezeichnung"; echo '<input class="tf" type = "text" name = "bezeichnung"><br></p>';
 			// Alle Gebäude werden in einer Liste zur Auswahl angezeigt. Mit Bezeichnung und Anschrift.
 			echo "<p> Geb&auml;ude"; 
 				echo '<select name="gebäude">';

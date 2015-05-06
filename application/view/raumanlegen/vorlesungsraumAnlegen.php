@@ -4,18 +4,14 @@
     projekt: lehrveranstaltungsmanagement
 	sprint: 03
 	zeitaufwand: 0,5
-	user story: Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
+	user story(Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
 -->
-<html>
-<head>
-    <title>Vorlesungsraum anlegen</title>
-</head>
-<body> 
+
     <header>
         <h1>Vorlesungsraum anlegen</h1>
     </header>
-	<!-- vorlesungsraumAnlegen.php wird ausgeführt nach der Bestätigung -->
-    <form action="index.php?url=raumAnlegen/saveRaum" method="post"/>
+	<!-- saveRaum-function wird ausgeführt nach der Bestätigung -->
+    <form action="index.php?url=raumAnlegen/saveRaum" method="post">
 		<div>
 			<!-- includet das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
 			<?php
@@ -25,7 +21,7 @@
 			<?php
 				include 'raumAusstattung.php';
 			?>
-			<input type="hidden" name="raumtyp" value="vorlesungsraum"/>
+			<input type="hidden" name="raumtyp" value="vorlesungsraum">
 		</div>
 		<p>
 			<?php
@@ -34,5 +30,3 @@
 			<input type="submit" name="anlegen" value="Vorlesungsraum anlegen">
 		</p>
     </form>
-</body>
-</html>
