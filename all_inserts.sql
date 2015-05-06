@@ -4,7 +4,7 @@ INSERT INTO Rolle (rolle_bezeichnung) VALUES
 ('Mitarbeiter'),
 ('Tutor');
 
-INSERT INTO Eigenschaft (eigeschaft_bezeichnung) VALUES
+INSERT INTO Eigenschaft (eigenschaft_bezeichnung) VALUES
 ('username'),
 ('matrNr'),
 ('vorname'),
@@ -48,15 +48,15 @@ INSERT INTO Rolle_hat_Eigenschaft (eigenschaft_ID, rolle_ID, reihenfolge) VALUES
 (9, 4, 8),
 (10, 1, 9);
 
-INSERT INTO Nutzer (nutzer_name, passwortHash, letzterLogin, rolle_ID) VALUES
-('dozent', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', '1430339080', 2),
-('mitarbeiter', '$2y$10$PfLvMjTQ/6xNaodgDPcdP.edJJ17bK3vvexaF6sknagAvW.YBeu1.', NULL, 3),
-('student', '$2y$10$8pEgYNZX7GW8FYfp8Mzbz.g./61axiS/wx2np.bWw92N361fBFNp6', '1430327378', 1),
-('tutor', '$2y$10$kflo8og3yPg0cquTGK6nY.HOkx6JVjMGK8Dja4XXIzWURmZBVleZ6', '1430327729', 4),
-('userTestDozent', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', NULL, 2),
-('userTestMitarbeiter', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', NULL, 3),
-('userTestStudent', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', NULL, 1),
-('userTestTutor', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', NULL, 4);
+INSERT INTO Nutzer (nutzer_name, passwortHash, rolle_ID) VALUES
+('dozent', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW',2),
+('mitarbeiter', '$2y$10$PfLvMjTQ/6xNaodgDPcdP.edJJ17bK3vvexaF6sknagAvW.YBeu1.', 3),
+('student', '$2y$10$8pEgYNZX7GW8FYfp8Mzbz.g./61axiS/wx2np.bWw92N361fBFNp6', 1),
+('tutor', '$2y$10$kflo8og3yPg0cquTGK6nY.HOkx6JVjMGK8Dja4XXIzWURmZBVleZ6', 4),
+('userTestDozent', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 2),
+('userTestMitarbeiter', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 3),
+('userTestStudent', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 1),
+('userTestTutor', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 4);
 
 INSERT INTO Wert (eigenschaft_ID, nutzer_name, inhalt) VALUES
 (2, 'userTestStudent', '3112493'),
@@ -84,7 +84,7 @@ INSERT INTO Wert (eigenschaft_ID, nutzer_name, inhalt) VALUES
 (8, 'userTestStudent', 'Informatik'),
 (10, 'userTestStudent', 'WF');
 
-INSERT INTO Email VALUES (email_name, nutzer_name)
+INSERT INTO Email (email_name, nutzer_name) VALUES
 ('userTestDozent@hs-ulm.de', 'userTestDozent'),
 ('userTestMitarbeiter@hs-ulm.de', 'userTestMitarbeiter'),
 ('userTestStudent@hs-ulm.de', 'userTestStudent'),
