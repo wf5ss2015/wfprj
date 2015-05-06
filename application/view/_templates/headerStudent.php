@@ -26,8 +26,16 @@
                 <a href="index.php?url=index/index">Start</a>
             </li>
 			<li>
+<<<<<<< HEAD
                 <a href="index.php?url=raumplan/erzeugeFormular1">Raumplan anzeigen</a>
             </li>
+=======
+                <a href="index.php?url=student/enrollClass">Kursanmeldung</a>
+			</li>
+			<li>
+                <a href="index.php?url=student/delistClass">Kursabmeldung</a>
+			</li>
+>>>>>>> b8f54f1a246265f5b7bf2fbf9993da75f966d461
 			<li>
                 <a href="index.php?url=login/logout">AusloggenStudent</a>
 			</li>

@@ -4,7 +4,7 @@
  @author: Kilian Kraus
  Datum: 25.04.2015
  Zeitaufwand (in Stunden): 0.25
- User Story Nr.: 
+ User Story Nr.: 320
  User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
  Task: Application.php anpassen, damit errorController geladen wird. 
  ===============================================*/
@@ -39,6 +39,7 @@
  require '../application/core/Table.php';
  require '../application/lib/phppasswordlib/passwordLib.php';
  require '../application/core/DatabaseFactoryMysql.php';
+ //require '../application/lib/html2pdf/html2pdf.class.php';
  require '../application/model/raumAnlegenModel.php';
  require '../application/model/veranstaltungErweiternModel.php';
  require '../application/model/DozentModel.php';

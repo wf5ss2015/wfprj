@@ -8,7 +8,7 @@
  Task: view erstellen(dummy)
  ===============================================*/
 ?>
-<!--TODO HTML5 umsetzen-->
+<?php $this->renderResponse(); ?>
 <div class="container">
 
         <div class="table-wrapper">
