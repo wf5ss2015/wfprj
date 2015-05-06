@@ -28,8 +28,20 @@
 				<a href="index.php?url=veranstaltungerweitern/veranstaltungErweitern">Start</a>
 			</li>
 			<li>
+                <a href="index.php?url=raumAnlegen/raumAnlegen">raum </a>
+			 </li>
+			 <li>
+                <a href="index.php?url=veranstaltung/index">Veranstaltungen verwalten</a>
+            </li>
+           
+			<li>
                 <a href="index.php?url=login/logout">Ausloggen</a>
 			</li>
 		</ul>
 	</nav>
 </div>
+<div class="content">
+<div class="content_right">
+
+
+

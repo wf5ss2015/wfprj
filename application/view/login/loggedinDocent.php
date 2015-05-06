@@ -17,8 +17,6 @@
  */
  ?>
 <!--Startbereich für einen eingeloggten Dozenten -->
-
-<body>
 	<?php $this->renderResponse(); ?>
 	<header>
 		<h2>Startbereich für Dozenten </h2>
@@ -56,9 +54,7 @@
 		Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 		</p>
 	</section>
-	
-	<footer>
-		
-	</footer>
 
-</body> 
+	
+
+

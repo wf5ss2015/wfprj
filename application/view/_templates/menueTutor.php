@@ -24,3 +24,5 @@
 		</ul>
 	</nav>
 </div>
+<div class="content">
+<div class="content_right">

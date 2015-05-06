@@ -9,5 +9,7 @@
  ===============================================*/
 ?>
 
+<div class="content_right">
 <?php $this->renderResponse(); ?>
+</div>
 

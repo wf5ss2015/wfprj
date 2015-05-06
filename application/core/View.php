@@ -145,7 +145,6 @@ Start Sprint: 2
 		if(Session::userIsLoggedIn()&&Session::get('user_role')==1){
 			// lädt den header
 			require Config::get('PATH_VIEW') . '_templates/menueStudent.php';
-			echo "test";
 		}
 		//falls mitarbeiter
 		elseif(Session::userIsLoggedIn()&&Session::get('user_role')==3){

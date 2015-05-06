@@ -15,6 +15,7 @@
 
  
     <!--individuelle sitebar je nach dem welche rolle angemeldet ist-->
+	</div>
     <div class="content_left">
 			<nav>
 			<ul>
