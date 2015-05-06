@@ -8,7 +8,7 @@
 	- Sprint: 				3
 */
 
-
+-- alle Tabellen auf dem aktuellsten Stand:
 
 -- -----------------------------------------------------
 -- Table `Rolle`
@@ -163,11 +163,11 @@ CREATE  TABLE `Veranstaltung`
 
 
 -- -----------------------------------------------------
--- Table `Nutzer_beteiligtAn_Veranstaltung`
+-- Table `User_beteiligtAn_Veranstaltung`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Nutzer_beteiligtAn_Veranstaltung` ;
+DROP TABLE IF EXISTS `User_beteiligtAn_Veranstaltung` ;
 
-CREATE  TABLE `Nutzer_beteiligtAn_Veranstaltung` 
+CREATE  TABLE `User_beteiligtAn_Veranstaltung` 
 (
 	`veranst_ID` INT NOT NULL,
 	`nutzer_name` VARCHAR(45) NOT NULL,
