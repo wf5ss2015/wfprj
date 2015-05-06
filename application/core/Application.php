@@ -31,12 +31,12 @@
  require '../application/core/Controller.php';
  require '../application/core/Session.php';
  require '../application/core/View.php';
- require '../application/core/Table.php';
  require '../application/model/LoginModel.php';
  require '../application/core/Redirect.php';
  require '../application/model/UserModel.php';
  require '../application/core/DatabaseFactory.php';
  require '../application/core/Auth.php';
+ require '../application/core/Table.php';
  require '../application/lib/phppasswordlib/passwordLib.php';
  require '../application/core/DatabaseFactoryMysql.php';
  require '../application/model/raumAnlegenModel.php';
@@ -45,6 +45,10 @@
 
 //Roland Schmid
 require '../application/model/VeranstaltungModel.php';
+
+//Alexander Mayer
+require '../application/model/raumZuweisenModel.php';
+require '../application/model/raumplanModel.php';
 
  
 class Application

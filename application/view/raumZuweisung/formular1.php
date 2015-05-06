@@ -1,0 +1,88 @@
+<!-- ---------- Autor: Alexander Mayer ---------- 
+
+	- Projekt: 				Lehrveranstaltungssoftware (WF5-WFPRJ)
+	- Gruppe: 				01
+	
+	- Datum: 				22.04.2015
+	- Sprint: 				2
+	
+	--------------------------------------------------
+	
+	- User Story (Nr. 160): Als Mitarbeiter möchte ich einer Veranstaltung einen Raum unter Berücksichtigung 
+							der Ausstattung zuordnen können.
+	- User Story Punkte:	13	
+	- User Story Aufwand:	4h
+	
+	//////////////////////////////////////////////////
+	
+	- User-Story (Nr. 20a): Als Mitarbeiter möchte ich einer Veranstaltung einen Raum manuell zuordnen können.  
+							(Berücksichtigung der Zeit)
+	- User Story Punkte:	13
+	- User Story Aufwand:	4h
+-->						
+
+
+<h1>Raum einer Veranstaltung zuweisen</h1>
+
+<h3 style='color: red'>Bitte Veranstaltung, Wochentag und Stundenzeit ausw&aumlhlen: </h3>
+
+<form action="index.php?url=raumZuweisen/erzeugeFormular2" method="post" style='background-color: #eeeeff; width: 32em; margin: 20px; padding: 25px; border: 1px solid silver;'>
+	
+	<p>
+		<label for='veranstaltung' style='width:8em; display:block; float:left'> Veranstaltung: </label>
+		<select class='input' name='waehleVeranstaltung' id='veranstaltung' size='4' style='width: 22em'>
+			<?php
+		
+			//erzeugt die Liste mit "option"-HTML-Elementen aus dem Array veranstaltungen
+			
+			foreach ($this->veranstaltungen as $veranstaltung) 
+			{
+				$veranst_bezeichnung = $veranstaltung['veranst_bezeichnung'];
+				$veranst_ID = $veranstaltung['veranst_ID'];
+				
+				echo "<option value='$veranst_ID'>$veranst_bezeichnung</option>";
+			}
+			?>
+		</select>
+	</p>
+	
+	<p>
+		<label for='wochentag' style='width:8em; display:block; float:left'> Wochentag: </label>
+		<select class='input' name='waehleWochentag' id='wochentag' style='width: 22em'>
+			<?php
+		
+			//erzeugt die Liste mit "option"-HTML-Elementen aus dem Array wochentage
+			
+			foreach ($this->wochentage as $tag) 
+			{
+				$tag_bezeichnung = $tag['tag_bezeichnung'];
+				$tag_ID = $tag['tag_ID'];
+				
+				echo "<option value='$tag_ID'>$tag_bezeichnung</option>";
+			}
+			?>
+		</select>
+	</p>
+	
+	<p>
+		<label for='stundenzeit' style='width:8em; display:block; float:left'> Stundenzeit: </label>
+		<select class='input' name='waehleZeit' id='stundenzeit' style='width: 22em'>
+			<?php
+		
+			//erzeugt die Liste mit "option"-HTML-Elementen aus dem Array stundenZeiten
+			
+			foreach ($this->stundenZeiten as $stundenzeit) 
+			{
+				$zeitVon = $stundenzeit['stdZeit_von'];
+				$zeitBis = $stundenzeit['stdZeit_bis'];
+				$id = $stundenzeit['stdZeit_ID'];
+				
+				echo "<option value='$id'>$zeitVon - $zeitBis</option>";	
+			}
+			?>
+		</select>
+	</p>
+	
+	<input type="submit" name="send" value="zeige Räume"/>
+	
+</form>

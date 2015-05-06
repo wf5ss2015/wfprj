@@ -26,6 +26,9 @@
                 <a href="index.php?url=index/index">Start</a>
             </li>
 			<li>
+                <a href="index.php?url=raumplan/erzeugeFormular1">Raumplan anzeigen</a>
+            </li>
+			<li>
                 <a href="index.php?url=login/logout">AusloggenStudent</a>
 			</li>
  
