@@ -161,10 +161,8 @@ Start Sprint: 2
 			// lädt den header
 			require Config::get('PATH_VIEW') . '_templates/menueTutor.php';
 		}else{
-		// lädt den standardheader
-        //require Config::get('PATH_VIEW') . '_templates/header.php';
+		// lädt das standartmenü
 		require Config::get('PATH_VIEW') . '_templates/menue.php';
-		// standard menue oder keins
 		}	
 	}
 /*===============================================

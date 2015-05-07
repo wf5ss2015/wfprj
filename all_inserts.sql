@@ -296,6 +296,15 @@ INSERT INTO Studiengang (stg_bezeichnung, stgTyp_ID, fak_ID) VALUES
 ('Maschinenbau', 1, 4),
 ('Information Systems', 2, 3);
 
+INSERT INTO `studiengang_hat_veranstaltung` (`stg_ID`, `veranst_ID`, `pflicht`) VALUES
+(2, 1, 1),
+(2, 2, 1),
+(2, 3, 1),
+(2, 4, 1),
+(2, 5, 1),
+(2, 10, 1),
+(4, 9, 1);
+
 INSERT INTO Veranstaltungsart (vArt_bezeichnung) VALUES
 ('Blockveranstaltung'),
 ('Kurs'),
