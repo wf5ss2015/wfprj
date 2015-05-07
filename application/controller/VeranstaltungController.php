@@ -6,8 +6,25 @@
 * @Matrikel:
 * Datum: 19.04.2015
 *
-* User­Story (Nr. xx ):  .... (n Points)
-* Zeit: m
+* User­Story 130a: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
+* 5 Points
+* Zeit: 1
+*/
+
+/**
+* SPRINT 03
+*
+* @author: Roland Schmid
+* @Matrikel:
+* Datum: 6.5.2015
+*
+* User­ Story 130b: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
+* 5 Points
+* Zeit: 2
+*
+* User Story 340: Als Entwickler möchte ich im MVC-Pattern programmieren können
+* 40
+*
 */
 
 
@@ -64,7 +81,10 @@ class VeranstaltungController extends Controller
         
     }
 
-	
+	/*
+	 * steuert den Anlegen-Vorgang für neue Veranstaltung
+	 * 
+	 * */
     public function anlegen() {
 	//neues Veranstaltungmodel anlegen
         $vModel = new VeranstaltungModel();
@@ -72,24 +92,15 @@ class VeranstaltungController extends Controller
         //legt die neue Veranstaltung an und speichert die ID, unter 
         //der sie gespeichert wurde
        
-        
         $vID = $vModel->veranstaltungAnlegen();
-//echo "<br>dorrar_vid = $vID<br>";
-//$veranstaltung;
-        
+              
         if($vID > 1) {
-//echo "<br>dorrar_vid = $vID, hier im if<br>";
+
             //zusätzlich noch Ausstattung eintragen
             //TODO
             
             //hole Daten der eben eingetragenen Veranstaltung als ein Array aus Objekten
             $veranstaltung = $vModel->getVeranstaltung($vID);
-//echo "veranstaltungen::: ";
-//print_r($veranstaltung);
-//echo "\ntype: " . print gettype($veranstaltung);
-            // die angegebene Ausstattung muss noch eingetragen werden mit der vID
-         //   $veranstaltung->ausstattungEintragen($vid);
-          
             $this->View->render('veranstaltung/angelegt', array('veranstaltung' => $veranstaltung));
             
          } else {

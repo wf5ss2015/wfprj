@@ -1,13 +1,18 @@
 <?php
 /**
-* SPRINT 02
+* SPRINT 03
 *
 * @author: Roland Schmid
 * @Matrikel:
-* Datum: 19.04.2015
+* Datum: 6.5.2015
 *
-* User­Story (Nr. xx ):  .... (n Points)
-* Zeit: m
+* User­ Story 130b: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
+* 5 Points
+* Zeit: 2
+*
+* User Story 340: Als Entwickler möchte ich im MVC-Pattern programmieren können
+* 40
+*
 */
 
 

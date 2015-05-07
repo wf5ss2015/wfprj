@@ -4,7 +4,7 @@
  @author: Kilian Kraus
  Datum: 25.04.2015
  Zeitaufwand (in Stunden): 0.5
- User Story Nr.: 320
+ User Story Nr.: 
  User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
  Task: 
  ===============================================*/
@@ -100,14 +100,15 @@ class DatabaseFactoryMysql extends MySQLi
    * 
    * Führt eine Query mit einem INSERT INTO String aus.
    * liefert 1 zurück, falls die Eintragung erfolgreich war.
+   * Diese Methode ist nötig, da die (überschriebene) Query-Methode versucht,
+   * ein Array aus Objekten zu bauen, was bei einer INSERT-Query fehlschlägt
+   * und zu einem Error führt.
    * 
    *    */
   public function insert($insertString) {
-
       $success = parent::query($insertString);
       return $success; 
   }
-  
   
   /*
    * Sprint 3 Ende

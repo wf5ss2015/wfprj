@@ -3,10 +3,16 @@
 * SPRINT 03
 *
 * @author: Roland Schmid
-* Datum: 29.04.2015
+* @Matrikel:
+* Datum: 6.5.2015
 *
-* User­Story (Nr. xx ):  .... (n Points)
-* Zeit: m
+* User­ Story 130b: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
+* 5 Points
+* Zeit: 2
+*
+* User Story 340: Als Entwickler möchte ich im MVC-Pattern programmieren können
+* 40
+*
 */
 
 
@@ -105,12 +111,13 @@ public function veranstaltungAnlegen() {
   //Request::post('name')
   //altes Format: $bez 		= $_POST['veranstaltung_bezeichnung'];
   $bez 		= Request::post('veranstaltung_bezeichnung');
-  $kurztext 	= Request::post('veranstaltung_kurztext');
+  $kurztext = Request::post('veranstaltung_kurztext');
   $credits 	= Request::post('veranstaltung_credits');
   $sws 		= Request::post('veranstaltung_sws');
   $maxNo 	= Request::post('veranstaltung_max_Teilnehmer');
   $art 		= Request::post('veranstaltung_veranstaltungsart');
   
+  $stg_ID	= Request::post('veranstaltung_pflichtvorlesung');
   
   //Datenbankverbindung
   $database = new DatabaseFactoryMysql();
@@ -142,13 +149,22 @@ public function veranstaltungAnlegen() {
 		    . "VALUES ('$bez', '$kurztext', '$credits', '$sws', '$maxNo', '$art');";
 
     if($database->insert($insertString)) {
-        
+        //speichert die ID, unter der die neue Veranstaltung eingetragen wurde
+    	$vID = $database->insert_id;
+    	
+    	// Veranstaltung wird als Pflichtveranstaltung in Tabelle 
+    	// "Studiengang_hat_Veranstaltung" eingetragen, wenn die gewählte ID > 0  	
+    	if($stg_ID > 0) {
+    		
+    		$this->setPflichtVeranstaltung($stg_ID, $vID);
+    		
+    	}
         
 //echo "<br>im model, in methode vAnlegen, nach insert<br>";
 //echo "<br>$database->insert_id<br>";
 
 //holt die letzte eingetragene ID
-        return $database->insert_id;
+        return $vID;
 
     } else {
         return -1;
@@ -158,8 +174,29 @@ public function veranstaltungAnlegen() {
     
  
 
-    
-    
+    /*
+     * Macht einen Eintrag in die Tabelle Studiengang_hat_Veranstaltung, in der festgehalten wird,
+     * dass eine Vorlesung $veranst_ID eine Pflichtveranstaltung im Studiengang $stg_ID ist
+     * 
+     * */
+	public function setPflichtVeranstaltung($stg_ID, $veranst_ID) { 
+		//Datenbankverbindung
+		$database = new DatabaseFactoryMysql();
+		
+
+		/*INSERT INTO `lehrveranstaltung`.`Studiengang_hat_Veranstaltung`
+		 (`stg_ID`, `veranst_ID`, `pflicht`) VALUES(<{stg_ID: }>, <{veranst_ID: }>, <{pflicht: 1}>);
+		 */
+		
+		/*INSERT INTO Studiengang_hat_Veranstaltung (stg_ID, veranst_ID, pflicht) VALUES (,,);
+		 */
+		
+		$insertString = "INSERT INTO Studiengang_hat_Veranstaltung (stg_ID, "
+					  . "veranst_ID, pflicht) VALUES ($stg_ID, $veranst_ID, 1);";
+		
+		$database->insert($insertString);
+		
+	}
     
     
     

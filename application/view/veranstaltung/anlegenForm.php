@@ -1,19 +1,20 @@
 <?php
 
-/*
- * HS-Ulm, WF5, SS2015, Wirtschaftsinformatik-Projekt
- * Projekt: Lehrveranstaltungssoftware
- * Name: Roland Schmid
- * Gruppe: 01
- * Sprint: 3
- * Version: 1
- * Datum: 2015-04-28
- * ----------------------------------------------------------------------------
- *
- * User-Story: (alte User Story, die jetzt in MVC überführt wurde)
- *              ....
- *
- */
+/**
+* SPRINT 03
+*
+* @author: Roland Schmid
+* @Matrikel:
+* Datum: 6.5.2015
+*
+* User­ Story 130b: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
+* 5 Points
+* Zeit: 2
+*
+* User Story 340: Als Entwickler möchte ich im MVC-Pattern programmieren können
+* 40
+*
+*/
 
 
 ?>
@@ -92,6 +93,7 @@
 
                 //ausstattung[] gruppiert die so benannten Eingabefelder; 
                 //in PHP wird dies zu einem Sub-Array zusammengefasst
+                // TODO hidden value für id? 
                 echo "\n\t<td><input type=\"text\"  name=\"veranstaltung_ausstattung[]\"";
                 echo " size=\"1\" /> </td>";
 
@@ -117,6 +119,8 @@
   
         <select class="input " name="veranstaltung_pflichtvorlesung" style="; width: 32em">	
 
+		<?php /*value 0 für kein Pflichtfach*/ ?>        
+         <option value="0"> </option>;
 
             <?php
             //Studiengänge aus DABA lesen und in einer Tabelle darstellen
