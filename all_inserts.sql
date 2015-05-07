@@ -56,7 +56,29 @@ INSERT INTO Nutzer (nutzer_name, passwortHash, rolle_ID) VALUES
 ('userTestDozent', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 2),
 ('userTestMitarbeiter', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 3),
 ('userTestStudent', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 1),
-('userTestTutor', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 4);
+('userTestTutor', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 4),
+/*
+---- update = Teststudenten anlegen 06.05. Damian
+*/
+('Carson', '$2y$10$dUrEcPXXPhy5orEJ94h8gOgphtEoMXQ0YC.Ypmo7/350UypGBDydC',1),
+('Logan', '$2y$10$GKFQfhKsznb8tBmUhvWSnu/214UjM8ZOauWDPJylKSM2aZtfnU3S.', 1),
+('Dolan', '$2y$10$/o//as2zOyJEfh/qqj7H2usxRvAgdcAuHlMR.1qth7VTOx9tkovUa', 1),
+('Samuel', '$2y$10$0InZ0F.FVITduZdnQqVaTOTuQB1BWZSVZJVz1.dEDRr.7ADZrbCPe', 1),
+('Jonas', '$2y$10$gn3NDRELjTHIi6mdHmAR3ebbKwaKv9N.n7r8ocR5LdGVTaylHM7Jm', 1),
+('Nicholas', '$2y$10$FiJKmwNpggknuG2VARNt2Ooc/wgcMubzE7t8t38zzoyh5whM1SdDG', 1),
+('Kasimir', '$2y$10$LRDBw8eHBlgGimwnzDlBw.g.49xHHi2zYekAWG3wW5qhENhMRSVNi', 1),
+('Ahmed', '$2y$10$9zzYgoAvyb4KmVZNw25OXuJGWMlwxW.7udnz6bzMKY.OM6qM8tjk2', 1),
+('Derek', '$2y$10$.FTBgX1J5pK5eHyngJenc.b4nlaesV443oAfqHcGmeLEQgcEh9nhC',1),
+('Otto', '$2y$10$y9DTJq4lQNt6/5CT9bNGNeyVn1wRqRDkdsI/txxYVkhUa/FQczxFm', 1),
+('Orlando', '$2y$10$pUZB1hAW6BfFu6BNMHCmTu9wrztM5l3rcVQSSYtJJTF.IRd45NoRq', 1),
+('Lars', '$2y$10$zLltvCGGyMVfXVNak8oAMOXwQ1ufend6PxjW658QdjUk0i6ueEss.', 1),
+('Philip', '$2y$10$jQ7J9xtxF5XZCicAjEELseMGA44Ev7XtV9aCc4VIHR9R/rHLyV7mq', 1),
+('Thor', '$2y$10$Zg7q98xbVHRW6BS24KAx/euCTp6k.0a6LHfkfe0sACPOjdqkRQxUi', 1),
+('Kelly', '$2y$10$ZkGNdjHHzhyU85.xIQa.CufPGsxrdDCWDSNXpmadyvsNAdJFEaTI.', 1),
+('Cody', '$2y$10$b4evX1//cP3HJKzvMrNrP.XNfHnss6cpc5ewc9voGZ.KARLdzHgo2', 1);
+/*
+---- update = Teststudenten anlegen 06.05. Damian
+*/
 
 INSERT INTO Wert (eigenschaft_ID, nutzer_name, inhalt) VALUES
 (2, 'userTestStudent', '3112493'),
@@ -82,13 +104,177 @@ INSERT INTO Wert (eigenschaft_ID, nutzer_name, inhalt) VALUES
 (7, 'userTestTutor', '0731 812371231'),
 (8, 'userTestDozent', 'Informatik'),
 (8, 'userTestStudent', 'Informatik'),
-(10, 'userTestStudent', 'WF');
+(10, 'userTestStudent', 'WF'),
+/*
+---- update = Teststudenten anlegen 06.05. Damian
+*/
+-- id 2 = natrNr
+(2,'Carson', '10000001'),
+(2,'Logan', '10000001'),
+(2,'Dolan', '10000001'),
+(2,'Samuel', '10000001'),
+(2,'Jonas', '10000001'),
+(2,'Nicholas', '10000001'),
+(2,'Kasimir', '10000001'),
+(2,'Ahmed', '10000001'),
+(2,'Derek', '10000001'),
+(2,'Otto', '10000001'),
+(2,'Orlando', '10000001'),
+(2,'Lars', '10000001'),
+(2,'Philip', '10000001'),
+(2,'Thor', '10000001'),
+(2,'Kelly', '10000001'),
+(2,'Cody', '10000001'),
+-- id 3 = vorname
+(3,'Carson', 'Carson'),
+(3,'Logan', 'Logan'),
+(3,'Dolan', 'Dolan'),
+(3,'Samuel', 'Samuel'),
+(3,'Jonas', 'Jonas'),
+(3,'Nicholas', 'Nicholas'),
+(3,'Kasimir', 'Kasimir'),
+(3,'Ahmed', 'Ahmed'),
+(3,'Derek', 'Derek'),
+(3,'Otto', 'Otto'),
+(3,'Orlando', 'Orlando'),
+(3,'Lars', 'Lars'),
+(3,'Philip', 'Philip'),
+(3,'Thor', 'Thor'),
+(3,'Kelly', 'Kelly'),
+(3,'Cody', 'Cody'),
+-- id 4 = nachname
+(4,'Carson', 'Matthews'),
+(4,'Logan', 'Woods'),
+(4,'Dolan', 'Powers'),
+(4,'Samuel', 'Mckay'),
+(4,'Jonas', 'Duncan'),
+(4,'Nicholas', 'Pickett'),
+(4,'Kasimir', 'Barton'),
+(4,'Ahmed', 'Payne'),
+(4,'Derek', 'Villarreal'),
+(4,'Otto', 'Gallagher'),
+(4,'Orlando', 'Chandler'),
+(4,'Lars', 'Powell'),
+(4,'Philip', 'Levy'),
+(4,'Thor', 'Fitzgerald'),
+(4,'Kelly', 'Cook'),
+(4,'Cody', 'Richmond'),
+-- id 5 = idAdresse
+(5,'Carson', 8),
+(5,'Logan', 9),
+(5,'Dolan', 10),
+(5,'Samuel', 11),
+(5,'Jonas', 12),
+(5,'Nicholas', 13),
+(5,'Kasimir', 14),
+(5,'Ahmed', 15),
+(5,'Derek', 16),
+(5,'Otto', 17),
+(5,'Orlando', 18),
+(5,'Lars', 19),
+(5,'Philip', 20),
+(5,'Thor', 21),
+(5,'Kelly', 22),
+(5,'Cody', 23),
+-- id 6 = rechte
+(6, 'Carson', 0),
+(6, 'Logan', 0),
+(6,'Dolan', 0),
+(6,'Samuel', 0),
+(6,'Jonas', 0),
+(6,'Nicholas', 0),
+(6,'Kasimir', 0),
+(6,'Ahmed', 0),
+(6,'Derek', 0),
+(6,'Otto', 0),
+(6,'Orlando', 0),
+(6,'Lars', 0),
+(6,'Philip', 0),
+(6,'Thor', 0),
+(6,'Kelly', 0),
+(6,'Cody', 0),
+-- id 7 = telefonnummer
+(7,'Carson', '047 84705429'),
+(7,'Logan', '022 42321709'),
+(7,'Dolan', '029 06360905'),
+(7,'Samuel', '005 78547177'),
+(7,'Jonas', '005 78547177'),
+(7,'Nicholas', '037 19670620'),
+(7,'Kasimir', '093 48282899'),
+(7,'Ahmed', '094 55206252'),
+(7,'Derek', '035 77958723'),
+(7,'Otto', '045 93141526'),
+(7,'Orlando', '079 36579082'),
+(7,'Lars', '010 31081374'),
+(7,'Philip', '083 40836692'),
+(7,'Thor', '069 87059906'),
+(7,'Kelly', '087 39281648'),
+(7,'Cody', '066 87087966'),
+-- id 8 = fakultät (1-6)
+(8,'Carson', 3),
+(8,'Logan', 3),
+(8,'Dolan', 3),
+(8,'Samuel', 3),
+(8,'Jonas', 3),
+(8,'Nicholas', 3),
+(8,'Kasimir', 3),
+(8,'Ahmed', 3),
+(8,'Derek', 3),
+(8,'Otto', 3),
+(8,'Orlando', 3),
+(8,'Lars', 6),
+(8,'Philip', 4),
+(8,'Thor', 4),
+(8,'Kelly', 4),
+(8,'Cody', 6),
+-- id 10 = studiengang (TI->[sid=1,fid=3] WI->[sid=2,fid=3], MT->[sid=3,fid=6] MB->[sid=4,fid=4] IS->[sid=5,fid=3])
+(10,'Carson', 'Wirtschaftsinformatik'),
+(10,'Logan', 'Wirtschaftsinformatik'),
+(10,'Dolan', 'Wirtschaftsinformatik'),
+(10,'Samuel', 'Wirtschaftsinformatik'),
+(10,'Jonas', 'Wirtschaftsinformatik'),
+(10,'Nicholas', 'Wirtschaftsinformatik'),
+(10,'Kasimir', 'Wirtschaftsinformatik'),
+(10,'Ahmed', 'Technische Informatik'),
+(10,'Derek', 'Technische Informatik'),
+(10,'Otto', 'Technische Informatik'),
+(10,'Orlando', 'Technische Informatik'),
+(10,'Lars', 'Medizintechnik'),
+(10,'Philip', 'Maschinenbau'),
+(10,'Thor', 'Maschinenbau'),
+(10,'Kelly', 'Maschinenbau'),
+(10,'Cody', 'Medizintechnik');
+/*
+---- update = Teststudenten anlegen 06.05. Damian
+*/
 
 INSERT INTO Email (email_name, nutzer_name) VALUES
 ('userTestDozent@hs-ulm.de', 'userTestDozent'),
 ('userTestMitarbeiter@hs-ulm.de', 'userTestMitarbeiter'),
 ('userTestStudent@hs-ulm.de', 'userTestStudent'),
-('userTestTutor@hs-ulm.de', 'userTestTutor');
+('userTestTutor@hs-ulm.de', 'userTestTutor'),
+/*
+---- update = Teststudenten anlegen 06.05. Damian
+*/
+('carson@hs.de', 'Carson'),
+('logan@hs.de', 'Logan'),
+('dolan@hs.de','Dolan'),
+('samuel@hs.de','Samuel'),
+('jonas@hs.de','Jonas'),
+('nicholas@hs.de','Nicholas'),
+('kasimir@hs.de','Kasimir'),
+('ahmed@hs.de','Ahmed'),
+('derek@hs.de','Derek'),
+('otto@hs.de','Otto'),
+('orlando@hs.de','Orlando'),
+('lars@hs.de','Lars'),
+('philip@hs.de','Philip'),
+('thor@hs.de','Thor'),
+('kelly@hs.de','Kelly'),
+('cody@hs.de','Cody');
+/*
+---- update = Teststudenten anlegen 06.05. Damian
+*/
 
 INSERT INTO Studiengangtyp (stgTyp_bezeichnung, stgTyp_kuerzel) VALUES
 ('Bachelor', 'BA'),
@@ -151,7 +337,26 @@ INSERT INTO User_beteiligtAn_Veranstaltung (veranst_ID, nutzer_name) VALUES
 (2, 'student'),
 (1, 'tutor'),
 (2, 'userTestStudent'),
-(1, 'userTestTutor');
+(1, 'userTestTutor'),
+/*
+---- update = Teststudenten anlegen 06.05. Damian
+*/
+(1,'Carson'),
+(1,'Logan'),
+(1,'Dolan'),
+(2,'Samuel'),
+(2,'Jonas'),
+(2,'Nicholas'),
+(2,'Kasimir'),
+(2,'Ahmed'),
+(1,'Derek'),
+(3,'Otto'),
+(3,'Orlando'),
+(8,'Lars'),
+(9,'Philip'),
+(9,'Thor'),
+(9,'Kelly'),
+(8,'Cody');
 
 INSERT INTO Stundenzeit (stdZeit_von, stdZeit_bis) VALUES
 ('08:00:00', '09:30:00'),
@@ -183,7 +388,29 @@ INSERT INTO Adresse (straßenname, hausnummer, stadt, land, plz, nutzer_name, ge
 ('Frauenstraße', 113, 'Ulm', 'Deutschland', 89073, 'userTestStudent', NULL),
 ('Schaffnerstraße', 5, 'Ulm', 'Deutschland', 89073, 'userTestDozent', NULL),
 ('Traminerweg', 72, 'Ulm', 'Deutschland', 89075, 'userTestMitarbeiter', NULL),
-('Eberhardtstraße', 85, 'Ulm', 'Deutschland', 89073, 'userTestTutor', NULL);
+('Eberhardtstraße', 85, 'Ulm', 'Deutschland', 89073, 'userTestTutor', NULL),
+/*
+---- update = Teststudenten anlegen 06.05. Damian
+*/
+('Turmstraße', 5, 'Berlin', 'Deutschland', 15028, 'Carson', NULL),
+('Unter den Linden', 113, 'Berlin', 'Deutschland', 13065, 'Logan', NULL),
+('Schlossalle', 7, 'Ulm', 'Deutschland', 89073, 'Dolan', NULL),
+('Bahnofgasse', 15, 'Ulm', 'Deutschland', 89075, 'Samuel', NULL),
+('Mirabellenweg', 6, 'Neu-Ulm', 'Deutschland', 89233, 'Jonas', NULL),
+('Leipheimer Straße', 1, 'Neu-Ulm', 'Deutschland', 89233, 'Nicholas', NULL),
+('Hauptstraße', 4, 'Neu-Ulm', 'Deutschland', 89233, 'Kasimir', NULL),
+('Kirschenweg', 12, 'Neu-Ulm', 'Deutschland', 89233, 'Ahmed', NULL),
+('Olivenweg', 45, 'Ulm', 'Deutschland', 89073, 'Derek', NULL),
+('Carl-Zeiss-Straße', 55, 'Neu-Ulm', 'Deutschland', 89231, 'Otto', NULL),
+('Otto-Hahn-Straße', 5, 'Neu-Ulm', 'Deutschland', 89231, 'Orlando', NULL),
+('Eulesweg', 4, 'Neu-Ulm', 'Deutschland', 89231, 'Lars', NULL),
+('Lupinenweg', 36, 'Neu-Ulm', 'Deutschland', 89231, 'Philip', NULL),
+('Magirusstraße', 15, 'Ulm', 'Deutschland', 89073, 'Thor', NULL),
+('Steingrube', 6, 'Neu-Ulm', 'Deutschland', 89231, 'Kelly', NULL),
+('Sesamstraße', 85, 'Stuttgart', 'Deutschland', 87873, 'Cody', NULL);
+/*
+---- update = Teststudenten anlegen 06.05. Damian
+*/
 
 INSERT INTO Raum (raum_bezeichnung, geb_bezeichnung) VALUES
 ('A100', '1'),
