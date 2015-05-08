@@ -15,11 +15,12 @@
 	- Task: View erstellen, indem User Stories aus den ersten beiden Sprints angepasst werden
 	
 	//////////////////////////////////////////////////
--->							
+-->
 
 <!-- gibt eine Bestätigung für die Erstellung eines neuen Veranstaltungstermin aus -->
 
-<h1>Raum einer Veranstaltung zuweisen</h1>
-
-<h3 style='color: red'>Veranstaltungstermin wurde erfolgreich erstellt! </h3>
-	
+<article>
+	<h1>Raum einer Veranstaltung zuweisen</h1>
+	<h3 style='color: red'>Veranstaltungstermin wurde erfolgreich erstellt!
+	</h3>
+</article>

@@ -12,36 +12,33 @@
 -->
 
 <!-- Individuelle menübar -->
-<div class="menue">
-	<nav>
-		<ul>
-            <li>
-                <a href="index.php?url=index/index">Start</a>
-            </li>
-			<li>
-                <a href="index.php?url=raumZuweisen/erzeugeFormular1">Raum einer Veranstaltung zuweisen</a>
-            </li>
-			<li>
-                <a href="index.php?url=raumplan/erzeugeFormular1">Raumplan anzeigen</a>
-            </li>
-			<li>
-				<a href="index.php?url=veranstaltungerweitern/veranstaltungErweitern">Start</a>
-			</li>
-			<li>
-                <a href="index.php?url=raumAnlegen/raumAnlegen">raum </a>
-			 </li>
-			 <li>
-                <a href="index.php?url=veranstaltung/index">Veranstaltungen verwalten</a>
-            </li>
-           
-			<li>
-                <a href="index.php?url=login/logout">Ausloggen</a>
-			</li>
-		</ul>
-	</nav>
-</div>
-<div class="content">
-<div class="content_right">
+
+<nav>
+	<ul>
+		<li><a href="index.php?url=index/index">Home</a></li>
+		<li><a href="#">Veranstaltung</a>
+			<ul>
+				<li><a
+					href="index.php?url=veranstaltungerweitern/veranstaltungErweitern">erweitern</a></li>
+				<li><a href="index.php?url=veranstaltung/index">verwalten</a></li>
+			</ul></li>
+		<li><a href="#">Räume</a>
+			<ul>
+				<li><a href="index.php?url=raumAnlegen/raumAnlegen">Raum anlegen</a></li>
+				<li><a href="index.php?url=raumZuweisen/erzeugeFormular1">Veranstaltung
+						zuordnen</a></li>
+				<li><a href="index.php?url=raumplan/erzeugeFormular1">Raumplan
+						anzeigen</a></li>
+			</ul></li>
+		<li><a href="index.php?url=login/logout">Ausloggen</a></li>
+		<li style="float: right;"><a href="index.php?url=login/index">Login</a>
+		</li>
+
+	</ul>
+</nav>
+
+<?php $this->renderResponse(); ?>
+
 
 
 

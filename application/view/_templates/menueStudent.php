@@ -12,26 +12,15 @@
 -->
 
 <!-- Individuelle menübar -->
-<div class="menue">
-	<nav>
-		<ul>
-            <li>
-                <a href="index.php?url=index/index">Start</a>
-            </li>
-			<li>
-                <a href="index.php?url=raumplan/erzeugeFormular1">Raumplan anzeigen</a>
-            </li>
-			<li>
-                <a href="index.php?url=student/enrollClass">Kursanmeldung</a>
-			</li>
-			<li>
-                <a href="index.php?url=student/delistClass">Kursabmeldung</a>
-			</li>
-			<li>
-                <a href="index.php?url=login/logout">Ausloggen</a>
-			</li>
-		</ul>
-	</nav>
-</div>
-<div class="content">
-<div class="content_right">
+<nav>
+	<ul>
+		<li><a href="index.php?url=index/index">Start</a></li>
+		<li><a href="index.php?url=raumplan/erzeugeFormular1">Raumplan
+				anzeigen</a></li>
+		<li><a href="index.php?url=student/enrollClass">Kursanmeldung</a></li>
+		<li><a href="index.php?url=student/delistClass">Kursabmeldung</a></li>
+		<li><a href="index.php?url=login/logout">Ausloggen</a></li>
+	</ul>
+</nav>
+<?php $this->renderResponse(); ?>
+

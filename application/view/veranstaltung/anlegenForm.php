@@ -18,7 +18,7 @@
 
 
 ?>
-
+<article>
 <h1>Neue Veranstaltung anlegen</h1>
 
 <form action=index.php?url=veranstaltung/anlegen method="post">
@@ -150,3 +150,4 @@
 	<tr><td><input type="submit" value="anlegen" /></td><td>&nbsp;</td></tr>		
     </table>
 </form>
+</article>

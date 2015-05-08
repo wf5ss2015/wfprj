@@ -17,140 +17,138 @@ Zeitaufwand:            5h
 thml {
 	font-size: 100%;
 	font-family: Verdana, sans-serif;	
-}
-body{
-	margin-top: 5px;
-	font-size: 14px;
-	font-family: Arial, sans-serif;
-    background: white;
+	background: #79C5FF;
 }
 
-/*breite*/
+body{
+	margin-top: 5px;
+	font-size: 100%;
+	font-family: Arial, sans-serif;
+    background: #79C5FF;
+}
+
+/*breite
+  div welches um alles liegt
+ */
 .wrapper {
 	width: 1200px;
 	margin: 0 auto;
+	background: white;
 }
 
-.wrapper header {
-   margin-left: 20px;
-}
-
-.wrapper section {
-	margin-left: 20px;
-	margin-top: 0px;
-}
-
-
-	
 
 /*header*/
-.header {
-	margin: 0 auto;
-    background: black;
+header{
+    background: #003D6B;
+	height: 85px;
 }
 
-.header nav{
+section{
+	background: white;}
+ 
+article{
+	padding: 0px 10px 10px 10px;
+}
+
+h1{
+	padding-bottom: 5px;
+	border-bottom: 2px solid #003D6B;
+}
+
+h2,  h3{
+	padding-bottom: 5px;
+}
+
+/*navigation*/
+nav ul ul{
 	list-style-type: none;
-    float:right;
+	display: none;
+
 }
 
-.header ul{
-    text-align: center;
+ul li:hover > ul{
+	display: block;
 }
 
-.header li{
-    display: inline-block;
-}
-.header a {
-	color: white;
-	text-decoration: none;
+nav ul {
+	width:100%;
+	background: #efefef; 
+	background: linear-gradient(top, #efefef 0%, #A9DFFF 100%);  
+	background: -moz-linear-gradient(top, #efefef 0%, #A9DFFF 100%); 
+	background: -webkit-linear-gradient(top, #efefef 0%,#A9DFFF 100%); 
+	box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
+	padding: 0 0px  ;
+	margin: 0px;
+	border-radius: 5px;  
+	list-style: none;
+	position: relative;
+	display: inline-table;
 }
 
-/*menue unter header*/
-.menue
-{
+nav ul:after {
+		content: ""; clear: both; display: block; 
+}
+
+nav ul li {
 	float: left;
-	width: 100%; /* optionale Weitenangabe */
-	background: #aaa;
 }
 
-.menue a {
-	color: white;
-	text-decoration: none;
+nav ul li:hover {
+		background: #00436A;
+		background: linear-gradient(top, #efefef 0%, #00436A 20%);
+		background: -moz-linear-gradient(top, #efefef 0%, #00436A 20%);
+		background: -webkit-linear-gradient(top, #efefef 0%,#00436A 20%);
+}
+	
+nav ul li:hover a {
+		color: #A9DFFF;
+}
+	
+nav ul li a {
+		display: block; padding: 15px 15px;
+		color: #00436A; text-decoration: none;
+		font-weight: bold;
 }
 
-.menue nav {
-	list-style-type: none;
-    float: left;
+nav ul ul {
+	width: auto;	
+	background: #00436A; border-radius: 0px; padding: 0;
+	position: absolute; top: 100%;
+
 }
 
-.menue ul{
-	list-style-type: none;
-    text-align: center; 
+nav ul ul li {
+		float: none; 
+		border-top: 1px solid #A9DFFF;
+		border-bottom: 1px solid #A9DFFF;
+		position: relative;
 }
 
-.menue li{
-    display: inline-block;
-	background: black;
-}
+nav ul ul li a {
+			padding: 15px 20px;
+			color: #003D6B;
+}	
 
-.content {
-	width: 100%;
-}
-/*content left = menue links*/
-.content_left
-{
-
-	float: left;
-	width: 15%; /* optionale Weitenangabe */
-	background:#aaa ;
-}
-
-.content_left nav{
-	list-style-type: none;
-	text-decoration: none;
-	text-align: left;
-}
-
-.content_left ul{
-    text-align: left; 
-}
-
-.content_left li{
-	text-align: left;
-    display: inline-block;
-}
-
-.content_left a {
-	color: white;
-	text-decoration: none;
-}
-
-/*content right = inhalt*/
-.content_right
-{
-	float:right;
-	width: 85%; /* optionale Weitenangabe */
-	margin-bottom: 10px;
+nav ul ul li a:hover {
+		background: #00436A;
+		background: linear-gradient(top, #efefef 0%, #00436A 20%);
+		background: -moz-linear-gradient(top, #efefef 0%, #00436A 20%);
+		background: -webkit-linear-gradient(top, #efefef 0%,#00436A 20%);
 }
 
 /*footer*/
-.footer
-{
-	float: right;
-	width: 100%; /* optionale Weitenangabe */
-	background: black;
-	color: #aaa;
+footer{
+	background: #003D6B;
+	color: #00436A;
+	text-align: center;
+	padding: 0;
 }
 
-.footer section {
-	text-align: center;
+footer a{
+	color: #A9DFFF;
 }
 
 .response {
-	margin-top: 10px;
-	margin-left: 20px;
-	margin-right: 10px;
 }
 
 
