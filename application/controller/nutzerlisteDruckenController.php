@@ -18,20 +18,40 @@ class nutzerlisteDruckenController extends Controller {
 		) );
 	}
 	public function printUser() {
-		ob_start ();
-		include ('../application/view/nutzerlistedrucken/nutzerliste.php');
-		$content = ob_get_clean ();
-		// convert to PDF
-		require_once ('../application/lib/html2pdf/html2pdf.class.php');
-		try {
-			$html2pdf = new HTML2PDF ( 'P', 'A4', 'fr' );
-			$html2pdf->pdf->SetDisplayMode ( 'fullpage' );
-			$html2pdf->writeHTML ( $content, isset ( $_GET ['vuehtml'] ) );
-			$html2pdf->Output ( 'nutzerliste.pdf' );
-		} catch ( HTML2PDF_exception $e ) {
-			echo $e;
-			exit ();
-		}
+		$this->nutzerlisteDrucken();
+		
+		/*require_once('../application/lib/tcpdf/tcpdf.php');
+		 
+		$pdf = new TCPDF("P","mm","A4", true, "UTF-8",false);
+
+		$pdf->SetCreator(PDF_CREATOR);
+		$pdf->SetAuthor("Mitarbeiter");
+
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false); // kann genutzt werden, um Seitenzahlen etc. einzupflegen
+		$pdf->SetFont('times', 'BI', 20); // Schriftart festlegen
+		// add a page
+		$pdf->AddPage();
+
+		// set some text to print
+		$html = "Hello World";
+		$pdf->writeHTML ($html, $ln=true, $fill=false, $reseth=false, $cell=false, $align='');
+		$pdf->lastPage();
+		$pdf->Output(); 
+		*/
+		// FPDF-Klasse und das Verzeichnis der FPDF-Schriftarten einbinden
+
+include_once('../application/lib/tcpdf/tcpdf.php');
+
+// unsere selbsterstellte Testklasse01 einbinden
+include_once("Testklasse01.php");
+
+// pdf erzeugen (aus unserer selbsterstellten Testklasse01)
+$pdf = new Testklasse01();  
+
+// pdf ausgeben (im Browser oder in Datei schreiben)
+$pdf->Output();   // Ausgabe (wenn in Datei schreiben, dateiname in Klammer)
+
 	}
 }
 ?>
