@@ -1,3 +1,17 @@
+/**
+ * SPRINT 04
+ *
+ * @author: Roland Schmid
+ * Datum: 16.5.2015
+ *
+ * User Story: Als Mitarbeiter möchte ich einer Veranstaltung ein Fachsemester zuordnen können. (Nacharbeit)
+ * Task: Tabelle "Studiengang_hat_Veranstaltung" ändern
+ * Nr:  	310a
+ * Points: 	5
+ * Zeit: 	0.5
+ *
+ */
+
 /* 	
 	---------- Autor: Alexander Mayer ----------
 	
@@ -348,6 +362,7 @@ CREATE  TABLE `Studiengang`
 );
 
 
+
 -- -----------------------------------------------------
 -- Table `Studiengang_hat_Veranstaltung`
 -- -----------------------------------------------------
@@ -357,7 +372,19 @@ CREATE  TABLE `Studiengang_hat_Veranstaltung`
 (
 	`stg_ID` INT NOT NULL ,
 	`veranst_ID` INT NOT NULL ,
-	`pflicht` TINYINT(1) NOT NULL DEFAULT 1 ,
+
+/*
+ * Sprint 4 Anfang
+ * Änderung: Roland Schmid
+*/
+
+	`pflicht_im_Semester` TINYINT(1) NOT NULL DEFAULT 1 
+-- old:
+-- `pflicht` TINYINT(1) NOT NULL DEFAULT 1 ,
+
+/*
+ * Sprint 4 Ende
+*/
 	PRIMARY KEY (`stg_ID`, `veranst_ID`) ,
     FOREIGN KEY (`stg_ID` ) REFERENCES `Studiengang` (`stg_ID` ),
     FOREIGN KEY (`veranst_ID` ) REFERENCES `Veranstaltung` (`veranst_ID` )

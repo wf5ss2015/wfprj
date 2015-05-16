@@ -1,6 +1,19 @@
 <?php
 
 /**
+ * SPRINT 04
+ *
+ * @author : Roland Schmid
+ * Datum: 16.5.2015
+ * User­ Story: Als Mitarbeiter möchte ich einer Veranstaltung ein Fachsemester zuordnen können. (Nacharbeit)
+ * Task: 	Eingabemaske für Veranstaltung erweitern
+ * Nr:		310a
+ * Points:	5
+ * Zeit: 	0.25	
+ *
+ */
+
+/**
  * SPRINT 03
  *
  * @author : Roland Schmid
@@ -61,7 +74,7 @@
 	<tr><td>Kurztext: </td> <td><input type="text"  name="veranstaltung_kurztext" /></td></tr>
 	<tr><td>SWS: </td> <td>
 	
-            <select name="veranstaltung_sws" style="; width: 15em">
+            <select name="veranstaltung_sws" style="; width: 3em">
             <?php
             //befüllt den selection-Abschnitt mit den Werten von 1 bis 10
                     for ($i=1; $i<=10; $i++) {
@@ -76,7 +89,7 @@
 	
 	<tr><td>Credits (ECTS-Punkte): </td><td>
 	
-            <select name="veranstaltung_credits" style="; width: 15em">
+            <select name="veranstaltung_credits" style="; width: 3em">
             <?php
             //befüllt den selection-Abschnitt mit den Werten von 1 bis 12
                     for ($i=1; $i<=20; $i++) {
@@ -89,7 +102,7 @@
 	
 		
 	<tr><td>maximale Anzahl Teilnehmer: </td><td>
-		<input type="text" name="veranstaltung_max_Teilnehmer" size="3" maxlength="3"/>
+		<input type="text" name="veranstaltung_max_Teilnehmer" size="1" maxlength="3"/>
 	</td></tr>
 		
 	
@@ -136,7 +149,14 @@
                 echo "\n\t<td><input type=\"text\"  name=\"veranstaltung_ausstattung[]\"";
                 echo " size=\"1\" /> </td>";
 
-                echo "\n\t<td> " . $value->ausstattung_bezeichnung . "</td>";
+                echo "\n\t<td> " . $value->ausstattung_bezeichnung;
+                                
+//              echo " <input type=\"hidden\" name=\"veranstaltung_ausstattungid[]\" value=\"" . $value->ausstattung_ID . "\" />";
+                
+                echo "</td>";
+        
+                
+                
                 echo " \n</tr>";
             }	
 	
@@ -155,13 +175,14 @@
 /* Sprint 3 Anfang 
  * Auswahl Studiengang für Pflichtfach hinzugefügt
  */
+
 ?>
 
   <tr>
     <td> Pflichtvorlesung im Studiengang: </td>
     <td>
   
-        <select class="input " name="veranstaltung_pflichtvorlesung" style="; width: 32em">	
+        <select class="input " name="veranstaltung_pflichtvorlesung" style="; width: 24em">	
 
 		<?php /*value 0 für kein Pflichtfach*/ ?>        
          <option value="0"> </option>;
@@ -180,6 +201,24 @@
             ?>
 
         </select>
+<?php
+/* Sprint 4 Anfang
+ * Auswahl Fachsemester für "Pflichtvorlesung im Studiengang" hinzugefügt
+ */ 
+?>
+         in Fachsemester: 
+        <select class="input " name="veranstaltung_fachsemester" style="; width: 3em">
+        <?php 
+ 			for ($i=1; $i<=7; $i++) {
+				echo "\n\t<option value=\"" . $i . "\">" . $i . "</option>";
+            }
+		?>
+        </select>	
+<?php
+/* Sprint 4 Ende
+ */ 
+?>
+        
     </td>
 
 
