@@ -1,32 +1,42 @@
 <?php
 /**
- * SPRINT 02
- *
- * @author: Roland Schmid
- * @Matrikel:
- * Datum: 19.04.2015
- *
- * User­Story 130a: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
- * 5 Points
- * Zeit: 1
- */
-
-/**
  * SPRINT 03
  *
  * @author : Roland Schmid
- *         @Matrikel:
- *         Datum: 6.5.2015
+ * Datum: 6.5.2015
+ *         
+ * User­ Story: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
+ * Task: Eingabemaske für "Veranstaltung anlegen" anpassen.
+ * Nr:		130b
+ * Points:	5 Points
+ * Zeit: 	2
+ *
+ *
+ * User­ Story: Als Entwickler möchte ich im MVC-Pattern programmieren können
+ * Task: Bisherigen Code in MVC einfügen und anpassen.
+ * Nr:		340
+ * Points:	40
+ * Zeit: 	3
  *        
- *         User­ Story 130b: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
- *         5 Points
- *         Zeit: 2
- *        
- *         User Story 340: Als Entwickler möchte ich im MVC-Pattern programmieren können
- *         40
- *        
- *        
+ *                 
  */
+
+
+/**
+ * SPRINT 02
+ *
+ * @author : Roland Schmid
+ * Datum: 19.4.2015
+ *         
+ * User­ Story: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
+ * Nr:		130a
+ * Points:	5 Points
+ * Zeit: 	1
+ *
+ */
+
+
+
 
 /**
  *
@@ -110,8 +120,10 @@ class VeranstaltungController extends Controller {
 		}
 	}
 	
+
+// TODO
 	/*
-	 * rendert view um eine Veranstaltung auszuwählen, welche bearbeitet werden soll
+	 * rendert view um eine Veranstaltung auszuwählen, die bearbeitet werden soll
 	 */
 	public function bearbeitenSelect() {
 		$this->View->render ( 'veranstaltung/bearbeitenSelect', array (

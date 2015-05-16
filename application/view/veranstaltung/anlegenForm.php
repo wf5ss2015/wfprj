@@ -1,20 +1,53 @@
 <?php
 
 /**
-* SPRINT 03
-*
-* @author: Roland Schmid
-* @Matrikel:
-* Datum: 6.5.2015
-*
-* User­ Story 130b: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
-* 5 Points
-* Zeit: 2
-*
-* User Story 340: Als Entwickler möchte ich im MVC-Pattern programmieren können
-* 40
+ * SPRINT 03
+ *
+ * @author : Roland Schmid
+ * Datum: 6.5.2015
+ *         
+ * User­ Story: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
+ * Task: 	Eingabemaske für "Veranstaltung anlegen" anpassen.
+ * Nr:		130b
+ * Points:	5
+ * Zeit: 	2
 *
 */
+
+/**
+ * SPRINT 02
+ *
+ * @author : Roland Schmid
+ * Datum: 22.4.2015
+ *         
+ * User­ Story: Als Benutzer möchte ich die für eine Veranstaltung die benötigte Ausstattung festlegen können.
+ * Task: 	Maske bei "Veranstaltung anlegen" erweitern. 
+ * Nr:		240
+ * Points:	3
+ * Zeit: 	1.5
+*
+*/
+
+
+/**
+ * SPRINT 01
+ *
+ * @author: Roland Schmid
+ * Datum: 8.4.2015
+ *
+ * User­ Story: Als Verwalter möchte ich Veranstaltungen anlegen können.
+ * Nr:		120
+ * Task: 	Maske zum Anlegen einer Veranstaltung erstellen
+ * Points:	13 
+ * Zeit: 	2
+ *
+ * User­ Story: Als Verwalter möchte ich Veranstaltungen ECTS vergeben können.
+ * Nr:		121
+ * Task:	Maske zur Angabe von ECTS erweitern
+ * Points:	5 
+ * Zeit: 	0.5
+ *
+ */
 
 
 ?>
@@ -80,6 +113,12 @@
 	</select>
 	</td></tr>
 	
+
+<?php
+/* Sprint 2 Anfang 
+ * Auswahl Ausstattung hinzugefügt
+ */
+?>
 	<tr><td>Ausstattung: </td>
 	<td>
 		
@@ -110,7 +149,12 @@
 		
 	
 <?php
-/* sprint 3 Anfang*/
+/* Sprint 2 Ende
+ */
+
+/* Sprint 3 Anfang 
+ * Auswahl Studiengang für Pflichtfach hinzugefügt
+ */
 ?>
 
   <tr>
@@ -142,7 +186,8 @@
 
   </tr>
 <?php
-/* sprint 3 Ende */
+/* Sprint 3 Ende
+ */
 ?>
 	
 	

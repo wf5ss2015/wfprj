@@ -2,21 +2,18 @@
 /**
  * SPRINT 02
  *
- * @author: Roland Schmid
- * @Matrikel:
- * Datum: 19.04.2015
+ * @author : Roland Schmid
+ * Datum: 19.4.2015
+ *         
+ * User­ Story: Als Verwalter möchte ich Veranstaltungen ändern können.
+ * Task: 	Seite mit Anzeige einer Veranstaltung und Feldern, um diese zu ändern. 
+ * Nr:		210
+ * Points:	13
+ * Zeit: 	1
+ * UNVOLLSTÄNDIG
  *
- * User­Story (Nr. xx ):  .... (n Points)
- * Zeit: m
  */
 
-/**
- *
- * @author Roland Schmid
- *         Das ist der Veranstaltung Controller. Steuert den Login Prozess.
- */
-?>
-<!--TODO HTML5 umsetzen-->
 <article>
 	<p>Veranstaltung bearbeiten</p>
         <?php if ($this->veranstaltung) { ?>

@@ -3,17 +3,39 @@
  * SPRINT 03
  *
  * @author: Roland Schmid
- * @Matrikel:
  * Datum: 6.5.2015
  *
- * User­ Story 130b: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
- * 5 Points
- * Zeit: 2
+ * User­ Story: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
+ * Task: Werte in (neue) Tabelle eintragen. 
+ * Task: Eingabeformular für Veranstaltungen anpassen.
+ * Nr:		130b
+ * Points:	5
+ * Zeit: 	2
  *
- * User Story 340: Als Entwickler möchte ich im MVC-Pattern programmieren können
- * 40
+ * User Story: Als Entwickler möchte ich im MVC-Pattern programmieren können
+ * Task: Bisherigen Code in MVC einfügen und anpassen.
+ * Nr:  	340
+ * Points: 	40
+ * Zeit: 	4
  *
  */
+
+/**
+ * SPRINT 01
+ *
+ * @author: Roland Schmid
+ * Datum: 8.4.2015
+ *
+ * User­ Story: Als Verwalter möchte ich Veranstaltungen anlegen können.
+ * Nr:		120
+ * Task: Daten aus Datenbank für die Maske auslesen. 
+ * Task: Daten in Datenbank schreiben.
+ * Points:	13 
+ * Zeit: 	2
+ *
+ */
+
+
 
 /**
  *
@@ -28,7 +50,7 @@ class VeranstaltungModel {
 	 *        
 	 */
 	
-	// ------------------ needs work ----------------------------------------------------
+	// TODO
 	public function ausstattungEintragen($vid) {
 		
 		// POST-Inhalt auslesen
@@ -69,8 +91,10 @@ class VeranstaltungModel {
 		}
 	}
 	
-	/* sprint 3 Anfang */
-	
+/* sprint 3 Anfang 
+ * Methode zur Prüfung von Integer-Eingabewerten eingefügt
+ */
+		
 	/*
 	 * prüft, ob die Eingabe ein int im Bereich [$min, $max] ist
 	 *
@@ -87,6 +111,9 @@ class VeranstaltungModel {
 		}
 		return ($int >= $min && $int <= $max);
 	}
+
+/* sprint 3 Ende */
+
 	
 	/*
 	 * @author Roland Schmid
@@ -118,7 +145,10 @@ class VeranstaltungModel {
 		if (strlen ( $kurztext ) < 1)
 			$valid = false;
 			
-			/* sprint 3 Anfang */
+/* sprint 3 Anfang 
+ * Prüfung angepasst 
+ */
+
 		if (! ($this->checkIntegerInput ( $maxNo, 1, 1000 ))) {
 			$valid = false;
 			/* TODO : Fehlermeldung ausgeben */
@@ -176,70 +206,9 @@ class VeranstaltungModel {
 		$database->insert ( $insertString );
 	}
 	
-	// public function veranstaltungAnlegen() {
-	//
-	// $valid = true;
-	//
-	// $bez = $_POST['veranstaltung_bezeichnung'];
-	// $kurztext = $_POST['veranstaltung_kurztext'];
-	// $credits = $_POST['veranstaltung_credits'];
-	// $sws = $_POST['veranstaltung_sws'];
-	// $maxNo = $_POST['veranstaltung_max_Teilnehmer'];
-	// $art = $_POST['veranstaltung_veranstaltungsart'];
-	//
-	// //es fehlen: Ausstattung eintragen, und vorher Ausstattung löschen (inbes. für Änderungen)
-	//
-	//
-	// //einfache Prüfung, ob überall was drin steht
-	// if(strlen($bez) < 1)
-	// $valid = false;
-	// if(strlen($kurztext) < 1)
-	// $valid = false;
-	//
-	//
-	// /* sprint 3 Anfang*/
-	//
-	// /*if(strlen($maxNo) < 1)
-	// $valid = false;
-	// */
-	// if(!checkIntegerInput($maxNo, 1, 1000)) {
-	// $valid = false;
-	// // TO-DO : Fehlermeldung ausgeben
-	// }
-	//
-	// /* sprint 3 Ende*/
-	//
-	// //wenn alle Prüfungen positiv, führe insert aus
-	// if($valid == true) {
-	//
-	//
-	// $insertString = "INSERT INTO Veranstaltung (`veranst_bezeichnung`, `veranst_kurztext`, `credits`, `SWS`, "
-	// . "`maxTeilnehmer`, `vArt_ID`) "
-	// . "VALUES ('$bez', '$kurztext', '$credits', '$sws', '$maxNo', '$art');";
-	//
-	// if($dbCon->query($insertString)) {
-	//
-	// $vid = $dbCon->insert_id;
-	//
-	// $dbCon->commit();
-	// } else {
-	// $vid = -1;
-	// }
-	//
-	// //Ausstattung wird eingetragen
-	// ausstattungEintragen($vid, $dbCon);
-	//
-	// return $vid;
-	// } else {
-	// return -1;
-	// }
-	//
-	//
-	//
-	// return $vID;
-	// }
 	
-	/* sprint 3 Ende */
+	
+/* sprint 3 Ende */
 	
 	// gibt ein array zurück mit allen vorhandenen Veranstaltungen
 	public function getAlleVeranstaltungen() {
@@ -273,8 +242,7 @@ class VeranstaltungModel {
 		
 		return $result;
 	}
-	
-	// ----------------------------------workses
+
 	
 	/*
 	 * Holt alle Veranstaltungsarten aus der Datenbank

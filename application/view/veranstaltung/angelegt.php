@@ -2,31 +2,62 @@
 /**
  * SPRINT 03
  *
- * @author: Roland Schmid
- * @Matrikel:
+ * @author : Roland Schmid
  * Datum: 6.5.2015
+ *         
+ * User­ Story: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
+ * Task: Eingabemaske für "Veranstaltung anlegen" anpassen.
+ * Nr:		130b
+ * Points:	5 Points
+ * Zeit: 	1
  *
- * User­ Story 130b: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
- * 5 Points
- * Zeit: 2
  *
- * User Story 340: Als Entwickler möchte ich im MVC-Pattern programmieren können
- * 40
+ * User­ Story: Als Entwickler möchte ich im MVC-Pattern programmieren können
+ * Task: Bisherigen Code in MVC einfügen und anpassen.
+ * Nr:		340
+ * Points:	40
+ * Zeit: 	3
  *
  */
+
+
+/**
+ * SPRINT 01
+ *
+ * @author: Roland Schmid
+ * Datum: 8.4.2015
+ *
+ * User­ Story: Als Verwalter möchte ich Veranstaltungen anlegen können.
+ * Nr:		120
+ * Task: Angelegte Veranstaltung darstellen
+ * Points:	13 
+ * Zeit: 	0.5
+ *
+ */
+
+
 ?>
 <article>
 	<h1>Veranstaltung erfolgreich angelegt</h1>
 
 	<table>
-<?php
-$table = new Table ();
 
-echo "Standard";
-// ohne alias
-$table->table ( array (
-		'table' => $this->veranstaltung 
-) );
+<?php
+
+/* sprint 3 Anfang 
+ * Generische Tabelle zur Ausgabe der Daten eingefügt
+ */
+	$table = new Table ();
+
+	// Tabelle drucken ohne Alias
+	$table->table ( array (
+			'table' => $this->veranstaltung 
+	) );
+
+/* sprint 3 Ende
+ */
+
+//alter Code aus Sprint 01:
 
 // erzeugt die Liste mit "option"-HTML-Elementen aus dem Array vArten
 // foreach($this->veranstaltung as $key => $value) {
@@ -38,13 +69,6 @@ $table->table ( array (
 // echo "<td>$value->veranst_ID" . "</td>";
 // echo "</tr>";
 
-/*
- * $q = "select Veranstaltung.veranst_ID, Veranstaltung.veranst_bezeichnung, Veranstaltung.veranst_kurztext, Veranstaltung.credits, Veranstaltung.SWS, "
- * ."Veranstaltung.maxTeilnehmer, Veranstaltungsart.vArt_bezeichnung as Veranstaltungsart "
- * . "from Veranstaltung join Veranstaltungsart on Veranstaltung.vArt_ID = Veranstaltungsart.vArt_ID"
- * ." where Veranstaltung.veranst_ID = $vid;";
- */
-// }
 
 ?>
 	</table>
