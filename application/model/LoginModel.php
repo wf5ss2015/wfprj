@@ -122,7 +122,7 @@ class LoginModel {
 	public static function saveTimestamp($user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
-		$sql = "UPDATE nutzer SET letzterLogin = :user_last_login_timestamp
+		$sql = "UPDATE Nutzer SET letzterLogin = :user_last_login_timestamp
                 WHERE nutzer_name = :user_name LIMIT 1";
 		$query = $database->prepare ( $sql );
 		$query->execute ( array (

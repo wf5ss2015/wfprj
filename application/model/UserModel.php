@@ -51,7 +51,7 @@ class UserModel {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		$sql = "SELECT nutzer_name, passwortHash, rolle_ID               
-                 FROM nutzer
+                 FROM Nutzer
                  WHERE (nutzer_name = :user_name)   
                  LIMIT 1";
 		$query = $database->prepare ( $sql );
