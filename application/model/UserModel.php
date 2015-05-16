@@ -85,10 +85,10 @@ class UserModel {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		$sql = "SELECT v.veranst_ID, veranst_bezeichnung, credits, SWS 
-				FROM nutzer n  
+				FROM Nutzer n  
 				JOIN user_beteiligtan_Veranstaltung ubav 
 				ON n.nutzer_name = ubav.nutzer_name 
-				JOIN veranstaltung v 
+				JOIN Veranstaltung v 
 				ON ubav.veranst_ID = v.veranst_ID
 				WHERE n.nutzer_name = :user_name;";
 		$query = $database->prepare ( $sql );
@@ -115,11 +115,11 @@ class UserModel {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		$sql = "SELECT v.veranst_ID, veranst_bezeichnung, credits, SWS 
-				FROM veranstaltung v
-				JOIN studiengang_hat_veranstaltung shv
+				FROM Veranstaltung v
+				JOIN Studiengang_hat_Veranstaltung shv
 				ON v.veranst_ID = shv.veranst_ID,
 				(SELECT inhalt 
-				FROM  wert 
+				FROM  Wert 
 				WHERE eigenschaft_ID='10' AND nutzer_name = :user_name)inline
 				WHERE stg_ID = inline.inhalt;";
 		$query = $database->prepare ( $sql );
@@ -144,7 +144,7 @@ class UserModel {
 	 */
 	public static function saveClass($id, $user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
-		$sql = "INSERT INTO user_beteiligtan_veranstaltung VALUES (:id, :user_name);";
+		$sql = "INSERT INTO User_beteiligtAn_Veranstaltung VALUES (:id, :user_name);";
 		$query = $database->prepare ( $sql );
 		
 		try {
@@ -176,7 +176,7 @@ class UserModel {
 	public static function delistClass($id, $user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
-		$sql = "DELETE FROM user_beteiligtan_veranstaltung WHERE veranst_ID=:id and nutzer_name=:user_name;";
+		$sql = "DELETE FROM User_beteiligtAn_Veranstaltung WHERE veranst_ID=:id and nutzer_name=:user_name;";
 		$query = $database->prepare ( $sql );
 		
 		try {
@@ -208,7 +208,7 @@ class UserModel {
 	public static function getUserDataAll() {
 		$database = new DatabaseFactoryMysql ();
 		
-		$sql = "SELECT * FROM nutzer";
+		$sql = "SELECT * FROM Nutzer";
 		
 		$result = $database->query ( $sql );
 		return $result;
@@ -218,7 +218,7 @@ class UserModel {
 	public static function getUserDataAll2() {
 		$database = new DatabaseFactoryMysql ();
 		
-		$sql = "SELECT nutzer_name FROM nutzer";
+		$sql = "SELECT nutzer_name FROM Nutzer";
 		
 		$result = $database->query ( $sql );
 		return $result;
@@ -228,7 +228,7 @@ class UserModel {
 	public static function getUserDataAll3() {
 		$database = new DatabaseFactoryMysql ();
 		
-		$sql = "SELECT nutzer_name, passwortHash  FROM nutzer";
+		$sql = "SELECT nutzer_name, passwortHash  FROM Nutzer";
 		
 		$result = $database->query ( $sql );
 		return $result;
@@ -250,10 +250,10 @@ class UserModel {
 	public static function getUserDataAll4() {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		$sql = "Select u.nutzer_name, rolle_bezeichnung, email_name, straßenname, hausnummer, plz, stadt, land 
-				from nutzer u 
-				join rolle r on r.rolle_ID = u.rolle_ID 
-				join email e on e.nutzer_name = u.nutzer_name 
-				join adresse a on a.nutzer_name = u.nutzer_name;";
+				from Nutzer u 
+				join Rolle r on r.rolle_ID = u.rolle_ID 
+				join EMail e on e.nutzer_name = u.nutzer_name 
+				join Adresse a on a.nutzer_name = u.nutzer_name;";
 		
 		$query = $database->prepare ( $sql );
 		$query->execute ();

@@ -12,7 +12,7 @@ class veranstaltungErweiternModel {
 	// fragt nach allen Veranstaltungen in der Datenbanktabelle Veranstaltung
 	public static function getVeranstaltung() {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
-		$sql = 'Select veranst_ID, veranst_bezeichnung from veranstaltung';
+		$sql = 'Select veranst_ID, veranst_bezeichnung from Veranstaltung';
 		$query = $database->prepare ( $sql );
 		$query->execute ();
 		return $query->fetchAll ();
@@ -21,7 +21,7 @@ class veranstaltungErweiternModel {
 	// selected alle User
 	public static function getUser() {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
-		$sql = 'Select nutzer_name, rolle_bezeichnung from nutzer u join rolle r on r.rolle_ID = u.rolle_ID';
+		$sql = 'Select nutzer_name, rolle_bezeichnung from Nutzer u join Rolle r on r.rolle_ID = u.rolle_ID';
 		$query = $database->prepare ( $sql );
 		$query->execute ();
 		return $query->fetchAll ();

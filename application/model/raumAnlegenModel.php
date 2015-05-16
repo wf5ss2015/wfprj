@@ -14,7 +14,7 @@ class raumAnlegenModel {
 	// Alle Informationen von Gebäuden abfragen.
 	public static function getGebäude() {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
-		$sql = 'Select g.geb_bezeichnung, a.straßenname, a.hausnummer from gebaeude g join adresse a on g.geb_bezeichnung = a.geb_bezeichnung';
+		$sql = 'Select g.geb_bezeichnung, a.straßenname, a.hausnummer from Gebaeude g join Adresse a on g.geb_bezeichnung = a.geb_bezeichnung';
 		$query = $database->prepare ( $sql );
 		$query->execute ();
 		return $query->fetchAll ();
