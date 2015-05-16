@@ -8,8 +8,26 @@
  * User Story Nr.:
  * User Story: Als Entwickler möchte ich einheitliche Fehlermeldungen haben.
  * Task:
+ *
  * ===============================================
  */
+
+/**
+ * SPRINT 03
+ *
+ * @author: Roland Schmid
+ * Datum: 6.5.2015
+ *
+ * User Story: Als Entwickler möchte ich im MVC-Pattern programmieren können
+ * Task: Bisherigen Code in MVC einfügen und anpassen.
+ * Methode "insert($q)" eingeführt, um Insert-Statements ausführen zu können.
+ * Die vorhandene Query-Methode liefert einen Fehler bei Inserts.
+ * Nr:  	340
+ * Points: 	40
+ * Zeit: 	1
+ *
+ */
+
 /*
  * ===============================================
  * Sprint: 2
@@ -96,10 +114,10 @@ class DatabaseFactoryMysql extends MySQLi {
 		return $array;
 	}
 	
-	/*
-	 * Sprint 3 Anfang
-	 * Änderung: Roland Schmid
-	 */
+/*
+ * Sprint 3 Anfang
+ * Änderung: Roland Schmid
+*/
 	
 	/*
 	 *
@@ -117,8 +135,8 @@ class DatabaseFactoryMysql extends MySQLi {
 		return $success;
 	}
 	
-	/*
-	 * Sprint 3 Ende
-	 * Änderung: Roland Schmid
-	 */
+/*
+ * Sprint 3 Ende
+ * Änderung: Roland Schmid
+*/
 }
