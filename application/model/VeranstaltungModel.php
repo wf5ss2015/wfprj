@@ -60,28 +60,23 @@ class VeranstaltungModel {
 		// TODO vorhandene Einträge löschen (für Veranstaltung aktualisieren
 		// $deleteString = "delete from VeranstaltungBrauchtAusstattung where VeranstaltungID = " . $vid . ";";
 		$deleteString = "delete from Veranstaltung_erfordert_Ausstattung where veranst_ID = " . $vid . ";";
-		// if($dbCon->query($deleteString)) {
-		// $dbCon->commit();
-		// } else {
-		// echo "\nERROR: " . $dbCon->error;
-		// }
 		
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
-		
-		// $noOfRows = 0;
-		
+	
 		// Plausibilität prüfen
 		for($i = 0; $i < count ( $veranstaltungAusstattung ); $i ++) {
 			// prüft, ob eingegebener Wert wirklich eine Zahl ist
 			if (is_numeric ( $veranstaltungAusstattung [$i] )) {
 				
 				// prüft, ob die angebenen Zahlen sinnvoll sind
-				if ($veranstaltungAusstattung [$i] < 100 && $veranstaltungAusstattung [$i] > 0) {
-					$insertValues = $vid . ", " . ($i + 1) . ", " . $veranstaltungAusstattung [$i];
+				if($veranstaltungAusstattung[$i] < 100 && $veranstaltungAusstattung[$i] > 0) {
+					$insertValues = $vid . ", " . ($i + 1) . ", " . $veranstaltungAusstattung[$i];
 					
 					// insert für mysql vorbereiten
-					$insertString = "INSERT INTO Veranstaltung_erfordert_Ausstattung" . " (veranst_ID, ausstattung_ID, anzahl)" . " VALUES (" . $insertValues . ");";
+					$insertString = "INSERT INTO Veranstaltung_erfordert_Ausstattung" 
+									. " (veranst_ID, ausstattung_ID, anzahl)" 
+									. " VALUES (" . $insertValues . ");";
 					
 					if (! $database->insert ( $insertString )) {
 						// error ausgeben
@@ -236,6 +231,8 @@ class VeranstaltungModel {
 		 * $q = "SELECT veranst_ID, veranst_bezeichnung, veranst_kurztext, credits, SWS, "
 		 * . "maxTeilnehmer, vArt_ID from Veranstaltung WHERE veranst_ID = " . $vID . ";";
 		 */
+
+//TODO Query-String vereinfachen
 		$q = "select Veranstaltung.veranst_ID, Veranstaltung.veranst_bezeichnung, Veranstaltung.veranst_kurztext, Veranstaltung.credits, Veranstaltung.SWS, " . "Veranstaltung.maxTeilnehmer, Veranstaltungsart.vArt_bezeichnung as Veranstaltungsart " . "from Veranstaltung join Veranstaltungsart on Veranstaltung.vArt_ID = Veranstaltungsart.vArt_ID" . " where Veranstaltung.veranst_ID = $vID;";
 		
 		$result = $this->abfrage ( $q );
