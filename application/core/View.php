@@ -62,13 +62,13 @@ class View {
 			}
 		}
 		// lädt den header
-		require Config::get ( 'PATH_VIEW' ) . '_templates/header.php';
+		require Config::get ( 'PATH_VIEW' ) . '_templates/headerView.php';
 		// lädt das richtie menue
 		self::getRightMenue ();
 		// lädt den content
-		require Config::get ( 'PATH_VIEW' ) . $filename . '.php';
+		require Config::get ( 'PATH_VIEW' ) . $filename . 'View.php';
 		// lädt den footer
-		require Config::get ( 'PATH_VIEW' ) . '_templates/footer.php';
+		require Config::get ( 'PATH_VIEW' ) . '_templates/footerView.php';
 	}
 	
 	/*
@@ -84,7 +84,7 @@ class View {
 	 *         rendert eine Response Message
 	 */
 	public function renderResponse() {
-		require Config::get ( 'PATH_VIEW' ) . '_templates/response.php';
+		require Config::get ( 'PATH_VIEW' ) . '_templates/responseView.php';
 		// setzt die Response auf Null, damit sie nicht zweimal angezeigt wird.
 		Session::set ( 'response_positive', null );
 		Session::set ( 'response_negative', null );
@@ -129,7 +129,7 @@ class View {
 		self::getRightMenue ();
 		// lädt die verschiedenen views
 		foreach ( $filenames as $filename ) {
-			require Config::get ( 'PATH_VIEW' ) . $filename . '.php';
+			require Config::get ( 'PATH_VIEW' ) . $filename . 'View.php';
 		}
 		// lädt den footer
 		require Config::get ( 'PATH_VIEW' ) . '_templates/footer.php';
@@ -153,22 +153,22 @@ class View {
 		// falls student
 		if (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 1) {
 			// lädt den header
-			require Config::get ( 'PATH_VIEW' ) . '_templates/menueStudent.php';
+			require Config::get ( 'PATH_VIEW' ) . '_templates/menueStudentView.php';
 		}		// falls mitarbeiter
 		elseif (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 3) {
 			// lädt den header
-			require Config::get ( 'PATH_VIEW' ) . '_templates/menueEmployee.php';
+			require Config::get ( 'PATH_VIEW' ) . '_templates/menueEmployeeView.php';
 		}		// falls dozent
 		elseif (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 2) {
 			// lädt den header
-			require Config::get ( 'PATH_VIEW' ) . '_templates/menueDocent.php';
+			require Config::get ( 'PATH_VIEW' ) . '_templates/menueDocentView.php';
 		}		// falls tutor
 		elseif (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 4) {
 			// lädt den header
-			require Config::get ( 'PATH_VIEW' ) . '_templates/menueTutor.php';
+			require Config::get ( 'PATH_VIEW' ) . '_templates/menueTutorView.php';
 		} else {
 			// lädt das standartmenü
-			require Config::get ( 'PATH_VIEW' ) . '_templates/menue.php';
+			require Config::get ( 'PATH_VIEW' ) . '_templates/menueView.php';
 		}
 	}
 	/*

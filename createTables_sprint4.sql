@@ -372,19 +372,7 @@ CREATE  TABLE `Studiengang_hat_Veranstaltung`
 (
 	`stg_ID` INT NOT NULL ,
 	`veranst_ID` INT NOT NULL ,
-
-/*
- * Sprint 4 Anfang
- * Änderung: Roland Schmid
-*/
-
-	`pflicht_im_Semester` TINYINT(1) NOT NULL DEFAULT 1 
--- old:
--- `pflicht` TINYINT(1) NOT NULL DEFAULT 1 ,
-
-/*
- * Sprint 4 Ende
-*/
+	`pflicht_im_Semester` TINYINT(1) NOT NULL DEFAULT 1 ,
 	PRIMARY KEY (`stg_ID`, `veranst_ID`) ,
     FOREIGN KEY (`stg_ID` ) REFERENCES `Studiengang` (`stg_ID` ),
     FOREIGN KEY (`veranst_ID` ) REFERENCES `Veranstaltung` (`veranst_ID` )

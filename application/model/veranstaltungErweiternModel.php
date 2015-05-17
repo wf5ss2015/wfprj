@@ -30,7 +30,7 @@ class veranstaltungErweiternModel {
 	// insertet die Erweiterung einer Veranstaltung mit einer Person
 	public static function setErweiterung($veranst_ID, $user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
-		$sql = "Insert into User_beteiligtAn_Veranstaltung (veranst_ID, nutzer_name) Values ('$veranst_ID', '$user_name')";
+		$sql = "Insert into nutzer_beteiligtAn_Veranstaltung (veranst_ID, nutzer_name) Values ('$veranst_ID', '$user_name')";
 		$query = $database->prepare ( $sql );
 		$query->execute ();
 	}

@@ -86,7 +86,7 @@ class UserModel {
 		
 		$sql = "SELECT v.veranst_ID, veranst_bezeichnung, credits, SWS 
 				FROM Nutzer n  
-				JOIN user_beteiligtan_Veranstaltung ubav 
+				JOIN nutzer_beteiligtan_Veranstaltung ubav 
 				ON n.nutzer_name = ubav.nutzer_name 
 				JOIN Veranstaltung v 
 				ON ubav.veranst_ID = v.veranst_ID
@@ -144,7 +144,7 @@ class UserModel {
 	 */
 	public static function saveClass($id, $user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
-		$sql = "INSERT INTO User_beteiligtAn_Veranstaltung VALUES (:id, :user_name);";
+		$sql = "INSERT INTO nutzer_beteiligtAn_Veranstaltung VALUES (:id, :user_name);";
 		$query = $database->prepare ( $sql );
 		
 		try {
@@ -176,7 +176,7 @@ class UserModel {
 	public static function delistClass($id, $user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
-		$sql = "DELETE FROM User_beteiligtAn_Veranstaltung WHERE veranst_ID=:id and nutzer_name=:user_name;";
+		$sql = "DELETE FROM nutzer_beteiligtAn_Veranstaltung WHERE veranst_ID=:id and nutzer_name=:user_name;";
 		$query = $database->prepare ( $sql );
 		
 		try {
