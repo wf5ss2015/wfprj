@@ -1,5 +1,18 @@
 <?php
 /**
+ * SPRINT 04
+ *
+ * @author : Roland Schmid
+ * Datum: 16.5.2015
+ * User­ Story: Als Mitarbeiter möchte ich einer Veranstaltung ein Fachsemester zuordnen können. (Nacharbeit)
+ * Task: 	Semester in Abhängigkeit von gewähltem Studiengang eintragen
+ * Nr:		310a
+ * Points:	5
+ * Zeit: 	0.5
+ *
+ */
+
+/**
  * SPRINT 03
  *
  * @author: Roland Schmid
@@ -129,6 +142,13 @@ class VeranstaltungModel {
 		
 		$stg_ID = Request::post ( 'veranstaltung_pflichtvorlesung' );
 		
+/* sprint 4 Anfang
+ * neue Variable fürs Fachsemester angelegt
+ */
+		$fachsemester = Request::post('veranstaltung_fachsemester');
+/* sprint 4 Ende
+ */
+		
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
 		
@@ -149,7 +169,7 @@ class VeranstaltungModel {
 			/* TODO : Fehlermeldung ausgeben */
 		}
 		
-		/* sprint 3 Ende */
+/* sprint 3 Ende */
 		
 		// wenn alle Prüfungen positiv, führe insert aus
 		if ($valid) {
@@ -163,8 +183,12 @@ class VeranstaltungModel {
 				// Veranstaltung wird als Pflichtveranstaltung in Tabelle
 				// "Studiengang_hat_Veranstaltung" eingetragen, wenn die gewählte ID > 0
 				if ($stg_ID > 0) {
-					
-					$this->setPflichtVeranstaltung ( $stg_ID, $vID );
+/* sprint 4 Anfang
+ * Paramterliste angepasst, jetzt wird das Fachsemsester mit übergeben.
+ */
+					$this->setPflichtVeranstaltung ( $stg_ID, $vID, $fachsemester );
+/* sprint 4 Ende
+ */
 				}
 				
 				// echo "<br>im model, in methode vAnlegen, nach insert<br>";
@@ -183,21 +207,22 @@ class VeranstaltungModel {
 	 * dass eine Vorlesung $veranst_ID eine Pflichtveranstaltung im Studiengang $stg_ID ist
 	 *
 	 */
-	public function setPflichtVeranstaltung($stg_ID, $veranst_ID) {
+	public function setPflichtVeranstaltung($stg_ID, $veranst_ID, $fachsemester) {
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
+/* sprint 4 Anfang
+ * Paramterliste angepasst, jetzt wird das Fachsemsester mit übergeben.
+ */
+		$this->setPflichtVeranstaltung ( $stg_ID, $vID, $fachsemester );
 		
-		/*
-		 * INSERT INTO `lehrveranstaltung`.`Studiengang_hat_Veranstaltung`
-		 * (`stg_ID`, `veranst_ID`, `pflicht`) VALUES(<{stg_ID: }>, <{veranst_ID: }>, <{pflicht: 1}>);
-		 */
+		//alter Insertstring:
+		//$insertString = "INSERT INTO Studiengang_hat_Veranstaltung (stg_ID, " . "veranst_ID, pflicht) VALUES ($stg_ID, $veranst_ID, 1);";
 		
-		/*
-		 * INSERT INTO Studiengang_hat_Veranstaltung (stg_ID, veranst_ID, pflicht) VALUES (,,);
-		 */
+		$insertString = "INSERT INTO Studiengang_hat_Veranstaltung (stg_ID, " 
+						. "veranst_ID, pflicht_im_Semester) VALUES ($stg_ID, $veranst_ID, $fachsemester);";
 		
-		$insertString = "INSERT INTO Studiengang_hat_Veranstaltung (stg_ID, " . "veranst_ID, pflicht) VALUES ($stg_ID, $veranst_ID, 1);";
-		
+/* sprint 4 Ende
+ */
 		$database->insert ( $insertString );
 	}
 	
