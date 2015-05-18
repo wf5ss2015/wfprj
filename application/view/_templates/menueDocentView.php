@@ -34,7 +34,7 @@
 		* Task: xxx/xx
 		* START SPRINT 04
 		-->
-		<li><a href="index.php?url=Dozent/meinProfilView">Mein Profil</a></li>
+		<li><a href="index.php?url=Dozent/meinProfil">Mein Profil</a></li>
 		<!--
 		/**
 		* ENDE SPRINT 04
@@ -44,7 +44,7 @@
 		-->
 		<li><a href="index.php?url=raumplan/erzeugeFormular1">Raumplan
 				anzeigen</a></li>
-		<li><a href="index.php?url=Dozent/auswahlVorlesungView">Teilnehmerliste</a>
+		<li><a href="index.php?url=Dozent/auswahlVorlesung">Teilnehmerliste</a>
 		</li>
 		<li><a href="index.php?url=login/logout">Ausloggen</a></li>
 	</ul>

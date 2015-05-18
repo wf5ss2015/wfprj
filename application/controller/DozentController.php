@@ -55,7 +55,7 @@ class DozentController extends Controller {
 	
 	// Funktion zum Aufruf der DozentModel-Klasse um Teilnehmer einer Vorlesung anzuzeigen
 	public function teilnehmerListe() {
-		$this->View->render ( 'dozent/teilnehmerListe', array (
+		$this->View->render('dozent/teilnehmerListe', array (
 				'teilnehmer' => DozentModel::getTeilnehmer(Request::post ( 'id' ) ) 
 		) );
 	}
