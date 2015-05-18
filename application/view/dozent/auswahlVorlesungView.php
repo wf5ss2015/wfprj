@@ -20,10 +20,12 @@
 ?>
 <article>
 	<h2>Teilnehmerliste</h2>
-
-	<a>Hier sehen Sie ihre zugeordneten Kurse. Bitte auswählen um
+	</br>			
+	</br>
+	<a>Bitte auswählen um
 		Teilnehmerlisten zu erzeugen</a>
-
+	</br>			
+	</br>
 	<!-- Prüfen ob Array leer (Wichtig, Namen für Select Tag vergeben ;=)-->
 <?php if ($this->vorlesung) { ?>
 

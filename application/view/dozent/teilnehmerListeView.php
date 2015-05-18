@@ -20,9 +20,9 @@
 ?>
 <article>
 
-	<h2>Teilnehmerliste für Kurs "<?php echo $_POST['id']?>"</h2>
-	<a>Hier sehen Sie ihre zugeordneten Kurse. Bitte auswählen um
-		Teilnehmerlisten zu erzeugen</a>
+	<h2>Teilnehmerliste für Kurs <?php echo htmlentities($_POST['id']); ?> </h2>
+	</br>			
+	</br>
 				
 <?php
 
