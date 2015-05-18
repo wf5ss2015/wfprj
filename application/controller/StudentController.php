@@ -22,7 +22,7 @@ class StudentController extends Controller {
 	 *         Erstellt ein Objekt des Controllers
 	 */
 	public function __construct() {
-		Auth::checkAuthenticationStudent ();
+		$auth = new Auth(1);
 		parent::__construct ();
 	}
 	

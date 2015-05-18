@@ -17,8 +17,8 @@
 
 
 	
-		<a>Hier sehen Sie für Sie mögliche Kurse und können sich zu diesen
-			anmelden.</a>
+		<p>Hier sehen Sie für Sie mögliche Kurse und können sich zu diesen
+			anmelden.</p>
 	
 	
 <?php

@@ -43,7 +43,7 @@ class LoginModel {
 		}
 		
 		// setzt Timestamp des letzten Login
-		self::saveTimestamp ( $result->nutzer_name );
+		//self::saveTimestamp ( $result->nutzer_name );
 		
 		// falls Nutzer erfolgreich eingeloggt ist, dann werden notwendige Parameter in die Session Variablen geschrieben
 		// Loggt Nutzer final ein

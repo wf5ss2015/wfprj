@@ -1,6 +1,17 @@
 <?php
 /*
  * ===============================================
+ * Sprint: 4
+ * @author: Kilian Kraus
+ * Datum: 17.05.2015
+ * Zeitaufwand (in Stunden): 0.5
+ * User Story Nr.: 
+ * User Story: Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern.
+ * Task: static -> OOP
+ * ===============================================
+ */
+/*
+ * ===============================================
  * Sprint: 2
  * @author: Kilian Kraus
  * Datum: 20.04.2015
@@ -36,18 +47,26 @@ class Auth {
 	 * User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
 	 * ===============================================
 	 */
-	/**
+	 /*
+	 * ===============================================
+	 * Start Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern.
+	 * ===============================================
+	 */	
+	 /**
 	 *
 	 * @author Kilian Kraus
 	 *         Überprüft ob ein Student eingeloggt ist und die entsprechnede Rolle besitzt, ansonsten wird er zur Login-Seite verlinkt und die Session zerstört.
 	 *         Sollte am Anfang eines Controllers verwendet werden, wenn dieser nur für eingeloggte Nutzer sichtbar sein sollte.
 	 */
-	public static function checkAuthenticationStudent() {
+	 // übergabe int rolle
+	public function __construct($role) {	
 		// Initialisiert eine Session.
 		Session::init ();
 		
 		// Falls Nutzer nicht eingeloggt ist.
-		if (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 1) {
+		if (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == $role) {
 			return true;
 		} else {
 			Session::destroy ();
@@ -55,63 +74,13 @@ class Auth {
 			exit ();
 		}
 	}
-	/**
-	 *
-	 * @author Kilian Kraus
-	 *         Überprüft ob ein Dozent eingeloggt ist und die entsprechnede Rolle besitzt, ansonsten wird er zur Login-Seite verlinkt und die Session zerstört.
-	 *         Sollte am Anfang eines Controllers verwendet werden, wenn dieser nur für eingeloggte Nutzer sichtbar sein sollte.
+	/*
+	 * ===============================================
+	 * Ende Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern.
+	 * ===============================================
 	 */
-	public static function checkAuthenticationDocent() {
-		// Initialisiert eine Session.
-		Session::init ();
-		
-		// Falls Nutzer nicht eingeloggt ist.
-		if (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 2) {
-			return true;
-		} else {
-			Session::destroy ();
-			header ( 'location: ' . "index.php?url=" . 'login' );
-			exit ();
-		}
-	}
-	/**
-	 *
-	 * @author Kilian Kraus
-	 *         Überprüft ob ein Tutor eingeloggt ist und die entsprechnede Rolle besitzt, ansonsten wird er zur Login-Seite verlinkt und die Session zerstört.
-	 *         Sollte am Anfang eines Controllers verwendet werden, wenn dieser nur für eingeloggte Nutzer sichtbar sein sollte.
-	 */
-	public static function checkAuthenticationTutor() {
-		// Initialisiert eine Session.
-		Session::init ();
-		
-		// Falls Nutzer nicht eingeloggt ist.
-		if (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 4) {
-			return true;
-		} else {
-			Session::destroy ();
-			header ( 'location: ' . "index.php?url=" . 'login' );
-			exit ();
-		}
-	}
-	/**
-	 *
-	 * @author Kilian Kraus
-	 *         Überprüft ob ein Mitarbeiter eingeloggt ist und die entsprechnede Rolle besitzt, ansonsten wird er zur Login-Seite verlinkt und die Session zerstört.
-	 *         Sollte am Anfang eines Controllers verwendet werden, wenn dieser nur für eingeloggte Nutzer sichtbar sein sollte.
-	 */
-	public static function checkAuthenticationEmployee() {
-		// Initialisiert eine Session
-		Session::init ();
-		
-		// Falls Nutzer nicht eingeloggt ist.
-		if (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 3) {
-			return true;
-		} else {
-			Session::destroy ();
-			header ( 'location: ' . "index.php?url=" . 'login' );
-			exit ();
-		}
-	}
 	/*
 	 * ===============================================
 	 * Ende Sprint: 2

@@ -105,7 +105,7 @@ class LoginController extends Controller {
 	 *         Zeigt eine einfache Seite an nach dem erfolgreichen Login
 	 */
 	public function helloEmployee() {
-		Auth::checkAuthenticationEmployee ();
+		$auth = new Auth(3);
 		$this->View->render ( 'login/loggedinEmployee', array (
 				'userlist' => UserModel::getUserDataAll () 
 		) );
@@ -117,7 +117,7 @@ class LoginController extends Controller {
 	 *         Zeigt eine einfache Seite an nach dem erfolgreichen Login
 	 */
 	public function helloStudent() {
-		Auth::checkAuthenticationStudent ();
+		$auth = new Auth(1);
 		$this->View->render ( 'login/loggedinStudent', array (
 				'userlist' => UserModel::getUserDataAll () 
 		) );
@@ -129,7 +129,7 @@ class LoginController extends Controller {
 	 *         Zeigt eine einfache Seite an nach dem erfolgreichen Login
 	 */
 	public function helloTutor() {
-		Auth::checkAuthenticationTutor ();
+		$auth = new Auth(4);
 		$this->View->render ( 'login/loggedinTutor', array (
 				'userlist' => UserModel::getUserDataAll () 
 		) );
@@ -141,7 +141,7 @@ class LoginController extends Controller {
 	 *         Zeigt eine einfache Seite an nach dem erfolgreichen Login
 	 */
 	public function helloDocent() {
-		Auth::checkAuthenticationDocent ();
+		$auth = new Auth(2);
 		$this->View->render ( 'login/loggedinDocent', array (
 				'userlist' => UserModel::getUserDataAll () 
 		) );

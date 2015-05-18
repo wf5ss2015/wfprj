@@ -13,12 +13,12 @@
 ?>
 <article>
 	<h1>Meine Kurse</h1>
-</article>
 
-<article>
-	<a>Hier sehen Sie ihre Kurse und können sich von diesen abmelden.</a>
-</article>
-<article>
+
+
+	<p>Hier sehen Sie ihre Kurse und können sich von diesen abmelden.</p>
+
+
 	<?php
 	if ($this->listClass) {
 		$table = new Table ();
