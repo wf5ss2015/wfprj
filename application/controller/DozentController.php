@@ -69,7 +69,7 @@ class DozentController extends Controller {
 	*/
 	
 	public function meinProfil() {
-		$this->View->render ( 'dozent/meinProfilView', array (
+		$this->View->render ( 'dozent/meinProfil', array (
 				'profil' => DozentModel::getDozentProfil(Session::get('user_name')) 
 		) );
 	}
@@ -181,7 +181,7 @@ class DozentController extends Controller {
 			}
 	
 		// Seite wird nochmal gerendert, um aktualisierte Daten anzuzeigen
-		$this->View->render ( 'dozent/meinProfilView', array (
+		$this->View->render ( 'dozent/meinProfil', array (
 					'profil' => DozentModel::getDozentProfil(Session::get('user_name')) 
 			) );
 	}
