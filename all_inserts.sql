@@ -72,7 +72,7 @@ INSERT INTO Adresse (straßenname, hausnummer, stadt, land, plz, nutzer_name, ge
 ---- update = Teststudenten anlegen 06.05. Damian
 */
 
-INSERT INTO Email (email_name, nutzer_name) VALUES
+INSERT INTO EMail (email_name, nutzer_name) VALUES
 ('userTestDozent@hs-ulm.de', 'userTestDozent'),
 ('userTestMitarbeiter@hs-ulm.de', 'userTestMitarbeiter'),
 ('userTestStudent@hs-ulm.de', 'userTestStudent'),
