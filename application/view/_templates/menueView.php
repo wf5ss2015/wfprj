@@ -56,7 +56,8 @@ class menueView{
 			"Raumplan" => "raumplan/erzeugeFormular1"),
 			array(
 			"Nutzer" => "#",
-			"Nutzerliste drucken" => "nutzerlistedrucken/nutzerlistedrucken"),
+			"Nutzerliste drucken" => "nutzerlistedrucken/nutzerlistedrucken",
+			"Rechte" => "Employee/selectUser"),
 			array(
 			"Logout" => "login/logout")
 		),

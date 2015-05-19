@@ -71,7 +71,6 @@
 						echo "<td style=background:pink; align=center>";
 						echo "<form action=\"";
 						echo htmlentities ( $value );
-						
 						echo "\" method=\"post\">";
 						foreach ( $this->table [$i] as $key => $value ) {
 							echo "<input type=\"hidden\" name=\"";
@@ -80,6 +79,16 @@
 							echo htmlentities ( $value );
 							echo "\">";
 						}
+							// zusätzliche hidden values
+							if(isset($this->hidden)){
+								foreach ( $this->hidden[0] as $key => $value ) {
+									echo "<input type=\"hidden\" name=\"";
+									echo htmlentities ( $key );
+									echo "\" value=\"";
+									echo htmlentities ( $value );
+									echo "\">";
+								}
+							}
 						echo "<input type=\"submit\" value=\"";
 						echo htmlentities ( $submitName );
 						echo "\">";
@@ -94,18 +103,6 @@
 			echo "</tbody>";
 			echo "</table>";
 		}
-		
-		/*
-		 * print "<form action=\"http://localhost/perl/cc_index.pl/\" method=\"post\">";
-		 * print "<table>";
-		 * print " <tr>";
-		 * print " <td width=\"300\">
-		 * <input type=\"hidden\" name=\"Datei\" value=\"$_\">
-		 * <input type=\"submit\" value=\"weiter\"></td>";
-		 * print " </tr>";
-		 * print " </table>";
-		 * print " </form>";
-		 */
 	}
 	?>	   			
 

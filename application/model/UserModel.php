@@ -210,14 +210,53 @@ class UserModel {
 	 * ===============================================
 	 */
 	
-	// dummy für bsp tabelle
+	// holt nutzername samt rolle
 	public static function getUserDataAll() {
-		$database = new DatabaseFactoryMysql ();
+		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
-		$sql = "SELECT * FROM Nutzer";
+		$sql = "SELECT nutzer_name, rolle_bezeichnung FROM Nutzer 
+		JOIN Rolle
+		ON nutzer.rolle_ID = rolle.rolle_ID 
+		ORDER BY nutzer_name";
+		$query = $database->prepare ( $sql );
+		$query->execute();
+		return $query->fetchAll();
+	}
+	
+	public static function getRoles(){
+		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
-		$result = $database->query ( $sql );
-		return $result;
+		$sql = "SELECT * FROM Rolle";
+		$query = $database->prepare ( $sql );
+		$query->execute();
+		return $query->fetchAll();
+	}
+	
+		/**
+	 *
+	 * @author Kilian Kraus
+	 *        
+	 *         Macht den Insert wenn sich ein Student zu einer Veranstaltung anmeldet.
+	 *        
+	 * @param $user_name string
+	 *        	Nutzername
+	 * @param $id string
+	 *        	id
+	 */
+	public static function saveRole($rolle_id, $nutzer_name) {
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+		$sql = "UPDATE nutzer SET rolle_id=:rolle_id WHERE nutzer_name = :nutzer_name";
+		$query = $database->prepare ( $sql );
+		
+		try {
+			$query->execute ( array (
+					':rolle_id' => $rolle_id,
+					':nutzer_name' => $nutzer_name 
+			) );
+			Session::add ( 'response_positive', 'Rechte erfolgreich für '.$nutzer_name.' geändert.' );
+		} catch ( PDOException $e ) {
+			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
+		}
 	}
 	
 	// dummy für bsp tabelle
@@ -227,6 +266,7 @@ class UserModel {
 		$sql = "SELECT nutzer_name FROM Nutzer";
 		
 		$result = $database->query ( $sql );
+		
 		return $result;
 	}
 	
