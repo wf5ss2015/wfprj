@@ -52,7 +52,8 @@
             [credits] => 5
             [SWS] => 4
             [maxTeilnehmer] => 30
-            [Veranstaltungsart] => Vorlesung/Labor
+            //[Veranstaltungsart] => Vorlesung/Labor
+            [vArt_ID] => 3
 	*/
 	?>
 	
@@ -66,7 +67,9 @@
 			//wichtig, hier die ID per hidden input mitzuübergeben
 		?>
 		<input name="veranst_ID" value=<?php echo "\"$veranst->veranst_ID\""?> type="hidden">
-		<input name="Veranstaltungsart" value=<?php echo "\"$veranst->Veranstaltungsart\""?> type="hidden">
+		<?php //<input name="Veranstaltungsart" value=<?php echo "\"$veranst->Veranstaltungsart\"" type="hidden">?>
+		
+		<input name="vArt_ID" value=<?php echo "\"$veranst->vArt_ID\""?> type="hidden">
 		
 	
 	

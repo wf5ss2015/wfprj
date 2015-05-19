@@ -53,7 +53,8 @@ $vArten = $data['vArten'];
     	echo "\n\t<option value=\"" . $value->vArt_ID . "\"";
 
     	// wählt die aktuelle Veranstaltungsart vor
-    	if($value->vArt_bezeichnung == $grunddaten['Veranstaltungsart']) {    		
+    	//if($value->vArt_bezeichnung == $grunddaten['Veranstaltungsart']) {    		
+    	if($value->vArt_ID == $grunddaten['vArt_ID']) {
     		echo " selected";    		
     	} 		
     	echo ">";

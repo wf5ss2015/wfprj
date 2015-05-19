@@ -263,24 +263,23 @@ class VeranstaltungModel {
 		return $result;
 	}
 	
-/*	UNNÖTIG. normale getVeranstaltung und nicht alles nutzen tuts auch
-	// holt die Grunddaten einer Veranstaltung mit $vID 
-	// (Bezeichnung, Kurztext, SWS, Credits, max. Anzahl Teilnehmer) aus der Datenbank
-	public function getVeranstaltungGrunddaten($vID) {
-		
-		//Query-String
-		$q = "select Veranstaltung.veranst_ID, Veranstaltung.veranst_bezeichnung, Veranstaltung.veranst_kurztext, "
-				. "Veranstaltung.credits, Veranstaltung.SWS, "
-				. "Veranstaltung.maxTeilnehmer, Veranstaltungsart.vArt_bezeichnung as Veranstaltungsart "
-			    . "from Veranstaltung"
-			    . " where Veranstaltung.veranst_ID = $vID;";
+	 // holt die Grunddaten einer Veranstaltung mit $vID
+	 // (Bezeichnung, Kurztext, SWS, Credits, max. Anzahl Teilnehmer, VeranstaltungsartID) aus der Datenbank
+	 public function getGrunddaten($vID) {
 	
-		//führt die Abfrage aus und speichert sie in $result
-		$result = $this->abfrage($q);
+	 //Query-String
+	 $q = "select veranst_ID, veranst_bezeichnung, veranst_kurztext, "
+	 . "credits, SWS, maxTeilnehmer, vArt_ID "
+	 . "from Veranstaltung"
+	 . " where veranst_ID = $vID;";
 	
-		return $result;
-	}
-*/
+	 //führt die Abfrage aus und speichert sie in $result
+	 $result = $this->abfrage($q);
+	
+	 return $result;
+	 }
+	 
+	
 	/* sprint 4 Ende */
 	// holt die veranstaltung mit id = $vID
 	public function getVeranstaltung($vID) {
