@@ -25,4 +25,8 @@
 		<input type="submit" id="b1" value="weiter"></a>
 	</p>
 	</form>
+	<?php 
+		//Error Handling
+		$this->renderResponse(); 
+	?>
 </article>

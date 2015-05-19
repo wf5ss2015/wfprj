@@ -26,7 +26,7 @@ if ($this->geb_list) {
 		echo "</option>";
 	}
 } else {
-	echo "Es ist ein Fehler aufgetretten.";
+	echo "Es ist ein Fehler aufgetreten.";
 }
 echo '</select></p>';
 

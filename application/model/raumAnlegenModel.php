@@ -4,8 +4,9 @@
     datum: 14.5.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 04	
-	zeitaufwand: 0.1
-	user story (Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.) -> Überarbeitung nach Review ("static" entfernt)
+	zeitaufwand: 0.5
+	user story (Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.) 
+	-> Überarbeitung nach Review ("static" entfernt, Fehlerbearbeitung verbessert)
 */
 /*
     autor: Kris Klamser
@@ -62,7 +63,12 @@ class raumAnlegenModel {
 		$insert_sql2 = "INSERT INTO bibliothek (raum_bezeichnung) 
 							VALUES ('$bezeichnung')";
 		$query2 = $database->prepare ( $insert_sql2 );
-		$query2->execute ();
+		try{
+			$query2->execute ();
+			Session::add ( 'response_positive', 'Die Bibliothek wurde erfolgreich angelegt.' );
+		} catch (PDOException $e){
+			Session::add ( 'response_negative', 'Die Bibliothek konnte nicht angelegt werden.' );
+		}
 	}
 	
 	// Büro in Datenbank in Datenbank eintragen
@@ -71,7 +77,12 @@ class raumAnlegenModel {
 		$insert_sql2 = "INSERT INTO buero (raum_bezeichnung)
 							VALUES ('$bezeichnung')";
 		$query2 = $database->prepare ( $insert_sql2 );
-		$query2->execute ();
+		try{
+			$query2->execute ();
+			Session::add ( 'response_positive', 'Das Büro wurde erfolgreich angelegt.' );
+		} catch (PDOException $e){
+			Session::add ( 'response_negative', 'Das Büro konnte nicht angelegt werden.' );
+		}
 	}
 	
 	// Laborraum in Datenbank eintragen
@@ -80,7 +91,12 @@ class raumAnlegenModel {
 		$insert_sql2 = "INSERT INTO laborraum(raum_bezeichnung, lArt_ID) 
 							VALUES ('$bezeichnung', '$laborart_ID')";
 		$query2 = $database->prepare ( $insert_sql2 );
-		$query2->execute ();
+		try{
+			$query2->execute ();
+			Session::add ( 'response_positive', 'Das Labor wurde erfolgreich angelegt.' );
+		} catch (PDOException $e){
+			Session::add ( 'response_negative', 'Das Labor konnte nicht angelegt werden.' );
+		}
 	}
 	
 	// Vorlesungsraum in Datenbank eintragen
@@ -89,15 +105,29 @@ class raumAnlegenModel {
 		$insert_sql2 = "INSERT INTO vorlesungsraum (raum_bezeichnung) 
 							VALUES ('$bezeichnung')";
 		$query2 = $database->prepare ( $insert_sql2 );
-		$query2->execute ();
+		try{
+			$query2->execute ();
+			Session::add ( 'response_positive', 'Der Vorlesungsraum wurde erfolgreich angelegt.' );
+		} catch (PDOException $e){
+			Session::add ( 'response_negative', 'Der Vorlesungsraum konnte nicht angelegt werden.' );
+		}
 	}
-	// Stammdaten eines Raumes in Datenbank eintragen. Stammdaten sind Raumbezeichnung und das zugehörige Gebäude
+	/*
+		Stammdaten eines Raumes in Datenbank eintragen. Stammdaten sind Raumbezeichnung und das zugehörige Gebäude.
+		Wenn ein Fehler auftritt wird der Rest abgebrochen und eine Fehlermeldung angezeigt.
+	*/
 	public function raumStammdaten($bezeichnung, $gebäude_char) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		$insert_sql1 = "INSERT INTO raum(raum_bezeichnung, geb_bezeichnung) 
 							VALUES ('$bezeichnung', '$gebäude_char')";
 		$query1 = $database->prepare ( $insert_sql1 );
-		$query1->execute ();
+		try{
+			$query1->execute ();
+		} catch (PDOException $e){
+			Session::add ( 'response_negative', 'Der Raum konnte nicht angelegt werden.' );
+			$this->View->render ( 'raumanlegen/raumAngelegt' );
+			exit;
+		}
 	}
 	
 	// Trägt die raumspezifische Ausstattung eines Vorlesungsraums in die Datenbank ein.
@@ -106,7 +136,11 @@ class raumAnlegenModel {
 		$insert_sql = "INSERT INTO vorlesungsraum_hat_ausstattung (ausstattung_ID, raum_bezeichnung, anzahl) 
 							VALUES ('$id','$bezeichnung', '$stückzahl')";
 		$query = $database->prepare ( $insert_sql );
-		$query->execute ();
+		try{
+			$query->execute ();
+		} catch (PDOException $e){
+			Session::add ( 'response_negative', 'Es ist ein Fehler beim Eintragen der Ausstattung aufgetreten.' );
+		}
 	}
 	
 	// Trägt die raumspezifische Ausstattung eines Laborraums in die Datenbank ein.
@@ -115,7 +149,11 @@ class raumAnlegenModel {
 		$insert_sql = "INSERT INTO laborraum_hat_ausstattung (ausstattung_ID, raum_bezeichnung, anzahl) 
 							VALUES ('$id','$bezeichnung', '$stückzahl')";
 		$query = $database->prepare ( $insert_sql );
-		$query->execute ();
+		try{
+			$query->execute ();
+		} catch (PDOException $e){
+			Session::add ( 'response_negative', 'Es ist ein Fehler beim Eintragen der Ausstattung aufgetreten.' );
+		}
 	}
 	
 	// Trägt die bibliotheksspezifischen Buchkategorien einer Bibliothek in die Datenbank ein.
@@ -124,7 +162,11 @@ class raumAnlegenModel {
 		$insert_sql = "INSERT INTO bibliothek_hat_buchkategorie (buchKat_ID, raum_bezeichnung) 
 							VALUES ('$id','$bezeichnung')";
 		$query = $database->prepare ( $insert_sql );
-		$query->execute ();
+		try{
+			$query->execute ();
+		} catch (PDOException $e){
+			Session::add ( 'response_negative', 'Es ist ein Fehler beim Eintragen der Buchkategorien aufgetreten.' );
+		}
 	}
 }
 ?>

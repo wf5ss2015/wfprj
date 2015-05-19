@@ -1,12 +1,5 @@
 <?php
-/*
-    autor: Kris Klamser
-    datum: 14.5.2015
-    projekt: lehrveranstaltungsmanagement
-	sprint: 04
-	zeitaufwand: 0,1
-	user story(Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.) -> Überarbeitung/Nachbesserung nach letzter Sprint Review
-*/
+
 /*
     autor: Kris Klamser
     datum: 5.4.2015
@@ -16,8 +9,6 @@
 	user story (Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
 */
 ?>
-
-
 <article>
 	<h1>Bibliothek anlegen</h1>
 
@@ -45,7 +36,7 @@
 					}
 					echo "</p>";
 				} else {
-					echo "Es ist ein Fehler aufgetretten.";
+					echo "Es sind keine Buchkategorien in der Datenbank.";
 				}
 				?>	
 			</p>

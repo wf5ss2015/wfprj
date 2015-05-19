@@ -10,9 +10,7 @@
 	Endpage, wenn raum angelegt wurde.
 */
 ?>
-<article>
-	<h3>Raum erfolgreich angelegt!</h3>
-	
+<article>	
 	<!-- Wenn Raum angelegt wurde gibt es zwei Optionen: zur Startseite zurück oder nächsten Raum anlegen -->
 	<form action="index.php?url=raumAnlegen/raumAnlegen" method="post" />
 		<input type="submit" id="b1" value="nächster Raum"></a>
@@ -20,4 +18,8 @@
 	<form action="index.php?url=index/index" method="post" />
 		<input type="submit" id="b2" value="Startseite"></a>
 	</form>
+	<?php 
+		//Error Handling
+		$this->renderResponse(); 
+	?>
 </article>

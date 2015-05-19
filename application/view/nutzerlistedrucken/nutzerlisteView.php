@@ -1,6 +1,15 @@
 <?php
 /*
     autor: Kris Klamser
+    datum: 19.5.2015
+    projekt: lehrveranstaltungsmanagement
+	sprint: 04	
+	zeitaufwand: 0.5
+	user story (Nr. 280): Als Admin möchte ich alle Nutzer in einer Liste speichern können. (20 Pkt.) 
+	-> Erweiterung um Vorname und Nachname
+*/
+/*
+    autor: Kris Klamser
     datum: 4.5.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 03	

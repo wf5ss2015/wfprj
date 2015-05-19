@@ -14,7 +14,8 @@
  * Erweiterung um Nutzerdaten von allen usern zu bekommen.
  * sprint: 4
  * autor: Kris Klamser
- * datum: 19.5.2015
+ * zeitaufwand:0.5
+ * datum: 17.5.2015
  */
 /*
  * ===============================================
@@ -291,7 +292,7 @@ class UserModel {
 	 * Erweiterung um Nutzerdaten von allen usern zu bekommen.
 	   sprint: 4
 	 * autor: Kris Klamser
-	 * datum: 19.5.2015
+	 * datum: 17.5.2015
 	 * START
 	 */
 	public static function getUserDataAll4() {
