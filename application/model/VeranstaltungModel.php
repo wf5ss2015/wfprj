@@ -9,6 +9,13 @@
  * Nr:		310a
  * Points:	5
  * Zeit: 	0.5
+ * 
+ * Datum: 	19.5.2015
+ * User­ Story: Als Verwalter möchte ich Veranstaltungen ändern können. (Nacharbeit)
+ * Task: 	Model erweitern
+ * Nr:		210a
+ * Points:	13
+ * Zeit: 
  *
  */
 
@@ -228,6 +235,10 @@ class VeranstaltungModel {
 	
 	/* sprint 3 Ende */
 	
+	/* sprint 4 Anfang
+	 * alle Veranstaltungen aus der Datenbank auslesen
+	 */
+	
 	// gibt ein array zurück mit allen vorhandenen Veranstaltungen
 	public function getAlleVeranstaltungen() {
 		// query-String
@@ -237,23 +248,41 @@ class VeranstaltungModel {
 		 * . "from Veranstaltung;";
 		 */
 		// erzeugt ein Resultset, benutzt dazu die Methode abfrage($q)
-		$result = $this->abfrage ( $q );
+		
+		// Query-String, mit dem alle Veranstaltungen ausgelesen werden
+		$q = "select Veranstaltung.veranst_ID, Veranstaltung.veranst_bezeichnung, Veranstaltung.veranst_kurztext, "
+			 . "Veranstaltung.credits, Veranstaltung.SWS, "
+			 . "Veranstaltung.maxTeilnehmer, Veranstaltungsart.vArt_bezeichnung as Veranstaltungsart "
+		     . "from Veranstaltung join Veranstaltungsart on Veranstaltung.vArt_ID = Veranstaltungsart.vArt_ID;";
+			 //. " where Veranstaltung.veranst_ID = $vID;";
+		
+		// führt die Abfrage aus und speichert das resultset in $result
+		$result = $this->abfrage($q);
 		
 		return $result;
 	}
 	
+/*	UNNÖTIG. normale getVeranstaltung und nicht alles nutzen tuts auch
+	// holt die Grunddaten einer Veranstaltung mit $vID 
+	// (Bezeichnung, Kurztext, SWS, Credits, max. Anzahl Teilnehmer) aus der Datenbank
+	public function getVeranstaltungGrunddaten($vID) {
+		
+		//Query-String
+		$q = "select Veranstaltung.veranst_ID, Veranstaltung.veranst_bezeichnung, Veranstaltung.veranst_kurztext, "
+				. "Veranstaltung.credits, Veranstaltung.SWS, "
+				. "Veranstaltung.maxTeilnehmer, Veranstaltungsart.vArt_bezeichnung as Veranstaltungsart "
+			    . "from Veranstaltung"
+			    . " where Veranstaltung.veranst_ID = $vID;";
+	
+		//führt die Abfrage aus und speichert sie in $result
+		$result = $this->abfrage($q);
+	
+		return $result;
+	}
+*/
+	/* sprint 4 Ende */
 	// holt die veranstaltung mit id = $vID
 	public function getVeranstaltung($vID) {
-		/*
-		 * $q = "SELECT VeranstaltungID, Bezeichnung, Kurztext, Credits, SWS, "
-		 * . "max_Teilnehmer, Veranstaltungsart "
-		 * . "from Veranstaltung WHERE VeranstaltungID = " . $vID . ";"; // . " LIMIT 1;";
-		 */
-		
-		/*
-		 * $q = "SELECT veranst_ID, veranst_bezeichnung, veranst_kurztext, credits, SWS, "
-		 * . "maxTeilnehmer, vArt_ID from Veranstaltung WHERE veranst_ID = " . $vID . ";";
-		 */
 
 		$q = "select Veranstaltung.veranst_ID, Veranstaltung.veranst_bezeichnung, Veranstaltung.veranst_kurztext, "
 		     . "Veranstaltung.credits, Veranstaltung.SWS, " 
@@ -265,6 +294,7 @@ class VeranstaltungModel {
 		
 		return $result;
 	}
+	
 
 	
 	/*

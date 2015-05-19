@@ -1,5 +1,18 @@
 <?php
 /**
+ * SPRINT 04
+ *
+ * @author : Roland Schmid
+ * Datum: 	19.5.2015
+ * User­ Story: Als Verwalter möchte ich Veranstaltungen ändern können. (Nacharbeit)
+ * Task: 	Tabelle zur Auswahl einer Veranstaltung erzeugen
+ * Nr:		210a
+ * Points:	13
+ * Zeit: 	1
+ *
+ */
+
+/**
  * SPRINT 02
  *
  * @author : Roland Schmid
@@ -18,10 +31,15 @@
 ?>
 <article>
 	<p>Wählen Sie die Veranstaltung aus, die Sie bearbeiten m&ouml;chten: </p>
-        <?php if ($this->veranstaltung) { 
-			
-echo "Tabelle mit Alias & Link bzw Action übergabe";
-	// Tabelle drucken mit alias & link
+    
+    <?php if ($this->veranstaltungen) { 
+
+	/* Tabelle drucken mit alias & link
+	 * generische Tabelle mit Linkauswahl von Kilian Kraus
+	 * Tabelle mit "hidden input" ermöglicht die Übergabe der Veranstaltungs-ID
+	 * */ 
+	
+	$table = new Table ();
 	$alias = array (
 			"0" => "Veranstaltungsnummer",
 			"1" => "Bezeichnung",
@@ -35,12 +53,13 @@ echo "Tabelle mit Alias & Link bzw Action übergabe";
 	
 	// key=name des links - value=action
 	$link = array (
-			"bearbeiten" => "index.php?url=veranstaltung/bearbeiten",
-			//"Index" => "index.php?url=index" 
+			"bearbeiten" => "index.php?url=veranstaltung/bearbeiten"
 	);
-	$link = ( object ) $link;
+	
+	$link = (object)$link;
+	
 	$table->table ( array (
-			'table' => $this->veranstaltung,
+			'table' => $this->veranstaltungen,
 			'alias' => array (
 					$alias 
 			),
@@ -51,6 +70,8 @@ echo "Tabelle mit Alias & Link bzw Action übergabe";
 
 	
 	
+        } else {
+        	echo "error";
         }
 		?>	
 			

@@ -11,7 +11,6 @@
  * Nr:		210
  * Points:	13
  * Zeit: 	1
- * UNVOLLSTÄNDIG
  *
  */
 

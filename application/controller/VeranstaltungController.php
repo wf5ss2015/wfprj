@@ -52,7 +52,9 @@
 /**
  *
  * @author Roland Schmid
- *         Das ist der Veranstaltung Controller. Steuert den Login Prozess.
+ *         Das ist der Veranstaltung Controller.
+ *         Dieser steuert alles, was mit Veranstaltungen zu tun hat:
+ *         anlegen, bearbeiten, anzeigen, etc
  */
 class VeranstaltungController extends Controller {
 	/**
@@ -121,7 +123,7 @@ class VeranstaltungController extends Controller {
 			// TODO
 			
 			// hole Daten der eben eingetragenen Veranstaltung als ein Array aus Objekten
-			$veranstaltung = $vModel->getVeranstaltung ( $vID );
+			$veranstaltung = $vModel->getVeranstaltung ($vID);
 			$this->View->render ( 'veranstaltung/angelegt', array (
 					'veranstaltung' => $veranstaltung 
 			) );
@@ -132,7 +134,6 @@ class VeranstaltungController extends Controller {
 	}
 	
 
-// TODO
 	/* sprint 4 Anfang 
 	 * Task: Controller erweitern 
 	 */
@@ -145,17 +146,35 @@ class VeranstaltungController extends Controller {
 		// neues Veranstaltungmodel anlegen
 		$vModel = new VeranstaltungModel ();
 		
+		// holt alle angelegten Veranstaltungen aus der Datenbank und speichert sie in einem Array
+		$veranstaltungen = $vModel->getAlleVeranstaltungen();
 		
+		// übergibt die Veranstaltungen der View, in der die zu bearbeitende Veranstaltung 
+		// ausgewählt werden kann
 		$this->View->render ( 'veranstaltung/bearbeitenSelect', array (
-				'veranstaltung' => VeranstaltungModel::getAlleVeranstaltungen () 
+			  'veranstaltungen' => $veranstaltungen 
 		) );
-	}
-	public function bearbeiten() {
 		
-		// do something im user model
-		$this->View->render ( 'veranstaltung/bearbeiten', array (
-				'veranstaltung' => VeranstaltungModel::getVeranstaltung ( Request::post ( 'VeranstaltungID' ) ) 
+		
+	}
+	
+	// holt alle Grunddaten der Veranstaltung aus der Datenbank und übergibt sie der view "bearbeiten"
+	public function bearbeiten() {
+		// neues Veranstaltungmodel anlegen
+		$vModel = new VeranstaltungModel ();
+		
+		//POST-Daten lesen
+		$vID = Request::post("veranst_ID");
+		
+		if(isset($vID)) {
+			echo $vID;
+		// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
+		$veranstaltung = $vModel->getVeranstaltung($vID);
+
+		$this->View->render('veranstaltung/bearbeiten', array ('veranstaltung' => $veranstaltung 
 		) );
+		
+		}
 	}
 	
 	/* sprint 4 Ende */

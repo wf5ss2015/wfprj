@@ -201,11 +201,11 @@
             ?>
 
         </select>
-<?php
-/* Sprint 4 Anfang
- * Auswahl Fachsemester für "Pflichtvorlesung im Studiengang" hinzugefügt
- */ 
-?>
+		<?php
+		/* Sprint 4 Anfang
+		 * Auswahl Fachsemester für "Pflichtvorlesung im Studiengang" hinzugefügt
+		 */ 
+		?>
          in Fachsemester: 
         <select class="input " name="veranstaltung_fachsemester" style="; width: 3em">
         <?php 
@@ -214,10 +214,10 @@
             }
 		?>
         </select>	
-<?php
-/* Sprint 4 Ende
- */ 
-?>
+		<?php
+		/* Sprint 4 Ende
+		 */ 
+		?>
         
     </td>
 
