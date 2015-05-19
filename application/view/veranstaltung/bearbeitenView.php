@@ -60,7 +60,13 @@
 	
 	
 	
-	<form action="index.php?url=veranstaltung/bearbeitenAusstattung" method="post">
+	<form action="index.php?url=veranstaltung/bearbeitenVeranstaltungsart" method="post">
+	
+		<?php 
+			//wichtig, hier die ID per hidden input mitzuübergeben
+		?>
+		<input name="veranst_ID" value=<?php echo "\"$veranst->veranst_ID\""?> type="hidden">
+	
 	
     <table id="veranstaltung-bearbeiten">
 	<tr><td>Bezeichnung: </td> <td><input type="text"  name="veranstaltung_bezeichnung" 
@@ -118,103 +124,7 @@
 		value=<?php echo "\"$veranst->maxTeilnehmer\""?> size="1" maxlength="3"/>
 	</td></tr>
 		
-	
-	<tr><td>Veranstaltungsart: </td><td>
-	
 
-	<select class="input " name="veranstaltung_veranstaltungsart" style="; width: 32em">	
-	
-	
-        <?php
-            // erzeugt die Liste mit "option"-HTML-Elementen aus dem Array vArten
-            foreach($this->vArten as $key => $value) {                 
-                echo "\n\t<option value=\"" . $value->vArt_ID . "\">";                
-                echo $value->vArt_bezeichnung . "</option>";                
-//                echo htmlentities($value->vArt_bezeichnung) . "</option>";                
-                
-            }	
-        ?>
-
-
-	</select>
-	</td></tr>
-	
-
-	<tr><td>Ausstattung: </td>
-	<td>
-		
-	<table>
-	
-	<?php
-	
-	// erzeugt eine Tabelle mit allen Ausstatungsmerkmalen
-            foreach($this->ausstattung as $key => $value) {                 
-                echo "\n<tr>";
-
-                //ausstattung[] gruppiert die so benannten Eingabefelder; 
-                //in PHP wird dies zu einem Sub-Array zusammengefasst
-                // TODO hidden value für id? 
-                echo "\n\t<td><input type=\"text\"  name=\"veranstaltung_ausstattung[]\"";
-                echo " size=\"1\" /> </td>";
-
-                echo "\n\t<td> " . $value->ausstattung_bezeichnung;
-                                
-//              echo " <input type=\"hidden\" name=\"veranstaltung_ausstattungid[]\" value=\"" . $value->ausstattung_ID . "\" />";
-                
-                echo "</td>";
-        
-                
-                
-                echo " \n</tr>";
-            }	
-	
-
-	?>
-	</table>
-	
-	</td></tr>
-	
-
-
-  <tr>
-    <td> Pflichtvorlesung im Studiengang: </td>
-    <td>
-  
-        <select class="input " name="veranstaltung_pflichtvorlesung" style="; width: 24em">	
-
-		<?php /*value 0 für kein Pflichtfach*/ ?>        
-         <option value="0"> </option>;
-
-            <?php
-            //Studiengänge aus DABA lesen und in einer Tabelle darstellen
-
-           // $q = "select stg_ID, stg_bezeichnung, stgTyp_kuerzel from Studiengang join Studiengangtyp on Studiengang.stgTyp_ID = Studiengangtyp.stgTyp_ID;";
-            // erzeugt die Liste mit "option"-HTML-Elementen aus dem Array studiengaenge
-            foreach($this->studiengaenge as $key => $value) {                 
-                echo "\n\t<option value=\"" . $value->stg_ID . "\">";
-                echo $value->stg_bezeichnung;
-                echo ", " . $value->stgTyp_kuerzel; 
-                echo "</option>";
-            }	
-            ?>
-
-        </select>
-
-         in Fachsemester: 
-        <select class="input " name="veranstaltung_fachsemester" style="; width: 3em">
-        <?php 
- 			for ($i=1; $i<=7; $i++) {
-				echo "\n\t<option value=\"" . $i . "\">" . $i . "</option>";
-            }
-		?>
-        </select>	
-
-        
-    </td>
-
-
-
-  </tr>
 
 	
 	

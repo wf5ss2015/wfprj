@@ -218,7 +218,8 @@ class VeranstaltungModel {
 		/* sprint 4 Anfang
 		 * Paramterliste angepasst, jetzt wird das Fachsemsester mit übergeben.
 		 */
-		$this->setPflichtVeranstaltung ( $stg_ID, $vID, $fachsemester );
+		//$vID = $veranst_ID;
+		//$this->setPflichtVeranstaltung ( $stg_ID, $vID, $fachsemester );
 		
 		//alter Insertstring:
 		//$insertString = "INSERT INTO Studiengang_hat_Veranstaltung (stg_ID, " . "veranst_ID, pflicht) VALUES ($stg_ID, $veranst_ID, 1);";
@@ -336,6 +337,21 @@ class VeranstaltungModel {
 		
 		return $result;
 	}
+	
+	
+	/* sprint 4 Anfang
+	 * Methode für User Story "Veranstaltung bearbeiten"
+	 * */
+	
+	// Schreibt Veranstaltungsart zur Veranstaltung in Datenbank
+	public function setVeranstaltungsart() {
+		
+		
+	}
+	/* sprint 4 Ende
+	 */
+	
+	
 	private function abfrage($q) {
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
