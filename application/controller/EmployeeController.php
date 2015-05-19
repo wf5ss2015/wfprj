@@ -3,10 +3,10 @@
  * ===============================================
  * Sprint: 4
  * @author: Kilian Kraus
- * Datum: 05.05.2015
+ * Datum: 19.05.2015
  * Zeitaufwand (in Stunden): 0.5
- * User Story Nr.: 320
- * User Story: Als Student möchte ich mich zu Veranstaltungen an- und abmelden können.
+ * User Story Nr.: 480
+ * User Story: Als Admin/Verwalter möchte ich Rechte vergeben können.
  * Task: controller erstellen
  * ===============================================
  */
@@ -53,7 +53,7 @@ class EmployeeController extends Controller {
 	 *
 	 * @author Kilian Kraus
 	 *        
-	 *         -> View um änderung der Rolle zu bestätigen.
+	 *         -> View um Änderung der Rolle zu bestätigen.
 	 */
 	public function verifyChangeRole() {
 		$this->View->render ( 'employee/verifyChangeRole', array('rolle_bezeichnung' => Request::post('rolle_bezeichnung'), 'nutzer_name' => Request::post('nutzer_name'), 'rolle_ID' => Request::post('rolle_ID')

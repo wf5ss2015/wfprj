@@ -1,6 +1,17 @@
 <?php
 /*
  * ===============================================
+ * Sprint: 4
+ * @author: Kilian Kraus
+ * Datum: 19.05.2015
+ * Zeitaufwand (in Stunden): 0.5 
+ * User Story Nr.: 480
+ * User Story: Als Admin/Verwalter möchte ich Rechte vergeben können.
+ * Task: model erweitern 
+ * ===============================================
+ */
+/*
+ * ===============================================
  * Sprint: 3
  * @author: Kilian Kraus
  * Datum: 05.05.2015
@@ -210,8 +221,19 @@ class UserModel {
 	 * User Story: Als Entwickler möchte ich eine einheitliche Datenbankverbindung in PHP haben
 	 * ===============================================
 	 */
-	
-	// holt nutzername samt rolle
+	 /* ===============================================
+	 * Start Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Admin/Verwalter möchte ich Rechte vergeben können.
+	 * ===============================================
+	 */
+	 /**
+	 *
+	 * @author Kilian Kraus
+	 *        
+	 *         Holt alle Nutzername & Rolle aller Nutzer.
+	 *        
+	 */
 	public static function getUserDataAll() {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
@@ -224,6 +246,13 @@ class UserModel {
 		return $query->fetchAll();
 	}
 	
+	/**
+	 *
+	 * @author Kilian Kraus
+	 *        
+	 *         Holt alle Rollen aus der Datenbank.
+	 *        
+	 */
 	public static function getRoles(){
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
@@ -233,16 +262,16 @@ class UserModel {
 		return $query->fetchAll();
 	}
 	
-		/**
+	/**
 	 *
 	 * @author Kilian Kraus
 	 *        
-	 *         Macht den Insert wenn sich ein Student zu einer Veranstaltung anmeldet.
+	 *         Updated die Rolle eines Nutzers.
 	 *        
-	 * @param $user_name string
+	 * @param $nutzer_name string
 	 *        	Nutzername
-	 * @param $id string
-	 *        	id
+	 * @param $rolle_id string
+	 *        	ID der Rolle
 	 */
 	public static function saveRole($rolle_id, $nutzer_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
@@ -259,27 +288,12 @@ class UserModel {
 			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 		}
 	}
-	
-	// dummy für bsp tabelle
-	public static function getUserDataAll2() {
-		$database = new DatabaseFactoryMysql ();
-		
-		$sql = "SELECT nutzer_name FROM Nutzer";
-		
-		$result = $database->query ( $sql );
-		
-		return $result;
-	}
-	
-	// dummy für bsp tabelle
-	public static function getUserDataAll3() {
-		$database = new DatabaseFactoryMysql ();
-		
-		$sql = "SELECT nutzer_name, passwortHash  FROM Nutzer";
-		
-		$result = $database->query ( $sql );
-		return $result;
-	}
+	/* ===============================================
+	 * Ende Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Admin/Verwalter möchte ich Rechte vergeben können.
+	 * ===============================================
+	 */
 	/*
 	 * ===============================================
 	 * Ende Sprint: 2

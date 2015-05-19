@@ -1,10 +1,32 @@
-
 <?php
-	
+/*
+ * ===============================================
+ * Sprint: 4
+ * @author: Kilian Kraus
+ * Datum: 19.05.2015
+ * Zeitaufwand (in Stunden): 2.0
+ * User Story Nr.: 480
+ * User Story: Als Admin/Verwalter möchte ich Rechte vergeben können.
+ * Task:  menue OOP 
+ * ===============================================
+ */	
+ /**
+ *
+ * @author Kilian Kraus
+ *         Klasse um das Menü zusammenzubauen.
+ */
 class menueView{
-	
+	/**
+	 * @var menue Speichert im Moment alle Menüeinträge
+	 *	Sollte mal noch in Datenbank umziehen um ordentliche Rechteverwaltung umzusetzen.
+	 */
 	private $menue;
 	
+	/**
+	*
+	* @author Kilian Kraus
+	*         Konstruktor. Initialisiert den Array mit den Menüpunkten und ruft buildMenue() auf.
+	*/
 	public function __construct() {	
 
 
@@ -78,13 +100,22 @@ class menueView{
 		
 }
 
-
+	/**
+	 *
+	 * @author Kilian Kraus
+	 *        
+	 * @param $role string
+	 *        	Nutzername
+	 *        	
+	 * @return mixed Gibts false zurück, wenn Nutzer nicht besteht. Ansonsten Objekt mit den Nutzerdaten zurück.
+	 */
 	public function buildMenue($role){
 
+	// bisschen zählen
 	$countItems = count($this->menue[$role]);
 	$count=0;
 
-
+	// baut menü
 	echo "<nav>";
 	echo "<ul>";
 	while($count<$countItems){
@@ -95,7 +126,7 @@ class menueView{
 	$unter =count($this->menue [$role][$count]);
 	$once=0;
 	foreach ( $this->menue [$role][$count] as $key => $value ) {
-		
+			//ohne untermenüpunkte
 			if ($unter <=1){
 			echo "<li>";			
 			echo "<a href=\"index.php?url="; 
@@ -104,7 +135,10 @@ class menueView{
 			echo htmlentities($key);
 			echo "</a>";
 			echo "</li>";	
-			}elseif($unter>1){
+			}
+			//mit untermenüpunkte
+			elseif($unter>1){
+				// menüpunkt
 				if($once==0){
 					echo "<li>";			
 					echo "<a href=\"index.php?url="; 
@@ -114,7 +148,9 @@ class menueView{
 					echo "</a>";
 					echo "<ul>";
 					$once++;
-				}elseif($once>0){
+				}
+				// untermenüpunkte
+				elseif($once>0){
 					echo "<li>";
 					echo "<a href=\"index.php?url="; 
 					echo htmlentities($value); 
@@ -137,7 +173,6 @@ class menueView{
 	echo "</ul>";
 	echo "</nav>";
 	}
-
 }?>
 
 

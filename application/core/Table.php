@@ -1,6 +1,17 @@
 <?php
 /*
  * ===============================================
+ * Sprint: 4
+ * @author: Kilian Kraus
+ * Datum: 19.05.2015
+ * Zeitaufwand (in Stunden): 0.5 
+ * User Story Nr.: 480
+ * User Story: Als Admin/Verwalter möchte ich Rechte vergeben können.
+ * Task: core/table.php erweitert 
+ * ===============================================
+ */
+/*
+ * ===============================================
  * Sprint: 3
  * @author: Kilian Kraus
  * Datum: 25.04.2015
@@ -79,6 +90,13 @@
 							echo htmlentities ( $value );
 							echo "\">";
 						}
+	/*
+	 * ===============================================
+	 * Start Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Admin/Verwalter möchte ich Rechte vergeben können.
+	 * ===============================================
+	 */							
 							// zusätzliche hidden values
 							if(isset($this->hidden)){
 								foreach ( $this->hidden[0] as $key => $value ) {
@@ -89,6 +107,13 @@
 									echo "\">";
 								}
 							}
+	/*
+	 * ===============================================
+	 * Ende Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Admin/Verwalter möchte ich Rechte vergeben können.
+	 * ===============================================
+	 */
 						echo "<input type=\"submit\" value=\"";
 						echo htmlentities ( $submitName );
 						echo "\">";
