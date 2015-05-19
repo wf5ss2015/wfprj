@@ -1,10 +1,22 @@
 <?php
 /**
+ * SPRINT 04
+ *
+ * @author : Roland Schmid
+ * Datum: 	19.5.2015
+ * User­ Story: Als Verwalter möchte ich Veranstaltungen ändern können. (Nacharbeit)
+ * Task: 	Controller erweitern
+ * Nr:		210a
+ * Points:	13
+ * Zeit: 	
+ *
+ */
+
+/**
  * SPRINT 03
  *
  * @author : Roland Schmid
- * Datum: 6.5.2015
- *         
+ * Datum: 	6.5.2015         
  * User­ Story: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
  * Task: Eingabemaske für "Veranstaltung anlegen" anpassen.
  * Nr:		130b
@@ -21,12 +33,11 @@
  *                 
  */
 
-
 /**
  * SPRINT 02
  *
  * @author : Roland Schmid
- * Datum: 19.4.2015
+ * Datum: 	19.4.2015
  *         
  * User­ Story: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
  * Nr:		130a
@@ -122,10 +133,19 @@ class VeranstaltungController extends Controller {
 	
 
 // TODO
+	/* sprint 4 Anfang 
+	 * Task: Controller erweitern 
+	 */
 	/*
-	 * rendert view um eine Veranstaltung auszuwählen, die bearbeitet werden soll
+	 * ruft alle vorhandenen Veranstaltungen aus der Datenbank ab und übergibt sie 
+	 * der view bearbeitenSelect, wo eine Veranstaltung zur Bearbeitung ausgewählt werden kann
 	 */
 	public function bearbeitenSelect() {
+		
+		// neues Veranstaltungmodel anlegen
+		$vModel = new VeranstaltungModel ();
+		
+		
 		$this->View->render ( 'veranstaltung/bearbeitenSelect', array (
 				'veranstaltung' => VeranstaltungModel::getAlleVeranstaltungen () 
 		) );
@@ -137,4 +157,6 @@ class VeranstaltungController extends Controller {
 				'veranstaltung' => VeranstaltungModel::getVeranstaltung ( Request::post ( 'VeranstaltungID' ) ) 
 		) );
 	}
+	
+	/* sprint 4 Ende */
 }

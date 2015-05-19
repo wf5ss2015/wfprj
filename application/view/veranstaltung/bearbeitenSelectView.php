@@ -17,18 +17,43 @@
 
 ?>
 <article>
-	<p>Veranstaltung zum bearbeiten auswählen</p>
-        <?php if ($this->veranstaltung) { ?>
-			<form method="post" action="index.php?url=veranstaltung/bearbeiten">
-		<!--Hier eben den Controller/Funktion eintragen damit was macht, wenn auswählen geklickt wird-->
+	<p>Wählen Sie die Veranstaltung aus, die Sie bearbeiten m&ouml;chten: </p>
+        <?php if ($this->veranstaltung) { 
+			
+echo "Tabelle mit Alias & Link bzw Action übergabe";
+	// Tabelle drucken mit alias & link
+	$alias = array (
+			"0" => "Veranstaltungsnummer",
+			"1" => "Bezeichnung",
+			"2" => "Kurztext",
+			"3" => "Credits",
+			"4" => "SWS",
+			"5" => "maximale Anzahl Teilnehmer",
+			"6" => "Veranstaltungsart" 
+	);
+	$alias = ( object ) $alias;
+	
+	// key=name des links - value=action
+	$link = array (
+			"bearbeiten" => "index.php?url=veranstaltung/bearbeiten",
+			//"Index" => "index.php?url=index" 
+	);
+	$link = ( object ) $link;
+	$table->table ( array (
+			'table' => $this->veranstaltung,
+			'alias' => array (
+					$alias 
+			),
+			'link' => array (
+					$link 
+			) 
+	) );
 
-		<select name="VeranstaltungID" size="10">
-				<?php foreach($this->veranstaltung as $key => $value) { ?>
-				<option value="<?=htmlentities($value->VeranstaltungID)?>"> <?= htmlentities($value->Bezeichnung)?></option>
-				<?php }?>
-				</select> <input type="submit" value='auswählen' />
-	</form>
-		<?php } else { ?>
-            <p>Blub</p>
-        <?php } ?>
+	
+	
+        }
+		?>	
+			
+			
+
 </article>

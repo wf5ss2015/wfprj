@@ -50,10 +50,35 @@
 	$table = new Table ();
 
 	// Tabelle drucken ohne Alias
-	$table->table ( array (
-			'table' => $this->veranstaltung 
-	) );
+// 	$table->table ( array (
+// 			'table' => $this->veranstaltung 
+// 	) );
+	
+	/*
+	 * veranst_ID	veranst_bezeichnung	veranst_kurztext	credits	SWS	maxTeilnehmer	Veranstaltungsart
+	 *
+	 * 
+	*/
 
+
+	// Tabele drucken mit alias
+	$alias = array (
+			"0" => "Veranstaltungsnummer",
+			"1" => "Bezeichnung",
+			"2" => "Kurztext",
+			"3" => "Credits",
+			"4" => "SWS",
+			"5" => "maximale Anzahl Teilnehmer",
+			"6" => "Veranstaltungsart" 
+	);
+	$alias = ( object ) $alias;
+	$table->table ( array (
+			'table' => $this->veranstaltung,
+			'alias' => array (
+					$alias
+			)
+	) );
+	
 /* sprint 3 Ende
  */
 

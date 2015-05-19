@@ -3,7 +3,7 @@
  * SPRINT 04
  *
  * @author : Roland Schmid
- * Datum: 16.5.2015
+ * Datum: 	16.5.2015
  * User­ Story: Als Mitarbeiter möchte ich einer Veranstaltung ein Fachsemester zuordnen können. (Nacharbeit)
  * Task: 	Semester in Abhängigkeit von gewähltem Studiengang eintragen
  * Nr:		310a
@@ -16,8 +16,7 @@
  * SPRINT 03
  *
  * @author: Roland Schmid
- * Datum: 6.5.2015
- *
+ * Datum: 	6.5.2015
  * User­ Story: Als Mitarbeiter möchte ich Veranstaltungen als Pflicht- und Wahlfach kategorisieren können. (Nacharbeit 2)
  * Task: Werte in (neue) Tabelle eintragen. 
  * Task: Eingabeformular für Veranstaltungen anpassen.
@@ -37,8 +36,7 @@
  * SPRINT 01
  *
  * @author: Roland Schmid
- * Datum: 8.4.2015
- *
+ * Datum: 	8.4.2015
  * User­ Story: Als Verwalter möchte ich Veranstaltungen anlegen können.
  * Nr:		120
  * Task: Daten aus Datenbank für die Maske auslesen. 
@@ -99,9 +97,9 @@ class VeranstaltungModel {
 		}
 	}
 	
-/* sprint 3 Anfang 
- * Methode zur Prüfung von Integer-Eingabewerten eingefügt
- */
+	/* sprint 3 Anfang 
+	 * Methode zur Prüfung von Integer-Eingabewerten eingefügt
+	 */
 		
 	/*
 	 * prüft, ob die Eingabe ein int im Bereich [$min, $max] ist
@@ -120,7 +118,7 @@ class VeranstaltungModel {
 		return ($int >= $min && $int <= $max);
 	}
 
-/* sprint 3 Ende */
+	/* sprint 3 Ende */
 
 	
 	/*
@@ -142,12 +140,12 @@ class VeranstaltungModel {
 		
 		$stg_ID = Request::post ( 'veranstaltung_pflichtvorlesung' );
 		
-/* sprint 4 Anfang
- * neue Variable fürs Fachsemester angelegt
- */
+		/* sprint 4 Anfang
+		 * neue Variable fürs Fachsemester angelegt
+		 */
 		$fachsemester = Request::post('veranstaltung_fachsemester');
-/* sprint 4 Ende
- */
+		/* sprint 4 Ende
+		 */
 		
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
@@ -160,16 +158,16 @@ class VeranstaltungModel {
 		if (strlen ( $kurztext ) < 1)
 			$valid = false;
 			
-/* sprint 3 Anfang 
- * Prüfung angepasst 
- */
+		/* sprint 3 Anfang 
+		 * Prüfung angepasst 
+		 */
 
 		if (! ($this->checkIntegerInput ( $maxNo, 1, 1000 ))) {
 			$valid = false;
 			/* TODO : Fehlermeldung ausgeben */
 		}
 		
-/* sprint 3 Ende */
+		/* sprint 3 Ende */
 		
 		// wenn alle Prüfungen positiv, führe insert aus
 		if ($valid) {
@@ -183,12 +181,12 @@ class VeranstaltungModel {
 				// Veranstaltung wird als Pflichtveranstaltung in Tabelle
 				// "Studiengang_hat_Veranstaltung" eingetragen, wenn die gewählte ID > 0
 				if ($stg_ID > 0) {
-/* sprint 4 Anfang
- * Paramterliste angepasst, jetzt wird das Fachsemsester mit übergeben.
- */
+					/* sprint 4 Anfang
+					 * Paramterliste angepasst, jetzt wird das Fachsemsester mit übergeben.
+					 */
 					$this->setPflichtVeranstaltung ( $stg_ID, $vID, $fachsemester );
-/* sprint 4 Ende
- */
+					/* sprint 4 Ende
+					 */
 				}
 				
 				// echo "<br>im model, in methode vAnlegen, nach insert<br>";
@@ -210,9 +208,9 @@ class VeranstaltungModel {
 	public function setPflichtVeranstaltung($stg_ID, $veranst_ID, $fachsemester) {
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
-/* sprint 4 Anfang
- * Paramterliste angepasst, jetzt wird das Fachsemsester mit übergeben.
- */
+		/* sprint 4 Anfang
+		 * Paramterliste angepasst, jetzt wird das Fachsemsester mit übergeben.
+		 */
 		$this->setPflichtVeranstaltung ( $stg_ID, $vID, $fachsemester );
 		
 		//alter Insertstring:
@@ -221,14 +219,14 @@ class VeranstaltungModel {
 		$insertString = "INSERT INTO Studiengang_hat_Veranstaltung (stg_ID, " 
 						. "veranst_ID, pflicht_im_Semester) VALUES ($stg_ID, $veranst_ID, $fachsemester);";
 		
-/* sprint 4 Ende
- */
+		/* sprint 4 Ende
+		 */
 		$database->insert ( $insertString );
 	}
 	
 	
 	
-/* sprint 3 Ende */
+	/* sprint 3 Ende */
 	
 	// gibt ein array zurück mit allen vorhandenen Veranstaltungen
 	public function getAlleVeranstaltungen() {
@@ -257,8 +255,11 @@ class VeranstaltungModel {
 		 * . "maxTeilnehmer, vArt_ID from Veranstaltung WHERE veranst_ID = " . $vID . ";";
 		 */
 
-//TODO Query-String vereinfachen
-		$q = "select Veranstaltung.veranst_ID, Veranstaltung.veranst_bezeichnung, Veranstaltung.veranst_kurztext, Veranstaltung.credits, Veranstaltung.SWS, " . "Veranstaltung.maxTeilnehmer, Veranstaltungsart.vArt_bezeichnung as Veranstaltungsart " . "from Veranstaltung join Veranstaltungsart on Veranstaltung.vArt_ID = Veranstaltungsart.vArt_ID" . " where Veranstaltung.veranst_ID = $vID;";
+		$q = "select Veranstaltung.veranst_ID, Veranstaltung.veranst_bezeichnung, Veranstaltung.veranst_kurztext, "
+		     . "Veranstaltung.credits, Veranstaltung.SWS, " 
+		     . "Veranstaltung.maxTeilnehmer, Veranstaltungsart.vArt_bezeichnung as Veranstaltungsart "
+		     . "from Veranstaltung join Veranstaltungsart on Veranstaltung.vArt_ID = Veranstaltungsart.vArt_ID" 
+		     . " where Veranstaltung.veranst_ID = $vID;";
 		
 		$result = $this->abfrage ( $q );
 		
