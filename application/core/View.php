@@ -63,8 +63,10 @@ class View {
 		}
 		// lädt den header
 		require Config::get ( 'PATH_VIEW' ) . '_templates/headerView.php';
-		// lädt das richtie menue
-		self::getRightMenue ();
+		// lädt das menue
+		new menueView();
+		// lädt Response message
+		$this->renderResponse();
 		// lädt den content
 		require Config::get ( 'PATH_VIEW' ) . $filename . 'View.php';
 		// lädt den footer
@@ -142,40 +144,4 @@ class View {
 	 * ===============================================
 	 */
 	
-	/*
-	 * ===============================================
-	 * Start Sprint: 2
-	 * @author: Kilian Kraus
-	 * User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
-	 * ===============================================
-	 */
-	public function getRightMenue() {
-		// falls student
-		if (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 1) {
-			// lädt den header
-			require Config::get ( 'PATH_VIEW' ) . '_templates/menueStudentView.php';
-		}		// falls mitarbeiter
-		elseif (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 3) {
-			// lädt den header
-			require Config::get ( 'PATH_VIEW' ) . '_templates/menueEmployeeView.php';
-		}		// falls dozent
-		elseif (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 2) {
-			// lädt den header
-			require Config::get ( 'PATH_VIEW' ) . '_templates/menueDocentView.php';
-		}		// falls tutor
-		elseif (Session::userIsLoggedIn () && Session::get ( 'user_role' ) == 4) {
-			// lädt den header
-			require Config::get ( 'PATH_VIEW' ) . '_templates/menueTutorView.php';
-		} else {
-			// lädt das standartmenü
-			require Config::get ( 'PATH_VIEW' ) . '_templates/menueView.php';
-		}
-	}
-	/*
-	 * ===============================================
-	 * Ende Sprint: 2
-	 * @author: Kilian Kraus
-	 * User Story: Als Benutzer möchte ich mich mit richtigen Berechtigungen einloggen können.
-	 * ===============================================
-	 */
 }

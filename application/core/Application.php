@@ -47,6 +47,7 @@ require '../application/model/raumAnlegenModel.php';
 require '../application/model/veranstaltungErweiternModel.php';
 require '../application/model/DozentModel.php';
 require '../application/core/Table.php';
+require '../application/view/_templates/menueView.php';
 
 // Roland Schmid
 require '../application/model/VeranstaltungModel.php';
