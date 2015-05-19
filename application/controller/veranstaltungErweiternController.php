@@ -40,9 +40,14 @@ class veranstaltungErweiternController extends Controller {
 			veranstaltungErweiternModel::setErweiterung ( $veranst_ID, $user_name );
 			$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
 		} else {
-			// Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man dies gemeldet.
-			echo "Bitte wählen Sie Veranstaltung UND User aus!<br><br>";
-			echo '<input type="button" value="Zurück" onClick="history.back();">';
+			// Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man eine Fehlermeldung.
+			if(empty( $_POST ['veranstaltung'] )){
+				Session::add ( 'response_negative', 'Es ist keine Veranstaltung ausgewählt.' );
+			} 
+			if(empty( $_POST ['user'] )){
+				Session::add ( 'response_negative', 'Es ist kein User ausgewählt.' );
+			}
+			$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
 		}
 	}
 }

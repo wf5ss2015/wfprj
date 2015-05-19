@@ -1,12 +1,5 @@
 <?php
-/*
-    autor: Kris Klamser
-    datum: 14.5.2015
-    projekt: lehrveranstaltungsmanagement
-	sprint: 04
-	zeitaufwand: 0,1
-	user story(Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.) -> Überarbeitung/Nachbesserung nach letzter Sprint Review
-*/
+
 /*
     autor: Kris Klamser
     datum: 28.4.2015
