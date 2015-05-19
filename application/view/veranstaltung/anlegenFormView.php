@@ -69,7 +69,7 @@
 
 <form action=index.php?url=veranstaltung/anlegen method="post">
 	
-    <table id="veranst-anlegen">
+    <table id="veranstaltung-anlegen">
 	<tr><td>Bezeichnung: </td> <td><input type="text"  name="veranstaltung_bezeichnung" size="36" maxlength="100" /></td></tr>
 	<tr><td>Kurztext: </td> <td><input type="text"  name="veranstaltung_kurztext" /></td></tr>
 	<tr><td>SWS: </td> <td>

@@ -167,7 +167,7 @@ class VeranstaltungController extends Controller {
 		$vID = Request::post("veranst_ID");
 		
 		if(isset($vID)) {
-			echo $vID;
+			
 		// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
 		$veranstaltung = $vModel->getVeranstaltung($vID);
 
