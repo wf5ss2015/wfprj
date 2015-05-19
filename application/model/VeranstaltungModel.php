@@ -81,7 +81,7 @@ class VeranstaltungModel {
 		
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
-	
+
 		// Plausibilität prüfen
 		for($i = 0; $i < count ( $veranstaltungAusstattung ); $i ++) {
 			// prüft, ob eingegebener Wert wirklich eine Zahl ist
