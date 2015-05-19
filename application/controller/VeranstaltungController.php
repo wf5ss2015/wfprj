@@ -167,7 +167,7 @@ class VeranstaltungController extends Controller {
 		$vID = Request::post("veranst_ID");
 		
 		if(isset($vID)) {
-			echo $vID;
+			
 		// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
 		$veranstaltung = $vModel->getVeranstaltung($vID);
 
@@ -176,6 +176,63 @@ class VeranstaltungController extends Controller {
 		
 		}
 	}
+	
+	
+	/*
+	 * wird von "bearbeiten" aufgerufen, bekommt die Grunddaten (Bezeichnung, Kurztext, SWS, 
+	 * Credits, Maximale Anzahl Teilnehmer) übergeben, die am Ende in der Datenbank geupdatet werden sollen.
+	 * 
+	 * Holt die Veranstaltungsarten aus der Datenbank und zeigt diese im nächsten Fenster des
+	 * Bearbeitungs-Prozesses an.
+	 * 
+	 */
+	public function bearbeitenVeranstaltungsart() {
+
+	//nächster aufruf nach dem hier: array grunddaten, 
+    //								 array veranstaltungsart
+    //								 array ausstattung
+    //								 array studiengang + fachsemester
+    // dann eintragen
+
+		
+		// Array mit "Grunddaten"
+		$grunddaten = array (
+				'vID' 			=> Request::post("veranst_ID"), 
+				'vBezeichnung' 	=> Request::post("veranstaltung_bezeichnung"),
+				'vKurztext' 	=> Request::post("veranstaltung_kurztext"),
+				'vSWS'		 	=> Request::post("veranstaltung_sws"),
+				'vCredits'	 	=> Request::post("veranstaltung_credits"),
+				'vMaxTeilnehmer'=> Request::post("veranstaltung_max_Teilnehmer")
+		);
+
+		// neues Veranstaltungmodel anlegen
+		$vModel = new VeranstaltungModel ();
+
+		//POST-Daten lesen
+		
+		//Veranstaltungs-ID
+		$vID = $grunddaten['vID'];//Request::post("veranst_ID");
+		
+		echo "<pre>";
+		echo "vid = " . $vID;
+		print_r($grunddaten);
+		echo"</pre>";
+		$bla = print_r($grunddaten); 
+		echo $bla;
+					
+		if(isset($vID)) {
+
+			// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
+ 			$vArten = $vModel->getVeranstaltungsarten();
+	
+			$this->View->render('veranstaltung/bearbeitenVeranstaltungsart', array ('grunddaten' => $grunddaten,
+					'vArten' => $vArten
+			) );
+	
+		}
+	}
+	
+	
 	
 	/* sprint 4 Ende */
 }

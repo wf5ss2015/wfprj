@@ -48,14 +48,14 @@ class DozentController extends Controller {
 	
 	// Funktion zur Auswahl der hinterlegten Vorlesungen eines Dozenten
 	public function auswahlVorlesung() {
-		$this->View->render ( 'dozent/auswahlVorlesung', array (
+		$this->View->render ( 'dozent/auswahlVorlesungView', array (
 				'vorlesung' => DozentModel::getVorlesung () 
 		) );
 	}
 	
 	// Funktion zum Aufruf der DozentModel-Klasse um Teilnehmer einer Vorlesung anzuzeigen
 	public function teilnehmerListe() {
-		$this->View->render('dozent/teilnehmerListe', array (
+		$this->View->render('dozent/teilnehmerListeView', array (
 				'teilnehmer' => DozentModel::getTeilnehmer(Request::post ( 'id' ) ) 
 		) );
 	}
