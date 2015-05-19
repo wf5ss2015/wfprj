@@ -5,7 +5,7 @@
  * @author: Kilian Kraus
  * Datum: 17.05.2015
  * Zeitaufwand (in Stunden): 0.5
- * User Story Nr.: 
+ * User Story Nr.: 370
  * User Story: Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern.
  * Task: static -> OOP
  * ===============================================

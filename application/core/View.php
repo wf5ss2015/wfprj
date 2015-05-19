@@ -1,6 +1,19 @@
 <?php
 /*
  * ===============================================
+ * Sprint: 4
+ * @author: Kilian Kraus
+ * Datum: 25.04.2015
+ * Zeitaufwand (in Stunden): 0.25
+ * User Story Nr.: 350
+ * User Story: Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern.
+ * Task: View.php abgeändert, damit ***View.php verarbeitet wird. 
+ * Note: überall View rangehängt wo es nötig war. Wird nicht extra im Code Kommentiert, da mehr Kommentare als änderung
+ * ==> Beispiel "require Config::get ( 'PATH_VIEW' ) . '_templates/headerView.php';"
+ * ===============================================
+ */
+/*
+ * ===============================================
  * Sprint: 3
  * @author: Kilian Kraus
  * Datum: 25.04.2015
@@ -126,7 +139,7 @@ class View {
 		}
 		
 		// lädt den header
-		require Config::get ( 'PATH_VIEW' ) . '_templates/header.php';
+		require Config::get ( 'PATH_VIEW' ) . '_templates/headerView.php';
 		// lädt das richtie menue
 		self::getRightMenue ();
 		// lädt die verschiedenen views
@@ -134,7 +147,7 @@ class View {
 			require Config::get ( 'PATH_VIEW' ) . $filename . 'View.php';
 		}
 		// lädt den footer
-		require Config::get ( 'PATH_VIEW' ) . '_templates/footer.php';
+		require Config::get ( 'PATH_VIEW' ) . '_templates/footerView.php';
 	}
 	/*
 	 * ===============================================
