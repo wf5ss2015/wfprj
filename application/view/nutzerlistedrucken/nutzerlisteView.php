@@ -1,11 +1,13 @@
-<!--
+<?php
+/*
     autor: Kris Klamser
     datum: 4.5.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 03	
 	zeitaufwand: 
 	user story (Nr. 280): Als Admin möchte ich alle Nutzer in einer Liste speichern können. (20 Pkt.)
--->
+*/
+?>
 
 <article>
 	<h1>Nutzerliste</h1>

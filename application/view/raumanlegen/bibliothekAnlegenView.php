@@ -1,12 +1,21 @@
-<!--
+<?php
+/*
+    autor: Kris Klamser
+    datum: 14.5.2015
+    projekt: lehrveranstaltungsmanagement
+	sprint: 04
+	zeitaufwand: 0,1
+	user story(Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.) -> Überarbeitung/Nachbesserung nach letzter Sprint Review
+*/
+/*
     autor: Kris Klamser
     datum: 5.4.2015
     projekt: lehrveranstaltungsmanagement
-	version: 02
 	sprint: 02
 	zeitaufwand: 0,5
 	user story (Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
--->
+*/
+?>
 
 
 <article>
@@ -17,7 +26,7 @@
 
 	<!-- included das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
 			<?php
-			include 'raumStammdaten.php';
+			include 'raumStammdatenView.php';
 			?>
 			<!-- 
 				dynamisch aus Tabelle Buchkategorie abfragen welche Kategorien es gibt

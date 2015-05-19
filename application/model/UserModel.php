@@ -11,6 +11,12 @@
  * ===============================================
  */
 /*
+ * Erweiterung um Nutzerdaten von allen usern zu bekommen.
+ * sprint: 4
+ * autor: Kris Klamser
+ * datum: 19.5.2015
+ */
+/*
  * ===============================================
  * Sprint: 2
  * @author: Kilian Kraus
@@ -243,8 +249,9 @@ class UserModel {
 	
 	/*
 	 * Erweiterung um Nutzerdaten von allen usern zu bekommen.
+	   sprint: 4
 	 * autor: Kris Klamser
-	 * datum: 4.5.2015
+	 * datum: 19.5.2015
 	 * START
 	 */
 	public static function getUserDataAll4() {

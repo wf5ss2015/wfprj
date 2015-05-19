@@ -1,14 +1,13 @@
-<!--
+<?php
+/*
     autor: Kris Klamser
     datum: 5.4.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 03	
 	zeitaufwand: 5
 	user story (Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
+*/
 
--->
-
-<?php
 class raumAnlegenController extends Controller {
 	public function __construct() {
 		parent::__construct ();
@@ -157,9 +156,8 @@ class raumAnlegenController extends Controller {
 					echo "Fehler beim Raumtyp eintragen!";
 					exit ();
 			}
-			
-			echo "Raum erfolgreich angelegt.";
-			echo '<input type="button" value="Zurück" onClick="history.back();">';
+			// wenn Raum erfolgreich angelegt wurde, wird diese raumAngelegtView angezeigt.
+			$this->View->render ( 'raumanlegen/raumAngelegt' );
 		} else {
 			// Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man dies gemeldet.
 			echo "Ein Fehler ist aufgetretten!<br><br>";

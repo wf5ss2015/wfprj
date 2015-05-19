@@ -1,11 +1,13 @@
-<!--
+<?php
+/*
     autor: Kris Klamser
     datum: 28.4.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 03	
 	zeitaufwand: 0.5
 	user story (Nr. 30b): Als Mitarbeiter möchte ich Lehrverantwortlicher / Dozent / Tutor zu Veranstaltung hinzufügen können. (20 Pkt.)
--->
+*/
+?>
 <article>
 	<h1>Person zu Veranstaltung hinzufügen</h1>
 	<!-- Sobald der "Veranstaltung erweitern"-Button geclickt wird, wird die selected-function ausgeführt-->

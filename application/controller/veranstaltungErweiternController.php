@@ -1,12 +1,13 @@
-<!--
+<?php
+/*
     autor: Kris Klamser
     datum: 28.4.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 03	
 	zeitaufwand: 2
 	user story (Nr. 30b): Als Mitarbeiter möchte ich Lehrverantwortlicher / Dozent / Tutor zu Veranstaltung hinzufügen können. (20 Pkt.)
--->
-<?php
+*/
+
 class veranstaltungErweiternController extends Controller {
 	public function __construct() {
 		parent::__construct ();
@@ -37,12 +38,7 @@ class veranstaltungErweiternController extends Controller {
 			
 			// inserten der Erweiterung
 			veranstaltungErweiternModel::setErweiterung ( $veranst_ID, $user_name );
-			echo "Die Veranstaltung ";
-			echo $veranst_string;
-			echo "wurde erfolgreich um ";
-			echo $user_name;
-			echo " erweitert.";
-			echo '<input type="button" value="Zurück" onClick="history.back();">';
+			$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
 		} else {
 			// Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man dies gemeldet.
 			echo "Bitte wählen Sie Veranstaltung UND User aus!<br><br>";

@@ -1,4 +1,5 @@
-<!--
+<?php
+/*
     autor: Kris Klamser
     datum: 5.4.2015
     projekt: lehrveranstaltungsmanagement
@@ -7,7 +8,8 @@
 	user story (Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
 	
 	Startpage, in der man die Raumkategorie auswählt, die man anlegen möchte.
--->
+*/
+?>
 
 <article>
 	<h1>Raumkategorie auswählen</h1>

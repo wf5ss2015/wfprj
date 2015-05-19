@@ -1,12 +1,21 @@
-<!--
+<?php
+/*
+    autor: Kris Klamser
+    datum: 14.5.2015
+    projekt: lehrveranstaltungsmanagement
+	sprint: 04
+	zeitaufwand: 0,1
+	user story(Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.) -> Überarbeitung/Nachbesserung nach letzter Sprint Review
+*/
+/*
     autor: Kris Klamser
     datum: 28.4.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 03
 	zeitaufwand: 0,5
 	user story(Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
--->
-
+*/
+?>
 <article>
 	<h1>Vorlesungsraum anlegen</h1>
 
@@ -15,11 +24,11 @@
 
 		<!-- includet das Textfeld für die Bezeichnungseingabe und die Wahl des Gebäudes -->
 			<?php
-			include 'raumStammdaten.php';
+			include 'raumStammdatenView.php';
 			?>
 			<!-- includet Ausstattungsabfrage -->
 			<?php
-			include 'raumAusstattung.php';
+			include 'raumAusstattungView.php';
 			?>
 			<input type="hidden" name="raumtyp" value="vorlesungsraum">
 

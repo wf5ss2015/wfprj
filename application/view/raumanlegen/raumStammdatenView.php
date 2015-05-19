@@ -1,12 +1,13 @@
-<!--
+<?php
+/*
     autor: Kris Klamser
     datum: 29.4.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 03
 	zeitaufwand: 0.5
 	user story (Nr. 110b): Als Mitarbeiter möchte ich Räume anlegen können. (20 Pkt.)
--->
-<?php
+*/
+
 // Für die Stammdaten, die jeder Raum hat
 // Bezeichnung im Textfeld eingeben.
 echo "<p>Bezeichnung";
