@@ -170,7 +170,9 @@ class VeranstaltungController extends Controller {
 			
 		// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
 		$veranstaltung = $vModel->getVeranstaltung($vID);
-
+echo "CONTROLLER\n";
+print_r($veranstaltung);
+echo "CONTROLLER\n";
 		$this->View->render('veranstaltung/bearbeiten', array ('veranstaltung' => $veranstaltung 
 		) );
 		
@@ -202,7 +204,8 @@ class VeranstaltungController extends Controller {
 				'vKurztext' 	=> Request::post("veranstaltung_kurztext"),
 				'vSWS'		 	=> Request::post("veranstaltung_sws"),
 				'vCredits'	 	=> Request::post("veranstaltung_credits"),
-				'vMaxTeilnehmer'=> Request::post("veranstaltung_max_Teilnehmer")
+				'vMaxTeilnehmer'=> Request::post("veranstaltung_max_Teilnehmer"),
+				'Veranstaltungsart' => Request::post("Veranstaltungsart")
 		);
 
 		// neues Veranstaltungmodel anlegen
@@ -211,15 +214,9 @@ class VeranstaltungController extends Controller {
 		//POST-Daten lesen
 		
 		//Veranstaltungs-ID
-		$vID = $grunddaten['vID'];//Request::post("veranst_ID");
+		$vID = $grunddaten['vID'];
 		
-		echo "<pre>";
-		echo "vid = " . $vID;
-		print_r($grunddaten);
-		echo"</pre>";
-		$bla = print_r($grunddaten); 
-		echo $bla;
-					
+				
 		if(isset($vID)) {
 
 			// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
@@ -231,6 +228,46 @@ class VeranstaltungController extends Controller {
 	
 		}
 	}
+	
+	
+	/*
+	 * wird von "bearbeitenVeranstaltungsart" aufgerufen, bekommt die Grunddaten (Bezeichnung, Kurztext, SWS,
+	 * Credits, Maximale Anzahl Teilnehmer) sowie die Veranstaltungsart übergeben, die am Ende in der 
+	 * Datenbank geupdatet werden sollen.
+	 *
+	 * Holt die bisher eingetragene Ausstattung aus der Datenbank und zeigt diese im nächsten Fenster des
+	 * Bearbeitungs-Prozesses an.
+	 *
+	 */
+	public function bearbeitenAusstattung() { 
+		
+		//POST-Daten lesen
+		// Array mit "Grunddaten", ohne Veranstaltungsart
+		$grunddaten = array (
+				'vID' 			=> Request::post("veranst_ID"),
+				'vBezeichnung' 	=> Request::post("veranstaltung_bezeichnung"),
+				'vKurztext' 	=> Request::post("veranstaltung_kurztext"),
+				'vSWS'		 	=> Request::post("veranstaltung_sws"),
+				'vCredits'	 	=> Request::post("veranstaltung_credits"),
+				'vMaxTeilnehmer'=> Request::post("veranstaltung_max_Teilnehmer")
+				//'Veranstaltungsart' => Request::post("Veranstaltungsart")
+		);
+		
+		//(neu gewählte) Veranstaltungsart als ID
+		$vArtID = Request::post("vArt_ID");
+		
+		// neues Veranstaltungmodel anlegen
+		$vModel = new VeranstaltungModel ();
+		
+		$ausstattung = $vModel->getAusstattung();
+		
+		
+		$this->View->render('veranstaltung/bearbeitenAusstattung', array ('grunddaten' => $grunddaten,
+				'vArtID' => $vArtID,
+				'ausstattung' => $ausstattung
+		) );
+	}
+	
 	
 	
 	

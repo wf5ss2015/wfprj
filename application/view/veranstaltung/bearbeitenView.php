@@ -39,11 +39,11 @@
 	// speichert das einzige Element aus dem objekt/array $veranstaltung in $veranst, für leichteren Zugriff
 	$veranst = $this->veranstaltung[0]; 	
 	//print_r($this->veranstaltung);
-	echo "<pre>";
-	print_r($veranst);
-	echo "</pre>";
-	echo "\n";
-	echo $this->veranstaltung[0]->veranst_ID;
+// 	echo "<pre>";
+// 	print_r($veranst);
+// 	echo "</pre>";
+// 	echo "\n";
+// 	echo $this->veranstaltung[0]->veranst_ID;
 	
 	/*
 	        [veranst_ID] => 8
@@ -66,6 +66,8 @@
 			//wichtig, hier die ID per hidden input mitzuübergeben
 		?>
 		<input name="veranst_ID" value=<?php echo "\"$veranst->veranst_ID\""?> type="hidden">
+		<input name="Veranstaltungsart" value=<?php echo "\"$veranst->Veranstaltungsart\""?> type="hidden">
+		
 	
 	
     <table id="veranstaltung-bearbeiten">
