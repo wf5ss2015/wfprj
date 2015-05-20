@@ -119,8 +119,11 @@ class VeranstaltungController extends Controller {
 		
 		if ($vID > 1) {
 			
-			// zusätzlich noch Ausstattung eintragen
-			// TODO
+			//Ausstattung wird hier eingetragen
+			$ausstattung = Request::post('veranstaltung_ausstattung');
+			
+			$vModel->ausstattungEintragen($vID, $ausstattung);
+			
 			
 			// hole Daten der eben eingetragenen Veranstaltung als ein Array aus Objekten
 			$veranstaltung = $vModel->getVeranstaltung ($vID);
@@ -187,14 +190,7 @@ class VeranstaltungController extends Controller {
 	 * 
 	 */
 	public function bearbeitenVeranstaltungsart() {
-
-	//nächster aufruf nach dem hier: array grunddaten, 
-    //								 array veranstaltungsart
-    //								 array ausstattung
-    //								 array studiengang + fachsemester
-    // dann eintragen
-
-		
+	
 		// Array mit "Grunddaten"
 		$grunddaten = array (
 				'vID' 			=> Request::post("veranst_ID"), 
@@ -256,6 +252,7 @@ class VeranstaltungController extends Controller {
 		//(neu gewählte) Veranstaltungsart als ID
 		$vArtID = Request::post("veranstaltung_veranstaltungsart");
 		
+		
 		// neues Veranstaltungmodel anlegen
 		$vModel = new VeranstaltungModel ();
 		
@@ -279,27 +276,39 @@ class VeranstaltungController extends Controller {
 		//POST-Daten lesen
 		// Array mit "Grunddaten", ohne Veranstaltungsart
 		
-		print_r($_POST);
-// 		$grunddaten = array (
-// 				'vID' 			=> Request::post("vID"),
-// 				'vBezeichnung' 	=> Request::post("vBezeichnung"),
-// 				'vKurztext' 	=> Request::post("vKurztext"),
-// 				'vSWS'		 	=> Request::post("vSWS"),
-// 				'vCredits'	 	=> Request::post("vCredits"),
-// 				'vMaxTeilnehmer'=> Request::post("vMaxTeilnehmer")
-// 				//'Veranstaltungsart' => Request::post("Veranstaltungsart")
-// 		);
+// 		print_r($_POST);
+		$grunddaten = array (
+				'vID' 			=> Request::post("vID"),
+				'vBezeichnung' 	=> Request::post("vBezeichnung"),
+				'vKurztext' 	=> Request::post("vKurztext"),
+				'vSWS'		 	=> Request::post("vSWS"),
+				'vCredits'	 	=> Request::post("vCredits"),
+				'vMaxTeilnehmer'=> Request::post("vMaxTeilnehmer")
+				//'Veranstaltungsart' => Request::post("Veranstaltungsart")
+		);
 	
 	
-// 		//(neu gewählte) Veranstaltungsart als ID
-// 		$vArtID = Request::post("veranstaltung_veranstaltungsart");
+		//(neu gewählte) Veranstaltungsart als ID
+		$vArtID = Request::post("vArtID");
 	
-// 		// neues Veranstaltungmodel anlegen
-// 		$vModel = new VeranstaltungModel ();
-	
-// 		$ausstattung = $vModel->getAusstattung();
-	
-	
+		//Array mit benötigter Ausstattung
+		$ausstattung = Request::post("veranstaltung_ausstattung");
+
+		
+		// neues Veranstaltungmodel anlegen
+		$vModel = new VeranstaltungModel ();
+		
+		$vModel->updateVeranstaltung(array('grunddaten' => $grunddaten, 
+				'vArtID' => $vArtID,
+				'ausstattung' => $ausstattung ));
+		
+// 		print "<pre>";
+// // 		print_r($_POST);
+// 		print_r($ausstattung);
+// 		print "</pre>";
+		
+		//vorher-nachher print?
+		
 // 		$this->View->render('veranstaltung/bearbeitenAusstattung', array ('grunddaten' => $grunddaten,
 // 				'vArtID' => $vArtID,
 // 				'ausstattung' => $ausstattung

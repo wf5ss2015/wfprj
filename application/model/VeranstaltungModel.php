@@ -79,16 +79,12 @@ class VeranstaltungModel {
 	 *        
 	 */
 	
-	// TODO
-	public function ausstattungEintragen($vid) {
+	// Methode trägt benötigte Ausstattung im Array $ausstattung für eine Veranstaltung $vID ein 
+	public function ausstattungEintragen($vID, $ausstattung) {
 		
 		// POST-Inhalt auslesen
 		$insertValues = "";
-		$veranstaltungAusstattung = $_POST ["veranstaltung_ausstattung"];
-		
-		// TODO vorhandene Einträge löschen (für Veranstaltung aktualisieren
-		// $deleteString = "delete from VeranstaltungBrauchtAusstattung where VeranstaltungID = " . $vid . ";";
-		$deleteString = "delete from Veranstaltung_erfordert_Ausstattung where veranst_ID = " . $vid . ";";
+		$veranstaltungAusstattung = $ausstattung;
 		
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
@@ -100,7 +96,7 @@ class VeranstaltungModel {
 				
 				// prüft, ob die angebenen Zahlen sinnvoll sind
 				if($veranstaltungAusstattung[$i] < 100 && $veranstaltungAusstattung[$i] > 0) {
-					$insertValues = $vid . ", " . ($i + 1) . ", " . $veranstaltungAusstattung[$i];
+					$insertValues = $vID . ", " . ($i + 1) . ", " . $veranstaltungAusstattung[$i];
 					
 					// insert für mysql vorbereiten
 					$insertString = "INSERT INTO Veranstaltung_erfordert_Ausstattung" 
@@ -114,6 +110,24 @@ class VeranstaltungModel {
 			}
 		}
 	}
+
+	/* sprint 4 Anfang
+	 * 
+	 */
+	//löscht vorhandene Einträge aus der Koppeltabelle Veranstaltung_erfordert_Ausstattung
+	public function ausstattungLoeschen($vID) {
+		// Datenbankverbindung
+		$database = new DatabaseFactoryMysql ();
+
+		$deleteString = "delete from Veranstaltung_erfordert_Ausstattung where veranst_ID = " . $vID . ";";
+
+		$database->insert($deleteString);		
+	}
+	
+	/* sprint 4 Ende
+	 */
+	
+	
 	
 	/* sprint 3 Anfang 
 	 * Methode zur Prüfung von Integer-Eingabewerten eingefügt
@@ -147,8 +161,7 @@ class VeranstaltungModel {
 	 */
 	public function veranstaltungAnlegen() {
 		$valid = true;
-		// Request::post('name')
-		// altes Format: $bez = $_POST['veranstaltung_bezeichnung'];
+		
 		$bez = Request::post ( 'veranstaltung_bezeichnung' );
 		$kurztext = Request::post ( 'veranstaltung_kurztext' );
 		$credits = Request::post ( 'veranstaltung_credits' );
@@ -234,10 +247,7 @@ class VeranstaltungModel {
 					/* sprint 4 Ende
 					 */
 				}
-				
-				// echo "<br>im model, in methode vAnlegen, nach insert<br>";
-				// echo "<br>$database->insert_id<br>";
-				
+					
 				// holt die letzte eingetragene ID
 				return $vID;
 			} else {
@@ -265,7 +275,6 @@ class VeranstaltungModel {
 		
 		$insertString = "INSERT INTO Studiengang_hat_Veranstaltung (stg_ID, " 
 						. "veranst_ID, pflicht_im_Semester) VALUES ($stg_ID, $veranst_ID, $fachsemester);";
-		
 		/* sprint 4 Ende
 		 */
 		$database->insert ( $insertString );
@@ -317,6 +326,51 @@ class VeranstaltungModel {
 	
 	 return $result;
 	 }
+	 
+	 
+	 public function updateVeranstaltung($data) {
+	 	$valid = true;
+	 	
+	 	$grunddaten = $data['grunddaten'];
+	 
+// 	 	'vID' 			=> Request::post("vID"),
+// 	 	'vBezeichnung' 	=> Request::post("vBezeichnung"),
+// 	 	'vKurztext' 	=> Request::post("vKurztext"),
+// 	 	'vSWS'		 	=> Request::post("vSWS"),
+// 	 	'vCredits'	 	=> Request::post("vCredits"),
+// 	 	'vMaxTeilnehmer'=> Request::post("vMaxTeilnehmer")
+	 	
+	 	$vID 			= $grunddaten['vID'];
+	 	$vBezeichnung 	= $grunddaten['vBezeichnung'];
+	 	$vKurztext 		= $grunddaten['vKurztext'];
+	 	$vSWS			= $grunddaten['vSWS'];
+	 	$vCredits 		= $grunddaten['vCredits'];
+	 	$vMaxTeilnehmer	= $grunddaten['vMaxTeilnehmer'];
+	 	
+	 	
+	 	$vArtID			= $data['vArtID'];
+	 	
+	 	$ausstattung 	= $data['ausstattung'];
+	 	
+	 	
+	 	// Datenbankverbindung
+	 	$database = new DatabaseFactoryMysql ();
+	
+	 	$updateString = "UPDATE Veranstaltung SET veranst_bezeichnung = $vBezeichnung, "
+	 			. "veranst_kurztext = $vKurztext, credits = $vCredits, SWS = $vSWS, " 
+				. "maxTeilnehmer = $vMaxTeilnehmer, vArt_ID = $vArtID "
+				. "where veranst_ID = $vID;";
+				
+	 	$database->insert($updateString);
+	 	
+	 	print_r($data);
+	 	
+	 	
+ 	}
+	 		
+	 	
+	 	
+	 
 	 
 	
 	/* sprint 4 Ende */
@@ -376,19 +430,7 @@ class VeranstaltungModel {
 		return $result;
 	}
 	
-	
-	/* sprint 4 Anfang
-	 * Methode für User Story "Veranstaltung bearbeiten"
-	 * */
-	
-	// Schreibt Veranstaltungsart zur Veranstaltung in Datenbank
-	public function setVeranstaltungsart() {
-		
-		
-	}
-	/* sprint 4 Ende
-	 */
-	
+
 	
 	private function abfrage($q) {
 		// Datenbankverbindung

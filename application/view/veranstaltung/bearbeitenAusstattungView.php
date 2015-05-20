@@ -24,16 +24,17 @@
 $grunddaten = $data['grunddaten'];
 
 $vArtID = $data['vArtID'];
+// echo "FART FART FART $vArtID";
 
 $ausstattung = $data['ausstattung'];
 
-// echo "<pre>";
-// echo "DATA:\n";
-// print_r($data);
-// print_r($grunddaten);
-// print_r($vArtID);
-// print_r($ausstattung);
-// echo "</pre>";
+echo "<pre>";
+echo "DATA:\n";
+print_r($data);
+print_r($grunddaten);
+print_r($vArtID);
+print_r($ausstattung);
+echo "</pre>";
 
 ?>
 	<h2>"<?php echo $grunddaten['vBezeichnung']?>"</h2>
