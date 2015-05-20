@@ -65,7 +65,7 @@ class UserModel {
 	 *        	
 	 * @return mixed Gibts false zurück, wenn Nutzer nicht besteht. Ansonsten Objekt mit den Nutzerdaten zurück.
 	 */
-	public static function getUserData($user_name) {
+	public function getUserData($user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		$sql = "SELECT nutzer_name, passwortHash, rolle_ID               
@@ -99,7 +99,7 @@ class UserModel {
 	 *        	
 	 * @return mixed
 	 */
-	public static function getMyClass($user_name) {
+	public function getMyClass($user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		$sql = "SELECT v.veranst_ID, veranst_bezeichnung, credits, SWS 
@@ -160,7 +160,7 @@ class UserModel {
 	 * @param $id string
 	 *        	id
 	 */
-	public static function saveClass($id, $user_name) {
+	public function saveClass($id, $user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		$sql = "INSERT INTO nutzer_beteiligtAn_Veranstaltung VALUES (:id, :user_name);";
 		$query = $database->prepare ( $sql );
@@ -191,7 +191,7 @@ class UserModel {
 	 *        	id
 	 *        	
 	 */
-	public static function delistClass($id, $user_name) {
+	public function delistClass($id, $user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		$sql = "DELETE FROM nutzer_beteiligtAn_Veranstaltung WHERE veranst_ID=:id and nutzer_name=:user_name;";
@@ -234,7 +234,7 @@ class UserModel {
 	 *         Holt alle Nutzername & Rolle aller Nutzer.
 	 *        
 	 */
-	public static function getUserDataAll() {
+	public function getUserDataAll() {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		$sql = "SELECT nutzer_name, rolle_bezeichnung FROM Nutzer 
@@ -253,7 +253,7 @@ class UserModel {
 	 *         Holt alle Rollen aus der Datenbank.
 	 *        
 	 */
-	public static function getRoles(){
+	public function getRoles(){
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		$sql = "SELECT * FROM Rolle";
@@ -273,7 +273,7 @@ class UserModel {
 	 * @param $rolle_id string
 	 *        	ID der Rolle
 	 */
-	public static function saveRole($rolle_id, $nutzer_name) {
+	public function saveRole($rolle_id, $nutzer_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		$sql = "UPDATE nutzer SET rolle_id=:rolle_id WHERE nutzer_name = :nutzer_name";
 		$query = $database->prepare ( $sql );

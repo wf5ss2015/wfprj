@@ -16,6 +16,8 @@
  * @author Kilian Kraus
  */
 class EmployeeController extends Controller {
+	
+	
 	/**
 	 *
 	 * @author Kilian Kraus
@@ -33,8 +35,9 @@ class EmployeeController extends Controller {
 	 *         -> View um einen User auszuwählen dessen Rechte/Rolle geändert werden soll.
 	 */
 	public function selectUser() {
+		$model = new UserModel();
 		$this->View->render ( 'employee/selectUser', array (
-				'userList' => UserModel::getUserDataAll () 
+				'userList' => $model->getUserDataAll () 
 		) );
 	}
 	
@@ -45,8 +48,9 @@ class EmployeeController extends Controller {
 	 *         -> View um eine neue Rolle auszuwählen
 	 */
 	public function changeRole() {
+		$model = new UserModel();
 		$this->View->render ( 'employee/changeRole', array (
-				'roleList' => UserModel::getRoles(), 'nutzer_name' => Request::post('nutzer_name'), 'rolle_bezeichnung' => Request::post('rolle_bezeichnung')
+				'roleList' => $model->getRoles(), 'nutzer_name' => Request::post('nutzer_name'), 'rolle_bezeichnung' => Request::post('rolle_bezeichnung')
 		) );
 	}
 	/**
@@ -67,7 +71,8 @@ class EmployeeController extends Controller {
 	 *         Neue Rolle in DB speichern.
 	 */
 	public function saveChangeRole() {
-		UserModel::saveRole (Request::post('rolle_ID'), Request::post('nutzer_name'));
+		$model = new UserModel();
+		$model->saveRole (Request::post('rolle_ID'), Request::post('nutzer_name'));
 		Redirect::to ( 'employee/selectUser' );
 	}
 	

@@ -33,8 +33,9 @@ class StudentController extends Controller {
 	 *         -> View um sich an Veranstaltungen anzumelden
 	 */
 	public function enrollClass() {
+		$model = new UserModel();
 		$this->View->render ( 'student/enrollClass', array (
-				'listClass' => UserModel::getAllClass ( Session::get ( 'user_name' ) ) 
+				'listClass' => $model->getAllClass ( Session::get ( 'user_name' ) ) 
 		) );
 	}
 	
@@ -58,7 +59,8 @@ class StudentController extends Controller {
 	 *         Anmeldung in DB speichern
 	 */
 	public function saveEnroll() {
-		UserModel::saveClass ( Request::post ( 'id' ), Session::get ( 'user_name' ) );
+		$model = new UserModel();
+		$model->saveClass ( Request::post ( 'id' ), Session::get ( 'user_name' ) );
 		Redirect::to ( 'student/enrollClass' );
 	}
 	
@@ -69,8 +71,9 @@ class StudentController extends Controller {
 	 *         -> View um sich von Veranstaltungen abzumelden
 	 */
 	public function delistClass() {
+		$model = new UserModel();
 		$this->View->render ( 'student/delistClass', array (
-				'listClass' => UserModel::getMyClass ( Session::get ( 'user_name' ) ) 
+				'listClass' => $model->getMyClass ( Session::get ( 'user_name' ) ) 
 		) );
 	}
 	
@@ -94,7 +97,8 @@ class StudentController extends Controller {
 	 *         Abmeldung speichern in Datenbank
 	 */
 	public function saveDelist() {
-		UserModel::delistClass ( Request::post ( 'id' ), Session::get ( 'user_name' ) );
+		$model = new UserModel();
+		$model->delistClass ( Request::post ( 'id' ), Session::get ( 'user_name' ) );
 		Redirect::to ( 'student/delistClass' );
 	}
 }

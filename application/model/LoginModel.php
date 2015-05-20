@@ -29,7 +29,7 @@ class LoginModel {
 	 *        	
 	 * @return bool Status des Login
 	 */
-	public static function login($user_name, $user_password) {
+	public function login($user_name, $user_password) {
 		// falls Nutzername oder Passwort leer sind
 		if (empty ( $user_name ) or empty ( $user_password )) {
 			return false;
@@ -64,7 +64,7 @@ class LoginModel {
 	 *        	
 	 * @return bool mixed
 	 */
-	private static function validateAndGetUser($user_name, $user_password) {
+	private function validateAndGetUser($user_name, $user_password) {
 		// holt sich die Daten des Nutzers
 		$result = UserModel::getUserData ( $user_name );
 		
@@ -88,7 +88,7 @@ class LoginModel {
 	 * @author Kilian Kraus
 	 *         Löscht Session
 	 */
-	public static function logout() {
+	public function logout() {
 		Session::destroy ();
 	}
 	
@@ -104,7 +104,7 @@ class LoginModel {
 	 * @param
 	 *        	$user_role
 	 */
-	public static function doLogin($user_name, $user_role) {
+	public function doLogin($user_name, $user_role) {
 		Session::init ();
 		Session::set ( 'user_name', $user_name );
 		Session::set ( 'user_role', $user_role );
@@ -119,7 +119,7 @@ class LoginModel {
 	 * @param
 	 *        	$user_name
 	 */
-	public static function saveTimestamp($user_name) {
+	public function saveTimestamp($user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		$sql = "UPDATE Nutzer SET letzterLogin = :user_last_login_timestamp
@@ -138,7 +138,7 @@ class LoginModel {
 	 *        
 	 * @return bool Status des Login
 	 */
-	public static function isUserLoggedIn() {
+	public function isUserLoggedIn() {
 		return Session::userIsLoggedIn ();
 	}
 }

@@ -52,7 +52,8 @@ class LoginController extends Controller {
 	 *         Funktion die den Login ausführt.
 	 */
 	public function login() {
-		$login_successful = LoginModel::login ( Request::post ( 'user_name' ), Request::post ( 'user_password' ) );
+		$model = new LoginModel();
+		$login_successful = $model->login ( Request::post ( 'user_name' ), Request::post ( 'user_password' ) );
 		
 		/*
 		 * ===============================================
@@ -105,9 +106,10 @@ class LoginController extends Controller {
 	 *         Zeigt eine einfache Seite an nach dem erfolgreichen Login
 	 */
 	public function helloEmployee() {
+		$model = new UserModel();
 		$auth = new Auth(3);
 		$this->View->render ( 'login/loggedinEmployee', array (
-				'userlist' => UserModel::getUserDataAll () 
+				'userlist' => $model->getUserDataAll () 
 		) );
 	}
 	
@@ -117,9 +119,10 @@ class LoginController extends Controller {
 	 *         Zeigt eine einfache Seite an nach dem erfolgreichen Login
 	 */
 	public function helloStudent() {
+		$model = new UserModel();
 		$auth = new Auth(1);
 		$this->View->render ( 'login/loggedinStudent', array (
-				'userlist' => UserModel::getUserDataAll () 
+				'userlist' => $model->getUserDataAll () 
 		) );
 	}
 	
@@ -129,9 +132,10 @@ class LoginController extends Controller {
 	 *         Zeigt eine einfache Seite an nach dem erfolgreichen Login
 	 */
 	public function helloTutor() {
+		$model = new UserModel();
 		$auth = new Auth(4);
 		$this->View->render ( 'login/loggedinTutor', array (
-				'userlist' => UserModel::getUserDataAll () 
+				'userlist' => $model->getUserDataAll () 
 		) );
 	}
 	
@@ -141,9 +145,10 @@ class LoginController extends Controller {
 	 *         Zeigt eine einfache Seite an nach dem erfolgreichen Login
 	 */
 	public function helloDocent() {
+		$model = new UserModel();
 		$auth = new Auth(2);
 		$this->View->render ( 'login/loggedinDocent', array (
-				'userlist' => UserModel::getUserDataAll () 
+				'userlist' => $model->getUserDataAll () 
 		) );
 	}
 	/*
@@ -159,7 +164,8 @@ class LoginController extends Controller {
 	 *         Zeigt eine einfache Seite an nach dem Logout
 	 */
 	public function logout() {
-		LoginModel::logout ();
+		$model = new LoginModel();
+		$model->logout ();
 		Redirect::to ( 'login/index' );
 	}
 }
