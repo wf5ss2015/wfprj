@@ -12,29 +12,28 @@
  */
 
 // holt sich die Rückmeldung aus Session
-$response_positive = Session::get ( 'response_positive' );
+$response_positiv = Session::get ( 'response_positive' );
 $response_negative = Session::get ( 'response_negative' );
 $response_warning = Session::get ( 'response_warning' );
 
-echo "<article class=\"response\">";
+
 // output positive Rückmeldung
-if (isset ( $response_positive )) {
-	foreach ( $response_positive as $response ) {
-		echo '<article style="background:green">' . $response . '</article>';
+if (isset ( $response_positiv )) {
+	foreach ( $response_positiv as $response ) {
+		echo '<section class="response" id="positiv"><a style="text:bold">' . $response . '</a></section>';
 	}
 }
 
 // output negative Rückmeldung
 if (isset ( $response_negative )) {
 	foreach ( $response_negative as $response ) {
-		echo '<article style="background:red">' . $response . '</article>';
+		echo '<section class="response" id="negative">' . $response . '</section>';
 	}
 }
 
 // output Warnung
 if (isset ( $response_warning )) {
 	foreach ( $response_warning as $response ) {
-		echo '<article style="background:orange">' . $response . '</article>';
+		echo '<section class="response" id="warning">' . $response . '</section>';
 	}
 }
-echo "</article>";

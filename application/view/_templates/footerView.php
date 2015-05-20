@@ -18,8 +18,8 @@
 
 <footer>
 	<a>copyright und andere informationen über diese seite</a>
-	<footer>
+	</footer>
 
-		</div>
+		
 		</body>
 		</html>

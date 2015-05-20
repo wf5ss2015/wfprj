@@ -23,11 +23,11 @@
 			value="<?php echo htmlentities($this->nutzer_name); ?>" />
 		<input type="hidden" name="rolle_ID"
 			value="<?php echo htmlentities($this->rolle_ID); ?>" />			
-		<td><input type="submit" value='ja' /></td>
+		<td><input class="button" type="submit" value='ja' /></td>
 	</form>
 
 	<form method="post" action="index.php?url=employee/selectUser">
-		<td><input type="submit" value='nein' /></td>
+		<td><input class="button" type="submit" value='nein' /></td>
 	</form>
 	</table>
 </article>

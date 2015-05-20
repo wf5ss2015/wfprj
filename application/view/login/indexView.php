@@ -15,8 +15,7 @@
 	<form action="index.php?url=login/login" method="post">
 		<input type="text" name="user_name" placeholder="Nutzername" required />
 		<input type="password" name="user_password" placeholder="Passwort"
-			required /> <input type="submit" class="login-submit-button"
-			value="Einloggen" />
+			required /> <input class="button" type="submit" value="Login" />
 	</form>
 </article>
 

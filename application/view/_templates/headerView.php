@@ -1,21 +1,6 @@
-<!--
-/**
-* SPRINT 03
-*
-* @author: Renato Cabriolu
-* @Matrikel:
-* Datum: 04.05.2015
-*
-* User­Story (Nr. 20 ): Als Entwickler möchte ich eine einheitliche Optik und einen einheitlichen Aufbau der Webseiten haben. (Nacharbeit)   (13 Points)
-* Zeit: 1.5
-*/
--->
-<!--TODO HTML5 umsetzen--
 
-	
-<!-- einheitlicher Header Renato Cabriolu sprint -->
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<!DOCTYPE HTML>
+<!--<!DOCTYPE HTML>!-->
 <html lang="de">
 <head>
 <title>Lehrveranstaltungs Software</title>
@@ -25,8 +10,8 @@
 <link rel="stylesheet"
 	href="<?php echo Config::get('URL'); ?>public/css/styles.css">
 </head>
-
-<div class="wrapper">
+<body>
+<div class="wrapper"></div>
 	<header>
 		<a style="float: left;" href="index.php?url=index/index" title="home">
 			<img src="../public/css/Grafiken/hs_ulm_logo.png" width="133"

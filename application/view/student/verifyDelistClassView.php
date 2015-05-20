@@ -15,19 +15,20 @@
 <article>
 	<h1>Abmeldung bestätigen</h1>
 	<p>(Angemeldet:"<?php echo Session::get('user_name')?>")</p>
-</article>
-
-<article>
 	<p>Möchten Sie sich wirklich von <?php echo $this->veranst_bezeichnung?> abmelden?</p>
-</article>
-<article>
+
+	<table>
+	<td>
 	<form method="post" action="index.php?url=student/saveDelist">
 		<input type="hidden" name="id"
-			value="<?php echo htmlentities($this->id); ?>" /> <input
+			value="<?php echo htmlentities($this->id); ?>" /> <input class="button"
 			type="submit" value='ja' />
 	</form>
-
+	</td>
+	<td>
 	<form method="post" action="index.php?url=student/delistClass">
-		<input type="submit" value='nein' />
+		<input class="button" type="submit" value='nein' />
 	</form>
+	</td>
+	</table>
 </article>

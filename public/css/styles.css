@@ -13,25 +13,17 @@
 thml {
 	font-size: 100%;
 	font-family: Verdana, sans-serif;	
-	background: #79C5FF;
+	
 }
 
 body{
+	width: 1200px;
+	margin: 0 auto;
 	margin-top: 5px;
 	font-size: 100%;
 	font-family: Arial, sans-serif;
     background: #79C5FF;
 }
-
-/*breite
-  div welches um alles liegt
- */
-.wrapper {
-	width: 1200px;
-	margin: 0 auto;
-	background: white;
-}
-
 
 /*header*/
 header{
@@ -40,10 +32,72 @@ header{
 }
 
 section{
-	background: white;}
+	background: white;
+}
+	
+
+
+.response   {
+	
+	padding:20px;
+	border-radius: 10px;  
+	box-shadow: 0px 0px 9px rgba(0,0,0,0.50);
+	margin-bottom: 5px;
+	font-weight: bold;
+	color: black;
+}
+
+#positiv{
+	background: #efefef; 
+	background: linear-gradient(top, #efefef 0%, #8AE65C 100%);  
+	background: -moz-linear-gradient(top, #efefef 0%, #8AE65C 100%); 
+	background: -webkit-linear-gradient(top, #efefef 0%,#8AE65C 100%); 
+	
+	}
+	
+#negative{
+	background: #efefef; 
+	background: linear-gradient(top, #efefef 0%, #DE5959 50%);  
+	background: -moz-linear-gradient(top, #efefef 0%, #DE5959 50%); 
+	background: -webkit-linear-gradient(top, #efefef 0%,#DE5959 50%); 
+	}
+	
+#warning{
+	background: #efefef; 
+	background: linear-gradient(top, #efefef 0%, #FF6600 100%);  
+	background: -moz-linear-gradient(top, #efefef 0%, #FF6600 100%); 
+	background: -webkit-linear-gradient(top, #efefef 0%,#FF6600 100%); }
+	
+
+.button {
+cursor: pointer;
+	background: #efefef; 
+	background: linear-gradient(top, #efefef 0%, #A9DFFF 100%);  
+	background: -moz-linear-gradient(top, #efefef 0%, #A9DFFF 100%); 
+	background: -webkit-linear-gradient(top, #efefef 0%,#A9DFFF 100%); 
+	box-shadow: 0px 0px 9px rgba(0,0,0,0.50);
+	border:none;
+	padding: 2px 5px 2px 5px;
+	border-radius: 7px;
+	color: #00436A;
+	font-weight:bold;
+}
+
+.button:hover {
+color: #A9DFFF;
+background: #00436A;
+		background: linear-gradient(top, #efefef 0%, #00436A 20%);
+		background: -moz-linear-gradient(top, #efefef 0%, #00436A 20%);
+		background: -webkit-linear-gradient(top, #efefef 0%,#00436A 20%);
+}
+
+
  
 article{
-	padding: 0px 10px 10px 10px;
+	background: white;
+	padding: 10px 10px 10px 10px;
+	border-radius: 10px;  
+	box-shadow: 0px 0px 9px rgba(0,0,0,0.50);
 }
 
 h1{
@@ -55,11 +109,11 @@ h2,  h3{
 	padding-bottom: 5px;
 }
 
+
 /*navigation*/
 nav ul ul{
 	list-style-type: none;
 	display: none;
-
 }
 
 ul li:hover > ul{
@@ -72,10 +126,10 @@ nav ul {
 	background: linear-gradient(top, #efefef 0%, #A9DFFF 100%);  
 	background: -moz-linear-gradient(top, #efefef 0%, #A9DFFF 100%); 
 	background: -webkit-linear-gradient(top, #efefef 0%,#A9DFFF 100%); 
-	box-shadow: 0px 0px 9px rgba(0,0,0,0.15);
-	padding: 0 0px  ;
+	box-shadow: 0px 0px 9px rgba(0,0,0,0.50);
+	padding:  0px ;
 	margin: 0px;
-	border-radius: 5px;  
+	border-radius: 10px;  
 	list-style: none;
 	position: relative;
 	display: inline-table;
@@ -87,6 +141,7 @@ nav ul:after {
 
 nav ul li {
 	float: left;
+	
 }
 
 nav ul li:hover {
@@ -94,6 +149,7 @@ nav ul li:hover {
 		background: linear-gradient(top, #efefef 0%, #00436A 20%);
 		background: -moz-linear-gradient(top, #efefef 0%, #00436A 20%);
 		background: -webkit-linear-gradient(top, #efefef 0%,#00436A 20%);
+		
 }
 	
 nav ul li:hover a {
@@ -134,17 +190,24 @@ nav ul ul li a:hover {
 
 /*footer*/
 footer{
-	background: #003D6B;
+
+	background: #003D6B; 
+	background: linear-gradient(top, #A9DFFF 0%, #003D6B 100%);  
+	background: -moz-linear-gradient(top, #A9DFFF 0%, #003D6B 100%); 
+	background: -webkit-linear-gradient(top, #A9DFFF 0%,#003D6B 100%); 
+	box-shadow: 0px 0px 9px rgba(0,0,0,0.50);
 	color: #00436A;
+	border-radius: 10px;  
 	text-align: center;
-	padding: 0;
+	margin-top: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
 }
 
 footer a{
-	color: #A9DFFF;
+	color: white;
 }
 
-.response {
-}
 
 

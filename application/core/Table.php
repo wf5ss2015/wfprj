@@ -79,7 +79,7 @@
 				if (isset ( $this->link )) {
 					foreach ( $this->link [0] as $key => $value ) {
 						$submitName = $key;
-						echo "<td style=background:pink; align=center>";
+						echo "<td align=center>";
 						echo "<form action=\"";
 						echo htmlentities ( $value );
 						echo "\" method=\"post\">";
@@ -114,7 +114,7 @@
 	 * User Story: Als Admin/Verwalter möchte ich Rechte vergeben können.
 	 * ===============================================
 	 */
-						echo "<input type=\"submit\" value=\"";
+						echo "<input class=\"button\" type=\"submit\" value=\"";
 						echo htmlentities ( $submitName );
 						echo "\">";
 						echo "</form>";
