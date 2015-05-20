@@ -356,15 +356,12 @@ class VeranstaltungModel {
 	 	// Datenbankverbindung
 	 	$database = new DatabaseFactoryMysql ();
 	
-	 	$updateString = "UPDATE Veranstaltung SET veranst_bezeichnung = $vBezeichnung, "
-	 			. "veranst_kurztext = $vKurztext, credits = $vCredits, SWS = $vSWS, " 
+	 	$updateString = "UPDATE Veranstaltung SET veranst_bezeichnung = '$vBezeichnung', "
+	 			. "veranst_kurztext = '$vKurztext', credits = $vCredits, SWS = $vSWS, " 
 				. "maxTeilnehmer = $vMaxTeilnehmer, vArt_ID = $vArtID "
 				. "where veranst_ID = $vID;";
 				
 	 	$database->insert($updateString);
-	 	
-	 	print_r($data);
-	 	
 	 	
  	}
 	 		

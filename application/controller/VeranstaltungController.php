@@ -206,7 +206,6 @@ class VeranstaltungController extends Controller {
 		// neues Veranstaltungmodel anlegen
 		$vModel = new VeranstaltungModel ();
 
-		//POST-Daten lesen
 		
 		//Veranstaltungs-ID
 		$vID = $grunddaten['vID'];
@@ -298,21 +297,20 @@ class VeranstaltungController extends Controller {
 		// neues Veranstaltungmodel anlegen
 		$vModel = new VeranstaltungModel ();
 		
+		//alte Veranstaltung, für Vorher-Nachher
+		$alteVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));
+		
 		$vModel->updateVeranstaltung(array('grunddaten' => $grunddaten, 
 				'vArtID' => $vArtID,
 				'ausstattung' => $ausstattung ));
 		
-// 		print "<pre>";
-// // 		print_r($_POST);
-// 		print_r($ausstattung);
-// 		print "</pre>";
 		
-		//vorher-nachher print?
+		//neue Veranstaltung, für Vorher-Nachher
+		$neueVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));
+		$this->View->render('veranstaltung/bearbeitet', array ('alteVeranstaltung' => $alteVeranstaltung,
+						'neueVeranstaltung' => $neueVeranstaltung
+		) );
 		
-// 		$this->View->render('veranstaltung/bearbeitenAusstattung', array ('grunddaten' => $grunddaten,
-// 				'vArtID' => $vArtID,
-// 				'ausstattung' => $ausstattung
-// 		) );
 	}
 	
 	
