@@ -27,7 +27,7 @@
 class EmailController extends Controller {
 	
 	public function __construct() {
-		Auth::checkAuthenticationDocent ();
+		$auth = new Auth(2);
 		parent::__construct ();
 	}
 	

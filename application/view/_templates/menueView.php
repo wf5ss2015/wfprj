@@ -58,7 +58,7 @@ class menueView{
 			array(
 			"Mein Profil" => "#",
 			"Bearbeiten" => "Dozent/meinProfil",
-			"Email" => "Dozent/emailDozent",
+			"Email" => "Dozent/emailDozent"),
 			array(
 			"Raumplan" => "raumplan/erzeugeFormular1"),
 			array(
