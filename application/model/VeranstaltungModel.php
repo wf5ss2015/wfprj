@@ -363,6 +363,27 @@ class VeranstaltungModel {
 				
 	 	$database->insert($updateString);
 	 	
+	 	// löscht Einträge in der Datenbank Veranstaltung_erfordert_Ausstattung
+	 	$this->loescheAusstattung($vID);
+	 	
+	 	// trägt die neun Austattungsmerkmale ein
+	 	$this->ausstattungEintragen($vID, $ausstattung);
+	 	
+ 	}
+ 	
+ 	
+ 	/*
+ 	 * löscht Einträge in der Datenbank Veranstaltung_erfordert_Ausstattung 
+ 	 * */
+ 	public function loescheAusstattung($vID) {
+ 		
+ 		$delteString = "delete from Veranstaltung_erfordert_Ausstattung where veranst_ID = $vID;";
+ 		
+ 		// Datenbankverbindung
+ 		$database = new DatabaseFactoryMysql ();
+ 		
+ 		$database->insert($delteString);
+ 	
  	}
 	 		
 	 	

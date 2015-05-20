@@ -300,6 +300,7 @@ class VeranstaltungController extends Controller {
 		//alte Veranstaltung, für Vorher-Nachher
 		$alteVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));
 		
+		
 		$vModel->updateVeranstaltung(array('grunddaten' => $grunddaten, 
 				'vArtID' => $vArtID,
 				'ausstattung' => $ausstattung ));
