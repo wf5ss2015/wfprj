@@ -5,7 +5,7 @@
     projekt: lehrveranstaltungsmanagement
 	sprint: 04	
 	zeitaufwand: 0.5
-	user story (Nr. 280): Als Admin möchte ich alle Nutzer in einer Liste speichern können. (20 Pkt.) 
+	user story (Nr. 280a): Als Admin möchte ich alle Nutzer in einer Liste speichern können. (20 Pkt.) 
 	-> Erweiterung um Vorname und Nachname
 */
 /*
@@ -20,22 +20,23 @@
 
 <article>
 	<h1>Nutzerliste</h1>
-	<form action="index.php?url=nutzerlisteDrucken/printUser" method="post" />
+	<form action="index.php?url=nutzerlisteDrucken/printUser" method="post" target="_blank" />
 	<p>Im Folgenden sehen Sie eine Liste von allen Nutzern:</p>
 		
 <?php
 if ($this->user_list) {
-	
 	$table = new Table ();
 	$userInfo = array (
-			"0" => "Nutzername",
-			"1" => "Rolle",
-			"2" => "E-Mail",
-			"3" => "Straßenname",
-			"4" => "Hausnummer",
-			"5" => "PLZ",
-			"6" => "Stadt",
-			"7" => "Land" 
+			"0" => "Nachname",
+			"1" => "Vorname",
+			"2" => "Nutzername",
+			"3" => "Rolle",
+			"4" => "E-Mail",
+			"5" => "Straßenname",
+			"6" => "Hausnummer",
+			"7" => "PLZ",
+			"8" => "Stadt",
+			"9" => "Land" 
 	);
 	$table->table ( array (
 			'table' => $this->user_list,
@@ -64,7 +65,7 @@ if ($this->user_list) {
 	 * </table>
 	 */
 } else {
-	echo "Es ist ein Fehler aufgetretten.";
+	echo "Es ist ein Fehler aufgetretten. Die Nutzerliste konnte nicht erstellt werden.";
 }
 ?>
    
@@ -72,7 +73,7 @@ if ($this->user_list) {
 <?php
 echo '<input type="button" value="Zurück" onClick="history.back();">';
 ?>
-<input type="submit" id="b1" value="Nutzerliste drucken"></a>
+<input type="submit" id="b1" value="Nutzerliste drucken" ></a>
 	</p>
 	</form>
 <article>

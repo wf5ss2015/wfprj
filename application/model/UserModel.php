@@ -22,7 +22,7 @@
  * ===============================================
  */
 /*
- * Erweiterung um Nutzerdaten von allen usern zu bekommen.
+ * Erweiterung um Nutzerdaten von allen usern zu bekommen. (zu User Story Nr. 280)
  * sprint: 4
  * autor: Kris Klamser
  * zeitaufwand:0.5
@@ -310,16 +310,22 @@ class UserModel {
 	 * START
 	 */
 	public static function getUserDataAll4() {
-		$database = DatabaseFactory::getFactory ()->getConnection ();
-		$sql = "Select u.nutzer_name, rolle_bezeichnung, email_name, straßenname, hausnummer, plz, stadt, land 
+		$database = DatabaseFactory::getFactory()->getConnection ();
+		$sql = "Select w1.inhalt as nachname, w2.inhalt as vorname, u.nutzer_name, rolle_bezeichnung, email_name, straßenname, hausnummer, plz, stadt, land 
 				from Nutzer u 
+                join Wert w1 on w1.nutzer_name = u.nutzer_name and w1.eigenschaft_ID = 4 
+                join Wert w2 on w2.nutzer_name = u.nutzer_name and w2.eigenschaft_ID = 3 
 				join Rolle r on r.rolle_ID = u.rolle_ID 
 				join EMail e on e.nutzer_name = u.nutzer_name 
-				join Adresse a on a.nutzer_name = u.nutzer_name;";
-		
-		$query = $database->prepare ( $sql );
-		$query->execute ();
-		return $query->fetchAll ();
+				join Adresse a on a.nutzer_name = u.nutzer_name
+				order by nachname asc;";
+		$query = $database->prepare ($sql);
+		try{
+			$query->execute ();
+			return $query->fetchAll ();
+		} catch(PDOException $e){
+			Session::add ( 'response_warning', 'Es ist ein Fehler bei der Datenbankabfrage aufgetreten.' );
+		}
 	}
 	/* ENDE Änderungen Klamser */
 }
