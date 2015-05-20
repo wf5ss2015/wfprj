@@ -129,7 +129,7 @@ class UserModel {
 	 *        	
 	 * @return mixed
 	 */
-	public static function getAllClass($user_name) {
+	public function getAllClass($user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		$sql = "SELECT v.veranst_ID, veranst_bezeichnung, credits, SWS 
@@ -240,6 +240,17 @@ class UserModel {
 		$sql = "SELECT nutzer_name, rolle_bezeichnung FROM Nutzer 
 		JOIN Rolle
 		ON nutzer.rolle_ID = rolle.rolle_ID 
+		ORDER BY nutzer_name";
+		$query = $database->prepare ( $sql );
+		$query->execute();
+		return $query->fetchAll();
+	}
+	
+	// für entwicklung
+	public function getUserDataAll2() {
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+		
+		$sql = "SELECT nutzer_name, passwortHash FROM Nutzer 
 		ORDER BY nutzer_name";
 		$query = $database->prepare ( $sql );
 		$query->execute();

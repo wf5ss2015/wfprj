@@ -50,8 +50,10 @@ require '../application/core/Table.php';
 require '../application/view/_templates/menueView.php';
 
 // Damian Wysocki
-require '../application/helper/PHPMailer/class.phpmailer.php';
-require '../application/helper/PHPMailer/class.smtp.php';
+require '../application/lib/PHPMailer/class.phpmailer.php';
+require '../application/lib/PHPMailer/class.smtp.php';
+//require '../application/config/email.php';
+
 
 // Roland Schmid
 require '../application/model/VeranstaltungModel.php';

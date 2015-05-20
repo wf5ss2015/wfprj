@@ -61,6 +61,14 @@ if ($this->teilnehmer) {
 					$link 
 			) 
 	) );
+	?>
+	
+	<form method="post" action="index.php?url=email/writeMailAll">
+		<input type="hidden" name="id"
+			value="<?php echo htmlentities($_POST['id']); ?>" /> <input class="button"
+			type="submit" value='email an alle' />
+	</form>
+	<?php
 } else {
 ?>
 kein array übergeben

@@ -19,7 +19,7 @@
 ?>
 <!--Startbereich für einen eingeloggten Dozenten -->
 <article>
-	<h2>Startbereich für Dozenten</h2>
+	<h1>Startbereich für Dozenten</h1>
 	<nav>
 		<ol>
 			<li><h2>Rubrik 1</h2></li>

@@ -30,7 +30,7 @@
 class DozentController extends Controller {
 	
 	public function __construct() {
-		$auth = new Auth(2);
+		
 		parent::__construct ();
 	}
 	
@@ -46,6 +46,8 @@ class DozentController extends Controller {
 	
 	// Funktion zur Auswahl der hinterlegten Vorlesungen eines Dozenten
 	public function auswahlVorlesung() {
+		
+		$auth = new Auth(2);
 		$this->View->render ( 'dozent/auswahlVorlesung', array (
 				'vorlesung' => DozentModel::getVorlesung () 
 		) );
@@ -53,6 +55,7 @@ class DozentController extends Controller {
 	
 	// Funktion zum Aufruf der DozentModel-Klasse um Teilnehmer einer Vorlesung anzuzeigen
 	public function teilnehmerListe() {
+		$auth = new Auth(2);
 		$this->View->render ( 'dozent/teilnehmerListe', array (
 				'teilnehmer' => DozentModel::getTeilnehmer(Request::post ( 'id' ) ) 
 		) );
@@ -80,6 +83,7 @@ class DozentController extends Controller {
 	* Task: 390/04  Beschreibung: Controller erstellen
 	*/
 	public function emailDozent() {
+		$auth = new Auth(2);
 		$this->View->render ( 'dozent/email', array (
 				'profil' => DozentModel::getDozentProfil(Session::get('user_name')) 
 		)  );
@@ -191,7 +195,7 @@ class DozentController extends Controller {
 			}
 	
 		// Seite wird nochmal gerendert, um aktualisierte Daten anzuzeigen
-		meinProfil();
+		$this->meinProfil();
 	}
 	
 	/*

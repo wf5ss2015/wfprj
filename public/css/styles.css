@@ -70,7 +70,7 @@ section{
 	
 
 .button {
-cursor: pointer;
+	cursor: pointer;
 	background: #efefef; 
 	background: linear-gradient(top, #efefef 0%, #A9DFFF 100%);  
 	background: -moz-linear-gradient(top, #efefef 0%, #A9DFFF 100%); 
@@ -188,6 +188,19 @@ nav ul ul li a:hover {
 		background: -webkit-linear-gradient(top, #efefef 0%,#00436A 20%);
 }
 
+thead td{
+color: #A9DFFF;
+background: #00436A;
+		background: linear-gradient(top, #efefef 0%, #00436A 20%);
+		background: -moz-linear-gradient(top, #efefef 0%, #00436A 20%);
+		background: -webkit-linear-gradient(top, #efefef 0%,#00436A 20%);
+
+	box-shadow: 0px 0px 9px rgba(0,0,0,0.50);
+	border:none;
+	padding: 2px 5px 2px 5px;
+	border-radius: 7px;
+	
+	font-weight:bold;}
 /*footer*/
 footer{
 
@@ -195,7 +208,7 @@ footer{
 	background: linear-gradient(top, #A9DFFF 0%, #003D6B 100%);  
 	background: -moz-linear-gradient(top, #A9DFFF 0%, #003D6B 100%); 
 	background: -webkit-linear-gradient(top, #A9DFFF 0%,#003D6B 100%); 
-	box-shadow: 0px 0px 9px rgba(0,0,0,0.50);
+	box-shadow: 0px 0px 9px rgba(0,0,0,0.5);
 	color: #00436A;
 	border-radius: 10px;  
 	text-align: center;

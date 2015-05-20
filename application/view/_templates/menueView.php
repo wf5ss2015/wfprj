@@ -71,6 +71,10 @@ class menueView{
 			array(
 			"Home" => "index/index"),
 			array(
+			"Mein Profil" => "#",
+			"Bearbeiten" => "Dozent/meinProfil"
+			),
+			array(
 			"Veranstaltung" => "#",
 			"erweitern" => "veranstaltungerweitern/veranstaltungErweitern",
 			"anlegen" => "veranstaltung/anlegenForm",

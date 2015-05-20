@@ -15,6 +15,9 @@
 ?>
 
 <?php 
+class email {
+	public static $config;
+	public function __construct(){
 	/**-----------------------------------------------------------------------------------------
 	* START SPRINT 04
 	* @author: Damian Wysocki
@@ -23,40 +26,32 @@
 	* Zeitaufwand (in Stunden): 1,5
 	* START SPRINT 04
 	*/
+	
 	$config['protocol']  = 'smtp';
+	$config['smtp_email']= 'versender@kilian-kraus.net';
 	$config['smtp_host'] = 'w012e8ee.kasserver.com';
-	$config['smtp_user'] = 'projekt1@kilian-kraus.net ';
-	$config['smtp_pass'] = 'GBAoChBqoz8VYCzP';
+	$config['smtp_user'] = 'm03399f9';
+	$config['smtp_pass'] = 'DF6yQq8aKowGQft8';
 	$config['smtp_port'] = '25';
-	$config['reply_to']  = 'wysdam@googlemail.com';
-	$config['from_name'] = 'Test';
+	}
 
-	/* TESTDATEN
-	adresse:        projekt1@kilian-kraus.net
-	konto:           m03390cc
-	server:          w012e8ee.kasserver.com
-	PW:               GBAoChBqoz8VYCzP
-	Kopie:           wysdam@googlemail.com
+	
 
-	adresse:        projekt2@kilian-kraus.net
-	PW:               HVRwL7L94RQ4QcRA
-	konto:           m03390cf
-	server:          w012e8ee.kasserver.com
-	Kopie:           wysdam@googlemail.com
-
-	adresse:        projekt3@kilian-kraus.net
-	PW:               8vYrtesNcaEEeogq
-	konto:           m03390d2
-	server:          w012e8ee.kasserver.com
-	Kopie:           wysdam@googlemail.com
-
-
-	ports sind die üblichen.
-
-	smtp 25 bzw 587
-	pop3 110
-	imap 143 
-	*/
+	public function get($key) {		
+			if (! $this->$config) {
+			
+			$config_file = new email();
+			
+			if (! file_exists ( $config_file )) {
+				return false;
+			}
+			
+			$this->$config = require $config_file;
+		}
+		
+		return $this->$config [$key];
+	}
+	}
 	/*
 	* ENDE SPRINT 04
 	* @author: Damian Wysocki

@@ -38,7 +38,7 @@
 			
 			// baut tabelle zusammen
 			echo "<table>";
-			echo "<thead style=background:#FF00FF>";
+			echo "<thead>";
 			// falls alias übergeben wurde
 			if (isset ( $this->alias )) {
 				echo "<tr>";
@@ -68,7 +68,7 @@
 				echo "<tr>";
 				foreach ( $this->table [$i] as $key => $value ) {
 					if ($i % 2 != 0) {
-						echo "<td style=background:gray>";
+						echo "<td style=background:#A9DFFF; >";
 					} else {
 						echo "<td>";
 					}

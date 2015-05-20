@@ -13,7 +13,7 @@
 require 'Environment.php';
 class Config {
 	public static $config;
-	public static function get($key) {
+	public function get($key) {
 		if (! self::$config) {
 			
 			$config_file = '../application/config/config.' . Environment::get () . '.php';
