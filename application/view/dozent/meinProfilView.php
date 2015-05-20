@@ -1,11 +1,10 @@
 <?php
-/* ===============================================
+ /* ===============================================
  * Sprint: 4
  * @author: Damian Wysocki
- * Datum: 10.05.2015
- * Zeitaufwand (in Stunden): xx
- * User Story (Nr.: )  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können
- * Zeit insgesamt: 8
+ * Datum: 08.05.2015
+ * User Story (Nr.: 390)  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können (Points 13)
+ * Zeit insgesamt: 7
  * ===============================================*/
 
 /**
@@ -13,9 +12,18 @@
  *        
  *         Beschreibung: View um das Profil eines Dozenten anzuzeigen und zu ändern
  */
+ ?>
  
+<?php
+/**-----------------------------------------------------------------------------------------
+	* START SPRINT 04
+	* @author: Damian Wysocki
+	* User Story (Nr.: 390)  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können  (Points 13)
+	* Task: 390/03  Beschreibung: View zur Anzeige des Profils
+	* Zeitaufwand (in Stunden): 2
+	* START SPRINT 04
+	*/
 ?>
-
 <article>
 
 	<h2>Mein Profil</h2>
@@ -98,7 +106,7 @@
 	</form> 
 	</br>
 	
-	<!--HTML5 formaction: Seite mit aktuellen Werten neu laden-->
+	<?php //HTML5 formaction: Seite mit aktuellen Werten neu laden ?>
 	<form> <input type="submit" name="laden" value="Daten Neu Laden"
 				formaction="index.php?url=dozent/meinProfil" formmethod="post"></form>
 	
@@ -108,7 +116,17 @@
 	echo Kein Array vorhanden
 <?php } ?>	
 
-<!--Error Handling-->	
+	<?php //Error Handling ?>
 <?php $this->renderResponse(); ?>
 </article>
 
+<?php
+/**-----------------------------------------------------------------------------------------
+	* START SPRINT 04
+	* @author: Damian Wysocki
+	* User Story (Nr.: 390)  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können  (Points 13)
+	* Task: 390/03  Beschreibung: View zur Anzeige des Profils
+	* Zeitaufwand (in Stunden): 2
+	* START SPRINT 04
+	**-----------------------------------------------------------------------------------------*/
+?>

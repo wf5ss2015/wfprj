@@ -56,6 +56,10 @@ class menueView{
 			array(
 			"Home" => "index/index"),
 			array(
+			"Mein Profil" => "#",
+			"Bearbeiten" => "Dozent/meinProfil",
+			"Email" => "Dozent/emailDozent",
+			array(
 			"Raumplan" => "raumplan/erzeugeFormular1"),
 			array(
 			"Teilnehmerliste" => "Dozent/auswahlVorlesung"),

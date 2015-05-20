@@ -49,6 +49,10 @@ require '../application/model/DozentModel.php';
 require '../application/core/Table.php';
 require '../application/view/_templates/menueView.php';
 
+// Damian Wysocki
+require '../application/helper/PHPMailer/class.phpmailer.php';
+require '../application/helper/PHPMailer/class.smtp.php';
+
 // Roland Schmid
 require '../application/model/VeranstaltungModel.php';
 

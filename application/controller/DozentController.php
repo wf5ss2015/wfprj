@@ -1,13 +1,11 @@
 <?php
-/* ===============================================
+ /* ===============================================
  * Sprint: 4
  * @author: Damian Wysocki
- * Datum: 25.04.2015
- * Zeitaufwand (in Stunden): xx
- * User Story (Nr.: )  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können
- * Zeit insgesamt: 8
+ * Datum: 09.05.2015
+ * User Story (Nr.: 390)  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können (Points 13)
+ * Zeit insgesamt: 7
  * ===============================================*/
-
 
 /**===============================================
  * SPRINT 03
@@ -32,7 +30,7 @@
 class DozentController extends Controller {
 	
 	public function __construct() {
-		$auth = new Auth(2);
+		Auth::checkAuthenticationDocent ();
 		parent::__construct ();
 	}
 	
@@ -55,7 +53,7 @@ class DozentController extends Controller {
 	
 	// Funktion zum Aufruf der DozentModel-Klasse um Teilnehmer einer Vorlesung anzuzeigen
 	public function teilnehmerListe() {
-		$this->View->render('dozent/teilnehmerListe', array (
+		$this->View->render ( 'dozent/teilnehmerListe', array (
 				'teilnehmer' => DozentModel::getTeilnehmer(Request::post ( 'id' ) ) 
 		) );
 	}
@@ -63,17 +61,29 @@ class DozentController extends Controller {
 	/**-----------------------------------------------------------------------------------------
 	* START SPRINT 04
 	* @author: Damian Wysocki
-	* User Story (Nr.: ): Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können
-	* Task: xxx/xx Funktion um Daten aus der Datenbank zu extrahieren
+	* User Story (Nr.: 390)  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können  (Points 13)
+	* Task: 390/02  Beschreibung: Controller zur Steuerung der Views
+	* Zeitaufwand (in Stunden): 3
 	* START SPRINT 04
 	*/
 	
+	// Funktion um das Profil anzuzeigen
 	public function meinProfil() {
 		$this->View->render ( 'dozent/meinProfil', array (
 				'profil' => DozentModel::getDozentProfil(Session::get('user_name')) 
 		) );
 	}
 	
+	/**
+	* @author: Damian Wysocki
+	* User Story (Nr.: 380)  Als Dozent möchte ich E-Mails an alle Teilnehmer einer Veranstaltung verschicken können (Points 13)
+	* Task: 390/04  Beschreibung: Controller erstellen
+	*/
+	public function emailDozent() {
+		$this->View->render ( 'dozent/email', array (
+				'profil' => DozentModel::getDozentProfil(Session::get('user_name')) 
+		)  );
+	}
 	public function updateDozent() {
 	
 			// Nachname
@@ -181,16 +191,16 @@ class DozentController extends Controller {
 			}
 	
 		// Seite wird nochmal gerendert, um aktualisierte Daten anzuzeigen
-		$this->View->render ( 'dozent/meinProfil', array (
-					'profil' => DozentModel::getDozentProfil(Session::get('user_name')) 
-			) );
+		meinProfil();
 	}
 	
-	/**
+	/*
 	* ENDE SPRINT 04
-	* User Story (Nr.: ): Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können
-	* Task: xxx/xx
+	* @author: Damian Wysocki
+	* User Story (Nr.: 390)  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können  (Points 13)
+	* Task: 390/02  Beschreibung: Controller zur Steuerung der Views
+	* Zeitaufwand (in Stunden): 3
 	* ENDE SPRINT 04
-	*-------------------------------------------------------------------------------------------*/
+	**-----------------------------------------------------------------------------------------*/
 	
 }

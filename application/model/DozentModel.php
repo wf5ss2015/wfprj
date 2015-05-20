@@ -3,12 +3,10 @@
  /* ===============================================
  * Sprint: 4
  * @author: Damian Wysocki
- * Datum: 25.04.2015
- * Zeitaufwand (in Stunden): xx
- * User Story (Nr.: )  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können
- * Zeit insgesamt: 8
+ * Datum: 12.05.2015
+ * User Story (Nr.: 390)  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können (Points 13)
+ * Zeit insgesamt: 7
  * ===============================================*/
-
 
 /** ===============================================
  * SPRINT 03
@@ -107,10 +105,10 @@ class DozentModel {
 		
 		$user_name = Session::get ( 'user_name' );
 		
-		$sql = "SELECT nutzer_name, nutzer_beteiligtAn_Veranstaltung.veranst_ID as veranst_ID, veranst_bezeichnung 
-				FROM  nutzer_beteiligtAn_Veranstaltung 
+		$sql = "SELECT nutzer_name, User_beteiligtAn_Veranstaltung.veranst_ID as veranst_ID, veranst_bezeichnung 
+				FROM  User_beteiligtAn_Veranstaltung 
 				JOIN Veranstaltung 
-				ON nutzer_beteiligtAn_Veranstaltung.veranst_ID = Veranstaltung.veranst_ID 
+				ON User_beteiligtAn_Veranstaltung.veranst_ID = Veranstaltung.veranst_ID 
 				WHERE nutzer_name = :user_name ORDER BY veranst_bezeichnung ASC";
 		
 		$result = $database->prepare ( $sql );
@@ -135,11 +133,12 @@ class DozentModel {
 	* ENDE SPRINT 03
 	*-------------------------------------------------------------------------------------------*/
 	
-   /**-----------------------------------------------------------------------------------------
+	/**-----------------------------------------------------------------------------------------
 	* START SPRINT 04
 	* @author: Damian Wysocki
-	* User Story (Nr.: ): Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können
-	* Task: xxx/xx Funktion um ein Profil des eingeloggten Dozenten anzuzeigen
+	* User Story (Nr.: 390)  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können  (Points 13)
+	* Task: 390/01  Beschreibung: SQL Queries erstellen
+	* Zeitaufwand (in Stunden): 3
 	* START SPRINT 04
 	*/
 	public static function getDozentProfil($user) {
@@ -172,9 +171,8 @@ class DozentModel {
 		return $query->fetch();
 		}
 		
-	/* @author: Damian Wysocki
-	*  User Story (Nr.: ): Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können
-	*  Task: xxx/xx Funktion um Änderungen der Profildaten eines Dozenten in die Datenbank zu speichern
+	/* 
+	* Funktion um Profildaten zu aktualisieren
 	*/
 	// Nachname, id 4 in wert tabelle
 	public static function updateDataDozentNN($wert, $user) {
@@ -378,11 +376,13 @@ class DozentModel {
 		
 	}
 	
-	/**
+	/*
 	* ENDE SPRINT 04
-	* User Story (Nr.: ): Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können
-	* Task: xxx/xx
+	* @author: Damian Wysocki
+	* User Story (Nr.: 390)  Als Dozent möchte ich mir mein Profil anzeigen und bearbeiten können  (Points 13)
+	* Task: 390/01  Beschreibung: SQL Queries erstellen
+	* Zeitaufwand (in Stunden): 3
 	* ENDE SPRINT 04
-	*-------------------------------------------------------------------------------------------*/
+	**-----------------------------------------------------------------------------------------/
 	
 }
