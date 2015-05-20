@@ -171,6 +171,7 @@ CREATE  TABLE `Veranstaltung`
 	`SWS` INT NOT NULL ,
 	`maxTeilnehmer` INT NULL ,
 	`vArt_ID` INT NOT NULL ,
+	`scheinleistung` tinyint(1) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`veranst_ID`) ,
     FOREIGN KEY (`vArt_ID` ) REFERENCES `Veranstaltungsart` (`vArt_ID` )
 );

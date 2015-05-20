@@ -1,5 +1,15 @@
 <?php
-
+/*
+ * ===============================================
+ * Sprint: 4
+ * @author: Kilian Kraus
+ * Datum: 19.05.2015
+ * Zeitaufwand (in Stunden): 0.25 
+ * User Story Nr.: 490
+ * User Story: Als Verwalter möchte ich angeben können, ob für eine Veranstaltung eine Scheinleistung zu erbringen ist.
+ * Task: view erweitern
+ * ===============================================
+ */
 /**
  * SPRINT 04
  *
@@ -228,6 +238,35 @@
 /* Sprint 3 Ende
  */
 ?>
+	<?php
+	/*
+	 * ===============================================
+	 * Start Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Verwalter möchte ich angeben können, ob für eine Veranstaltung eine Scheinleistung zu erbringen ist.
+	 * ===============================================
+	 */
+	 ?>
+<tr>
+	<td>
+		Scheinleistung erforderlich:
+	</td>
+	<td>
+		<select class="input" name="veranstaltung_scheinleistung" style="; width: 5em">    
+			<option value="0">nein</option>";
+			<option value="1">ja</option>";       
+        </select>	
+	</td>
+</tr>
+	<?php
+	/*
+	 * ===============================================
+	 * Ende Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Verwalter möchte ich angeben können, ob für eine Veranstaltung eine Scheinleistung zu erbringen ist.
+	 * ===============================================
+	 */
+	 ?>
 	
 	
 	

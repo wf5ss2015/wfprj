@@ -1,4 +1,15 @@
 <?php
+/*
+ * ===============================================
+ * Sprint: 4
+ * @author: Kilian Kraus
+ * Datum: 19.05.2015
+ * Zeitaufwand (in Stunden): 0.25 
+ * User Story Nr.: 490
+ * User Story: Als Verwalter möchte ich angeben können, ob für eine Veranstaltung eine Scheinleistung zu erbringen ist.
+ * Task: model erweitern
+ * ===============================================
+ */
 /**
  * SPRINT 04
  *
@@ -145,6 +156,21 @@ class VeranstaltungModel {
 		$maxNo = Request::post ( 'veranstaltung_max_Teilnehmer' );
 		$art = Request::post ( 'veranstaltung_veranstaltungsart' );
 		
+	/*
+	 * ===============================================
+	 * Start Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Verwalter möchte ich angeben können, ob für eine Veranstaltung eine Scheinleistung zu erbringen ist.
+	 * ===============================================
+	 */
+		$scheinleistung = Request::post('veranstaltung_scheinleistung');
+	/*
+	 * ===============================================
+	 * Ende Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Verwalter möchte ich angeben können, ob für eine Veranstaltung eine Scheinleistung zu erbringen ist.
+	 * ===============================================
+	 */
 		$stg_ID = Request::post ( 'veranstaltung_pflichtvorlesung' );
 		
 		/* sprint 4 Anfang
@@ -178,9 +204,22 @@ class VeranstaltungModel {
 		
 		// wenn alle Prüfungen positiv, führe insert aus
 		if ($valid) {
-			
-			$insertString = "INSERT INTO Veranstaltung (`veranst_bezeichnung`, `veranst_kurztext`, `credits`, `SWS`, " . "`maxTeilnehmer`, `vArt_ID`) " . "VALUES ('$bez', '$kurztext', '$credits', '$sws', '$maxNo', '$art');";
-			
+	/*
+	 * ===============================================
+	 * Start Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Verwalter möchte ich angeben können, ob für eine Veranstaltung eine Scheinleistung zu erbringen ist.
+	 * Note: Nur Scheinleistung hinzugefügt
+	 * ===============================================
+	 */
+			$insertString = "INSERT INTO Veranstaltung (`veranst_bezeichnung`, `veranst_kurztext`, `credits`, `SWS`, " . "`maxTeilnehmer`, `vArt_ID`, `scheinleistung`) " . "VALUES ('$bez', '$kurztext', '$credits', '$sws', '$maxNo', '$art', '$scheinleistung');";
+	/*
+	 * ===============================================
+	 * Ende Sprint: 4
+	 * @author: Kilian Kraus
+	 * User Story: Als Verwalter möchte ich angeben können, ob für eine Veranstaltung eine Scheinleistung zu erbringen ist.
+	 * ===============================================
+	 */
 			if ($database->insert ( $insertString )) {
 				// speichert die ID, unter der die neue Veranstaltung eingetragen wurde
 				$vID = $database->insert_id;
