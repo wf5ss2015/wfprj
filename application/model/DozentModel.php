@@ -106,7 +106,7 @@ class DozentModel {
 		$user_name = Session::get ( 'user_name' );
 		
 		$sql = "SELECT nutzer_name, User_beteiligtAn_Veranstaltung.veranst_ID as veranst_ID, veranst_bezeichnung 
-				FROM  User_beteiligtAn_Veranstaltung 
+				FROM  nutzer_beteiligtAn_Veranstaltung 
 				JOIN Veranstaltung 
 				ON User_beteiligtAn_Veranstaltung.veranst_ID = Veranstaltung.veranst_ID 
 				WHERE nutzer_name = :user_name ORDER BY veranst_bezeichnung ASC";
