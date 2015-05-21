@@ -14,13 +14,9 @@
 <article>	
 	<!-- Wenn Veranstaltung erweitert wurde gibt es zwei Optionen: zur Startseite zurück oder nächste Erweiterung -->
 	<form action="index.php?url=veranstaltungErweitern/veranstaltungErweitern" method="post" />
-		<input type="submit" id="b1" value="nächste Erweiterung"></a>
+		<input class="button" type="submit" id="b1" value="nächste Erweiterung"></a>
 	</form>
 	<form action="index.php?url=index/index" method="post" />
-		<input type="submit" id="b2" value="Startseite"></a>
+		<input class="button" type="submit" id="b2" value="Startseite"></a>
 	</form>
-	<?php 
-		//Error Handling
-		$this->renderResponse(); 
-	?>
 </article>

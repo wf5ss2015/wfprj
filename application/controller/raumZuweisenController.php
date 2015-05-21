@@ -120,7 +120,8 @@ class raumZuweisenController extends Controller
 													  'wochentage' => $wochentage, 
 													  'stundenZeiten' => $stundenZeiten,
 													  'verfuegbareVorlesungsraeume' => $verfuegbareVorlesungsraeume,
-													  'verfuegbareLaborraeume' => $verfuegbareLaborraeume));
+													  'verfuegbareLaborraeume' => $verfuegbareLaborraeume)
+													 );
 				}
 			}
 		}

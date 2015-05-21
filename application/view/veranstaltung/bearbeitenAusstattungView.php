@@ -87,7 +87,7 @@ $ausstattung = $data['ausstattung'];
 	</table>
     	</td></tr>
     	
-      <tr><td><input type="submit" value="weiter" /></td><td>&nbsp;</td></tr>		
+      <tr><td><input class="button" type="submit" value="weiter" /></td><td>&nbsp;</td></tr>		
     </table>
 </form>
 </article>

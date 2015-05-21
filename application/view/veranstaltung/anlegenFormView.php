@@ -80,8 +80,8 @@
 <form action=index.php?url=veranstaltung/anlegen method="post">
 	
     <table id="veranstaltung-anlegen">
-	<tr><td>Bezeichnung: </td> <td><input type="text"  name="veranstaltung_bezeichnung" size="36" maxlength="100" /></td></tr>
-	<tr><td>Kurztext: </td> <td><input type="text"  name="veranstaltung_kurztext" /></td></tr>
+	<tr><td>Bezeichnung: </td> <td><input type="text"  name="veranstaltung_bezeichnung" size="36" maxlength="100" required/></td></tr>
+	<tr><td>Kurztext: </td> <td><input type="text"  name="veranstaltung_kurztext" required/></td></tr>
 	<tr><td>SWS: </td> <td>
 	
             <select name="veranstaltung_sws" style="; width: 3em">
@@ -112,7 +112,7 @@
 	
 		
 	<tr><td>maximale Anzahl Teilnehmer: </td><td>
-		<input type="text" name="veranstaltung_max_Teilnehmer" size="1" maxlength="3"/>
+		<input type="number" min="0" max="500" name="veranstaltung_max_Teilnehmer" size="1" maxlength="3" required/>
 	</td></tr>
 		
 	
@@ -270,7 +270,7 @@
 	
 	
 	
-	<tr><td><input type="submit" value="anlegen" /></td><td>&nbsp;</td></tr>		
+	<tr><td><input class="button" type="submit" value="anlegen" /></td><td>&nbsp;</td></tr>		
     </table>
 </form>
 </article>

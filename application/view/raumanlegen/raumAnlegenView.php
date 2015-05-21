@@ -22,11 +22,7 @@
 		name="typ" id="labor" value="labor">Labor<br> <input type="radio"
 		name="typ" id="bibliothek" value="bibliothek">Bibliothek<br>
 	<p>
-		<input type="submit" id="b1" value="weiter"></a>
+		<input class="button" type="submit" id="b1" value="weiter"></a>
 	</p>
 	</form>
-	<?php 
-		//Error Handling
-		$this->renderResponse(); 
-	?>
 </article>

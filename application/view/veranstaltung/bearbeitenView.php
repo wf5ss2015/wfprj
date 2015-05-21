@@ -75,9 +75,9 @@
 	
     <table id="veranstaltung-bearbeiten">
 	<tr><td>Bezeichnung: </td> <td><input type="text"  name="veranstaltung_bezeichnung" 
-		value=<?php echo "\"$veranst->veranst_bezeichnung\""?> size="36" maxlength="100" /></td></tr>
+		value=<?php echo "\"$veranst->veranst_bezeichnung\""?> size="36" maxlength="100" required/></td></tr>
 	<tr><td>Kurztext: </td> <td><input type="text"  name="veranstaltung_kurztext" 
-		value=<?php echo "\"$veranst->veranst_kurztext\""?> /></td></tr>
+		value=<?php echo "\"$veranst->veranst_kurztext\""?> required /></td></tr>
 	<tr><td>SWS: </td> <td>
 	
             <select name="veranstaltung_sws" style="; width: 3em">
@@ -125,15 +125,15 @@
 	
 		
 	<tr><td>maximale Anzahl Teilnehmer: </td><td>
-		<input type="text" name="veranstaltung_max_Teilnehmer" 
-		value=<?php echo "\"$veranst->maxTeilnehmer\""?> size="1" maxlength="3"/>
+		<input type="number" min="0" max="500" name="veranstaltung_max_Teilnehmer" 
+		value=<?php echo "\"$veranst->maxTeilnehmer\""?> size="1" maxlength="3" required/>
 	</td></tr>
 		
 
 
 	
 	
-	<tr><td><input type="submit" value="weiter" /></td><td>&nbsp;</td></tr>		
+	<tr><td><input class="button" type="submit" value="weiter" /></td><td>&nbsp;</td></tr>		
     </table>
 </form>
 	

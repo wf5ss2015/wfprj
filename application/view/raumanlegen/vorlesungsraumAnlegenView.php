@@ -27,9 +27,9 @@
 
 		<p>
 			<?php
-			echo '<input type="button" value="Zurück" onClick="history.back();">';
+			echo '<input class="button" type="button" value="Zurück" onClick="history.back();">';
 			?>
-			<input type="submit" name="anlegen" value="Vorlesungsraum anlegen">
+			<input class="button" type="submit" name="anlegen" value="Vorlesungsraum anlegen">
 		</p>
 	</form>
 </article>

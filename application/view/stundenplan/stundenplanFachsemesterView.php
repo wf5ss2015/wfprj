@@ -17,7 +17,7 @@
 
 	//Tabelle, welche den Stundenplan darstellt:
 	
-	echo 	"<h2>Stundenplan von Fachsemester $this->fachsemester, $this->studiengang:</h2>
+	echo 	"<h1>Stundenplan von Fachsemester $this->fachsemester, $this->studiengang:</h1>
 			
 			<table border='1' width='80%' style='text-align: center'>
 			<colgroup width='240' span='8'>
@@ -93,7 +93,7 @@
 	
 	<div style='text-align: center'>
 	<form>
-		<input type="button" value=<?php echo utf8_encode("zurück")?> onclick="window.location.href='index.php?url=stundenplan/erzeugeFormular'" />
+		<input class="button" type="button" value=<?php echo utf8_encode("zurück")?> onclick="window.location.href='index.php?url=stundenplan/erzeugeFormular'" />
 	</form>
 	</div>
 	

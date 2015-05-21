@@ -140,8 +140,10 @@ class View {
 		
 		// lädt den header
 		require Config::get ( 'PATH_VIEW' ) . '_templates/headerView.php';
-		// lädt das richtie menue
-		self::getRightMenue ();
+		// lädt das menue
+		new menueView();
+		// lädt Response message
+		$this->renderResponse();
 		// lädt die verschiedenen views
 		foreach ( $filenames as $filename ) {
 			require Config::get ( 'PATH_VIEW' ) . $filename . 'View.php';

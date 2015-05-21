@@ -43,9 +43,9 @@
 	<input type="hidden" name="raumtyp" value="bibliothek" />
 	<p>
 			<?php
-			echo '<input type="button" value="Zurück" onClick="history.back();">';
+			echo '<input class="button" type="button" value="Zurück" onClick="history.back();">';
 			?>
-			<input type="submit" name="bibAnlegen" value="Bibliothek anlegen"></a>
+			<input class="button" type="submit" name="bibAnlegen" value="Bibliothek anlegen"></a>
 	</p>
 	</form>
 </article>

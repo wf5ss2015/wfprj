@@ -51,9 +51,9 @@
 	</p>
 	<p>
 			<?php
-			echo '<input type="button" value="Zurück" onClick="history.back();">';
+			echo '<input class="button" type="button" value="Zurück" onClick="history.back();">';
 			?>
-			<input type="submit" name="erweitern" value="Veranstaltung erweitern">
+			<input class="button" type="submit" name="erweitern" value="Veranstaltung erweitern">
 	</p>
 	</form>
 </article>

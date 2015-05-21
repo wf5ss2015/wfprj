@@ -43,15 +43,19 @@ class menueView{
 			array(
 			"Home" => "index/index"),
 			array(
+			"Mein Profil" => "#",
+			"Bearbeiten" => "Dozent/meinProfil"
+			),
+			array(
 			"Raumplan" => "raumplan/erzeugeFormular"),
 			array(
 			"Stundenplan" => "#",
 			"nach Fachsemester" => "stundenplan/erzeugeFormular",
 			"individuell" => "stundenplan/stundenplan_individuell"),
 			array(
-			"Kursanmeldung" => "student/enrollClass"),
-			array(
-			"Kursabmeldung" => "student/delistClass"),
+			"Kurse" => "#",
+			"Anmeldung" => "student/enrollClass",
+			"Abmeldung" => "student/delistClass"),
 			array(
 			"Logout" => "login/logout")
 		),
@@ -103,6 +107,10 @@ class menueView{
 		array (
 			array(
 			"Home" => "index/index"),
+			array(
+			"Mein Profil" => "#",
+			"Bearbeiten" => "Dozent/meinProfil"
+			),
 			array(
 			"Logout" => "login/logout")
 		));

@@ -60,7 +60,7 @@
 		</select>
 	</p>
 	
-	<input type="submit" name="send" value="Raum zuweisen"/>
+	<input class="button" type="submit" name="send" value="Raum zuweisen"/>
 	
 </form>
 </article>

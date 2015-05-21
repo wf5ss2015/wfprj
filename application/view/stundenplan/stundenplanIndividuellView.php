@@ -17,7 +17,7 @@
 	
 	//Tabelle, welche den Stundenplan darstellt:
 	
-	echo 	"<h2>Stundenplan f&uumlr User $this->nutzerName:</h2>
+	echo 	"<h1>Stundenplan f&uumlr User $this->nutzerName:</h1>
 			
 			<table border='1' width='80%' style='text-align: center'>
 			<colgroup width='240' span='8'>

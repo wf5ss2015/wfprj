@@ -54,7 +54,7 @@
 		</select>
 	</p>
 
-	<input type="submit" name="send" value="zeige Stundenplan"/>
+	<input class="button" type="submit" name="send" value="zeige Stundenplan"/>
 	
 </form>
 

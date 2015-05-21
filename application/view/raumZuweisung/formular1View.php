@@ -79,7 +79,7 @@
 		</select>
 	</p>
 	
-	<input type="submit" name="send" value="zeige Räume" />
+	<input class="button" type="submit" name="send" value="zeige Räume" />
 	
 </form>
 </article>

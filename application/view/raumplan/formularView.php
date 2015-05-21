@@ -63,7 +63,7 @@
 		</select>
 	</p>
 
-	<input type="submit" name="send" value="zeige Raumplan"/>
+	<input class="button" type="submit" name="send" value="zeige Raumplan"/>
 	
 </form>
 

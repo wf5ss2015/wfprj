@@ -52,9 +52,9 @@
 	<input type="hidden" name="raumtyp" value="labor" />
 	<p>
 			<?php
-			echo '<input type="button" value="Zurück" onClick="history.back();">';
+			echo '<input class="button" type="button" value="Zurück" onClick="history.back();">';
 			?>
-			<input type="submit" name="anlegen" value="Labor anlegen">
+			<input class="button" type="submit" name="anlegen" value="Labor anlegen">
 	</p>
 	</form>
 </article>

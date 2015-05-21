@@ -20,7 +20,7 @@
 	
 	//Tabelle, welche den Raumplan darstellt:
 	
-	echo 	"<h2>Raumbelegung $this->raum:</h2>
+	echo 	"<h1>Raumbelegung $this->raum:</h1>
 			
 			<table border='1' width='80%' style='text-align: center'>
 			<colgroup width='240' span='8'>
@@ -95,7 +95,7 @@
 	
 	<div style='text-align: center'>
 	<form>
-		<input type="button" value=<?php echo utf8_encode("zurück")?> onclick="window.location.href='index.php?url=raumplan/erzeugeFormular'" />
+		<input class="button" type="button" value=<?php echo utf8_encode("zurück")?> onclick="window.location.href='index.php?url=raumplan/erzeugeFormular'" />
 	</form>
 	</div>
 	

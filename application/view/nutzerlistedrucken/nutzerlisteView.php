@@ -71,9 +71,9 @@ if ($this->user_list) {
    
 <p>
 <?php
-echo '<input type="button" value="Zurück" onClick="history.back();">';
+echo '<input class="button" type="button" value="Zurück" onClick="history.back();">';
 ?>
-<input type="submit" id="b1" value="Nutzerliste drucken" ></a>
+<input class="button" type="submit" id="b1" value="Nutzerliste drucken" ></a>
 	</p>
 	</form>
-<article>
+</article>
