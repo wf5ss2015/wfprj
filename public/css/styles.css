@@ -70,6 +70,7 @@ section{
 	
 
 .button {
+
 	cursor: pointer;
 	background: #efefef; 
 	background: linear-gradient(top, #efefef 0%, #A9DFFF 100%);  
@@ -113,6 +114,7 @@ h2,  h3{
 
 /*navigation*/
 nav ul ul{
+text-transform: capitalize;
 	list-style-type: none;
 	display: none;
 }
@@ -122,6 +124,7 @@ ul li:hover > ul{
 }
 
 nav ul {
+text-transform: capitalize;
 	width:100%;
 	background: #efefef; 
 	background: linear-gradient(top, #efefef 0%, #A9DFFF 100%);  
