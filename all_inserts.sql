@@ -52,6 +52,7 @@ INSERT INTO Adresse (straßenname, hausnummer, stadt, land, plz, nutzer_name, ge
 /*
 ---- update = Teststudenten anlegen 06.05. Damian
 */
+('Turmstraße', 5, 'Berlin', 'Deutschland', 15028, 'student', NULL),
 ('Turmstraße', 5, 'Berlin', 'Deutschland', 15028, 'Carson', NULL),
 ('Unter den Linden', 113, 'Berlin', 'Deutschland', 13065, 'Logan', NULL),
 ('Schlossalle', 7, 'Ulm', 'Deutschland', 89073, 'Dolan', NULL),
@@ -73,6 +74,7 @@ INSERT INTO Adresse (straßenname, hausnummer, stadt, land, plz, nutzer_name, ge
 */
 
 INSERT INTO EMail (email_name, nutzer_name) VALUES
+('student@hs.de', 'student'),
 ('userTestDozent@hs-ulm.de', 'userTestDozent'),
 ('userTestMitarbeiter@hs-ulm.de', 'userTestMitarbeiter'),
 ('userTestStudent@hs-ulm.de', 'userTestStudent'),

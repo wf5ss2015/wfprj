@@ -19,7 +19,7 @@ if ($this->userList) {
 	$table = new Table ();
 	$alias = array (
 			"0" => "Nutzer",
-			"1" => "Passwort Hash",
+			"1" => "Rolle",
 	);
 	$alias = ( object ) $alias;
 	

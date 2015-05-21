@@ -34,7 +34,7 @@ class IndexController extends Controller {
 	public function index() {
 		$model = new UserModel();
 		$this->View->render ( 'index/index', array (
-				'userList' => $model->getUserDataAll2 ()  ));
+				'userList' => $model->getUserDataAll ()  ));
 	}
 	
 	// für entwicklung

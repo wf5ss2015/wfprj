@@ -246,16 +246,6 @@ class UserModel {
 		return $query->fetchAll();
 	}
 	
-	// für entwicklung
-	public function getUserDataAll2() {
-		$database = DatabaseFactory::getFactory ()->getConnection ();
-		
-		$sql = "SELECT nutzer_name, passwortHash FROM Nutzer 
-		ORDER BY nutzer_name";
-		$query = $database->prepare ( $sql );
-		$query->execute();
-		return $query->fetchAll();
-	}
 	
 	/**
 	 *
