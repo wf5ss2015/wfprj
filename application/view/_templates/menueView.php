@@ -43,7 +43,11 @@ class menueView{
 			array(
 			"Home" => "index/index"),
 			array(
-			"Raumplan" => "raumplan/erzeugeFormular1"),
+			"Raumplan" => "raumplan/erzeugeFormular"),
+			array(
+			"Stundenplan" => "#",
+			"nach Fachsemester" => "stundenplan/erzeugeFormular",
+			"individuell" => "stundenplan/stundenplan_individuell"),
 			array(
 			"Kursanmeldung" => "student/enrollClass"),
 			array(
@@ -60,7 +64,11 @@ class menueView{
 			"Bearbeiten" => "Dozent/meinProfil",
 			"Email" => "Dozent/emailDozent"),
 			array(
-			"Raumplan" => "raumplan/erzeugeFormular1"),
+			"Raumplan" => "raumplan/erzeugeFormular"),
+			array(
+			"Stundenplan" => "#",
+			"nach Fachsemester" => "stundenplan/erzeugeFormular",
+			"individuell" => "stundenplan/stundenplan_individuell"),
 			array(
 			"Teilnehmerliste" => "Dozent/auswahlVorlesung"),
 			array(
@@ -82,8 +90,8 @@ class menueView{
 			array(
 			"Räume" => "#",
 			"anlegen" => "raumAnlegen/raumAnlegen",
-			"zuordnen" => "raumZuweisen/erzeugeFormular1",
-			"Raumplan" => "raumplan/erzeugeFormular1"),
+			"Veranstaltungen zuordnen" => "raumZuweisen/erzeugeFormular1",
+			"Raumplan" => "raumplan/erzeugeFormular"),
 			array(
 			"Nutzer" => "#",
 			"Nutzerliste drucken" => "nutzerlistedrucken/nutzerlistedrucken",

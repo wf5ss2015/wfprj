@@ -1,26 +1,23 @@
- <?php 
- 
- /*---------- SPRINT 3 ----------
+<?php
+/*	---------- SPRINT 4 ----------
+
+	- Autor: 				Alexander Mayer
+	- Datum: 				20.05.2015
 	
-	- Autor:				Alexander Mayer
-	- Datum: 				06.05.2015
-	
-	- User Story (Nr. 290):	Als Mitarbeiter/Dozent/Student möchte ich mir Raumpläne anzeigen lassen können.
-	- User Story Punkte:	13	
-	- User Story Aufwand:	4h
-	
-	- Task: View erstellen
+	- User Story (Nr. 410):	Als Dozent/Student möchte ich mir einen Stundenplan für Fachsemester anzeigen können.
+	- User Story Punkte:	13
+	- Task:					stundenplanFachsemesterView anlegen
+	- Zeitaufwand:			2h
 */
- 
-?> 
+?>	
 
 <article>
 
 <?php
+
+	//Tabelle, welche den Stundenplan darstellt:
 	
-	//Tabelle, welche den Raumplan darstellt:
-	
-	echo 	"<h2>Raumbelegung $this->raum:</h2>
+	echo 	"<h2>Stundenplan von Fachsemester $this->fachsemester, $this->studiengang:</h2>
 			
 			<table border='1' width='80%' style='text-align: center'>
 			<colgroup width='240' span='8'>
@@ -72,7 +69,8 @@
 				{
 					//Veranstaltungstermin in die Zelle eintragen:
 					$veranst_bezeichnung = $veranstTermin['veranst_bezeichnung'];
-					echo "<td> $veranst_bezeichnung </td>";
+					$raum_bezeichnung = $veranstTermin['raum_bezeichnung'];
+					echo "<td> $veranst_bezeichnung ($raum_bezeichnung) </td>";
 					
 					//nächster Veranstaltungstermin holen:
 					if($veranstTermin = $this->veranstaltungstermine->fetch_assoc());
@@ -95,7 +93,7 @@
 	
 	<div style='text-align: center'>
 	<form>
-		<input type="button" value=<?php echo utf8_encode("zurück")?> onclick="window.location.href='index.php?url=raumplan/erzeugeFormular'" />
+		<input type="button" value=<?php echo utf8_encode("zurück")?> onclick="window.location.href='index.php?url=stundenplan/erzeugeFormular'" />
 	</form>
 	</div>
 	

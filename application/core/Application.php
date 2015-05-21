@@ -61,6 +61,8 @@ require '../application/model/VeranstaltungModel.php';
 // Alexander Mayer
 require '../application/model/raumZuweisenModel.php';
 require '../application/model/raumplanModel.php';
+require '../application/model/stundenplanModel.php';
+
 class Application {
 	/**
 	 * @var mixed Instanzen des Controllers
