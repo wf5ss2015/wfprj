@@ -239,7 +239,7 @@ class UserModel {
 		
 		$sql = "SELECT nutzer_name, rolle_bezeichnung FROM Nutzer 
 		JOIN Rolle
-		ON nutzer.rolle_ID = rolle.rolle_ID 
+		ON Nutzer.rolle_ID = Rolle.rolle_ID 
 		ORDER BY nutzer_name";
 		$query = $database->prepare ( $sql );
 		$query->execute();
