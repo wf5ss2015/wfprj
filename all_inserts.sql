@@ -455,12 +455,25 @@ INSERT INTO Studiengang (stg_bezeichnung, stgTyp_ID, fak_ID) VALUES
 ('Information Systems', 2, 3);
 
 INSERT INTO Studiengang_hat_Veranstaltung (`stg_ID`, `veranst_ID`, `pflicht_im_Semester`) VALUES
-(2, 1, 1),
-(2, 2, 1),
-(2, 3, 1),
-(2, 4, 1),
-(2, 5, 1),
-(4, 9, 1);
+-- Technische Informatik:
+
+-- Wirtschaftsinformatik: 
+(2, 1, 1), -- Programmieren 1
+(2, 2, 2), -- Programmieren 2
+(2, 3, 4), -- Rechnernetze
+(2, 4, 5), -- Seminar Wirtschaftsinformatik
+(2, 5, 4), -- Database Programming
+
+-- Medizintechnik:
+(3, 7, 1), -- Chemie 1
+(3, 8, 3), -- Strahlentechnik
+
+-- Maschinenbau:
+(4, 6, 1), -- Physik 1
+(4, 9, 1); -- Maschinenbau Grundlagen
+
+-- Information Systems:
+
 
 INSERT INTO Ausstattung(ausstattung_bezeichnung) VALUES
 ('Stuhl'),
@@ -695,4 +708,40 @@ INSERT INTO Laborraum_hat_Ausstattung (raum_bezeichnung, ausstattung_ID, anzahl)
 ('F007', 9, 0),
 ('F007', 10, 0);
 
+INSERT INTO `veranstaltungstermin` (`veranst_ID`, `tag_ID`, `stdZeit_ID`, `raum_bezeichnung`) VALUES
+(1, 1, 1, 'A100'), -- Programmieren 1
+(1, 1, 2, 'A100'), -- Programmieren 1
+(1, 5, 4, 'A100'), -- Programmieren 1
+(1, 5, 5, 'A100'), -- Programmieren 1
 
+(4, 4, 1, 'A104'), -- Seminar Wirtschaftsinformatik
+(4, 4, 2, 'A104'), -- Seminar Wirtschaftsinformatik
+(4, 4, 3, 'A104'), -- Seminar Wirtschaftsinformatik
+
+(6, 1, 1, 'B055'), -- Physik 1
+(6, 1, 2, 'B055'), -- Physik 1
+(6, 5, 1, 'B055'), -- Physik 1
+
+(3, 2, 1, 'B107'), -- Rechnernetze
+(3, 2, 2, 'B107'), -- Rechnernetze
+(3, 2, 3, 'B107'), -- Rechnernetze
+
+(9, 3, 3, 'F007'), -- Maschinenbau Grundlagen
+(9, 3, 4, 'F007'), -- Maschinenbau Grundlagen
+(9, 3, 5, 'F007'), -- Maschinenbau Grundlagen
+
+(5, 3, 2, 'Q027'), -- Database Programming
+(5, 3, 3, 'Q027'), -- Database Programming
+(5, 3, 4, 'Q027'), -- Database Programming
+
+(7, 4, 1, 'Q209'), -- Chemie 1
+(7, 4, 2, 'Q209'), -- Chemie 1
+(7, 4, 3, 'Q209'), -- Chemie 1
+
+(2, 1, 4, 'V001'), -- Programmieren 2
+(2, 1, 5, 'V001'), -- Programmieren 2
+(2, 3, 1, 'V001'), -- Programmieren 2
+(2, 3, 2, 'V001'), -- Programmieren 2
+
+(8, 2, 4, 'Z107'), -- Strahlentechnik
+(8, 2, 5, 'Z107'); -- Strahlentechnik

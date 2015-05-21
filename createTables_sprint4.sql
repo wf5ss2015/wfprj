@@ -1,4 +1,4 @@
-/**
+/* 
  * SPRINT 04
  *
  * @author: Roland Schmid
@@ -13,13 +13,14 @@
  */
 
 /* 	
-	---------- Autor: Alexander Mayer ----------
-	
-	- Projekt: 				Lehrveranstaltungssoftware (WF5-WFPRJ)
-	- Gruppe: 				01
-	
+	---------- SPRINT 2 ----------
+
+	- Autor: 				Alexander Mayer
 	- Datum: 				29.04.2015
-	- Sprint: 				3
+	
+	- User Story (Nr. 230):	Als Entwickler möchte ich ein einheitliches ER-Modell haben. 
+	- User Story Punkte:	8
+	- Zeitaufwand:			5h
 */
 
 
