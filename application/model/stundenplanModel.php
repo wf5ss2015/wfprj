@@ -45,7 +45,7 @@ class stundenplanModel
 		return $stg_bezeichnung['stg_bezeichnung'];
 	}
 	
-	//gibt ein array zurück mit allen Veranstaltungsterminen eines Fachsemesters:
+	//gibt ein array zurück mit allen Veranstaltungsterminen eines Fachsemesters (nur Pflichtfächer!):
 	public function getVeranstaltungstermine_fachsemester($studiengang, $fachsemester)
 	{
 		/*	ORDER BY: die Datensätze werden sortiert nach Stundenzeit und Wochentag, sodass später beim
@@ -55,7 +55,8 @@ class stundenplanModel
 		$query = "SELECT vt.tag_ID, vt.stdZeit_ID, vt.raum_bezeichnung, v.veranst_bezeichnung 
 							FROM Veranstaltungstermin vt JOIN Veranstaltung v ON (vt.veranst_ID = v.veranst_ID)
 								JOIN Studiengang_hat_Veranstaltung shv ON (v.veranst_ID = shv.veranst_ID)
-							WHERE shv.pflicht_im_semester = '$fachsemester' AND shv.stg_ID = '$studiengang'
+							WHERE shv.pflicht_im_Semester = '$fachsemester' AND shv.pflicht_im_Semester > 0
+								AND shv.stg_ID = '$studiengang'
 							ORDER BY vt.stdZeit_ID, vt.tag_ID;";
 	       
         // erzeugt ein Resultset, benutzt dazu die Methode abfrage($query)

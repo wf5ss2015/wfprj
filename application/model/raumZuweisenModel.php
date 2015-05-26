@@ -2,10 +2,21 @@
  
  /*	---------- SPRINT 4 ----------
 
+	- Autor: 				Alexander Mayer
+	- Datum: 				20.05.2015
+	
 	- User Story (Nr. 370):	Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern.
 	- User Story Punkte:	8
 	- Task:					Bei Raum-Zuweisung Error-Handling betreiben und Response ausgeben.
 	- Zeitaufwand:			2h
+	
+	//////////
+	
+	- User Story (Nr. 450):	Als Mitarbeiter möchte ich eine Veranstaltung einem Raum zuweisen unter 
+							Berücksichtigung von Überschneidungen.
+	- User Story Punkte:	8
+	- Task:					Funktion veranstaltungZeitgleich() im Model stundenplanModel erstellen
+	- Zeitaufwand:			2:30h
 	
 	---------- SPRINT 3 ----------
 	
@@ -64,26 +75,26 @@ class raumZuweisenModel
 	//überprüft, ob eine Veranstaltung aus dem Fachsemester bereits zur ausgewählten Zeit stattfindet
 	public function veranstaltungZeitgleich($veranst_ID, $wochentag_ID, $stdZeit_ID)
 	{
-		//Studiengänge, welche die ausgewählte Veranstaltung anbieten:
-		$studiengaenge = $this->abfrage("SELECT stg_ID, pflicht_im_semester FROM Studiengang_hat_Veranstaltung
-											WHERE veranst_ID = '$veranst_ID'");
+		//Studiengänge, welche die ausgewählte Veranstaltung als Pflichtfach anbieten:
+		$studiengaenge = $this->abfrage("SELECT stg_ID, pflicht_im_Semester FROM Studiengang_hat_Veranstaltung
+											WHERE veranst_ID = '$veranst_ID' AND pflicht_im_Semester > 0");
 											
 		$zeitgleich = 0;
 											
 		foreach ($studiengaenge as $studiengang) 
 		{
 			$stg_ID = $studiengang['stg_ID'];
-			$pflicht_im_semester = $studiengang['pflicht_im_semester'];
+			$pflicht_im_Semester = $studiengang['pflicht_im_Semester'];
 			
-			//Wahlfächer ($pflicht_im_semester = 0) bleiben bei Überschneidungs-Problematik unberücksichtigt!
+			//Wahlfächer ($pflicht_im_Semester = 0) bleiben bei Überschneidungs-Problematik unberücksichtigt!
 			
 			//Veranstaltungen im Fachsemester, welche zeitgleich zur ausgewählten Veranstaltung stattfinden
 			$veranstaltungenZeitgleich = $this->abfrage(
 									"SELECT * FROM Veranstaltungstermin vt 
 										JOIN Studiengang_hat_Veranstaltung shv ON (vt.veranst_ID = shv.veranst_ID)
 											WHERE vt.stdZeit_ID = '$stdZeit_ID' AND vt.tag_ID = '$wochentag_ID'
-											AND shv.stg_ID = '$stg_ID' AND shv.pflicht_im_semester = '$pflicht_im_semester'
-											AND shv.pflicht_im_semester > 0;");
+											AND shv.stg_ID = '$stg_ID' AND shv.pflicht_im_Semester = '$pflicht_im_Semester'
+											AND shv.pflicht_im_Semester > 0;");
 			
 			if($veranstaltungenZeitgleich->num_rows > 0)
 			{

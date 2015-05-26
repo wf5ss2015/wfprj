@@ -29,7 +29,7 @@
 	{
 		$tag_bezeichnung = $tag['tag_bezeichnung'];
 		
-		echo "<th style='background:#FF00FF'>$tag_bezeichnung</th>";
+		echo "<th style='background:#4C66FF'>$tag_bezeichnung</th>";
 	}
 	
 	echo "</tr>";
@@ -51,7 +51,7 @@
 				//Stundenzeit wird in der ersten Spalte der Zeile eingetragen:
 				$zeit_von = $stundenzeit['stdZeit_von'];
 				$zeit_bis = $stundenzeit['stdZeit_bis'];
-				echo "<td style='background:yellow'> $zeit_von - $zeit_bis </td>";
+				echo "<td style='background:yellow'><p> $zeit_von - $zeit_bis </p></td>";
 			}
 			else
 			{
@@ -60,6 +60,7 @@
 					stattfindet:
 					
 					-> JA: 		trage den Veranstaltungstermin in die Zelle ein und hole nächsten Veranstaltungstermin
+								(while-Schleife, da Überschneidungen möglich sind!)
 					-> NEIN: 	leerer Eintrag (solange, bis an richtiger Stunde bzw. Zeile und an richtigem Tag bzw. Spalte 
 								angekommen)
 				
@@ -67,13 +68,20 @@
 				
 				if($veranstTermin['stdZeit_ID'] == $stunde && $veranstTermin['tag_ID'] == $tag)
 				{
-					//Veranstaltungstermin in die Zelle eintragen:
-					$veranst_bezeichnung = $veranstTermin['veranst_bezeichnung'];
-					$raum_bezeichnung = $veranstTermin['raum_bezeichnung'];
-					echo "<td> $veranst_bezeichnung ($raum_bezeichnung) </td>";
+					echo "<td>";
 					
-					//nächster Veranstaltungstermin holen:
-					if($veranstTermin = $this->veranstaltungstermine->fetch_assoc());
+					while($veranstTermin['stdZeit_ID'] == $stunde && $veranstTermin['tag_ID'] == $tag)
+					{
+						//Veranstaltungstermin in die Zelle eintragen:
+						$veranst_bezeichnung = $veranstTermin['veranst_bezeichnung'];
+						$raum_bezeichnung = $veranstTermin['raum_bezeichnung'];
+						echo "<p>$veranst_bezeichnung ($raum_bezeichnung)<p/>";
+					
+						//nächster Veranstaltungstermin holen:
+						if($veranstTermin = $this->veranstaltungstermine->fetch_assoc());
+					}
+					
+					echo "</td>";
 				}
 				else
 				{
