@@ -101,6 +101,9 @@ class menueView{
 			"Nutzerliste drucken" => "nutzerlistedrucken/nutzerlistedrucken",
 			"Rechte" => "Employee/selectUser"),
 			array(
+			"Studenten" => "#",
+			"Notenliste bearbeiten" => "Employee/startNotenListe"),
+			array(
 			"Logout" => "login/logout")
 		),
 		// Tutor
