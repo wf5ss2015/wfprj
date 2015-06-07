@@ -45,7 +45,6 @@ require '../application/core/DatabaseFactoryMysql.php';
 // require '../application/lib/html2pdf/html2pdf.class.php';
 require '../application/model/raumAnlegenModel.php';
 require '../application/model/veranstaltungErweiternModel.php';
-require '../application/model/DozentModel.php';
 require '../application/core/Table.php';
 require '../application/view/_templates/menueView.php';
 
@@ -53,6 +52,9 @@ require '../application/view/_templates/menueView.php';
 require '../application/lib/PHPMailer/class.phpmailer.php';
 require '../application/lib/PHPMailer/class.smtp.php';
 //require '../application/config/email.php';
+require '../application/model/DozentModel.php';
+require '../application/model/NotenModel.php';
+require '../application/core/Table2.php';
 
 
 // Roland Schmid
