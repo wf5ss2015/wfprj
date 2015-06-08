@@ -1,4 +1,13 @@
-/* 
+/* ===============================================
+ * Sprint: 5
+ * @author: Damian Wysocki
+ * Datum: 01.06.2015
+ * User Story (Nr.: 430a)  Als Mitarbeiter möchte ich Noten von Veranstaltungen für die Teilnehmer eintragen können. (erneut)
+ * Zeit insgesamt: 15
+ * ===============================================*/
+ 
+/*
+ 
  * SPRINT 04
  *
  * @author: Roland Schmid
@@ -469,3 +478,33 @@ CREATE  TABLE `Laborraum_hat_Ausstattung`
     FOREIGN KEY (`raum_bezeichnung` ) REFERENCES `Laborraum` (`raum_bezeichnung` )
 );
 
+/*-----------------------------------------------------------------------------------------
+	* START SPRINT 05
+	* @author: Damian Wysocki
+	* User Story (Nr.: 430a)  Als Mitarbeiter möchte ich Noten von Veranstaltungen für die Teilnehmer eintragen können. (erneut)
+	* Task: 430a/01  Beschreibung: SQL Tabellen anlegen
+	* Zeitaufwand (in Stunden): 0,1
+	* START SPRINT 04
+	*/
+
+-- -----------------------------------------------------
+-- Table `Notenliste`
+-- -----------------------------------------------------
+
+CREATE  TABLE `Notenliste` 
+(
+	`note` FLOAT(10,2) DEFAULT NULL,
+	`nutzer_name` VARCHAR(45),
+	`veranst_ID` INT,
+    FOREIGN KEY (`veranst_ID` ) REFERENCES `Veranstaltung` (`veranst_ID` ),
+	FOREIGN KEY (`nutzer_name` ) REFERENCES `Nutzer` (`nutzer_name` )
+);
+
+/*
+	* ENDE SPRINT 05
+	* @author: Damian Wysocki
+	* User Story (Nr.: 430a)   Als Mitarbeiter möchte ich Noten von Veranstaltungen für die Teilnehmer eintragen können. (erneut)
+	* Task: 430a/01  Beschreibung: SQL Tabellen anlegen
+	* Zeitaufwand (in Stunden): 0,1
+	* ENDE SPRINT 05
+	**-----------------------------------------------------------------------------------------*/

@@ -1,3 +1,11 @@
+/* ===============================================
+ * Sprint: 5
+ * @author: Damian Wysocki
+ * Datum: 01.06.2015
+ * User Story (Nr.: 430a)  Als Mitarbeiter möchte ich Noten von Veranstaltungen für die Teilnehmer eintragen können. (erneut)
+ * Zeit insgesamt: 15
+ * ===============================================*/
+ 
 INSERT INTO Rolle (rolle_bezeichnung) VALUES
 ('Student'),
 ('Dozent'),
@@ -144,22 +152,22 @@ INSERT INTO Wert (eigenschaft_ID, nutzer_name, inhalt) VALUES
 */
 -- id 2 = natrNr
 (2,'Carson', '10000001'),
-(2,'Logan', '10000001'),
-(2,'Dolan', '10000001'),
-(2,'Samuel', '10000001'),
-(2,'Jonas', '10000001'),
-(2,'Nicholas', '10000001'),
-(2,'Kasimir', '10000001'),
-(2,'Ahmed', '10000001'),
-(2,'Derek', '10000001'),
-(2,'Otto', '10000001'),
-(2,'Orlando', '10000001'),
-(2,'Lars', '10000001'),
-(2,'Philip', '10000001'),
-(2,'Thor', '10000001'),
-(2,'Kelly', '10000001'),
-(2,'Cody', '10000001'),
-(2,'student', '10000001'),
+(2,'Logan', '10000002'),
+(2,'Dolan', '10000003'),
+(2,'Samuel', '10000004'),
+(2,'Jonas', '10000005'),
+(2,'Nicholas', '10000006'),
+(2,'Kasimir', '10000007'),
+(2,'Ahmed', '10000008'),
+(2,'Derek', '10000009'),
+(2,'Otto', '10000010'),
+(2,'Orlando', '10000011'),
+(2,'Lars', '10000012'),
+(2,'Philip', '10000013'),
+(2,'Thor', '10000014'),
+(2,'Kelly', '10000015'),
+(2,'Cody', '10000016'),
+(2,'student', '10000017'),
 -- id 3 = vorname
 (3,'Carson', 'Carson'),
 (3,'Logan', 'Logan'),
@@ -747,3 +755,49 @@ INSERT INTO `veranstaltungstermin` (`veranst_ID`, `tag_ID`, `stdZeit_ID`, `raum_
 
 (8, 2, 4, 'Z107'), -- Strahlentechnik
 (8, 2, 5, 'Z107'); -- Strahlentechnik
+
+
+//*-----------------------------------------------------------------------------------------
+	* START SPRINT 05
+	* @author: Damian Wysocki
+	* User Story (Nr.: 430a)  Als Mitarbeiter möchte ich Noten von Veranstaltungen für die Teilnehmer eintragen können. (erneut)
+	* Task: 430a/01  Beschreibung: SQL Tabellen anlegen
+	* Zeitaufwand (in Stunden): 0,1
+	* START SPRINT 04
+	*/
+
+-- -----------------------------------------------------
+-- Table `Notenliste`
+-- -----------------------------------------------------
+
+INSERT INTO notenliste (note, nutzer_name, veranst_ID) VALUES
+(1.7 ,'Carson', 1),
+(1.7, 'Logan',  2),
+(1.7 ,'Dolan', 3),
+(1.7 ,'Samuel',  4),
+(1.7 ,'Jonas', 5),
+(1.7 , 'Nicholas',  6),
+(1.7 , 'Kasimir',  7),
+(1.7 , 'Ahmed',  8),
+(1.7 , 'Derek', 9),
+(1.7 , 'Otto',  1),
+(1.7 , 'Orlando',  2),
+(1.7 , 'Lars',  3),
+(1.7 , 'Philip',  4),
+(1.7 , 'Thor',  5),
+(1.7 , 'Kelly', 6),
+(1.7 , 'Ahmed',  1),
+(1.7 , 'Ahmed',  2),
+(1.7 , 'Ahmed',  3),
+(1.7 , 'Ahmed',  4),
+(1.7 , 'Ahmed',  5),
+(1.7 , 'Cody',  1);
+
+/*
+	* ENDE SPRINT 05
+	* @author: Damian Wysocki
+	* User Story (Nr.: 430a)   Als Mitarbeiter möchte ich Noten von Veranstaltungen für die Teilnehmer eintragen können. (erneut)
+	* Task: 430a/01  Beschreibung: SQL Tabellen anlegen
+	* Zeitaufwand (in Stunden): 0,1
+	* ENDE SPRINT 05
+	**-----------------------------------------------------------------------------------------*/
