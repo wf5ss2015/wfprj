@@ -718,7 +718,7 @@ INSERT INTO Laborraum_hat_Ausstattung (raum_bezeichnung, ausstattung_ID, anzahl)
 ('F007', 9, 0),
 ('F007', 10, 0);
 
-INSERT INTO `veranstaltungstermin` (`veranst_ID`, `tag_ID`, `stdZeit_ID`, `raum_bezeichnung`) VALUES
+INSERT INTO Veranstaltungstermin (`veranst_ID`, `tag_ID`, `stdZeit_ID`, `raum_bezeichnung`) VALUES
 (1, 1, 1, 'A100'), -- Programmieren 1
 (1, 1, 2, 'A100'), -- Programmieren 1
 (1, 5, 4, 'A100'), -- Programmieren 1
@@ -770,7 +770,7 @@ INSERT INTO `veranstaltungstermin` (`veranst_ID`, `tag_ID`, `stdZeit_ID`, `raum_
 -- Table `Notenliste`
 -- -----------------------------------------------------
 
-INSERT INTO notenliste (note, nutzer_name, veranst_ID) VALUES
+INSERT INTO Notenliste (note, nutzer_name, veranst_ID) VALUES
 (1.7 ,'Carson', 1),
 (1.7, 'Logan',  2),
 (1.7 ,'Dolan', 3),
