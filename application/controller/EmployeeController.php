@@ -1,4 +1,11 @@
 <?php
+/* ===============================================
+ * Sprint: 5
+ * @author: Damian Wysocki
+ * Datum: 21.05.2015
+ * User Story (Nr.: 430a)  Als Mitarbeiter möchte ich Noten von Veranstaltungen für die Teilnehmer eintragen können. (erneut)
+ * Zeit insgesamt: 15
+ * ===============================================*/
 /*
  * ===============================================
  * Sprint: 4
@@ -76,5 +83,78 @@ class EmployeeController extends Controller {
 		Redirect::to ( 'employee/selectUser' );
 	}
 	
+	/**-----------------------------------------------------------------------------------------
+	* START SPRINT 05
+	* @author: Damian Wysocki
+	* User Story (Nr.: 430a)  Als Mitarbeiter möchte ich Noten von Veranstaltungen für die Teilnehmer eintragen können. (erneut)
+	* Task: 430a/02  Beschreibung: Controller zur Steuerung der Views
+	* Zeitaufwand (in Stunden): 3
+	* START SPRINT 05
+	*/
 	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *         Startmenü Notenliste.
+	 */
+	public function startNotenListe() {
+		
+		$model = new NotenModel();
+		$model2 = new NotenModel();
+		$this->View->render ( 'employee/NotenListeStart', array (
+				'vorlesung' => $model->getVorlesungAll(), 'students' => $model2->getAllStudents()
+				
+		) );
+	}
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *         Alle Teilnehmer einer Veranstaltung
+	 */
+	public function showEvents() {
+		
+		$model = new NotenModel();
+		$this->View->render ( 'employee/NotenListeAuswahlGesamt', array (
+				'notenliste' => $model->getVorlesungAllParticipants(Request::post('id'))
+		) );
+	}
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *         Action-Handling wenn Note geändert wird
+	 */
+	public function aendernNote(){
+		$model = new NotenModel();
+		//print_r($_POST);
+		$model->saveNote (Request::post('Veranstaltungsnummer'), Request::post('Nutzer'), Request::post('Note'));
+		$this->startNotenListe();
+	}
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *        Action-Handling wenn ein bestimmter Student ausgewählt worden ist
+	 */
+	public function showStudents(){
+		$model = new NotenModel();
+		$this->View->render ( 'employee/NotenListeAuswahlEinzeln', array (
+				'notenlisteStudent' => $model->getSpecificStudents(Request::post('id2'))
+		) );
+	}
+		
+	
+	/*
+	* ENDE SPRINT 05
+	* @author: Damian Wysocki
+	* User Story (Nr.: 430a)   Als Mitarbeiter möchte ich Noten von Veranstaltungen für die Teilnehmer eintragen können. (erneut)
+	* Task: 430a/02  Beschreibung: Controller zur Steuerung der Views
+	* Zeitaufwand (in Stunden): 3
+	* ENDE SPRINT 05
+	**-----------------------------------------------------------------------------------------*/
 }
