@@ -20,6 +20,12 @@
  * ===============================================*/
  
  
+ INSERT INTO Rolle (rolle_bezeichnung) VALUES
+('Student'),
+('Dozent'),
+('Mitarbeiter');
+ 
+ 
 INSERT INTO Gebaeude (geb_bezeichnung) VALUES
 ('1'), -- 'Prittwitzstraße 10', '89075'
 ('2'), -- 'Albert-Einstein-Allee 55', '89081'
@@ -78,43 +84,43 @@ INSERT INTO Studiengang (stg_bezeichnung, stgTyp_ID, fak_ID) VALUES
 ('Maschinenbau', 1, 4),
 ('Information Systems', 2, 3);
 
-INSERT INTO Nutzer (nutzer_name, vorname, nachname, geschlecht, passwortHash) VALUES
+INSERT INTO Nutzer (nutzer_name, vorname, nachname, geschlecht, passwortHash, rolle_ID) VALUES
 -- ------------------------- Studenten -------------------------:
 	-- Medizintechnik3:
-('student', 'Max', 'Mustermann', 'm', '$2y$10$8pEgYNZX7GW8FYfp8Mzbz.g./61axiS/wx2np.bWw92N361fBFNp6'),
+('student', 'Max', 'Mustermann', 'm', '$2y$10$8pEgYNZX7GW8FYfp8Mzbz.g./61axiS/wx2np.bWw92N361fBFNp6', 1),
 	-- Maschinenbau1:
-('modoof', 'Moritz', 'Doof', 'm', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu'),
+('modoof', 'Moritz', 'Doof', 'm', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 1),
 	-- WF1:
-('cadoll', 'Carson', 'Doll', 'w', '$2y$10$dUrEcPXXPhy5orEJ94h8gOgphtEoMXQ0YC.Ypmo7/350UypGBDydC'),
-('loluke', 'Logan', 'Luke', 'm', '$2y$10$GKFQfhKsznb8tBmUhvWSnu/214UjM8ZOauWDPJylKSM2aZtfnU3S.'),
-('doritc', 'Dolan', 'Ritch', 'm', '$2y$10$/o//as2zOyJEfh/qqj7H2usxRvAgdcAuHlMR.1qth7VTOx9tkovUa'),
+('cadoll', 'Carson', 'Doll', 'w', '$2y$10$dUrEcPXXPhy5orEJ94h8gOgphtEoMXQ0YC.Ypmo7/350UypGBDydC', 1),
+('loluke', 'Logan', 'Luke', 'm', '$2y$10$GKFQfhKsznb8tBmUhvWSnu/214UjM8ZOauWDPJylKSM2aZtfnU3S.', 1),
+('doritc', 'Dolan', 'Ritch', 'm', '$2y$10$/o//as2zOyJEfh/qqj7H2usxRvAgdcAuHlMR.1qth7VTOx9tkovUa', 1),
 	-- WF2:
-('saetoo', 'Samuel', 'Etoo', 'm', '$2y$10$0InZ0F.FVITduZdnQqVaTOTuQB1BWZSVZJVz1.dEDRr.7ADZrbCPe'),
-('jobeck', 'Jonas', 'Beck', 'm', '$2y$10$gn3NDRELjTHIi6mdHmAR3ebbKwaKv9N.n7r8ocR5LdGVTaylHM7Jm'),
+('saetoo', 'Samuel', 'Etoo', 'm', '$2y$10$0InZ0F.FVITduZdnQqVaTOTuQB1BWZSVZJVz1.dEDRr.7ADZrbCPe', 1),
+('jobeck', 'Jonas', 'Beck', 'm', '$2y$10$gn3NDRELjTHIi6mdHmAR3ebbKwaKv9N.n7r8ocR5LdGVTaylHM7Jm', 1),
 	-- WF3:
-('nicarr', 'Nicholas', 'Carr', 'm', '$2y$10$FiJKmwNpggknuG2VARNt2Ooc/wgcMubzE7t8t38zzoyh5whM1SdDG'),
-('kaabdu', 'Kasimir', 'Abdu', 'm', '$2y$10$LRDBw8eHBlgGimwnzDlBw.g.49xHHi2zYekAWG3wW5qhENhMRSVNi'),
+('nicarr', 'Nicholas', 'Carr', 'm', '$2y$10$FiJKmwNpggknuG2VARNt2Ooc/wgcMubzE7t8t38zzoyh5whM1SdDG', 1),
+('kaabdu', 'Kasimir', 'Abdu', 'm', '$2y$10$LRDBw8eHBlgGimwnzDlBw.g.49xHHi2zYekAWG3wW5qhENhMRSVNi', 1),
 	-- WF4:
-('ahali', 'Ahmed', 'Ali', 'm', '$2y$10$9zzYgoAvyb4KmVZNw25OXuJGWMlwxW.7udnz6bzMKY.OM6qM8tjk2'),
-('deduck', 'Derek', 'Duck', 'm', '$2y$10$.FTBgX1J5pK5eHyngJenc.b4nlaesV443oAfqHcGmeLEQgcEh9nhC'),
-('otott', 'Otto', 'Ott', 'm', '$2y$10$y9DTJq4lQNt6/5CT9bNGNeyVn1wRqRDkdsI/txxYVkhUa/FQczxFm'),
+('ahali', 'Ahmed', 'Ali', 'm', '$2y$10$9zzYgoAvyb4KmVZNw25OXuJGWMlwxW.7udnz6bzMKY.OM6qM8tjk2', 1),
+('deduck', 'Derek', 'Duck', 'm', '$2y$10$.FTBgX1J5pK5eHyngJenc.b4nlaesV443oAfqHcGmeLEQgcEh9nhC', 1),
+('otott', 'Otto', 'Ott', 'm', '$2y$10$y9DTJq4lQNt6/5CT9bNGNeyVn1wRqRDkdsI/txxYVkhUa/FQczxFm', 1),
 	-- WF5:
-('orwest', 'Orlanda', 'West', 'w', '$2y$10$pUZB1hAW6BfFu6BNMHCmTu9wrztM5l3rcVQSSYtJJTF.IRd45NoRq'),
-('ladanz', 'Lars', 'Danzer', 'm', '$2y$10$zLltvCGGyMVfXVNak8oAMOXwQ1ufend6PxjW658QdjUk0i6ueEss.'),
+('orwest', 'Orlanda', 'West', 'w', '$2y$10$pUZB1hAW6BfFu6BNMHCmTu9wrztM5l3rcVQSSYtJJTF.IRd45NoRq', 1),
+('ladanz', 'Lars', 'Danzer', 'm', '$2y$10$zLltvCGGyMVfXVNak8oAMOXwQ1ufend6PxjW658QdjUk0i6ueEss.', 1),
 	-- WF6:
-('phklug', 'Philip', 'Kluge', 'm', '$2y$10$jQ7J9xtxF5XZCicAjEELseMGA44Ev7XtV9aCc4VIHR9R/rHLyV7mq'),
-('thtonn', 'Theodor', 'Tonne', 'm', '$2y$10$Zg7q98xbVHRW6BS24KAx/euCTp6k.0a6LHfkfe0sACPOjdqkRQxUi'),
+('phklug', 'Philip', 'Kluge', 'm', '$2y$10$jQ7J9xtxF5XZCicAjEELseMGA44Ev7XtV9aCc4VIHR9R/rHLyV7mq', 1),
+('thtonn', 'Theodor', 'Tonne', 'm', '$2y$10$Zg7q98xbVHRW6BS24KAx/euCTp6k.0a6LHfkfe0sACPOjdqkRQxUi', 1),
 	-- WF7:
-('kebroo', 'Kelly', 'Brook', 'w', '$2y$10$ZkGNdjHHzhyU85.xIQa.CufPGsxrdDCWDSNXpmadyvsNAdJFEaTI.'),
-('mefox', 'Megan', 'Fox', 'w', '$2y$10$b4evX1//cP3HJKzvMrNrP.XNfHnss6cpc5ewc9voGZ.KARLdzHgo2'),
+('kebroo', 'Kelly', 'Brook', 'w', '$2y$10$ZkGNdjHHzhyU85.xIQa.CufPGsxrdDCWDSNXpmadyvsNAdJFEaTI.', 1),
+('mefox', 'Megan', 'Fox', 'w', '$2y$10$b4evX1//cP3HJKzvMrNrP.XNfHnss6cpc5ewc9voGZ.KARLdzHgo2', 1),
 
 -- ------------------------- Dozenten -------------------------:
-('dozent', 'Klaus', 'Kopf', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW'),
-('clstei', 'Claudia', 'Stein', 'w', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu'),
+('dozent', 'Klaus', 'Kopf', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('clstei', 'Claudia', 'Stein', 'w', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 2),
 
 -- ------------------------- Mitarbeiter -------------------------:
-('mitarbeiter', 'Roberto', 'Firmino', 'm', '$2y$10$PfLvMjTQ/6xNaodgDPcdP.edJJ17bK3vvexaF6sknagAvW.YBeu1.'),
-('masail', 'Marina', 'Sailer', 'w', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu');
+('mitarbeiter', 'Roberto', 'Firmino', 'm', '$2y$10$PfLvMjTQ/6xNaodgDPcdP.edJJ17bK3vvexaF6sknagAvW.YBeu1.', 3),
+('masail', 'Marina', 'Sailer', 'w', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 3);
 
 
 INSERT INTO Student (nutzer_name, stg_ID, matrikelnummer, fachsemester, studiensemester) VALUES

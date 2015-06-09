@@ -65,6 +65,18 @@
 	- Zeitaufwand:			5h
 */
 
+-- -----------------------------------------------------
+-- Table `Rolle`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Rolle`;
+
+CREATE  TABLE `Rolle` 
+(
+	`rolle_ID` INT NOT NULL AUTO_INCREMENT,
+	`rolle_bezeichnung` VARCHAR(45) NOT NULL,
+	PRIMARY KEY (`rolle_ID`)
+);
+
 
 -- -----------------------------------------------------
 -- Table `Gebaeude`
@@ -242,13 +254,15 @@ DROP TABLE IF EXISTS `Nutzer` ;
 CREATE  TABLE `Nutzer` 
 (
 	`nutzer_name` VARCHAR(45) NOT NULL ,
+	`rolle_ID` INT NOT NULL,
 	`passwortHash` VARCHAR(255),
 	`telefonnummer` VARCHAR(255),
 	`letzterLogin` DATETIME,
 	`vorname` VARCHAR(45) NOT NULL ,
 	`nachname` VARCHAR(45) NOT NULL ,
 	`geschlecht` CHAR NOT NULL ,
-	PRIMARY KEY (`nutzer_name`)
+	PRIMARY KEY (`nutzer_name`),
+	FOREIGN KEY (`rolle_ID` ) REFERENCES `Rolle` (`rolle_ID`)
 );
 
 -- -----------------------------------------------------
