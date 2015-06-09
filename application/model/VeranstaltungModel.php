@@ -1,4 +1,16 @@
 <?php
+/**
+ * SPRINT 05
+ *
+ * @author : Roland Schmid
+ * Datum: 	09.6.2015
+ * User­ Story: Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern. (erneut)
+ * Task: 	Bei Veranstaltung anlegen und bei bearbeiten im Punkt "Ausstattung eintragen" Nullen für leeres Feld eintragen.
+ * Nr:		370a
+ * Points:	5
+ * Zeit: 	0.75
+ *
+ */
 /*
  * ===============================================
  * Sprint: 4
@@ -85,9 +97,11 @@ class VeranstaltungModel {
 		// POST-Inhalt auslesen
 		$insertValues = "";
 		$veranstaltungAusstattung = $ausstattung;
-		
+
+
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
+
 
 		// Plausibilität prüfen
 		for($i = 0; $i < count ( $veranstaltungAusstattung ); $i ++) {
@@ -103,12 +117,30 @@ class VeranstaltungModel {
 									. " (veranst_ID, ausstattung_ID, anzahl)" 
 									. " VALUES (" . $insertValues . ");";
 					
-					if (! $database->insert ( $insertString )) {
-						// error ausgeben
-					}
+					
 				}
+				/* sprint 5 Anfang
+				 *
+				 */
+			} else {
+				//Null eintragen, wenn im Formular nichts eingetragen worden ist.
+				$insertValues = $vID . ", " . ($i + 1) . ", " . "0";
+					
+				// insert für mysql vorbereiten
+				$insertString = "INSERT INTO Veranstaltung_erfordert_Ausstattung"
+						. " (veranst_ID, ausstattung_ID, anzahl)"
+						. " VALUES (" . $insertValues . ");";
+				
+			}
+			
+			//insert ausführen
+			if (! $database->insert ( $insertString )) {
+				// error ausgeben
 			}
 		}
+	/* sprint 5 Ende
+	 */
+	 
 	}
 
 	/* sprint 4 Anfang
