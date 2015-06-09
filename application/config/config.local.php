@@ -69,7 +69,11 @@ return array(
 	'smtp_email' => 'versender@kilian-kraus.net',
 	'smtp_host' => 'w012e8ee.kasserver.com',
 	'smtp_user' => 'm03399f9',
+<<<<<<< HEAD
 	'smtp_pass' => 't26tW4vQEfu3F5LE',
+=======
+	'smtp_pass' => 'DF6yQq8aKowGQft8',
+>>>>>>> origin/master
 	'smtp_port' => '25'
 	
 );
