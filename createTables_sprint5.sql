@@ -528,6 +528,7 @@ CREATE  TABLE `Laborraum_hat_Ausstattung`
 -- -----------------------------------------------------
 -- Table `Notenliste`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Notenliste` ;
 
 CREATE  TABLE `Notenliste` 
 (

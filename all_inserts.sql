@@ -1,3 +1,16 @@
+/*	---------- SPRINT 5 ----------
+
+	- Autor: 				Alexander Mayer
+	- Datum: 				09.06.2015
+	
+	********************************************************************************************************************
+	
+	- User Story (Nr. 520):	Als Entwickler möchte ich genügend Spiel-/Testdaten zur Verfügung haben.
+	- User Story Punkte:	3
+	- Task 520.1:			Insert-Statements an die veränderte Tabellenstruktur anpassen.
+	- Zeitaufwand:			2h
+*/
+
 /* ===============================================
  * Sprint: 5
  * @author: Damian Wysocki
@@ -6,392 +19,11 @@
  * Zeit insgesamt: 15
  * ===============================================*/
  
-INSERT INTO Rolle (rolle_bezeichnung) VALUES
-('Student'),
-('Dozent'),
-('Mitarbeiter'),
-('Tutor');
-
+ 
 INSERT INTO Gebaeude (geb_bezeichnung) VALUES
 ('1'), -- 'Prittwitzstraße 10', '89075'
 ('2'), -- 'Albert-Einstein-Allee 55', '89081'
 ('3'); -- 'Eberhard-Finckh Straße 11', '89075'
-
-INSERT INTO Nutzer (nutzer_name, passwortHash, rolle_ID) VALUES
-('dozent', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW',2),
-('mitarbeiter', '$2y$10$PfLvMjTQ/6xNaodgDPcdP.edJJ17bK3vvexaF6sknagAvW.YBeu1.', 3),
-('student', '$2y$10$8pEgYNZX7GW8FYfp8Mzbz.g./61axiS/wx2np.bWw92N361fBFNp6', 1),
-('tutor', '$2y$10$kflo8og3yPg0cquTGK6nY.HOkx6JVjMGK8Dja4XXIzWURmZBVleZ6', 4),
-('userTestDozent', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 2),
-('userTestMitarbeiter', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 3),
-('userTestStudent', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 1),
-('userTestTutor', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 4),
-/*
----- update = Teststudenten anlegen 06.05. Damian
-*/
-('Carson', '$2y$10$dUrEcPXXPhy5orEJ94h8gOgphtEoMXQ0YC.Ypmo7/350UypGBDydC',1),
-('Logan', '$2y$10$GKFQfhKsznb8tBmUhvWSnu/214UjM8ZOauWDPJylKSM2aZtfnU3S.', 1),
-('Dolan', '$2y$10$/o//as2zOyJEfh/qqj7H2usxRvAgdcAuHlMR.1qth7VTOx9tkovUa', 1),
-('Samuel', '$2y$10$0InZ0F.FVITduZdnQqVaTOTuQB1BWZSVZJVz1.dEDRr.7ADZrbCPe', 1),
-('Jonas', '$2y$10$gn3NDRELjTHIi6mdHmAR3ebbKwaKv9N.n7r8ocR5LdGVTaylHM7Jm', 1),
-('Nicholas', '$2y$10$FiJKmwNpggknuG2VARNt2Ooc/wgcMubzE7t8t38zzoyh5whM1SdDG', 1),
-('Kasimir', '$2y$10$LRDBw8eHBlgGimwnzDlBw.g.49xHHi2zYekAWG3wW5qhENhMRSVNi', 1),
-('Ahmed', '$2y$10$9zzYgoAvyb4KmVZNw25OXuJGWMlwxW.7udnz6bzMKY.OM6qM8tjk2', 1),
-('Derek', '$2y$10$.FTBgX1J5pK5eHyngJenc.b4nlaesV443oAfqHcGmeLEQgcEh9nhC',1),
-('Otto', '$2y$10$y9DTJq4lQNt6/5CT9bNGNeyVn1wRqRDkdsI/txxYVkhUa/FQczxFm', 1),
-('Orlando', '$2y$10$pUZB1hAW6BfFu6BNMHCmTu9wrztM5l3rcVQSSYtJJTF.IRd45NoRq', 1),
-('Lars', '$2y$10$zLltvCGGyMVfXVNak8oAMOXwQ1ufend6PxjW658QdjUk0i6ueEss.', 1),
-('Philip', '$2y$10$jQ7J9xtxF5XZCicAjEELseMGA44Ev7XtV9aCc4VIHR9R/rHLyV7mq', 1),
-('Thor', '$2y$10$Zg7q98xbVHRW6BS24KAx/euCTp6k.0a6LHfkfe0sACPOjdqkRQxUi', 1),
-('Kelly', '$2y$10$ZkGNdjHHzhyU85.xIQa.CufPGsxrdDCWDSNXpmadyvsNAdJFEaTI.', 1),
-('Cody', '$2y$10$b4evX1//cP3HJKzvMrNrP.XNfHnss6cpc5ewc9voGZ.KARLdzHgo2', 1);
-/*
----- update = Teststudenten anlegen 06.05. Damian
-*/
-
-INSERT INTO Adresse (straßenname, hausnummer, stadt, land, plz, nutzer_name, geb_bezeichnung) VALUES
-('Prittwitzstraße', 10, 'Ulm', 'Deutschland', 89075, NULL, '1'),
-('Albert-Einstein-Allee', 55, 'Ulm', 'Deutschland', 89081, NULL, '2'),
-('Eberhard-Finckh Straße', 11, 'Ulm', 'Deutschland', 89075, NULL, '3'),
-('Frauenstraße', 113, 'Ulm', 'Deutschland', 89073, 'userTestStudent', NULL),
-('Schaffnerstraße', 5, 'Ulm', 'Deutschland', 89073, 'userTestDozent', NULL),
-('Traminerweg', 72, 'Ulm', 'Deutschland', 89075, 'userTestMitarbeiter', NULL),
-('Eberhardtstraße', 85, 'Ulm', 'Deutschland', 89073, 'userTestTutor', NULL),
-/*
----- update = Teststudenten anlegen 06.05. Damian
-*/
-('Turmstraße', 5, 'Berlin', 'Deutschland', 15028, 'student', NULL),
-('Turmstraße', 5, 'Berlin', 'Deutschland', 15028, 'Carson', NULL),
-('Unter den Linden', 113, 'Berlin', 'Deutschland', 13065, 'Logan', NULL),
-('Schlossalle', 7, 'Ulm', 'Deutschland', 89073, 'Dolan', NULL),
-('Bahnofgasse', 15, 'Ulm', 'Deutschland', 89075, 'Samuel', NULL),
-('Mirabellenweg', 6, 'Neu-Ulm', 'Deutschland', 89233, 'Jonas', NULL),
-('Leipheimer Straße', 1, 'Neu-Ulm', 'Deutschland', 89233, 'Nicholas', NULL),
-('Hauptstraße', 4, 'Neu-Ulm', 'Deutschland', 89233, 'Kasimir', NULL),
-('Kirschenweg', 12, 'Neu-Ulm', 'Deutschland', 89233, 'Ahmed', NULL),
-('Olivenweg', 45, 'Ulm', 'Deutschland', 89073, 'Derek', NULL),
-('Carl-Zeiss-Straße', 55, 'Neu-Ulm', 'Deutschland', 89231, 'Otto', NULL),
-('Otto-Hahn-Straße', 5, 'Neu-Ulm', 'Deutschland', 89231, 'Orlando', NULL),
-('Eulesweg', 4, 'Neu-Ulm', 'Deutschland', 89231, 'Lars', NULL),
-('Lupinenweg', 36, 'Neu-Ulm', 'Deutschland', 89231, 'Philip', NULL),
-('Magirusstraße', 15, 'Ulm', 'Deutschland', 89073, 'Thor', NULL),
-('Steingrube', 6, 'Neu-Ulm', 'Deutschland', 89231, 'Kelly', NULL),
-('Sesamstraße', 85, 'Stuttgart', 'Deutschland', 87873, 'Cody', NULL);
-/*
----- update = Teststudenten anlegen 06.05. Damian
-*/
-
-INSERT INTO EMail (email_name, nutzer_name) VALUES
-('student@hs.de', 'student'),
-('userTestDozent@hs-ulm.de', 'userTestDozent'),
-('userTestMitarbeiter@hs-ulm.de', 'userTestMitarbeiter'),
-('userTestStudent@hs-ulm.de', 'userTestStudent'),
-('userTestTutor@hs-ulm.de', 'userTestTutor'),
-/*
----- update = Teststudenten anlegen 06.05. Damian
-*/
-('carson@hs.de', 'Carson'),
-('logan@hs.de', 'Logan'),
-('dolan@hs.de','Dolan'),
-('samuel@hs.de','Samuel'),
-('jonas@hs.de','Jonas'),
-('nicholas@hs.de','Nicholas'),
-('kasimir@hs.de','Kasimir'),
-('ahmed@hs.de','Ahmed'),
-('derek@hs.de','Derek'),
-('otto@hs.de','Otto'),
-('orlando@hs.de','Orlando'),
-('lars@hs.de','Lars'),
-('philip@hs.de','Philip'),
-('thor@hs.de','Thor'),
-('kelly@hs.de','Kelly'),
-('cody@hs.de','Cody');
-/*
----- update = Teststudenten anlegen 06.05. Damian
-*/
-
-INSERT INTO Eigenschaft (eigenschaft_bezeichnung) VALUES
-('username'),
-('matrNr'),
-('vorname'),
-('nachname'),
-('idAdresse'),
-('rechte'),
-('telefonnummer'),
-('fakultät'),
-('dozent'),
-('studiengang');
-
-INSERT INTO Wert (eigenschaft_ID, nutzer_name, inhalt) VALUES
-(2, 'userTestStudent', '3112493'),
-(3, 'userTestDozent', 'vornameTestDozent'),
-(3, 'userTestMitarbeiter', 'vornameTestMitarbeiter'),
-(3, 'userTestStudent', 'vornameTestStudent'),
-(3, 'userTestTutor', 'vornameTestTutor'),
-(4, 'userTestDozent', 'nachnameTestDozent'),
-(4, 'userTestMitarbeiter', 'nachnameTestMitarbeiter'),
-(4, 'userTestStudent', 'nachnameTestStudent'),
-(4, 'userTestTutor', 'nachnameTestTutor'),
-(5, 'userTestDozent', '5'),
-(5, 'userTestMitarbeiter', '6'),
-(5, 'userTestStudent', '4'),
-(5, 'userTestTutor', '7'),
-(6, 'userTestDozent', '0'),
-(6, 'userTestMitarbeiter', '0'),
-(6, 'userTestStudent', '0'),
-(6, 'userTestTutor', '0'),
-(7, 'userTestDozent', '0731 12398123'),
-(7, 'userTestMitarbeiter', '0731 237252342'),
-(7, 'userTestStudent', '0731 12345678'),
-(7, 'userTestTutor', '0731 812371231'),
-(8, 'userTestDozent', 'Informatik'),
-(8, 'userTestStudent', 'Informatik'),
-(10, 'userTestStudent', '2'),
-/*
----- update = Teststudenten anlegen 06.05. Damian
-*/
--- id 2 = natrNr
-(2,'Carson', '10000001'),
-(2,'Logan', '10000002'),
-(2,'Dolan', '10000003'),
-(2,'Samuel', '10000004'),
-(2,'Jonas', '10000005'),
-(2,'Nicholas', '10000006'),
-(2,'Kasimir', '10000007'),
-(2,'Ahmed', '10000008'),
-(2,'Derek', '10000009'),
-(2,'Otto', '10000010'),
-(2,'Orlando', '10000011'),
-(2,'Lars', '10000012'),
-(2,'Philip', '10000013'),
-(2,'Thor', '10000014'),
-(2,'Kelly', '10000015'),
-(2,'Cody', '10000016'),
-(2,'student', '10000017'),
--- id 3 = vorname
-(3,'Carson', 'Carson'),
-(3,'Logan', 'Logan'),
-(3,'Dolan', 'Dolan'),
-(3,'Samuel', 'Samuel'),
-(3,'Jonas', 'Jonas'),
-(3,'Nicholas', 'Nicholas'),
-(3,'Kasimir', 'Kasimir'),
-(3,'Ahmed', 'Ahmed'),
-(3,'Derek', 'Derek'),
-(3,'Otto', 'Otto'),
-(3,'Orlando', 'Orlando'),
-(3,'Lars', 'Lars'),
-(3,'Philip', 'Philip'),
-(3,'Thor', 'Thor'),
-(3,'Kelly', 'Kelly'),
-(3,'Cody', 'Cody'),
-(3,'student', 'Hund'),
--- id 4 = nachname
-(4,'Carson', 'Matthews'),
-(4,'Logan', 'Woods'),
-(4,'Dolan', 'Powers'),
-(4,'Samuel', 'Mckay'),
-(4,'Jonas', 'Duncan'),
-(4,'Nicholas', 'Pickett'),
-(4,'Kasimir', 'Barton'),
-(4,'Ahmed', 'Payne'),
-(4,'Derek', 'Villarreal'),
-(4,'Otto', 'Gallagher'),
-(4,'Orlando', 'Chandler'),
-(4,'Lars', 'Powell'),
-(4,'Philip', 'Levy'),
-(4,'Thor', 'Fitzgerald'),
-(4,'Kelly', 'Cook'),
-(4,'Cody', 'Richmond'),
-(4,'student', 'Mensch'),
--- id 5 = idAdresse
-(5,'Carson', 8),
-(5,'Logan', 9),
-(5,'Dolan', 10),
-(5,'Samuel', 11),
-(5,'Jonas', 12),
-(5,'Nicholas', 13),
-(5,'Kasimir', 14),
-(5,'Ahmed', 15),
-(5,'Derek', 16),
-(5,'Otto', 17),
-(5,'Orlando', 18),
-(5,'Lars', 19),
-(5,'Philip', 20),
-(5,'Thor', 21),
-(5,'Kelly', 22),
-(5,'Cody', 23),
-(5,'student', 8),
--- id 6 = rechte
-(6, 'Carson', 0),
-(6, 'Logan', 0),
-(6,'Dolan', 0),
-(6,'Samuel', 0),
-(6,'Jonas', 0),
-(6,'Nicholas', 0),
-(6,'Kasimir', 0),
-(6,'Ahmed', 0),
-(6,'Derek', 0),
-(6,'Otto', 0),
-(6,'Orlando', 0),
-(6,'Lars', 0),
-(6,'Philip', 0),
-(6,'Thor', 0),
-(6,'Kelly', 0),
-(6,'Cody', 0),
-(6,'student', 0),
--- id 7 = telefonnummer
-(7,'Carson', '047 84705429'),
-(7,'Logan', '022 42321709'),
-(7,'Dolan', '029 06360905'),
-(7,'Samuel', '005 78547177'),
-(7,'Jonas', '005 78547177'),
-(7,'Nicholas', '037 19670620'),
-(7,'Kasimir', '093 48282899'),
-(7,'Ahmed', '094 55206252'),
-(7,'Derek', '035 77958723'),
-(7,'Otto', '045 93141526'),
-(7,'Orlando', '079 36579082'),
-(7,'Lars', '010 31081374'),
-(7,'Philip', '083 40836692'),
-(7,'Thor', '069 87059906'),
-(7,'Kelly', '087 39281648'),
-(7,'Cody', '066 87087966'),
-(7,'student', '0900666666'),
--- id 8 = fakultät (1-6)
-(8,'Carson', 3),
-(8,'Logan', 3),
-(8,'Dolan', 3),
-(8,'Samuel', 3),
-(8,'Jonas', 3),
-(8,'Nicholas', 3),
-(8,'Kasimir', 3),
-(8,'Ahmed', 3),
-(8,'Derek', 3),
-(8,'Otto', 3),
-(8,'Orlando', 3),
-(8,'Lars', 6),
-(8,'Philip', 4),
-(8,'Thor', 4),
-(8,'Kelly', 4),
-(8,'Cody', 6),
-(8,'student', 3),
--- id 10 = studiengang (TI->[sid=1,fid=3] WI->[sid=2,fid=3], MT->[sid=3,fid=6] MB->[sid=4,fid=4] IS->[sid=5,fid=3])
-(10,'Carson', 'Wirtschaftsinformatik'),
-(10,'Logan', 'Wirtschaftsinformatik'),
-(10,'Dolan', 'Wirtschaftsinformatik'),
-(10,'Samuel', 'Wirtschaftsinformatik'),
-(10,'Jonas', 'Wirtschaftsinformatik'),
-(10,'Nicholas', 'Wirtschaftsinformatik'),
-(10,'Kasimir', 'Wirtschaftsinformatik'),
-(10,'Ahmed', 'Technische Informatik'),
-(10,'Derek', 'Technische Informatik'),
-(10,'Otto', 'Technische Informatik'),
-(10,'Orlando', 'Technische Informatik'),
-(10,'Lars', 'Medizintechnik'),
-(10,'Philip', 'Maschinenbau'),
-(10,'Thor', 'Maschinenbau'),
-(10,'Kelly', 'Maschinenbau'),
-(10,'Cody', 'Medizintechnik'),
-(10,'student', 2);
-
-
-INSERT INTO Rolle_hat_Eigenschaft (eigenschaft_ID, rolle_ID, reihenfolge) VALUES
-(1, 1, 4),
-(1, 2, 3),
-(1, 3, 3),
-(1, 4, 3),
-(2, 1, 3),
-(3, 1, 1),
-(3, 2, 1),
-(3, 3, 1),
-(3, 4, 1),
-(4, 1, 2),
-(4, 2, 2),
-(4, 3, 2),
-(4, 4, 2),
-(5, 1, 5),
-(5, 2, 4),
-(5, 3, 5),
-(5, 4, 4),
-(6, 1, 7),
-(6, 2, 6),
-(6, 3, 6),
-(6, 4, 6),
-(7, 1, 6),
-(7, 2, 5),
-(7, 3, 7),
-(7, 4, 5),
-(8, 1, 8),
-(8, 2, 7),
-(8, 4, 7),
-(9, 4, 8),
-(10, 1, 9);
-/*
----- update = Teststudenten anlegen 06.05. Damian
-*/
-
-INSERT INTO Veranstaltungsart (vArt_bezeichnung) VALUES
-('Blockveranstaltung'),
-('Kurs'),
-('Labor'),
-('Labor/Seminar'),
-('Praktikum'),
-('Praktische Übung'),
-('Praxissemester'),
-('Projekt'),
-('Projektgruppe'),
-('Seminar'),
-('Seminar/Vorlesung'),
-('Sonstiges'),
-('Tutorium'),
-('Übung'),
-('Vorlesung'),
-('Vorlesung/Labor'),
-('Vorlesung/Projekt'),
-('Vorlesung/Übung'),
-('Zusatzübung');
-
-INSERT INTO Veranstaltung (veranst_bezeichnung, veranst_kurztext, credits, SWS, maxTeilnehmer, vArt_ID) VALUES
-('Programmieren 1', 'Prog1', 5, 4, 32, 18),
-('Programmieren 2', 'Prog2', 5, 4, 32, 18),
-('Rechnernetze', 'RNET', 5, 4, 30, 16),
-('Seminar Wirtschaftsinformatik', 'SEMWIF', 4, 2, 30, 10),
-('Database Programming', 'DAPRO', 5, 4, 30, 17),
-('Physik 1', 'PH1', 5, 4, 30, 16),
-('Chemie 1', 'CH1', 5, 4, 30, 16),
-('Strahlentechnik', 'STechnik', 5, 4, 30, 16),
-('Maschinenbau Grundlagen', 'MBau-GRDL', 5, 4, 30, 16);
-
-INSERT INTO Nutzer_beteiligtAn_Veranstaltung (veranst_ID, nutzer_name) VALUES
-(1, 'dozent'),
-(2, 'dozent'),
-(3, 'dozent'),
-(5, 'mitarbeiter'),
-(1, 'student'),
-(2, 'student'),
-(1, 'tutor'),
-(2, 'userTestStudent'),
-(1, 'userTestTutor'),
-/*
----- update = Teststudenten anlegen 06.05. Damian
-*/
-(1,'Carson'),
-(1,'Logan'),
-(1,'Dolan'),
-(2,'Samuel'),
-(2,'Jonas'),
-(2,'Nicholas'),
-(2,'Kasimir'),
-(2,'Ahmed'),
-(1,'Derek'),
-(3,'Otto'),
-(3,'Orlando'),
-(8,'Lars'),
-(9,'Philip'),
-(9,'Thor'),
-(9,'Kelly'),
-(8,'Cody');
 
 INSERT INTO Raum (raum_bezeichnung, geb_bezeichnung) VALUES
 ('A100', '1'),
@@ -426,24 +58,6 @@ INSERT INTO Laborraum (raum_bezeichnung, lArt_ID) VALUES
 ('Z107', 4),
 ('F007', 5);
 
-INSERT INTO Stundenzeit (stdZeit_von, stdZeit_bis) VALUES
-('08:00:00', '09:30:00'),
-('09:50:00', '11:20:00'),
-('11:30:00', '13:00:00'),
-('14:00:00', '15:30:00'),
-('15:45:00', '17:15:00'),
-('17:25:00', '18:55:00'),
-('19:00:00', '20:30:00');
-
-INSERT INTO Wochentag (tag_bezeichnung) VALUES
-('Montag'),
-('Dienstag'),
-('Mittwoch'),
-('Donnerstag'),
-('Freitag'),
-('Samstag'),
-('Sonntag');
-
 INSERT INTO Studiengangtyp (stgTyp_bezeichnung, stgTyp_kuerzel) VALUES
 ('Bachelor', 'BA'),
 ('Master of Science', 'M.Sc.'),
@@ -463,6 +77,240 @@ INSERT INTO Studiengang (stg_bezeichnung, stgTyp_ID, fak_ID) VALUES
 ('Medizintechnik', 1, 6),
 ('Maschinenbau', 1, 4),
 ('Information Systems', 2, 3);
+
+INSERT INTO Nutzer (nutzer_name, vorname, nachname, geschlecht, passwortHash) VALUES
+-- ------------------------- Studenten -------------------------:
+	-- Medizintechnik3:
+('student', 'Max', 'Mustermann', 'm', '$2y$10$8pEgYNZX7GW8FYfp8Mzbz.g./61axiS/wx2np.bWw92N361fBFNp6'),
+	-- Maschinenbau1:
+('modoof', 'Moritz', 'Doof', 'm', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu'),
+	-- WF1:
+('cadoll', 'Carson', 'Doll', 'w', '$2y$10$dUrEcPXXPhy5orEJ94h8gOgphtEoMXQ0YC.Ypmo7/350UypGBDydC'),
+('loluke', 'Logan', 'Luke', 'm', '$2y$10$GKFQfhKsznb8tBmUhvWSnu/214UjM8ZOauWDPJylKSM2aZtfnU3S.'),
+('doritc', 'Dolan', 'Ritch', 'm', '$2y$10$/o//as2zOyJEfh/qqj7H2usxRvAgdcAuHlMR.1qth7VTOx9tkovUa'),
+	-- WF2:
+('saetoo', 'Samuel', 'Etoo', 'm', '$2y$10$0InZ0F.FVITduZdnQqVaTOTuQB1BWZSVZJVz1.dEDRr.7ADZrbCPe'),
+('jobeck', 'Jonas', 'Beck', 'm', '$2y$10$gn3NDRELjTHIi6mdHmAR3ebbKwaKv9N.n7r8ocR5LdGVTaylHM7Jm'),
+	-- WF3:
+('nicarr', 'Nicholas', 'Carr', 'm', '$2y$10$FiJKmwNpggknuG2VARNt2Ooc/wgcMubzE7t8t38zzoyh5whM1SdDG'),
+('kaabdu', 'Kasimir', 'Abdu', 'm', '$2y$10$LRDBw8eHBlgGimwnzDlBw.g.49xHHi2zYekAWG3wW5qhENhMRSVNi'),
+	-- WF4:
+('ahali', 'Ahmed', 'Ali', 'm', '$2y$10$9zzYgoAvyb4KmVZNw25OXuJGWMlwxW.7udnz6bzMKY.OM6qM8tjk2'),
+('deduck', 'Derek', 'Duck', 'm', '$2y$10$.FTBgX1J5pK5eHyngJenc.b4nlaesV443oAfqHcGmeLEQgcEh9nhC'),
+('otott', 'Otto', 'Ott', 'm', '$2y$10$y9DTJq4lQNt6/5CT9bNGNeyVn1wRqRDkdsI/txxYVkhUa/FQczxFm'),
+	-- WF5:
+('orwest', 'Orlanda', 'West', 'w', '$2y$10$pUZB1hAW6BfFu6BNMHCmTu9wrztM5l3rcVQSSYtJJTF.IRd45NoRq'),
+('ladanz', 'Lars', 'Danzer', 'm', '$2y$10$zLltvCGGyMVfXVNak8oAMOXwQ1ufend6PxjW658QdjUk0i6ueEss.'),
+	-- WF6:
+('phklug', 'Philip', 'Kluge', 'm', '$2y$10$jQ7J9xtxF5XZCicAjEELseMGA44Ev7XtV9aCc4VIHR9R/rHLyV7mq'),
+('thtonn', 'Theodor', 'Tonne', 'm', '$2y$10$Zg7q98xbVHRW6BS24KAx/euCTp6k.0a6LHfkfe0sACPOjdqkRQxUi'),
+	-- WF7:
+('kebroo', 'Kelly', 'Brook', 'w', '$2y$10$ZkGNdjHHzhyU85.xIQa.CufPGsxrdDCWDSNXpmadyvsNAdJFEaTI.'),
+('mefox', 'Megan', 'Fox', 'w', '$2y$10$b4evX1//cP3HJKzvMrNrP.XNfHnss6cpc5ewc9voGZ.KARLdzHgo2'),
+
+-- ------------------------- Dozenten -------------------------:
+('dozent', 'Klaus', 'Kopf', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW'),
+('clstei', 'Claudia', 'Stein', 'w', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu'),
+
+-- ------------------------- Mitarbeiter -------------------------:
+('mitarbeiter', 'Roberto', 'Firmino', 'm', '$2y$10$PfLvMjTQ/6xNaodgDPcdP.edJJ17bK3vvexaF6sknagAvW.YBeu1.'),
+('masail', 'Marina', 'Sailer', 'w', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu');
+
+
+INSERT INTO Student (nutzer_name, stg_ID, matrikelnummer, fachsemester, studiensemester) VALUES
+	-- Medizintechnik3:
+('student', 3, 1111111, 3, 3),
+	-- Machinenbau1:
+('modoof', 4, 2111111, 1, 1),
+	-- WF1:
+('cadoll', 2, 3111111, 1, 1),
+('loluke', 2, 4111111, 1, 1),
+('doritc', 2, 5111111, 1, 1),
+	-- WF2:
+('saetoo', 2, 6111111, 2, 2),	
+('jobeck', 2, 7111111, 2, 2),
+	-- WF3:
+('nicarr', 2, 8111111, 3, 3),	
+('kaabdu', 2, 9111111, 3, 3),
+	-- WF4:
+('ahali', 2, 1211111, 4, 4),
+('deduck', 2, 1311111, 4, 4),
+('otott', 2, 1411111, 4, 4),	
+	-- WF5:
+('orwest', 2, 1511111, 5, 5),
+('ladanz', 2, 1611111, 5, 5),	
+	-- WF6:
+('phklug', 2, 1711111, 6, 6),
+('thtonn', 2, 1811111, 6, 6),
+	-- WF7:
+('kebroo', 2, 1911111, 7, 7),
+('mefox', 2, 1121111, 7, 7);
+
+
+INSERT INTO Dozent (nutzer_name, titel) VALUES
+('dozent', 'Prof. Dr.'),
+('clstei', 'Prof. Dipl.-Ing.');
+
+
+INSERT INTO Mitarbeiter (nutzer_name) VALUES
+('mitarbeiter'),
+('masail');
+
+
+INSERT INTO Adresse (straßenname, hausnummer, stadt, land, plz, nutzer_name, geb_bezeichnung) VALUES
+-- ------------------------- Gebäude -------------------------:
+('Prittwitzstraße', 10, 'Ulm', 'Deutschland', 89075, NULL, '1'),
+('Albert-Einstein-Allee', 55, 'Ulm', 'Deutschland', 89081, NULL, '2'),
+('Eberhard-Finckh Straße', 11, 'Ulm', 'Deutschland', 89075, NULL, '3'),
+
+-- ------------------------- Studenten -------------------------:
+('Turmstraße', 5, 'Berlin', 'Deutschland', 15028, 'student', NULL),
+('Frauenstraße', 113, 'Ulm', 'Deutschland', 89073, 'modoof', NULL),
+('Turmstraße', 16, 'Berlin', 'Deutschland', 15028, 'cadoll', NULL),
+('Unter den Linden', 113, 'Berlin', 'Deutschland', 13065, 'loluke', NULL),
+('Schlossalle', 7, 'Ulm', 'Deutschland', 89073, 'doritc', NULL),
+('Bahnofgasse', 15, 'Ulm', 'Deutschland', 89075, 'saetoo', NULL),
+('Mirabellenweg', 6, 'Neu-Ulm', 'Deutschland', 89233, 'jobeck', NULL),
+('Leipheimer Straße', 1, 'Neu-Ulm', 'Deutschland', 89233, 'nicarr', NULL),
+('Hauptstraße', 4, 'Neu-Ulm', 'Deutschland', 89233, 'kaabdu', NULL),
+('Kirschenweg', 12, 'Neu-Ulm', 'Deutschland', 89233, 'ahali', NULL),
+('Olivenweg', 45, 'Ulm', 'Deutschland', 89073, 'deduck', NULL),
+('Carl-Zeiss-Straße', 55, 'Neu-Ulm', 'Deutschland', 89231, 'otott', NULL),
+('Otto-Hahn-Straße', 5, 'Neu-Ulm', 'Deutschland', 89231, 'orwest', NULL),
+('Eulesweg', 4, 'Neu-Ulm', 'Deutschland', 89231, 'ladanz', NULL),
+('Lupinenweg', 36, 'Neu-Ulm', 'Deutschland', 89231, 'phklug', NULL),
+('Magirusstraße', 15, 'Ulm', 'Deutschland', 89073, 'thtonn', NULL),
+('Steingrube', 6, 'Neu-Ulm', 'Deutschland', 89231, 'kebroo', NULL),
+('Sesamstraße', 85, 'Stuttgart', 'Deutschland', 87873, 'mefox', NULL),
+
+-- ------------------------- Dozenten -------------------------:
+('Schaffnerstraße', 10, 'Ulm', 'Deutschland', 89073, 'dozent', NULL),
+('Schaffnerstraße', 5, 'Ulm', 'Deutschland', 89073, 'clstei', NULL),
+
+-- ------------------------- Mitarbeiter -------------------------:
+('Traminerweg', 35, 'Ulm', 'Deutschland', 89075, 'mitarbeiter', NULL),
+('Traminerweg', 72, 'Ulm', 'Deutschland', 89075, 'masail', NULL);
+
+
+INSERT INTO EMail (email_name, nutzer_name) VALUES
+-- ------------------------- Studenten -------------------------:
+('student@hs-ulm.de', 'student'),
+('modoof@hs-ulm.de', 'modoof'),
+('cadoll@hs-ulm.de', 'cadoll'),
+('loluke@hs-ulm.de', 'loluke'),
+('doritc@hs-ulm.de','doritc'),
+('saetoo@hs-ulm.de','saetoo'),
+('jobeck@hs-ulm.de','jobeck'),
+('nicarr@hs-ulm.de','nicarr'),
+('kaabdu@hs-ulm.de','kaabdu'),
+('ahali@hs-ulm.de','ahali'),
+('deduck@hs-ulm.de','deduck'),
+('otott@hs-ulm.de','otott'),
+('orwest@hs-ulm.de','orwest'),
+('ladanz@hs-ulm.de','ladanz'),
+('phklug@hs-ulm.de','phklug'),
+('thtonn@hs-ulm.de','thtonn'),
+('kebroo@hs-ulm.de','kebroo'),
+('mefox@hs-ulm.de','mefox'),
+
+-- ------------------------- Dozenten -------------------------:
+('dozent@hs-ulm.de', 'dozent'),
+('claudia.stein@hs-ulm.de', 'clstei'),
+
+-- ------------------------- Mitarbeiter -------------------------:
+('mitarbeiter@hs-ulm.de', 'mitarbeiter'),
+('masail@hs-ulm.de', 'masail');
+
+
+INSERT INTO Veranstaltungsart (vArt_bezeichnung) VALUES
+('Blockveranstaltung'),
+('Kurs'),
+('Labor'),
+('Labor/Seminar'),
+('Praktikum'),
+('Praktische Übung'),
+('Praxissemester'),
+('Projekt'),
+('Projektgruppe'),
+('Seminar'),
+('Seminar/Vorlesung'),
+('Sonstiges'),
+('Tutorium'),
+('Übung'),
+('Vorlesung'),
+('Vorlesung/Labor'),
+('Vorlesung/Projekt'),
+('Vorlesung/Übung'),
+('Zusatzübung');
+
+INSERT INTO Veranstaltung (veranst_bezeichnung, veranst_kurztext, credits, SWS, maxTeilnehmer, vArt_ID, dozent_nutzer_name) VALUES
+('Programmieren 1', 'Prog1', 5, 4, 32, 18, 'dozent'),
+('Programmieren 2', 'Prog2', 5, 4, 32, 18, 'dozent'),
+('Rechnernetze', 'RNET', 5, 4, 30, 16, 'dozent'),
+('Seminar Wirtschaftsinformatik', 'SEMWIF', 4, 2, 30, 10, 'clstei'),
+('Database Programming', 'DAPRO', 5, 4, 30, 17, NULL),
+('Physik 1', 'PH1', 5, 4, 30, 16, NULL),
+('Chemie 1', 'CH1', 5, 4, 30, 16, NULL),
+('Strahlentechnik', 'STechnik', 5, 4, 30, 16, NULL),
+('Maschinenbau Grundlagen', 'MBau-GRDL', 5, 4, 30, 16, NULL);
+
+INSERT INTO Student_angemeldetAn_Veranstaltung (veranst_ID, student_nutzer_name) VALUES
+	-- Medizintechnik3, Strahlentechnik:
+	(8, 'student'),
+	
+	-- Maschinenbau1, Physik 1:
+	(6, 'modoof'),
+	
+	-- Maschinenbau1, Maschinenbau Grundlagen:
+	(9, 'modoof'),
+
+	-- WF1, Programmieren 1:
+	(1, 'cadoll'),
+	(1, 'loluke'),
+	(1, 'doritc'),
+	
+	-- WF2, Programmieren 2:
+	(2, 'saetoo'),
+	(2, 'jobeck'),
+	
+	-- WF3:
+	
+	-- WF4, Rechnernetze:
+	(3, 'ahali'),
+	(3, 'deduck'),
+	(3, 'otott'),
+	
+	-- WF4, Database Programming:
+	(5, 'ahali'),
+	(5, 'deduck'),
+	(5, 'otott'),
+	
+	-- WF5, Seminar Wirtschaftsinformatik:
+	(4, 'orwest'),
+	(4, 'ladanz');
+	
+	-- WF6:
+	
+	-- WF7:
+
+	
+INSERT INTO Stundenzeit (stdZeit_von, stdZeit_bis) VALUES
+('08:00:00', '09:30:00'),
+('09:50:00', '11:20:00'),
+('11:30:00', '13:00:00'),
+('14:00:00', '15:30:00'),
+('15:45:00', '17:15:00'),
+('17:25:00', '18:55:00'),
+('19:00:00', '20:30:00');
+
+INSERT INTO Wochentag (tag_bezeichnung) VALUES
+('Montag'),
+('Dienstag'),
+('Mittwoch'),
+('Donnerstag'),
+('Freitag'),
+('Samstag'),
+('Sonntag');
 
 INSERT INTO Studiengang_hat_Veranstaltung (`stg_ID`, `veranst_ID`, `pflicht_im_Semester`) VALUES
 -- Technische Informatik:
@@ -770,28 +618,38 @@ INSERT INTO Veranstaltungstermin (`veranst_ID`, `tag_ID`, `stdZeit_ID`, `raum_be
 -- Table `Notenliste`
 -- -----------------------------------------------------
 
-INSERT INTO Notenliste (note, nutzer_name, veranst_ID) VALUES
-(1.7 ,'Carson', 1),
-(1.7, 'Logan',  2),
-(1.7 ,'Dolan', 3),
-(1.7 ,'Samuel',  4),
-(1.7 ,'Jonas', 5),
-(1.7 , 'Nicholas',  6),
-(1.7 , 'Kasimir',  7),
-(1.7 , 'Ahmed',  8),
-(1.7 , 'Derek', 9),
-(1.7 , 'Otto',  1),
-(1.7 , 'Orlando',  2),
-(1.7 , 'Lars',  3),
-(1.7 , 'Philip',  4),
-(1.7 , 'Thor',  5),
-(1.7 , 'Kelly', 6),
-(1.7 , 'Ahmed',  1),
-(1.7 , 'Ahmed',  2),
-(1.7 , 'Ahmed',  3),
-(1.7 , 'Ahmed',  4),
-(1.7 , 'Ahmed',  5),
-(1.7 , 'Cody',  1);
+INSERT INTO Notenliste (note, student_nutzer_name, veranst_ID) VALUES
+-- Programmieren 1:
+(1.7 ,'cadoll', 1),
+(1.7 ,'loluke', 1),
+(1.7 ,'doritc', 1),
+
+-- Programmieren 2:
+(1.7 ,'saetoo', 2),
+(1.7 ,'jobeck', 2),
+
+-- Rechnernetze:
+(1.7 ,'ahali', 3),
+(1.7 ,'deduck', 3),
+(1.7 ,'otott', 3),
+
+-- Seminar Wirtschaftsinformatik:
+(1.7 ,'orwest', 4),
+(1.7 ,'ladanz', 4),
+
+-- Database Programming:
+(1.7 ,'ahali', 5),
+(1.7 ,'deduck', 5),
+(1.7 ,'otott', 5),
+
+-- Physik 1:
+(1.7 ,'modoof', 6),
+
+-- Strahlentechnik:
+(1.7 ,'student', 8),
+
+-- Maschinenbau Grundlagen:
+(1.7 ,'modoof', 9);
 
 /*
 	* ENDE SPRINT 05
