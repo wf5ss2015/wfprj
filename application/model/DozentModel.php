@@ -105,11 +105,11 @@ class DozentModel {
 		
 		$user_name = Session::get ( 'user_name' );
 		
-		$sql = "SELECT nutzer_name, nutzer_beteiligtAn_Veranstaltung.veranst_ID as veranst_ID, veranst_bezeichnung 
-				FROM  nutzer_beteiligtAn_Veranstaltung 
-				JOIN Veranstaltung 
-				ON nutzer_beteiligtAn_Veranstaltung.veranst_ID = Veranstaltung.veranst_ID 
-				WHERE nutzer_name = :user_name ORDER BY veranst_bezeichnung ASC";
+		$sql = "SELECT sav.student_nutzer_name, sav.veranst_ID as veranst_ID, v.veranst_bezeichnung 
+				FROM  Student_angemeldetAn_Veranstaltung sav 
+				JOIN Veranstaltung v 
+				ON v.veranst_ID = sav.veranst_ID 
+				WHERE sav.student_nutzer_name = 'ahali' ORDER BY v.veranst_bezeichnung ASC;";
 		
 		$result = $database->prepare ( $sql );
 		
@@ -145,12 +145,17 @@ class DozentModel {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		// 
-		$sql = "SELECT  ad.straßenname AS Straße, ad.hausnummer as Hausnummer, ad.plz AS PLZ, ad.stadt AS Stadt, 
-					ad.land AS Land, e.email_name AS Email, w.nutzer_name As Nutzername,
-				coalesce(MAX(case when w.eigenschaft_ID = 3 then w.inhalt end), 0) as Vorname,
-				coalesce(MAX(case when w.eigenschaft_ID = 4 then w.inhalt end), 0) as Nachname,
-				coalesce(MAX(case when w.eigenschaft_ID = 7 then w.inhalt end), 0) as Telefonnummer
-				FROM  wert w, email e, adresse ad
+		$sql = "SELECT  ad.straßenname AS Straße,
+						ad.hausnummer as Hausnummer, 
+						ad.plz AS PLZ,
+						ad.stadt AS Stadt,
+						ad.land AS Land,
+						e.email_name AS Email,
+						w.nutzer_name As Nutzername,
+						w.vorname as Vorname,
+						w.nachname as Nachname,
+						w.telefonnummer as Telefonnummer
+				FROM  Nutzer w, EMail e, Adresse ad
 				WHERE w.nutzer_name = :user
 				AND ad.nutzer_name = :user
 				AND e.nutzer_name = :user;";
@@ -181,10 +186,9 @@ class DozentModel {
 		// print_r($wert, $user);
 		
 		// Daten in Datenbank updaten
-		$sql = "UPDATE wert
-				SET inhalt= :wert
-				WHERE eigenschaft_id = 4 
-				AND nutzer_name = :user;";
+		$sql = "UPDATE Nutzer
+				SET nachname= :wert
+				WHERE nutzer_name = :user;";
 		
 		$query = $database->prepare ( $sql );
 		
@@ -207,7 +211,7 @@ class DozentModel {
 		// print_r($wert, $user);
 		
 		// Daten in Datenbank updaten
-		$sql = "UPDATE adresse
+		$sql = "UPDATE Adresse
 				SET straßenname= :wert
 				WHERE nutzer_name= :user;";
 		
@@ -232,10 +236,9 @@ class DozentModel {
 		// print_r($wert, $user);
 		
 		// Daten in Datenbank updaten
-		$sql = "UPDATE wert
-				SET inhalt= :wert
-				WHERE eigenschaft_id = 7 
-				AND nutzer_name= :user;";
+		$sql = "UPDATE Nutzer
+				SET telefonnummer= :wert
+				WHERE nutzer_name= :user;"; 
 		
 		$query = $database->prepare ( $sql );
 		
@@ -258,7 +261,7 @@ class DozentModel {
 		// print_r($wert, $user);
 		
 		// Daten in Datenbank updaten
-		$sql = "UPDATE adresse
+		$sql = "UPDATE Adresse
 				SET hausnummer= :wert
 				WHERE nutzer_name = :user;";
 		
@@ -283,7 +286,7 @@ class DozentModel {
 		// print_r($wert, $user);
 		
 		// Daten in Datenbank updaten
-		$sql = "UPDATE adresse
+		$sql = "UPDATE Adresse
 				SET plz= :wert
 				WHERE nutzer_name = :user;";
 		
@@ -308,7 +311,7 @@ class DozentModel {
 		 //print_r($wert, $user);
 		
 		// Daten in Datenbank updaten
-		$sql = "UPDATE adresse
+		$sql = "UPDATE Adresse
 				SET stadt= :wert
 				WHERE nutzer_name = :user;";
 		
@@ -333,7 +336,7 @@ class DozentModel {
 		// print_r($wert, $user);
 		
 		// Daten in Datenbank updaten
-		$sql = "UPDATE adresse
+		$sql = "UPDATE Adresse
 				SET land= :wert
 				WHERE nutzer_name = :user;";
 		
@@ -358,7 +361,7 @@ class DozentModel {
 		// print_r($wert, $user);
 		
 		// Daten in Datenbank updaten
-		$sql = "UPDATE email
+		$sql = "UPDATE EMail
 				SET email_name = :wert
 				WHERE nutzer_name = :user;";
 		
