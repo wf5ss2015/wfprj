@@ -20,10 +20,18 @@
 ?>
 <article>
 
-	<h2>Teilnehmerliste für Kurs <?php echo htmlentities($_POST['id']); ?> </h2>
+<?php if ($this->teilnehmer) { 
+	
+	 foreach($this->teilnehmer as $key => $value){
+		$this->{$key} = $value;
+		}
+	
+	 } ?>
+
+	<h1>Teilnehmerliste für Kurs "<?php echo htmlentities($value->Bezeichnung); ?>" </h1>
 	</br>			
 	</br>
-				
+			<?php //echo '<pre>'; print_r($_POST); echo '<pre>';  ?>	
 <?php
 
 if ($this->teilnehmer) {
@@ -32,13 +40,14 @@ if ($this->teilnehmer) {
 	
 	// Tabelle erzeugen
 	$dozentTeilnehmer = array (
-			"0" => "Nutzername",
-			"1" => "Email",
+			"0" => "Studiengang",
+			"1" => "Nachname",
 			"2" => "Vorname",
-			"3" => "Nachname",
+			"3" => "Email",
 			"4" => "Telefonnummer",
-			"5" => "Studiengang",
+			"5" => "Matrikel",
 			"6" => "Anzeigen" 
+
 	);
 	
 	// Testzwecke

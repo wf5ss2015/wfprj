@@ -49,8 +49,11 @@
 	$noten = array (
 			"0" => "Kurs-ID",
 			"1" => "Kurs",
-			"2" => "Nutzer",
-			"3" => "Note" 
+			"2" => "Matrikel",
+			"3" => "Nachname",
+			"4" => "Vorname",
+			"5" => "Nutzer",
+			"6" => "Note" 
 	);
 	
 	// Testzwecke

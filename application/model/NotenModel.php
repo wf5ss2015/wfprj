@@ -66,12 +66,17 @@ class NotenModel {
 	  {
 		 $database = DatabaseFactory::getFactory()->getConnection();
 		 
-		  $sql = "SELECT n.veranst_ID AS Veranstaltungsnummer, v.veranst_bezeichnung AS Bezeichnung, n.nutzer_name AS Nutzer,
-					n.note AS Note
-				FROM notenliste n
-				JOIN veranstaltung v
-				ON v.veranst_ID = n.veranst_ID
-				WHERE n.veranst_ID = :id ";
+		  $sql = "SELECT n.veranst_ID AS Veranstaltungsnummer, v.veranst_bezeichnung AS Bezeichnung, 
+					s.matrikelnummer AS Matrikel, nu.vorname as Vorname, nu.nachname as Nachname,
+					n.student_nutzer_name as Nutzer, n.note AS Note
+				  FROM Notenliste n
+					  JOIN Nutzer nu
+					  ON nu.nutzer_name = n.student_nutzer_name
+					  JOIN Student s
+					  ON s.nutzer_name = n.student_nutzer_name
+					  JOIN Veranstaltung v
+					  ON v.veranst_ID = n.veranst_ID
+				  WHERE n.veranst_ID = :id ";
 		 
 		  $query = $database->prepare($sql);
 		 
@@ -96,8 +101,8 @@ class NotenModel {
 	  {
 		 $database = DatabaseFactory::getFactory()->getConnection();
 		 
-		  $sql = "UPDATE `notenliste` SET `note`= :note
-				  WHERE `nutzer_name`= :nutzer AND `veranst_ID`= :id;";
+		  $sql = "UPDATE `Notenliste` SET `note`= :note
+				  WHERE `student_nutzer_name`= :nutzer AND `veranst_ID`= :id;";
 		 
 		  $query = $database->prepare($sql);
 		 
@@ -126,16 +131,20 @@ class NotenModel {
 	  {
 		 $database = DatabaseFactory::getFactory()->getConnection();
 		 
-		 // GROUP BY AUF HS_SERVER NOTWENDIG!!!
 		  $sql = "SELECT n.veranst_ID AS Veranstaltungsnummer, v.veranst_bezeichnung AS Bezeichnung,
-					n.nutzer_name AS Nutzer, n.note AS Note, 
-					coalesce(MAX(case when w.eigenschaft_ID = 2 then w.inhalt end), 0) as Matrikel, 
-					coalesce(MAX(case when w.eigenschaft_ID = 3 then w.inhalt end), 0) as Vorname, 
-					coalesce(MAX(case when w.eigenschaft_ID = 4 then w.inhalt end), 0) as Nachname, 
-					coalesce(MAX(case when w.eigenschaft_ID = 10 then w.inhalt end), 0) as Studiengang 
-				FROM notenliste n JOIN veranstaltung v ON v.veranst_ID = n.veranst_ID 
-				JOIN wert w ON w.nutzer_name = n.nutzer_name 
-				GROUP BY n.nutzer_name; ";
+					n.student_nutzer_name AS Nutzer, n.note AS Note, 
+					s.matrikelnummer as Matrikel, nu.vorname as Vorname, nu.nachname as Nachname, 
+					st.stg_bezeichnung as Studiengang 
+				 FROM notenliste n 
+					JOIN veranstaltung v 
+					ON v.veranst_ID = n.veranst_ID 
+					JOIN Student s 
+					ON s.nutzer_name = n.student_nutzer_name
+					JOIN Nutzer nu 
+					ON nu.nutzer_name = n.student_nutzer_name
+					JOIN Studiengang st 
+					ON st.stg_ID = s.stg_ID 
+				 GROUP BY n.student_nutzer_name; ";
 		 
 		  $query = $database->prepare($sql);
 		 
@@ -160,11 +169,17 @@ class NotenModel {
 	  {
 		 $database = DatabaseFactory::getFactory()->getConnection();
 		 
-		  $sql = "SELECT n.veranst_ID AS Veranstaltungsnummer, v.veranst_bezeichnung AS Bezeichnung,
-					n.nutzer_name AS Nutzer, n.note AS Note 
-				  FROM notenliste n 
-				  JOIN veranstaltung v ON v.veranst_ID = n.veranst_ID 
-				  WHERE nutzer_name = :id ;";
+		  $sql = "SELECT n.veranst_ID AS Veranstaltungsnummer, v.veranst_bezeichnung AS Bezeichnung, 
+					s.matrikelnummer AS Matrikel, nu.vorname as Vorname, nu.nachname as Nachname,
+					n.student_nutzer_name as Nutzer, n.note AS Note
+				  FROM Notenliste n
+					  JOIN Nutzer nu
+					  ON nu.nutzer_name = n.student_nutzer_name
+					  JOIN Student s
+					  ON s.nutzer_name = n.student_nutzer_name
+					  JOIN Veranstaltung v
+					  ON v.veranst_ID = n.veranst_ID
+				  WHERE n.student_nutzer_name = :id ;";
 		 
 		  $query = $database->prepare($sql);
 		 

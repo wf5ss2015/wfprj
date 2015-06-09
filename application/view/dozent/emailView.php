@@ -26,27 +26,7 @@
 ?>
  <article>
 		
-		<style>
-				  table {
-				   font-family: Verdana, Sans-Serif;
-				   font-size: 14px;
-				  }
-
-				  span.pflichtfeld {
-				   font-size: 12px;
-				   color: Red;
-				  }
-
-				  table#tabelle tr:nth-child(even) {
-				   background-color: White;
-				  }
-
-				  table#tabelle tr:nth-child(odd) {
-				   background-color: Whitesmoke;
-				  }
-				  </style>
-		
-		<h2>Email versenden</h2>
+		<h1>Email versenden</h1>
 		</br>
 		</br>
 
@@ -212,8 +192,7 @@
 	Kein Array vorhanden
 	<?php } ?>	
 
-	<?php/*Error Handling*/?>
-	<?php $this->renderResponse(); ?>
+	
 </article>
  <?
 	/**-----------------------------------------------------------------------------------------

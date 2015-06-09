@@ -19,11 +19,10 @@
  */
 ?>
 <article>
-	<h2>Teilnehmerliste</h2>
+	<h1>Teilnehmerliste</h1>
 	</br>			
 	</br>
-	<a>Bitte auswählen um
-		Teilnehmerlisten zu erzeugen</a>
+	<a>Bitte auswählen um Teilnehmerlisten zu erzeugen</a>
 	</br>			
 	</br>
 	<!-- Prüfen ob Array leer (Wichtig, Namen für Select Tag vergeben ;=)-->

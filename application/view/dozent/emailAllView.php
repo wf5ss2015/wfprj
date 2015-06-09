@@ -25,31 +25,22 @@
 	*/
 ?>
  <article>
+ 
+		<?php if ($this->veranstaltung) { 
+	
+	 foreach($this->veranstaltung as $key => $value){
+		$this->{$key} = $value;
+		}
+	
+	 } ?>
+			
 		
-		<style>
-				  table {
-				   font-family: Verdana, Sans-Serif;
-				   font-size: 14px;
-				  }
-
-				  span.pflichtfeld {
-				   font-size: 12px;
-				   color: Red;
-				  }
-
-				  table#tabelle tr:nth-child(even) {
-				   background-color: White;
-				  }
-
-				  table#tabelle tr:nth-child(odd) {
-				   background-color: Whitesmoke;
-				  }
-				  </style>
-		
-		<h2>Email versenden</h2>
+		<h1>Email an alle Teilnehmer des Kurses "<?php echo htmlentities($value); ?>" versenden</h1>
 		</br>
 		</br>
 
+		<?php //echo '<pre>'; print_r($_POST); echo '<pre>';  ?>	
+		
 	<?php 
 
 	// PHP Fehlermeldungen (1 um das Formular zu testen) anzeigen.

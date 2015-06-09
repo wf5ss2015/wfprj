@@ -49,7 +49,10 @@
 			"0" => "Kurs-ID",
 			"1" => "Kurs",
 			"2" => "Nutzer",
-			"3" => "Note" 
+			"3" => "Matrikel",
+			"4" => "Nachname",
+			"5" => "Vorname",
+			"6" => "Note" 
 	);
 	
 	// Testzwecke

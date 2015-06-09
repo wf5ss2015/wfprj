@@ -65,7 +65,7 @@
 							<option value="<?php echo htmlentities($value->Nutzer);?>">
 							<?php echo htmlentities($value->Matrikel); ?>
 							<?php echo ", "; ?>
-							<?php echo htmlentities($value->Nutzer); ?>
+							<?php echo htmlentities($value->Vorname); ?>
 							<?php echo ", "; ?>
 							<?php echo htmlentities($value->Nachname); ?>
 							</option>
@@ -76,7 +76,7 @@
 	</form>
 
 	<!-- sonst Fehlermeldung -->
-<?php echo '<pre>'; print_r($_POST); echo '<pre>'; }else { ?>
+<?php }else { ?>
 	Kein Array vorhanden
 <?php } ?>
 </article>

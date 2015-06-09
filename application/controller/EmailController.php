@@ -49,9 +49,13 @@ class EmailController extends Controller {
 			$mail->Username = Config::get('smtp_user');  // SMTP Benutzername
 			$mail->Password = Config::get('smtp_pass'); // SMTP Passwort
 			$mail->AddAddress(Request::post('email'));
-			$mail->SetFrom = Config::get('smtp_email', Session::get('user_name'));
+			
+			$mail->AddReplyTo = Config::get('smtp_email');
+			$mail->From = Config::get('smtp_email');
+			$mail->FromName =  Request::post('name');
+			
 			$mail->Subject = Request::post('betreff');
-			$mail->Body = Request::post('nachricht')."\n\n Viele Grüße".Session::get('user_name');
+			$mail->Body = Request::post('nachricht')."\n\n Viele Gruesse\n\n". Request::post('name');
 			
 			if(!$mail->Send())
 			{
@@ -69,7 +73,11 @@ class EmailController extends Controller {
 		}
 	}
 public function writeMailAll(){
-		$this->View->render ( 'dozent/emailAll', array ('profil' => DozentModel::getDozentProfil(Session::get('user_name')),
+
+		$model = new DozentModel();
+		$model2 = new DozentModel();
+		$this->View->render ( 'dozent/emailAll', array (
+				'profil' => $model->getDozentProfil(Session::get('user_name')), 'veranstaltung' => $model2->getNameVorlesung(Request::post ( 'id' )),
 				'id' => Request::post ( 'id' )
 		) );
 	
@@ -109,9 +117,11 @@ public function sendMailAll(){
 			$mail->AddBCC('wysdam@googlemail.com');
 			//Betreff der Email setzen
 			$mail->Subject = Request::post('betreff');
-			$mail->SetFrom = Config::get('smtp_email', Session::get('user_name'));
+			$mail->AddReplyTo = Config::get('smtp_email');
+			$mail->From = Config::get('smtp_email');
+			$mail->FromName = Request::post('name');
 			$mail->Subject = Request::post('betreff');
-			$mail->Body = Request::post('nachricht')."\n\n Viele Grüße".Session::get('user_name');
+			$mail->Body = Request::post('nachricht')."\n\n Viele Gruesse\n\n". Request::post('name');
 			
 			if(!$mail->Send())
 			{

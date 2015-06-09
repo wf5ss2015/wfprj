@@ -611,7 +611,7 @@ INSERT INTO Veranstaltungstermin (`veranst_ID`, `tag_ID`, `stdZeit_ID`, `raum_be
 (8, 2, 5, 'Z107'); -- Strahlentechnik
 
 
-//*-----------------------------------------------------------------------------------------
+/*-----------------------------------------------------------------------------------------
 	* START SPRINT 05
 	* @author: Damian Wysocki
 	* User Story (Nr.: 430a)  Als Mitarbeiter möchte ich Noten von Veranstaltungen für die Teilnehmer eintragen können. (erneut)

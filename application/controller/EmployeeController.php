@@ -130,7 +130,7 @@ class EmployeeController extends Controller {
 	 */
 	public function aendernNote(){
 		$model = new NotenModel();
-		//print_r($_POST);
+		print_r($_POST);
 		$model->saveNote (Request::post('Veranstaltungsnummer'), Request::post('Nutzer'), Request::post('Note'));
 		$this->startNotenListe();
 	}
