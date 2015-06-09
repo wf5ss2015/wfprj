@@ -20,7 +20,7 @@ if ($this->ausstattung_list) {
 		echo htmlentities ( $value->ausstattung_bezeichnung );
 		echo '" value="';
 		echo htmlentities ( $value->ausstattung_ID );
-		echo '"> Anzahl:<input class="tf" type = "text" name = "';
+		echo '">Anzahl:<input class="tf" type = "text" name = "';
 		echo htmlentities ( $value->ausstattung_bezeichnung );
 		echo 'Anzahl"/><br>';
 		array_push ( $data_ausstattung, htmlentities ( $value->ausstattung_bezeichnung ) );

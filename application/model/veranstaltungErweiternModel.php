@@ -33,7 +33,11 @@ class veranstaltungErweiternModel {
 	// selected alle User
 	public function getUser() {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
-		$sql = 'Select nutzer_name, rolle_bezeichnung from Nutzer u join Rolle r on r.rolle_ID = u.rolle_ID';
+		$sql = 'Select nutzer_name, "Student" AS rolle from Student
+				UNION
+				Select nutzer_name, "Dozent" AS rolle from Dozent
+				UNION
+				Select nutzer_name, "Mitarbeiter" AS rolle_bezeichnung from Mitarbeiter';
 		$query = $database->prepare ( $sql );
 		try{
 			$query->execute ();

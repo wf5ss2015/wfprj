@@ -35,6 +35,7 @@ class veranstaltungErweiternController extends Controller {
 			$user_string = $_POST ['user'];
 			$user_array = explode ( ",", $user_string );
 			$user_name = $user_array [0];
+			$user_rolle = $user_array[1];
 			
 			// inserten der Erweiterung
 			veranstaltungErweiternModel::setErweiterung ( $veranst_ID, $user_name );
