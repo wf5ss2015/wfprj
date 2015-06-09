@@ -212,8 +212,7 @@
 	Kein Array vorhanden
 	<?php } ?>	
 
-	<?php/*Error Handling*/?>
-	<?php $this->renderResponse(); ?>
+	
 </article>
  <?
 	/**-----------------------------------------------------------------------------------------

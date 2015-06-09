@@ -49,7 +49,11 @@ class EmailController extends Controller {
 			$mail->Username = Config::get('smtp_user');  // SMTP Benutzername
 			$mail->Password = Config::get('smtp_pass'); // SMTP Passwort
 			$mail->AddAddress(Request::post('email'));
-			$mail->SetFrom = Config::get('smtp_email', Session::get('user_name'));
+			
+			$mail->AddReplyTo = Config::get('smtp_email');
+			$mail->From = Config::get('smtp_email');
+			$mail->FromName = Session::get('user_name');
+			
 			$mail->Subject = Request::post('betreff');
 			$mail->Body = Request::post('nachricht')."\n\n Viele Grüße".Session::get('user_name');
 			

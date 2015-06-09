@@ -60,9 +60,16 @@ return array(
 	 */
 	'DB_TYPE' => 'mysql',
 	'DB_HOST' => 'localhost',
-	'DB_NAME' => 'lehrveranstaltung',
+	'DB_NAME' => 'wfprj_wf5_09',
 	'DB_USER' => 'root',
-	'DB_PASS' => '',
+	'DB_PASS' => 'damianbytow',
 	'DB_PORT' => '3306',
 	'DB_CHARSET' => 'utf8',
+	'protocol'  => 'smtp',
+	'smtp_email' => 'versender@kilian-kraus.net',
+	'smtp_host' => 'w012e8ee.kasserver.com',
+	'smtp_user' => 'm03399f9',
+	'smtp_pass' => 't26tW4vQEfu3F5LE',
+	'smtp_port' => '25'
+	
 );
