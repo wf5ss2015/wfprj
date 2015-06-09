@@ -382,10 +382,10 @@ DROP TABLE IF EXISTS `Student_angemeldetAn_Veranstaltung` ;
 CREATE  TABLE `Student_angemeldetAn_Veranstaltung` 
 (
 	`veranst_ID` INT NOT NULL,
-	`nutzer_name` VARCHAR(45) NOT NULL,
-	PRIMARY KEY (`veranst_ID`, `nutzer_name`),
+	`student_nutzer_name` VARCHAR(45) NOT NULL,
+	PRIMARY KEY (`veranst_ID`, `student_nutzer_name`),
 	FOREIGN KEY (`veranst_ID` ) REFERENCES `Veranstaltung` (`veranst_ID` ),
-	FOREIGN KEY (`nutzer_name` ) REFERENCES `Student` (`nutzer_name` )
+	FOREIGN KEY (`student_nutzer_name` ) REFERENCES `Student` (`nutzer_name` )
 );
 
 /*	Autor: Alexander Mayer
