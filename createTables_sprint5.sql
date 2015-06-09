@@ -243,6 +243,7 @@ CREATE  TABLE `Nutzer`
 (
 	`nutzer_name` VARCHAR(45) NOT NULL ,
 	`passwortHash` VARCHAR(255),
+	`telefonnummer` VARCHAR(255),
 	`letzterLogin` DATETIME,
 	`vorname` VARCHAR(45) NOT NULL ,
 	`nachname` VARCHAR(45) NOT NULL ,
