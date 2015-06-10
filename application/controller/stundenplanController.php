@@ -91,7 +91,7 @@ class stundenplanController extends Controller
 		$rzModel = new raumZuweisenModel();
 			
 		//Daten aus DB holen:
-		$veranstaltungstermine = $spModel->getVeranstaltungstermine_individuell(Session::get('user_name'));
+		$veranstaltungstermine = $spModel->getVeranstaltungstermine_individuell(Session::get('user_name'), Session::get ( 'user_role' ));
 		$wochentage = $rzModel->getWochentage();
 		$stundenZeiten = $rzModel->getStundenzeiten();
 			

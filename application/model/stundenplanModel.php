@@ -1,4 +1,16 @@
 <?php
+/*	---------- SPRINT 5 ----------
+
+	- Autor: 				Alexander Mayer
+	- Datum: 				10.06.2015
+	
+	- User Story (Nr.370a):	Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern.
+	- User Story Punkte:	8
+	- Task:					Funktion getVeranstaltungstermine_individuell() um den Übergabeparameter 
+							rolle_ID erweitern und anpassen an die veränderte Tabellenstruktur.
+	- Zeitaufwand:			1:30h
+*/
+
 /*	---------- SPRINT 4 ----------
 
 	- Autor: 				Alexander Mayer
@@ -66,20 +78,36 @@ class stundenplanModel
 	}
 	
 	//gibt ein array zurück mit allen Veranstaltungsterminen, an welchen der Student/Dozent angemeldet ist:
-	public function getVeranstaltungstermine_individuell($nutzer_name)
+	public function getVeranstaltungstermine_individuell($nutzer_name, $rolle_ID)
 	{
-		/*	ORDER BY: die Datensätze werden sortiert nach Stundenzeit und Wochentag, sodass später beim
-			Anlegen der Tabelle im View die Veranstaltungstermine Reihe für Reihe im Stundenplan eingefügt werden
-			können!
-		*/
-		$query = "SELECT vt.tag_ID, vt.stdZeit_ID, vt.raum_bezeichnung, v.veranst_bezeichnung 
+		$veranstaltungstermine;
+		
+		if($rolle_ID == 1) //Nutzer hat die Rolle Student
+		{
+			/*	ORDER BY: die Datensätze werden sortiert nach Stundenzeit und Wochentag, sodass später beim
+				Anlegen der Tabelle im View die Veranstaltungstermine Reihe für Reihe im Stundenplan eingefügt werden
+				können!
+			*/
+			$query = "SELECT vt.tag_ID, vt.stdZeit_ID, vt.raum_bezeichnung, v.veranst_bezeichnung 
 							FROM Veranstaltungstermin vt JOIN Veranstaltung v ON (vt.veranst_ID = v.veranst_ID)
-								JOIN Nutzer_beteiligtAn_Veranstaltung nbv ON (v.veranst_ID = nbv.veranst_ID)
-							WHERE nbv.nutzer_name = '$nutzer_name'
+								JOIN Student_angemeldetAn_Veranstaltung sav ON (v.veranst_ID = sav.veranst_ID)
+							WHERE sav.student_nutzer_name = '$nutzer_name'
 							ORDER BY vt.stdZeit_ID, vt.tag_ID;";
 	       
-        // erzeugt ein Resultset, benutzt dazu die Methode abfrage($query)
-        $veranstaltungstermine = $this->abfrage($query);
+			// erzeugt ein Resultset, benutzt dazu die Methode abfrage($query)
+			$veranstaltungstermine = $this->abfrage($query);
+			
+		}
+		else if($rolle_ID == 2) //Nutzer hat die Rolle Dozent
+		{
+			$query = "SELECT vt.tag_ID, vt.stdZeit_ID, vt.raum_bezeichnung, v.veranst_bezeichnung 
+							FROM Veranstaltungstermin vt JOIN Veranstaltung v ON (vt.veranst_ID = v.veranst_ID)
+							WHERE v.dozent_nutzer_name = '$nutzer_name'
+							ORDER BY vt.stdZeit_ID, vt.tag_ID;";
+	       
+			// erzeugt ein Resultset, benutzt dazu die Methode abfrage($query)
+			$veranstaltungstermine = $this->abfrage($query);
+		}
 		
 		return $veranstaltungstermine;
 	}
