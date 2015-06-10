@@ -203,5 +203,25 @@ class NotenModel {
 	 * Zeitaufwand (in Stunden): 6
 	 * ENDE SPRINT 05	
 	*---------------------------------------------------------------------------------------------------------------------*/
-	
+	 public function getSpecificStudents2($user_name)
+	  {
+		 $database = DatabaseFactory::getFactory()->getConnection();
+		 
+		  $sql = 'SELECT n.veranst_ID, v.veranst_bezeichnung, n.note
+				  FROM Notenliste n 
+				  JOIN veranstaltung v ON v.veranst_ID = n.veranst_ID 
+				  WHERE n.student_nutzer_name ="'.$user_name.'";';
+		 
+		  $query = $database->prepare($sql);
+		 
+		  try{
+			$query->execute();
+		 
+		  }catch (PDOException $fehler)
+		  {
+		  Session::add('response_negative', 'Es ist ein Fehler aufgetreten.'.$fehler);
+		  }
+		  //print_r($query->fetch());
+		  return $query->fetchAll();
+	  }
 }

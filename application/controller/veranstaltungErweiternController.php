@@ -36,10 +36,16 @@ class veranstaltungErweiternController extends Controller {
 			$user_array = explode ( ",", $user_string );
 			$user_name = $user_array [0];
 			$user_rolle = $user_array[1];
+			echo $user_rolle;
+			if($user_rolle != 'Student'){
+				Session::add ( 'response_warning', 'Es können nur Studenten hinzugefügt werden.' );
+				$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
+			} else {
+				// inserten der Erweiterung
+				veranstaltungErweiternModel::setErweiterungStudent ( $veranst_ID, $user_name );
+				$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
+			}
 			
-			// inserten der Erweiterung
-			veranstaltungErweiternModel::setErweiterung ( $veranst_ID, $user_name );
-			$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
 		} else {
 			// Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man eine Fehlermeldung.
 			if(empty( $_POST ['veranstaltung'] )){

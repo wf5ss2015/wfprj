@@ -21,6 +21,13 @@
  * Task: model erweitern
  * ===============================================
  */
+ /*
+ * Erweiterung 
+ * sprint: 5
+ * autor: Kris Klamser
+ * zeitaufwand:0.5
+ * datum: 10.6.2015
+ */
 /*
  * Erweiterung um Nutzerdaten von allen usern zu bekommen. (zu User Story Nr. 280)
  * sprint: 4
@@ -312,14 +319,33 @@ class UserModel {
 	 */
 	public static function getUserDataAll4() {
 		$database = DatabaseFactory::getFactory()->getConnection ();
-		$sql = "Select w1.inhalt as nachname, w2.inhalt as vorname, u.nutzer_name, rolle_bezeichnung, email_name, straßenname, hausnummer, plz, stadt, land 
+		$sql = "Select u.nachname, u.vorname, u.nutzer_name, rolle_bezeichnung, email_name, straßenname, hausnummer, plz, stadt, land 
 				from Nutzer u 
-                join Wert w1 on w1.nutzer_name = u.nutzer_name and w1.eigenschaft_ID = 4 
-                join Wert w2 on w2.nutzer_name = u.nutzer_name and w2.eigenschaft_ID = 3 
 				join Rolle r on r.rolle_ID = u.rolle_ID 
 				join EMail e on e.nutzer_name = u.nutzer_name 
 				join Adresse a on a.nutzer_name = u.nutzer_name
 				order by nachname asc;";
+		$query = $database->prepare ($sql);
+		try{
+			$query->execute ();
+			return $query->fetchAll ();
+		} catch(PDOException $e){
+			Session::add ( 'response_warning', 'Es ist ein Fehler bei der Datenbankabfrage aufgetreten.' );
+		}
+	}
+	/* ENDE Änderungen Klamser */
+	/*
+	 * Erweiterung Studiengang eines Studenten abzufragen.
+	   sprint: 5
+	 * autor: Kris Klamser
+	 * datum: 10.06..2015
+	 * START
+	 */
+	public static function getStudentStudiengang($user_name) {
+		$database = DatabaseFactory::getFactory()->getConnection ();
+		$sql = "Select stg_bezeichnung
+				from studiengang s 
+				join student n on s.stg_ID = n.stg_ID where n.nutzer_name ='".$user_name."';";
 		$query = $database->prepare ($sql);
 		try{
 			$query->execute ();

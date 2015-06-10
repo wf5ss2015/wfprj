@@ -14,7 +14,10 @@ class informationController extends Controller {
 	}
 	
 	public function information() {
-		$this->View->render (  );
+		$current_user = Session::get('user_name');
+		$this->View->render ('information/information',	array (
+				'studiengang' => UserModel::getStudentStudiengang($current_user)
+		) );
 	}
 }
 ?>

@@ -33,11 +33,7 @@ class veranstaltungErweiternModel {
 	// selected alle User
 	public function getUser() {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
-		$sql = 'Select nutzer_name, "Student" AS rolle from Student
-				UNION
-				Select nutzer_name, "Dozent" AS rolle from Dozent
-				UNION
-				Select nutzer_name, "Mitarbeiter" AS rolle_bezeichnung from Mitarbeiter';
+		$sql = 'Select n.nutzer_name, r.rolle_bezeichnung from Nutzer n join Rolle r on n.rolle_ID = r.rolle_ID';
 		$query = $database->prepare ( $sql );
 		try{
 			$query->execute ();
@@ -48,9 +44,9 @@ class veranstaltungErweiternModel {
 	}
 	
 	// insertet die Erweiterung einer Veranstaltung mit einer Person
-	public function setErweiterung($veranst_ID, $user_name) {
+	public function setErweiterungStudent($veranst_ID, $user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
-		$sql = "Insert into Nutzer_beteiligtAn_Veranstaltung (veranst_ID, nutzer_name) Values ('$veranst_ID', '$user_name')";
+		$sql = "Insert into Student_angemeldetAn_Veranstaltung (veranst_ID, student_nutzer_name) Values ('$veranst_ID', '$user_name')";
 		$query = $database->prepare ( $sql );
 		try{
 			$query->execute ();

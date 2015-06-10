@@ -11,7 +11,7 @@
 	<article>
 		<h1>Zeugnis/Notenspiegel</h1>
 		<!-- Sobald der Button geclickt wird, wird die printZeugnis-function ausgeführt-->
-		<form action="index.php?url=zeugnis/printZeugnis" method="post" />
+		<form action="index.php?url=zeugnis/printZeugnis" method="post" target="_blank" />
 			<?php
 			if ($this->noten_list) {
 				$table = new Table ();
@@ -30,7 +30,6 @@
 			} else {
 				echo "Es ist ein Fehler aufgetretten. Die Notenliste konnte nicht erstellt werden.";
 			}
-			
 			echo '<input class="button" type="button" value="Zurück" onClick="history.back();">';
 			?>
 			<input class="button" type="submit" id="b1" value="Zeugnis/Notenspiegel drucken" ></a>

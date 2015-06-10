@@ -9,7 +9,7 @@
 */
 ?>
 <article>
-	<h1>Person zu Veranstaltung hinzufügen</h1>
+	<h1>Student zu Veranstaltung hinzufügen</h1>
 	<!-- Sobald der "Veranstaltung erweitern"-Button geclickt wird, wird die selected-function ausgeführt-->
 	<form action="index.php?url=veranstaltungErweitern/selected"
 		method="post" />

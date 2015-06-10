@@ -57,6 +57,10 @@ class menueView{
 			"Anmeldung" => "student/enrollClass",
 			"Abmeldung" => "student/delistClass"),
 			array(
+			"Information" => "#",
+			"Studienganginformationen anzeigen" => "information/information",
+			"Notenspiegel anzeigen" => "zeugnis/zeugnis"),
+			array(
 			"Logout" => "login/logout")
 		),
 		// Dozent
