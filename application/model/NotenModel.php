@@ -7,7 +7,13 @@
  * User Story (Nr.: 430a)  Als Mitarbeiter möchte ich Noten von Veranstaltungen für die Teilnehmer eintragen können. (erneut)
  * Zeit insgesamt: 15
  * ===============================================*/
-
+ /*
+  * Erweiterung um function getSpecificStudents2($user_name)
+  * Sprint: 5
+  * autor: Kris Klamser
+  * User Story (Nr. 440): Als Student möchte ich mir ein Zeugnis/Notenspiegel mit allen bisher erbrachten Leistungen erstellen lassen können.
+  * datum: 8.6.2015
+  */
 
 /**-----------------------------------------------------------------------------------------
 	* START SPRINT 05
@@ -203,6 +209,15 @@ class NotenModel {
 	 * Zeitaufwand (in Stunden): 6
 	 * ENDE SPRINT 05	
 	*---------------------------------------------------------------------------------------------------------------------*/
+	 
+	/* 
+		START
+		autor: Kris Klamser
+		Sprint: 5
+		Zeitaufwand: 0.5
+		datum: 8.6.2015
+		Frägt alle nötigen Informationen für den Notenspiegel/Zeugnis ab
+	*/
 	 public function getSpecificStudents2($user_name)
 	  {
 		 $database = DatabaseFactory::getFactory()->getConnection();
@@ -224,4 +239,7 @@ class NotenModel {
 		  //print_r($query->fetch());
 		  return $query->fetchAll();
 	  }
+	  /*
+		ENDE Klamser Sprint 5
+	  */
 }

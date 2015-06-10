@@ -10,6 +10,11 @@
  * Task:  menue OOP 
  * ===============================================
  */	
+ /* Erweiterung des Menüs für Studenten
+  * autor: Kris Klamser
+  * Sprint: 5
+  * datum: 9.6.2015 
+  */
  /**
  *
  * @author Kilian Kraus
@@ -56,10 +61,12 @@ class menueView{
 			"Kurse" => "#",
 			"Anmeldung" => "student/enrollClass",
 			"Abmeldung" => "student/delistClass"),
+			// Start Erweiterung Klamser Sprint 5
 			array(
 			"Information" => "#",
 			"Studienganginformationen anzeigen" => "information/information",
 			"Notenspiegel anzeigen" => "zeugnis/zeugnis"),
+			//Ende Erweiterung Klamser Sprint 5
 			array(
 			"Logout" => "login/logout")
 		),

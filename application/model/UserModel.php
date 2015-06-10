@@ -22,10 +22,10 @@
  * ===============================================
  */
  /*
- * Erweiterung 
+ * Erweiterung um function getStudentStudiengang($user_name)
  * sprint: 5
  * autor: Kris Klamser
- * zeitaufwand:0.5
+ * zeitaufwand: 1
  * datum: 10.6.2015
  */
 /*
@@ -317,7 +317,7 @@ class UserModel {
 	 * datum: 17.5.2015
 	 * START
 	 */
-	public static function getUserDataAll4() {
+	public function getUserDataAll4() {
 		$database = DatabaseFactory::getFactory()->getConnection ();
 		$sql = "Select u.nachname, u.vorname, u.nutzer_name, rolle_bezeichnung, email_name, straßenname, hausnummer, plz, stadt, land 
 				from Nutzer u 
@@ -341,7 +341,7 @@ class UserModel {
 	 * datum: 10.06..2015
 	 * START
 	 */
-	public static function getStudentStudiengang($user_name) {
+	public function getStudentStudiengang($user_name) {
 		$database = DatabaseFactory::getFactory()->getConnection ();
 		$sql = "Select stg_bezeichnung
 				from studiengang s 

@@ -4,8 +4,8 @@
     datum: 08.06.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 5	
-	zeitaufwand: 
-	user story 
+	zeitaufwand: 1
+	user story (Nr. 440): Als Student möchte ich mir ein Zeugnis/Notenspiegel mit allen bisher erbrachten Leistungen erstellen lassen können.
 */
 ?>
 	<article>
@@ -13,6 +13,7 @@
 		<!-- Sobald der Button geclickt wird, wird die printZeugnis-function ausgeführt-->
 		<form action="index.php?url=zeugnis/printZeugnis" method="post" target="_blank" />
 			<?php
+			//das übergebene Array noten_list wird durch die Table-Klasse in eine Tabelle umgewandelt und angezeigt.
 			if ($this->noten_list) {
 				$table = new Table ();
 				$tableInfo = array (
