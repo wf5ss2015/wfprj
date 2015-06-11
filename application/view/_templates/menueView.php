@@ -103,10 +103,13 @@ class menueView{
 			"anlegen" => "veranstaltung/anlegenForm",
 			"bearbeiten" => "veranstaltung/bearbeitenSelect"),
 			array(
+			"Veranstaltungstermin" => "#",
+			"erstellen" => "raumZuweisen/erzeugeFormular1",
+			"löschen" => "veranstaltungsterminLoeschen/erzeugeTabelle"),
+			array(
 			"Räume" => "#",
 			"anlegen" => "raumAnlegen/raumAnlegen",
-			"Veranstaltungen zuordnen" => "raumZuweisen/erzeugeFormular1",
-			"Raumplan" => "raumplan/erzeugeFormular"),
+			"Raumplan" => "raumplan/erzeugeFormular")
 			array(
 			"Nutzer" => "#",
 			"Nutzerliste drucken" => "nutzerlistedrucken/nutzerlistedrucken",
