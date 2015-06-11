@@ -109,7 +109,7 @@ class menueView{
 			array(
 			"Räume" => "#",
 			"anlegen" => "raumAnlegen/raumAnlegen",
-			"Raumplan" => "raumplan/erzeugeFormular")
+			"Raumplan" => "raumplan/erzeugeFormular"),
 			array(
 			"Nutzer" => "#",
 			"Nutzerliste drucken" => "nutzerlistedrucken/nutzerlistedrucken",
