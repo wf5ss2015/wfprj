@@ -21,6 +21,13 @@
  * Task: model erweitern
  * ===============================================
  */
+/*
+ * Erweiterung um function getUserData5($user_name)
+ * sprint: 6
+ * autor: Kris Klamser
+ * zeitaufwand: 1
+ * datum: 16.6.2015
+ */
  /*
  * Erweiterung um function getStudentStudiengang($user_name)
  * sprint: 5
@@ -351,7 +358,29 @@ class UserModel {
 			$query->execute ();
 			return $query->fetchAll ();
 		} catch(PDOException $e){
-			Session::add ( 'response_warning', 'Es ist ein Fehler bei der Datenbankabfrage aufgetreten.' );
+			Session::add ( 'response_negative', 'Es ist ein Fehler bei der Datenbankabfrage aufgetreten.' );
+		}
+	}
+	/* ENDE Änderungen Klamser */
+	/*
+	 * Erweiterung um Studenteninfo für den Notenspiegel abzufragen.
+	   sprint: 6
+	 * autor: Kris Klamser
+	 * datum: 16.06..2015
+	 * START
+	 */
+	public function getUserData5($user_name) {
+		$database = DatabaseFactory::getFactory()->getConnection ();
+		$sql = "Select u.nachname, u.vorname, straßenname, hausnummer, plz, stadt, land 
+				from Nutzer u  
+				join Adresse a on a.nutzer_name = u.nutzer_name
+				where u.nutzer_name ='".$user_name."';";
+		$query = $database->prepare ($sql);
+		try{
+			$query->execute ();
+			return $query->fetchAll ();
+		} catch(PDOException $e){
+			Session::add ( 'response_negative', 'Es ist ein Fehler bei der Datenbankabfrage aufgetreten.' );
 		}
 	}
 	/* ENDE Änderungen Klamser */

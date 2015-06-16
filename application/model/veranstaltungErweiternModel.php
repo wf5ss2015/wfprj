@@ -53,7 +53,7 @@ class veranstaltungErweiternModel {
 			Session::add ( 'response_positive', 'Person wurde erfolgreich hinzugefügt.' );
 		} catch ( PDOException $e ){
 			if ($e->errorInfo [1] == 1062) {
-				Session::add ( 'response_warning', 'Sie sind bereits an Veranstaltung beteiligt.' );
+				Session::add ( 'response_warning', 'Die Person ist bereits an Veranstaltung beteiligt.' );
 			} else {
 				Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 			}

@@ -234,9 +234,8 @@ class NotenModel {
 		 
 		  }catch (PDOException $fehler)
 		  {
-		  Session::add('response_negative', 'Es ist ein Fehler aufgetreten.'.$fehler);
+		  Session::add('response_negative', 'Es ist ein Fehler aufgetreten. '.$fehler);
 		  }
-		  //print_r($query->fetch());
 		  return $query->fetchAll();
 	  }
 	  /*

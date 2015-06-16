@@ -31,6 +31,18 @@ class zeugnisController extends Controller {
 		$timestamp = time();
 		$date = date("d.m.Y",$timestamp);
 		
+		//Studentendaten aus der Datenbank auslesen und in Variablen speichern um sie im Notenspiegel anzuzeigen.
+		$studentinfo = UserModel::getUserData5($current_user);
+		foreach ( $studentinfo as $key => $value ) {
+			$nachname = htmlentities ( $value->nachname );
+			$vorname = htmlentities ( $value->vorname );
+			$straßenname = htmlentities ( $value->straßenname );
+			$hausnummer = htmlentities ( $value->hausnummer );
+			$plz = htmlentities ( $value->plz );
+			$stadt = htmlentities ( $value->stadt );
+			$land = htmlentities ( $value->land );
+		}
+		
 		require_once('../application/lib/tcpdf/tcpdf.php');
 		ob_start();
 		$pdf = new TCPDF("L","mm","A4", true, "UTF-8", true);
@@ -44,7 +56,8 @@ class zeugnisController extends Controller {
 		$pdf->AddPage();
 		
 		// html code der auf der PDF angezeigt werden soll. Daten werden aus der Datenbank ausgelesen und an Tabelle angefügt. 
-		$html = 'Lehrveranstaltungsmanagementsystem, '.$date.'<br><h1>Notenspiegel/Zeugnis</h1><br>';
+		$html = 'Lehrveranstaltungsmanagementsystem, '.$date.'<br><h1>Notenspiegel/Zeugnis</h1><br><p style="font-size: 14px;">'
+				.$vorname.' '.$nachname.'<br>'.$straßenname.' '.$hausnummer.'<br>'.$plz.' '.$stadt.'<br>'.$land.'</p>';
 		foreach ( $studiengang as $key => $value ) {
 			$html = $html.'<h3>Studiengang: '.htmlentities ( $value->stg_bezeichnung ).'</h3>';
 			$html = $html.'<table border="1" cellpadding="1"><tr align="center">

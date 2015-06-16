@@ -9,12 +9,13 @@
 */
 
 // Für die Stammdaten, die jeder Raum hat
+echo '<table style="border: 0px; text-align: left;"><tr>';
 // Bezeichnung im Textfeld eingeben.
-echo "<p>Bezeichnung";
-echo '<input class="tf" type = "text" name = "bezeichnung"><br></p>';
+echo "<th>Bezeichnung</th>";
+echo '<th><input class="tf" type = "text" name = "bezeichnung"></th></tr>';
 // Alle Gebäude werden in einer Liste zur Auswahl angezeigt. Mit Bezeichnung und Anschrift.
-echo "<p> Geb&auml;ude";
-echo '<select name="gebäude">';
+echo "<tr> <th>Geb&auml;ude</th>";
+echo '<th><select name="gebäude">';
 if ($this->geb_list) {
 	foreach ( $this->geb_list as $key => $value ) {
 		echo "<option>";
@@ -24,10 +25,10 @@ if ($this->geb_list) {
 		echo " , ";
 		echo htmlentities ( $value->hausnummer );
 		echo "</option>";
-	}
+	}	
 } else {
-	echo "Es ist ein Fehler aufgetreten.";
+	Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 }
-echo '</select></p>';
+echo '</select></th></tr></table>';
 
 ?>
