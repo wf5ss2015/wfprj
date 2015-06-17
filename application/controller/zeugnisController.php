@@ -6,6 +6,9 @@
 	sprint: 5
 	zeitaufwand: 2.5
 	user story (Nr. 440): Als Student möchte ich mir ein Zeugnis/Notenspiegel mit allen bisher erbrachten Leistungen erstellen lassen können.
+	
+	Quelle des TCPDF-Tool: http://www.tcpdf.org/ bzw. http://sourceforge.net/projects/tcpdf/files/
+	Verfasser TCPDF-Tool: Nicola Asuni
 */
 
 class zeugnisController extends Controller {

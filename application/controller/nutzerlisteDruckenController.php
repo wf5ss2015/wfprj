@@ -6,6 +6,9 @@
 	sprint: 04	
 	zeitaufwand: 5
 	user story (Nr. 280a): Als Admin möchte ich alle Nutzer in einer Liste speichern können. (20 Pkt.) 
+	
+	Quelle des TCPDF-Tool: http://www.tcpdf.org/ bzw. http://sourceforge.net/projects/tcpdf/files/
+	Verfasser TCPDF-Tool: Nicola Asuni
 */
 
 

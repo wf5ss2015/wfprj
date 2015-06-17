@@ -26,7 +26,7 @@
 						echo '</option>';
 					}
 				} else {
-					echo "Es ist ein Fehler aufgetretten.";
+					Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 				}
 				?>
 				</select>
@@ -44,7 +44,7 @@
 							echo '</option>';
 						}
 					} else {
-						echo "Es ist ein Fehler aufgetretten.";
+						Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 					}
 					?>
 				</select>

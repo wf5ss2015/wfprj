@@ -218,23 +218,18 @@ class NotenModel {
 		datum: 8.6.2015
 		Frägt alle nötigen Informationen für den Notenspiegel/Zeugnis ab
 	*/
-	 public function getSpecificStudents2($user_name)
-	  {
+	 public function getSpecificStudents2($user_name){
 		 $database = DatabaseFactory::getFactory()->getConnection();
-		 
 		  $sql = 'SELECT n.veranst_ID, v.veranst_bezeichnung, n.note
 				  FROM Notenliste n 
 				  JOIN veranstaltung v ON v.veranst_ID = n.veranst_ID 
 				  WHERE n.student_nutzer_name ="'.$user_name.'";';
-		 
 		  $query = $database->prepare($sql);
-		 
 		  try{
 			$query->execute();
 		 
-		  }catch (PDOException $fehler)
-		  {
-		  Session::add('response_negative', 'Es ist ein Fehler aufgetreten. '.$fehler);
+		  } catch (PDOException $fehler) {
+			Session::add('response_negative', 'Es ist ein Fehler aufgetreten. '.$fehler);
 		  }
 		  return $query->fetchAll();
 	  }

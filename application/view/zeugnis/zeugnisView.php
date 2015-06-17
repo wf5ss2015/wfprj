@@ -29,7 +29,7 @@
 				) );
 				
 			} else {
-				echo "Es ist ein Fehler aufgetretten. Die Notenliste konnte nicht erstellt werden.";
+				Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten. Die Notenliste konnte nicht erstellt werden.' );
 			}
 			echo '<input class="button" type="button" value="Zurück" onClick="history.back();">';
 			?>

@@ -65,7 +65,7 @@ if ($this->user_list) {
 	 * </table>
 	 */
 } else {
-	echo "Es ist ein Fehler aufgetretten. Die Nutzerliste konnte nicht erstellt werden.";
+	Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten. Die Nutzerliste konnte nicht erstellt werden.' );
 }
 ?>
    
