@@ -39,9 +39,7 @@ class menueView{
 		// Nicht angemeldet
 		array (
 			array(
-			"Home" => "index/index", ),
-			array(
-			"Login" => "login/index")
+			"Home" => "index/index", )
 		),
 		// Student
 		array (
@@ -65,10 +63,8 @@ class menueView{
 			array(
 			"Information" => "#",
 			"Studienganginformationen anzeigen" => "information/information",
-			"Notenspiegel anzeigen" => "zeugnis/zeugnis"),
+			"Notenspiegel anzeigen" => "zeugnis/zeugnis")
 			//Ende Erweiterung Klamser Sprint 5
-			array(
-			"Logout" => "login/logout")
 		),
 		// Dozent
 		array (
@@ -85,9 +81,7 @@ class menueView{
 			"nach Fachsemester" => "stundenplan/erzeugeFormular",
 			"individuell" => "stundenplan/stundenplan_individuell"),
 			array(
-			"Teilnehmerliste" => "Dozent/auswahlVorlesung"),
-			array(
-			"Logout" => "login/logout")
+			"Teilnehmerliste" => "Dozent/auswahlVorlesung")
 		),
 		// Mitarbeiter
 		array (
@@ -116,9 +110,7 @@ class menueView{
 			"Rechte" => "Employee/selectUser"),
 			array(
 			"Studenten" => "#",
-			"Notenliste bearbeiten" => "Employee/startNotenListe"),
-			array(
-			"Logout" => "login/logout")
+			"Notenliste bearbeiten" => "Employee/startNotenListe")
 		),
 		// Tutor
 		array (
@@ -127,9 +119,7 @@ class menueView{
 			array(
 			"Mein Profil" => "#",
 			"Bearbeiten" => "Dozent/meinProfil"
-			),
-			array(
-			"Logout" => "login/logout")
+			)
 		));
 
 		if (Session::get('user_role')==0){
