@@ -44,9 +44,7 @@
 						$link 
 				) 
 		) );
-	} else {
-		?>
-		kein array übergeben
+	} else {?>
 	<?php } ?>				
 </article>
 

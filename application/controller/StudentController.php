@@ -60,7 +60,7 @@ class StudentController extends Controller {
 	 */
 	public function saveEnroll() {
 		$model = new UserModel();
-		$model->saveClass ( Request::post ( 'id' ), Session::get ( 'user_name' ) );
+		$model->saveClass ( Request::post ( 'id' ), Session::get ( 'user_name' ), Request::post('veranst_bezeichnung') );
 		Redirect::to ( 'student/enrollClass' );
 	}
 	
@@ -98,7 +98,7 @@ class StudentController extends Controller {
 	 */
 	public function saveDelist() {
 		$model = new UserModel();
-		$model->delistClass ( Request::post ( 'id' ), Session::get ( 'user_name' ) );
+		$model->delistClass ( Request::post ( 'id' ), Session::get ( 'user_name' ), Request::post('veranst_bezeichnung') );
 		Redirect::to ( 'student/delistClass' );
 	}
 }

@@ -9,6 +9,8 @@
 	content="Das wird die zukünftige lehrveranstaltunsseite">
 <link rel="stylesheet"
 	href="<?php echo Config::get('URL'); ?>public/css/styles.css">
+	
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -25,8 +27,6 @@ $(document).ready(function(){
 <body>
 <div class="wrapper"></div>
 	<header>
-
-
 	<nav id="login">
 	<ul id="login" >
     <?php if(!Session::userIsLoggedIn()){?>
@@ -49,15 +49,12 @@ $(document).ready(function(){
 	<?php }else{ ?>
 	<li id="login">
       <a id="login-trigger" href="index.php?url=login/logout">
-		Logout (Eingeloggt: <?php echo(Session::get('user_name'))?> )
+		Logout (Angemeldet: <?php echo(Session::get('user_name'))?> )
       </a>                   
     </li>
 	<?php }?>
   </ul>
   </nav>
-
-
-
 </header>
 
 	

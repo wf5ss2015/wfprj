@@ -117,12 +117,12 @@ class UserModel {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		$sql = "SELECT v.veranst_ID, veranst_bezeichnung, credits, SWS 
-				FROM Nutzer n  
-				JOIN nutzer_beteiligtan_Veranstaltung ubav 
-				ON n.nutzer_name = ubav.nutzer_name 
+				FROM Student stud  
+				JOIN student_AngemeldetAn_Veranstaltung ubav 
+				ON stud.nutzer_name = ubav.student_nutzer_name 
 				JOIN Veranstaltung v 
 				ON ubav.veranst_ID = v.veranst_ID
-				WHERE n.nutzer_name = :user_name;";
+				WHERE stud.nutzer_name = :user_name";
 		$query = $database->prepare ( $sql );
 		
 		$query->execute ( array (
@@ -146,14 +146,13 @@ class UserModel {
 	public function getAllClass($user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
-		$sql = "SELECT v.veranst_ID, veranst_bezeichnung, credits, SWS 
+		$sql = "SELECT v.veranst_ID, veranst_bezeichnung, credits, SWS
 				FROM Veranstaltung v
 				JOIN Studiengang_hat_Veranstaltung shv
-				ON v.veranst_ID = shv.veranst_ID,
-				(SELECT inhalt 
-				FROM  Wert 
-				WHERE eigenschaft_ID='10' AND nutzer_name = :user_name)inline
-				WHERE stg_ID = inline.inhalt;";
+				ON v.veranst_ID = shv.veranst_ID
+                JOIN student stud
+                ON stud.nutzer_name = :user_name 
+				where shv.stg_ID = stud.stg_ID;";
 		$query = $database->prepare ( $sql );
 		
 		$query->execute ( array (
@@ -174,9 +173,9 @@ class UserModel {
 	 * @param $id string
 	 *        	id
 	 */
-	public function saveClass($id, $user_name) {
+	public function saveClass($id, $user_name, $veranst_bezeichnung) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
-		$sql = "INSERT INTO nutzer_beteiligtAn_Veranstaltung VALUES (:id, :user_name);";
+		$sql = "INSERT INTO Student_angemeldetAn_Veranstaltung VALUES (:id, :user_name);";
 		$query = $database->prepare ( $sql );
 		
 		try {
@@ -184,12 +183,12 @@ class UserModel {
 					':id' => $id,
 					':user_name' => $user_name 
 			) );
-			Session::add ( 'response_positive', 'Erfolgreich angemeldet.' );
+			Session::add ( 'response_positive', 'Erfolgreich in ' . $veranst_bezeichnung . ' angemeldet.' );
 		} catch ( PDOException $e ) {
 			if ($e->errorInfo [1] == 1062) {
-				Session::add ( 'response_warning', 'Sie sind bereits in diesem Kurs angemeldet.' );
+				Session::add ( 'response_warning', 'Sie sind bereits in ' . $veranst_bezeichnung . ' angemeldet.' );
 			} else {
-				Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
+				Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.'.$e );
 			}
 		}
 	}
@@ -205,18 +204,18 @@ class UserModel {
 	 *        	id
 	 *        	
 	 */
-	public function delistClass($id, $user_name) {
+	public function delistClass($id, $user_name, $veranst_bezeichnung) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
-		$sql = "DELETE FROM nutzer_beteiligtAn_Veranstaltung WHERE veranst_ID=:id and nutzer_name=:user_name;";
+		$sql = "DELETE FROM student_AngemeldetAn_Veranstaltung WHERE veranst_ID=:id and student_nutzer_name=:user_name;";
 		$query = $database->prepare ( $sql );
-		
+		echo $veranst_bezeichnung;
 		try {
 			$query->execute ( array (
 					':id' => $id,
 					':user_name' => $user_name 
 			) );
-			Session::add ( 'response_positive', 'Erfolgreich abgemeldet.' );
+			Session::add ( 'response_positive', 'Erfolgreich von ' . $veranst_bezeichnung . ' abgemeldet.' );
 		} catch ( PDOException $e ) {
 			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' . $e );
 		}

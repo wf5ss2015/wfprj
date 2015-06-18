@@ -13,14 +13,16 @@
 ?>
 <article>
 	<h1>Anmeldung bestätigen</h1>
-	<p>(Angemeldet:"<?php echo Session::get('user_name')?>")</p>
 	<p>Möchten Sie sich wirklich zu <?php echo $this->veranst_bezeichnung?> anmelden?</p>
 
 	<table>
 	<td>
 	<form method="post" action="index.php?url=student/saveEnroll">
 		<input type="hidden" name="id"
-			value="<?php echo htmlentities($this->id); ?>" /> <input class="button"
+			value="<?php echo htmlentities($this->id); ?>" /> 
+		<input type="hidden" name="veranst_bezeichnung"
+			value="<?php echo htmlentities($this->veranst_bezeichnung); ?>" />  	
+		<input class="button"
 			type="submit" value='ja' />
 	</form>
 	</td>
