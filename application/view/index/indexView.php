@@ -11,37 +11,8 @@
  */
 ?>
 <article>
-	<h1>Start</h1>
+	<h1>Startseite</h1>
 	
-	<p>Hier sehen Sie alle Nutzer und können Sich mit diesen Testweise (Entwicklung) anmelden.</p>
-	<?php
-if ($this->userList) {
-	$table = new Table ();
-	$alias = array (
-			"0" => "Nutzer",
-			"1" => "Rolle",
-	);
-	$alias = ( object ) $alias;
 	
-	$link = array (
-			"Login" => "index.php?url=index/Login" 
-	);
-	$link = ( object ) $link;
-	
-
-	$table->table ( array (
-			'table' => $this->userList,
-			'alias' => array (
-					$alias 
-			),
-			'link' => array (
-					$link 
-			),
-
-	) );
-} else {
-	?>
-	kein array übergeben
-<?php } ?>				
 </article>
 

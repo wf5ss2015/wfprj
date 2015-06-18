@@ -166,6 +166,6 @@ class LoginController extends Controller {
 	public function logout() {
 		$model = new LoginModel();
 		$model->logout ();
-		Redirect::to ( 'login/index' );
+		Redirect::to ( 'index/index' );
 	}
 }

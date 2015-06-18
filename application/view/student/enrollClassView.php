@@ -29,7 +29,7 @@ if ($this->listClass) {
 			"1" => "Veranstaltung",
 			"2" => "Credits",
 			"3" => "SWS",
-			"4" => "Abmelden" 
+			"4" => "Anmelden" 
 	);
 	$alias = ( object ) $alias;
 	

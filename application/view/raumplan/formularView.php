@@ -12,7 +12,6 @@
 */
 ?>
 						
-<?php $this->renderResponse(); ?>
 
 <article>
 

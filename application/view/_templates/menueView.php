@@ -47,7 +47,8 @@ class menueView{
 			"Home" => "index/index"),
 			array(
 			"Mein Profil" => "#",
-			"Bearbeiten" => "Dozent/meinProfil"
+			"Bearbeiten" => "Dozent/meinProfil",
+			"Passwort ändern" => "#",
 			),
 			array(
 			"Raumplan" => "raumplan/erzeugeFormular"),
@@ -73,6 +74,7 @@ class menueView{
 			array(
 			"Mein Profil" => "#",
 			"Bearbeiten" => "Dozent/meinProfil",
+			"Passwort ändern" => "#",
 			"Email" => "Dozent/emailDozent"),
 			array(
 			"Raumplan" => "raumplan/erzeugeFormular"),
@@ -106,8 +108,14 @@ class menueView{
 			"Raumplan" => "raumplan/erzeugeFormular"),
 			array(
 			"Nutzer" => "#",
-			"Nutzerliste drucken" => "nutzerlistedrucken/nutzerlistedrucken",
-			"Rechte" => "Employee/selectUser"),
+			"Anlegen - Student" => "#",
+			"Anlegen - Mitarbeiter" => "#",
+			"Anlegen - Dozent" => "#",
+			"Passwort Verwaltung" => "#",
+			"Nutzer bearbeiten" => "#",
+			"Nutzer löschen" => "#",
+			"Nutzerliste" => "nutzerlistedrucken/nutzerlistedrucken",
+			"Rechte ändern" => "Employee/selectUser"),
 			array(
 			"Studenten" => "#",
 			"Notenliste bearbeiten" => "Employee/startNotenListe")
