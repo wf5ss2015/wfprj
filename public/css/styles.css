@@ -123,9 +123,17 @@ h2,  h3{
 
 /*login*/
 nav  ul #login{  
+margin-right:10px;
+margin-left:10px;
+float: right;
+width:auto;
 }
 
 nav  li #login{
+margin-right:10px;
+margin-left:10px;
+float: right;
+width:auto;
 }
 
 nav #login {
