@@ -1,4 +1,12 @@
 <?php
+ /* ===============================================
+ * Sprint: 6
+ * @author: Damian Wysocki
+ * Datum: 12.06.2015
+ * User Story (Nr.: 550) Als Mitarbeiter möchte ich div. Nutzer anlegen können (8).
+ * Zeit insgesamt: 10
+ * ===============================================*/
+
 /*
  * ===============================================
  * Sprint: 4
@@ -383,4 +391,163 @@ class UserModel {
 		}
 	}
 	/* ENDE Änderungen Klamser */
+	
+	/**-----------------------------------------------------------------------------------------
+	* START SPRINT 06
+	* @author: Damian Wysocki
+	* User Story (Nr.: 550)  Als Mitarbeiter möchte ich div. Nutzer anlegen können 
+	* Task: 550/01  Beschreibung: Maske zum Anlegen eines Studenten
+	* Zeitaufwand (in Stunden): 2
+	* START SPRINT 06	
+	*/
+	    
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *         Letzte Matrikelnummer herausfinden
+	 **/     
+	public function getMatrikel() {
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+		
+		$sql = "SELECT MAX(matrikelnummer) as matrikelnummer FROM student";
+		$query = $database->prepare ( $sql );
+		try{
+			$query->execute ();
+			//print_r($query->fetch());
+			return $query->fetch();
+		} catch(PDOException $e){
+			Session::add ( 'response_negative', 'Maktrikelnummer kann nicht ausgelesen werden.', $e );
+		}
+	}
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *         Alle Studiengaenge aus Datenbank auslesen
+	 **/  	
+	public function getStudiengaenge() {
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+		
+		$sql = "SELECT stg_ID, stg_bezeichnung FROM studiengang";
+		$query = $database->prepare ( $sql );
+		try{
+			$query->execute ();
+			return $query->fetchAll();
+		} catch(PDOException $e){
+			Session::add ( 'response_negative', 'Studiengänge können nicht angezeigt werden.', $e );
+		}
+	}	 
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *       Nutzerkonto für Studenten in Datenbank anlegen
+	 *			
+	 **/  
+	public function saveStudentUsername($nutzer, $vorname, $nachname, $passwort,
+											$telefonnummer, $geschlecht) {
+		 
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+				
+		$sql = "INSERT INTO nutzer(nutzer_name, vorname, nachname, rolle_ID, 
+					passwortHash, telefonnummer, geschlecht)
+				SELECT CONCAT('".$nutzer."', CASE WHEN COUNT(*) = 0 THEN '' ELSE COUNT(*) END), 
+					'".$vorname."', '".$nachname."', 1, '".$passwort."', '".$telefonnummer."', '".$geschlecht."'
+				FROM nutzer WHERE nutzer_name LIKE '".$nutzer."%';";
+			
+		$query = $database->prepare ( $sql );
+		
+		try {
+			$query->execute ();
+			//Session::add ( 'response_positive', 'Rechte erfolgreich für '.$nutzer_name.' geändert.' );
+		} catch ( PDOException $e ) {
+			Session::add ( 'response_negative', 'Nutzerkonto konnte nicht angelegt werden.' );
+		}
+	}	 
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 * 			Adressdaten für das dazugehörige Nutzerkonto speichern
+	 *			
+	 **/  
+	public function saveAddress($nutzer, $strasse, $hausnummer, $stadt,
+											$land, $plz) {
+		 
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+				
+		$sql = "INSERT INTO adresse(nutzer_name, straßenname, hausnummer, stadt, 
+					land, plz)
+				VALUES('".$nutzer."', '".$strasse."', '".$hausnummer."', '".$stadt."', '".$land."', '".$plz."' );";
+			
+		$query = $database->prepare ( $sql );
+		//print_r($query);
+		try {
+			$query->execute ();
+			//Session::add ( 'response_positive', 'Rechte erfolgreich für '.$nutzer_name.' geändert.' );
+		} catch ( PDOException $e ) {
+			Session::add ( 'response_negative', 'Adressdaten konnten nicht angelegt werden.' );
+		}
+	}	 
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 * 			Email für das dazugehörige Nutzerkonto speichern
+	 *			
+	 **/  
+	public function saveEmail($nutzer, $email) {
+		 
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+				
+		$sql = "INSERT INTO email(email_name, nutzer_name)
+				VALUES('".$email."', '".$nutzer."');";
+			
+		$query = $database->prepare ( $sql );
+		//print_r($query);
+		try {
+			$query->execute ();
+			//Session::add ( 'response_positive', 'Rechte erfolgreich für '.$nutzer_name.' geändert.' );
+		} catch ( PDOException $e ) {
+			Session::add ( 'response_negative', 'Email konnte nicht angelegt werden.' );
+		}
+	}	 
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 * 			Studentendaten für das dazugehörige Nutzerkonto speichern
+	 *			
+	 **/  
+	public function saveStudentData($nutzer, $stid, $matrikel, $fachs, $studs) {
+		 
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+				
+		$sql = "INSERT INTO student(nutzer_name, stg_ID, matrikelnummer, fachsemester, studiensemester)
+				VALUES('".$nutzer."', '".$stid."', '".$matrikel."', '".$fachs."', '".$studs."');";
+			
+		$query = $database->prepare ( $sql );
+		//print_r($query);
+		try {
+			$query->execute ();
+			Session::add ( 'response_positive', 'Nutzerkonto für <b>"'.$nutzer.'"</b> erfolgreich angelegt.' );
+		} catch ( PDOException $e ) {
+			Session::add ( 'response_negative', 'Email konnte nicht angelegt werden.' );
+		}
+	}	 
+		 
+		 
+		 /** ENDE SPRINT 06
+		* @author: Damian Wysocki
+		* User Story (Nr.: 550)  Als Mitarbeiter möchte ich div. Nutzer anlegen können 
+		* Task: 550/01  Beschreibung: Maske zum Anlegen eines Studenten
+		* Zeitaufwand (in Stunden): 2
+		* ENDE SPRINT 06
+	**-----------------------------------------------------------------------------------------*/	
 }
