@@ -1,4 +1,23 @@
-<?php
+<?php 
+/**
+ * SPRINT 05
+ *
+ * @author : Roland Schmid
+ * Datum: 	09.6.2015
+ * User­ Story: Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern. (erneut)
+ * Task: 	Bei Veranstaltung anlegen und bei bearbeiten im Punkt "Ausstattung eintragen" Nullen für leeres Feld eintragen.
+ * Nr:		370a
+ * Points:	5
+ * Zeit: 	0.75
+ * 
+ * 
+ * User­ Story: Als Mitarbeiter möchte ich eine mit Fakultät Studiengang Veranstaltung codierte Veranstaltungs-ID haben.
+ * Task: 	Methode schreiben, die die Veranstaltungs-ID nach Muster generiert.
+ * Nr:		540
+ * Points:	5
+ * Zeit: 	4
+ *
+ */
 /*
  * ===============================================
  * Sprint: 4
@@ -79,15 +98,150 @@ class VeranstaltungModel {
 	 *        
 	 */
 	
-	// Methode trägt benötigte Ausstattung im Array $ausstattung für eine Veranstaltung $vID ein 
+	
+	
+	
+	public function dbgPrint($val , $name) {		
+		print "<br>";
+		print $name;
+		print ": " . $val;
+		print "<br>";		
+	}
+
+	
+	
+	/* sprint 5 Anfang
+	 *
+	 */
+	
+	
+	/* Erstellt eine mit Fakultät-Studiengang-Veranstaltung codierte Veranstaltungs-ID.
+	 * FFSSVVVV, VVVV in Zehner-Schritten (später sollen noch Tutorien, 
+	 * 			 Übungsgruppen etc angehängt werden können in Einer-Schritten)
+	 * F = fakultät
+	 * S = studiengang
+	 * V = veranstaltung (dynamisch)
+	 */
+	public function erstelleVID($stg_ID) {
+		
+		$vID = "0";		
+	
+		if($stg_ID > 0) {
+
+			//Query-String
+			$q = "select fak_ID from Studiengang where stg_ID = $stg_ID;";
+			
+			//Query ausführen
+			$result = $this->abfrage($q);
+
+			
+			//Enthält die Fakultäts-ID			
+			$fak_ID = $result[0]->fak_ID;
+
+				
+			//vID soll aussehen: FFSSVVVV. Dafür ist es u.U. nötig, der Fakultäts-ID eine führende Null zu geben
+			if($fak_ID < 10) {
+				$fak_ID = str_pad($fak_ID, 2, '0', STR_PAD_LEFT);	
+			}
+			
+
+			
+			//vID soll aussehen: FFSSVVVV. Dafür ist es u.U. nötig, der Fakultäts-ID eine führende Null zu geben
+			if($stg_ID < 10) {
+				$stg_ID = str_pad($stg_ID, 2, '0', STR_PAD_LEFT);
+			}
+
+			
+			
+			//erste Hälfte der erstellten $vID zusammensetzen
+			$vID = $fak_ID . $stg_ID;			
+$this->dbgPrint($vID, "vID, Ende");			
+		} else {
+			//wenn die Veranstaltung keinem Studiengang zugeordnet werden soll, nimm 0000 als führende Ziffern	
+			$vID = "0000";
+		}
+
+$this->dbgPrint($vID, "vID");		
+
+		//Query-String
+		//gesucht wird die größte vID, die bereits der Fakultät/dem Studiengang zugeordnet ist
+		//(Anm.: QUOTING wichtig: '_expr_', '%expr%')
+		$q = "select max(veranst_ID) as vID from Veranstaltung where veranst_ID like '" . ($vID . "____") . "';";
+
+$this->dbgPrint($q, "q");
+
+		//Query ausführen
+		$result = $this->abfrage($q);
+		
+print_r($result);
+
+
+		//sollte noch keine Veranstaltungs-ID für den Studiengang vorhanden sein, nimm 0000
+		$max_vID = "0";
+		if(empty($result[0]->vID)) {
+			$max_vID = "0000";
+$this->dbgPrint($max_vID, "max_vID, in true");
+		} else {
+			$max_vID = $result[0]->vID;
+			//die ersten vier Ziffern (FFSS) entfernen
+			$max_vID = substr($max_vID, -4);
+$this->dbgPrint($max_vID, "max_vID, in false");
+		}
+		
+$this->dbgPrint($max_vID, "max_vID, außerhalb");
+		
+
+		//entferne führende Nullen
+		$count = 0;
+//alt:		
+// 		for($i=1; $i<3; $i++) {
+// 			if($max_vID[$i] == "0") {
+// 				$count++;
+// 			}
+// 		}
+		//zählt nur so lange, wie Nullen links stehen; bei erster Ziffer ungleich 0 wird abgebrochen.
+		for($i=1; $i<3; $i++) {
+			if($max_vID[$i] != "0") {
+				$i=3;
+			} else {
+				$count++;
+			}
+		}
+		
+		//liefert Substring ab $count (exklusiv)
+		$max_vID = substr($max_vID, $count);		
+$this->dbgPrint($max_vID, "max_vID, gekürzt");
+// 		// größte vorhandene Veranstaltungs-ID auf nach unten 10 runden und 10 addieren
+		$max_vID = $max_vID - ($max_vID % 10) + 10;
+$this->dbgPrint($max_vID, "max_vID, hochgezählt");		
+
+// 		// füllt den String VVVV links mit Nullen auf
+		$max_vID = str_pad($max_vID, 4, '0', STR_PAD_LEFT);
+$this->dbgPrint($max_vID, "max_vID, mit padding");
+// 		//setze die Veranstaltungs-ID zusammen
+		$vID = $vID . $max_vID;
+$this->dbgPrint($vID, "vID, final");		
+		
+		return $vID;	
+	}
+	
+	
+	/* sprint 5 Ende
+	 */
+	
+	
+	
+// Methode trägt benötigte Ausstattung im Array $ausstattung für eine Veranstaltung $vID ein 
 	public function ausstattungEintragen($vID, $ausstattung) {
 		
 		// POST-Inhalt auslesen
 		$insertValues = "";
 		$veranstaltungAusstattung = $ausstattung;
-		
+
+
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
+
 
 		// Plausibilität prüfen
 		for($i = 0; $i < count ( $veranstaltungAusstattung ); $i ++) {
@@ -103,12 +257,30 @@ class VeranstaltungModel {
 									. " (veranst_ID, ausstattung_ID, anzahl)" 
 									. " VALUES (" . $insertValues . ");";
 					
-					if (! $database->insert ( $insertString )) {
-						// error ausgeben
-					}
+					
 				}
+				/* sprint 5 Anfang
+				 * Roland Schmid. Bei Veranstaltung anlegen und bei bearbeiten im Punkt "Ausstattung eintragen" Nullen für leeres Feld eintragen.
+				 */
+			} else {
+				//Null eintragen, wenn im Formular nichts eingetragen worden ist.
+				$insertValues = $vID . ", " . ($i + 1) . ", " . "0";
+					
+				// insert für mysql vorbereiten
+				$insertString = "INSERT INTO Veranstaltung_erfordert_Ausstattung"
+						. " (veranst_ID, ausstattung_ID, anzahl)"
+						. " VALUES (" . $insertValues . ");";
+				
+			}
+			
+			//insert ausführen
+			if (! $database->insert ( $insertString )) {
+				// error ausgeben
 			}
 		}
+	/* sprint 5 Ende
+	 */
+	 
 	}
 
 	/* sprint 4 Anfang
@@ -192,7 +364,7 @@ class VeranstaltungModel {
 		$fachsemester = Request::post('veranstaltung_fachsemester');
 		/* sprint 4 Ende
 		 */
-		
+print "<br>vID:: " . $this->erstelleVID($stg_ID) . "<br>";		
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
 		
