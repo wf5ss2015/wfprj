@@ -94,14 +94,15 @@ class stundenplanController extends Controller
 		$veranstaltungstermine = $spModel->getVeranstaltungstermine_individuell(Session::get('user_name'), Session::get ( 'user_role' ));
 		$wochentage = $rzModel->getWochentage();
 		$stundenZeiten = $rzModel->getStundenzeiten();
+		$name = $spModel->getName(); //Name des Nutzers (Student oder Dozent)
 			
 		/* 	rendert die Seiten ... und gibt die geholten Daten mit 4 Subarrays an den View weiter,
 			um dort den Stundenplan als Tabelle aufzeichnen zu können
 		*/
 		$this->View->render('stundenplan/stundenplanIndividuell', 
-													array('nutzerName' => Session::get('user_name'),
-														  'veranstaltungstermine' => $veranstaltungstermine,
+													array('veranstaltungstermine' => $veranstaltungstermine,
 														  'wochentage' => $wochentage,
-														  'stundenzeiten' => $stundenZeiten));
+														  'stundenzeiten' => $stundenZeiten,
+														  'name' => $name));
 	}
 }

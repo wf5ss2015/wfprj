@@ -11,15 +11,23 @@
 */
 ?>	
 
-<article>
 
 <?php
 
+	if(! property_exists($this, 'veranst_bezeichnung')) 
+	{
+		echo "<article>";
+		echo "<h1>Veranstaltungstermine von Fachsemester $this->fachsemester, $this->studiengang:</h1>";
+	}
+	else
+	{
+		echo "	<br />
+				<br /> ";
+	}
+
 	//Tabelle, welche den Stundenplan darstellt:
-	
-	echo 	"<h1>Stundenplan von Fachsemester $this->fachsemester, $this->studiengang:</h1>
 			
-			<table class='stundenplan' border='1'>
+	echo 	"<table class='stundenplan' border='1'>
 				<tr class='head'>
 					<th style='width: 110px;'>Stundenzeit</th>";
 
@@ -28,7 +36,7 @@
 	{
 		$tag_bezeichnung = $tag['tag_bezeichnung'];
 		
-		echo "<th style='width: 113px;'>$tag_bezeichnung</th>";
+		echo "<th style='width: 130px;'>$tag_bezeichnung</th>";
 	}
 	
 	echo "</tr>";
@@ -66,16 +74,37 @@
 				if($veranstTermin['stdZeit_ID'] == $stunde && $veranstTermin['tag_ID'] == $tag)
 				{
 					//Veranstaltungstermin in die Zelle eintragen:
+					$veranst_ID = $veranstTermin['veranst_ID'];
+					$veranst_bezeichnung = $veranstTermin['veranst_bezeichnung'];
 					$veranst_kurztext = $veranstTermin['veranst_kurztext'];
-					$raum_bezeichnung = $veranstTermin['raum_bezeichnung'];
 					$dozent = $veranstTermin['nachname'];
+					$tag_ID = $veranstTermin['tag_ID'];
+					$stdZeit_ID = $veranstTermin['stdZeit_ID'];
+					$raum_bezeichnung = $veranstTermin['raum_bezeichnung'];
 					
 					echo "<td class='content' style='padding-left: 13px;'> 
-									</br>
-									<strong>$veranst_kurztext</strong> <br />
-									&#8227; $raum_bezeichnung <br />";
-									if($dozent)
-										echo "&#8227; $dozent"; 
+							</br>
+							<strong>$veranst_kurztext</strong> <br />
+							&#8227; $raum_bezeichnung <br />";
+							if($dozent)
+								echo "&#8227; $dozent"; 
+					
+					//Formular mit Button zum Löschen und Bearbeiten platzieren (mit hidden values):
+					echo "<form action='index.php?url=veranstaltungsterminUebersicht/bearbeiteVeranstaltungstermin' method='post'>";
+						
+						//hidden values:
+						echo "<input type='hidden' name='veranst_ID' value='$veranst_ID'>";
+						echo "<input type='hidden' name='veranst_bezeichnung' value='$veranst_bezeichnung'>";
+						echo "<input type='hidden' name='tag_ID' value='$tag_ID'>";
+						echo "<input type='hidden' name='tag_bezeichnung' value='$tag_bezeichnung'>";
+						echo "<input type='hidden' name='stdZeit_ID' value='$stdZeit_ID'>";
+						echo "<input type='hidden' name='raum_bezeichnung' value='$raum_bezeichnung'>";
+							
+						echo "<input class='btnLink' type='submit' name='send' value='".utf8_encode("ändern")."'> / ";
+						echo "<input class='btnLink' type='submit' name='send' value='".utf8_encode("löschen")."'>";
+						
+					echo "</form>";
+					echo "</td>";
 					
 					//nächster Veranstaltungstermin holen:
 					if($veranstTermin = $this->veranstaltungstermine->fetch_assoc());
@@ -96,9 +125,9 @@
 	
 	<br/>
 	
-	<div style='margin-left: 20px;'>
+	<div style="margin-left:20px;">
 	<form>
-		<input class="button" type="button" value=<?php echo utf8_encode("zurück")?> onclick="window.location.href='index.php?url=stundenplan/erzeugeFormular'" />
+		<input class="button" type="button" value=<?php echo utf8_encode("zurück")?> onclick="window.location.href='index.php?url=veranstaltungsterminUebersicht/erzeugeFormular'" />
 	</form>
 	</div>
 	

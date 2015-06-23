@@ -22,21 +22,19 @@
 	
 	echo 	"<h1>Raumbelegung $this->raum:</h1>
 			
-			<table border='1' width='80%' style='text-align: center'>
-			<colgroup width='240' span='8'>
-				<tr>
-					<th style='background:yellow'>Stundenzeit</th>";
+			<table class='stundenplan' border='1'>
+				<tr class='head'>
+					<th style='width: 110px;'>Stundenzeit</th>";
 
 	//Wochentage im Tabellenkopf eintragen:
 	foreach ($this->wochentage as $tag) 
 	{
 		$tag_bezeichnung = $tag['tag_bezeichnung'];
 		
-		echo "<th style='background:#4C66FF'>$tag_bezeichnung</th>";
+		echo "<th style='width: 130px;'>$tag_bezeichnung</th>";
 	}
 	
 	echo "</tr>";
-	echo "</colgroup>";
 	
 	
 	//erster Veranstaltungstermin holen:
@@ -47,14 +45,14 @@
 		//neue Zeile:
 		echo "<tr>";
 		
-		for ($tag = 0; $tag <= 7; $tag++) 
+		for ($tag = 0; $tag <= 6; $tag++) 
 		{
 			if($tag == 0 && ($stundenzeit = $this->stundenzeiten->fetch_assoc()))
 			{
 				//Stundenzeit wird in der ersten Spalte der Zeile eingetragen:
 				$zeit_von = $stundenzeit['stdZeit_von'];
 				$zeit_bis = $stundenzeit['stdZeit_bis'];
-				echo "<td style='background:yellow'><p> $zeit_von - $zeit_bis </p></td>";
+				echo "<td class='content' style='text-align:center;'><p> $zeit_von - $zeit_bis </p></td>";
 			}
 			else
 			{
@@ -71,8 +69,17 @@
 				if($veranstTermin['stdZeit_ID'] == $stunde && $veranstTermin['tag_ID'] == $tag)
 				{
 					//Veranstaltungstermin in die Zelle eintragen:
-					$veranst_bezeichnung = $veranstTermin['veranst_bezeichnung'];
-					echo "<td><p> $veranst_bezeichnung </p></td>";
+					$veranst_kurztext = $veranstTermin['veranst_kurztext'];
+					$studiengang = $veranstTermin['stg_kurztext'];
+					$semester = $veranstTermin['pflicht_im_Semester'];
+					$dozent = $veranstTermin['nachname'];
+					
+					echo "<td class='content' style='padding-left: 13px;'> 
+							</br>
+							<strong>$veranst_kurztext</strong> <br />
+							&#8227; $studiengang$semester <br />";
+							if($dozent)
+								echo "&#8227; $dozent";  
 					
 					//nächster Veranstaltungstermin holen:
 					if($veranstTermin = $this->veranstaltungstermine->fetch_assoc());
@@ -93,7 +100,7 @@
 	
 	<br/>
 	
-	<div style='text-align: center'>
+	<div style='margin-left: 20px;'>
 	<form>
 		<input class="button" type="button" value=<?php echo utf8_encode("zurück")?> onclick="window.location.href='index.php?url=raumplan/erzeugeFormular'" />
 	</form>

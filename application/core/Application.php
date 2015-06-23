@@ -64,7 +64,7 @@ require '../application/model/VeranstaltungModel.php';
 require '../application/model/raumZuweisenModel.php';
 require '../application/model/raumplanModel.php';
 require '../application/model/stundenplanModel.php';
-require '../application/model/veranstaltungsterminLoeschenModel.php';
+require '../application/model/veranstaltungsterminBearbeitenModel.php';
 
 class Application {
 	/**
