@@ -82,7 +82,7 @@
 	
 	</td></tr>
 	
-	<tr><td>Studiengang: 
+	<tr><td><br><br>Studiengang: <br>
 	
 	
             <select name="studiengang" style="; width: 20em">
@@ -112,53 +112,10 @@
             </select> 
 	</td></tr>
 	
-		
-
-
-	
-	
 	<tr><td><input class="button" type="submit" value="weiter" /></td><td>&nbsp;</td></tr>		
     </table>
 </form>
 
-
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-    
-    
-		
-		<br>
-		<br>
-		<br>
-		Obige Veranstaltung als Wahlfach zu folgendem Studiengang hinzuf&uuml;gen:
-		<br>
-		<br>
-		
-		.... hier dann ein select ... mit Studiengängen. (evtl. intelligenter auswählen aus der DB)
-			
-			
-			
-<?php 
-
-
-// print_r($this->veranstaltung);
-// print_r($this->studiengaenge);
-
-print_r($veranstaltung);
-print_r($studgaenge);
-
-?>			
-			
 
 </article>
 

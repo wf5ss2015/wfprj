@@ -17,16 +17,10 @@
 
 <article>
 
-<h1>????</h1>
+<h1>Wahlfach: Veranstaltung erfolgreich eingetragen</h1>
 
-Veranstaltung erfolgreich als Wahlfach eingetragen
 
 <?php
-
-
-
-
-
 
 
 
@@ -86,6 +80,6 @@ Veranstaltung erfolgreich als Wahlfach eingetragen
 
 ?>
 
-
+<br><br><a href="index.php?url=veranstaltung/wahlfachVeranstaltungSelect">zur&uuml;ck</a>
 </article>
 
