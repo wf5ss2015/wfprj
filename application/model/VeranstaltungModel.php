@@ -155,40 +155,40 @@ class VeranstaltungModel {
 			
 			//erste Hälfte der erstellten $vID zusammensetzen
 			$vID = $fak_ID . $stg_ID;			
-// $this->dbgPrint($vID, "vID, Ende");			
+
 		} else {
 			//wenn die Veranstaltung keinem Studiengang zugeordnet werden soll, nimm 0000 als führende Ziffern	
 			$vID = "0000";
 		}
 
-// $this->dbgPrint($vID, "vID");		
+		
 
 		//Query-String
 		//gesucht wird die größte vID, die bereits der Fakultät/dem Studiengang zugeordnet ist
 		//(Anm.: QUOTING wichtig: '_expr_', '%expr%')
 		$q = "select max(veranst_ID) as vID from Veranstaltung where veranst_ID like '" . ($vID . "____") . "';";
 
-// $this->dbgPrint($q, "q");
+
 
 		//Query ausführen
 		$result = $this->abfrage($q);
 		
-// print_r($result);
+
 
 
 		//sollte noch keine Veranstaltungs-ID für den Studiengang vorhanden sein, nimm 0000
 		$max_vID = "0";
 		if(empty($result[0]->vID)) {
 			$max_vID = "0000";
-// $this->dbgPrint($max_vID, "max_vID, in true");
+
 		} else {
 			$max_vID = $result[0]->vID;
 			//die ersten vier Ziffern (FFSS) entfernen
 			$max_vID = substr($max_vID, -4);
-// $this->dbgPrint($max_vID, "max_vID, in false");
+
 		}
 		
-// $this->dbgPrint($max_vID, "max_vID, außerhalb");
+
 		
 
 		//entferne führende Nullen
@@ -210,17 +210,13 @@ class VeranstaltungModel {
 		
 		//liefert Substring ab $count (exklusiv)
 		$max_vID = substr($max_vID, $count);		
-// $this->dbgPrint($max_vID, "max_vID, gekürzt");
 // 		// größte vorhandene Veranstaltungs-ID auf nach unten 10 runden und 10 addieren
 		$max_vID = $max_vID - ($max_vID % 10) + 10;
-// $this->dbgPrint($max_vID, "max_vID, hochgezählt");		
 
 // 		// füllt den String VVVV links mit Nullen auf
 		$max_vID = str_pad($max_vID, 4, '0', STR_PAD_LEFT);
-// $this->dbgPrint($max_vID, "max_vID, mit padding");
 // 		//setze die Veranstaltungs-ID zusammen
 		$vID = $vID . $max_vID;
-// $this->dbgPrint($vID, "vID, final");		
 		
 		return $vID;	
 	}
