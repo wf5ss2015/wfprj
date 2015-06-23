@@ -52,9 +52,9 @@ class TCPDF_FILTERS {
 
 	/**
 	 * Define a list of available filter decoders.
-	 * @private static
+	 * @public static
 	 */
-	private static $available_filters = array('ASCIIHexDecode', 'ASCII85Decode', 'LZWDecode', 'FlateDecode', 'RunLengthDecode');
+	public static $available_filters = array('ASCIIHexDecode', 'ASCII85Decode', 'LZWDecode', 'FlateDecode', 'RunLengthDecode');
 
 // -----------------------------------------------------------------------------
 

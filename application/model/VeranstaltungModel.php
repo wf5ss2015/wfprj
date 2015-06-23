@@ -1,17 +1,4 @@
-<?php
-/**
- * SPRINT 06
- *
- * @author : Roland Schmid
- * Datum: 	23.6.2015
- * User­ Story: Als Mitarbeiter möcht ich einem Studiengang Wahlfächer zuordnen könnenn.
- * Task: 	Maske, um ein Fach einem Studiengang als Wahlfach zuordnen zu können. 
- * Nr:		630
- * Points:	8
- * Zeit:
- *
- */
-
+<?php 
 /**
  * SPRINT 05
  *
@@ -629,90 +616,9 @@ class VeranstaltungModel {
 		return $result;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/* sprint 6 Anfang
-	 * Task:
-	 */
-	/*
-	 * ruft alle Studiengänge aus der Datenbank ab, die dem Studiengang hinzugefügt werden können 
-	 * 
-	 */
-	public function getStudiengaengeWahlfach($vID) {
-	
-		// query-string
-		$q = "select stg_ID, stg_bezeichnung, stgTyp_kuerzel from Studiengang " 
-			 . "join Studiengangtyp on Studiengang.stgTyp_ID = Studiengangtyp.stgTyp_ID;";
-		
-		// erzeugt ein Resultset, benutzt dazu die Methode abfrage($q)
-		$result = $this->abfrage ( $q );
-		
-		return $result;
-	}
-	
-	
-	/*
-	 * liefert Informationen zu einem Studiengang
-	 * */
-	public function getStudiengang($stg_ID) {
-	
-		// query-string
-		$q = "select stg_ID, stg_bezeichnung, stgTyp_kuerzel from Studiengang "
-				. "join Studiengangtyp on Studiengang.stgTyp_ID = Studiengangtyp.stgTyp_ID where stg_ID = $stg_ID;";
-	
-		// erzeugt ein Resultset, benutzt dazu die Methode abfrage($q)
-		$result = $this->abfrage ( $q );
-	
-		return $result;
-	}
-	
-	
-	/*
-	 * trägt Wahlfach in Datenbank ein
-	 * */
-	public function setWahlfach($vID, $studiengang, $semester) {
-		
-		
-		// Datenbankverbindung
-		$database = new DatabaseFactoryMysql ();
-		
-		$insertString = "INSERT INTO Studiengang_hat_Wahlfach (stg_ID, veranst_ID, ab_Semester) "
-				        . " VALUES ($vID, $studiengang, $semester);";
-		
-		$database->insert ( $insertString );		
-	}
-	
 
 	
-	/* sprint 6 Ende */
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
-	
-	private function abfrage($q) {
+	public function abfrage($q) {
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
 		

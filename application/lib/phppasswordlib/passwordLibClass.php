@@ -47,7 +47,7 @@ class PhpPasswordLib{
      * 
      * @var INT
      */
-    private $algorithm = PASSWORD_BCRYPT;
+    public $algorithm = PASSWORD_BCRYPT;
     
     
     /**
@@ -55,7 +55,7 @@ class PhpPasswordLib{
      *
      * @var STRING
      */
-    private $algoName;
+    public $algoName;
     
     
     /**
@@ -262,7 +262,7 @@ class PhpPasswordLib{
      * @param int $rounds
      * @return STRING
      */
-    private function setBlowfishCost($rounds){
+    public function setBlowfishCost($rounds){
         if (!is_int($rounds) || $rounds < 4 || $rounds > 31){
             $rounds = $rounds = self::BLOWFISH_ROUNDS;
         }
@@ -279,7 +279,7 @@ class PhpPasswordLib{
      * @param INT $rounds
      * @return STRING
      */
-    private function setShaCost($rounds){
+    public function setShaCost($rounds){
         if (!is_int($rounds) || $rounds < 1000 || $rounds > 999999999){
             switch ($this->algorithm){
                 case PASSWORD_SHA256:

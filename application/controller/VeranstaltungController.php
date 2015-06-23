@@ -1,18 +1,5 @@
 <?php
 /**
- * SPRINT 06
- *
- * @author : Roland Schmid
- * Datum: 	23.6.2015
- * User­ Story: Als Mitarbeiter möcht ich einem Studiengang Wahlfächer zuordnen könnenn.
- * Task: 	Maske, um ein Fach einem Studiengang als Wahlfach zuordnen zu können. 
- * Nr:		630
- * Points:	8
- * Zeit:
- *
- */
-
-/**
  * SPRINT 04
  *
  * @author : Roland Schmid
@@ -174,7 +161,6 @@ class VeranstaltungController extends Controller {
 		
 	}
 	
-	
 	// holt alle Grunddaten der Veranstaltung aus der Datenbank und übergibt sie der view "bearbeiten"
 	public function bearbeiten() {
 		// neues Veranstaltungmodel anlegen
@@ -328,102 +314,9 @@ class VeranstaltungController extends Controller {
 		
 	}
 	
+	
+	
+	
+	
 	/* sprint 4 Ende */
-	
-	
-	
-	/* sprint 6 Anfang
-	 * Task:
-	 */
-	/*
-	 * ruft alle vorhandenen Veranstaltungen aus der Datenbank ab und übergibt sie
-	 * der view wahlfachVeranstaltungSelect, wo eine Veranstaltung zur Bearbeitung ausgewählt werden kann
-	 */
-	public function wahlfachVeranstaltungSelect() {
-	
-		// neues Veranstaltungmodel anlegen
-		$vModel = new VeranstaltungModel ();
-	
-		// holt alle angelegten Veranstaltungen aus der Datenbank und speichert sie in einem Array
-		$veranstaltungen = $vModel->getAlleVeranstaltungen();
-	
-		// übergibt die Veranstaltungen der View, in der die zu bearbeitende Veranstaltung
-		// ausgewählt werden kann
-		$this->View->render ( 'veranstaltung/wahlfachVeranstaltungSelect', array (
-				'veranstaltungen' => $veranstaltungen
-		) );
-	}
-		
-	
-	
-	
-	// zeigt alle Studiengänge an, zu der die Veranstaltung hinzugefügt werden kann
-	public function bearbeitenWahlfach() {
-		// neues Veranstaltungmodel anlegen
-		$vModel = new VeranstaltungModel ();
-	
-		//POST-Daten lesen
-		$vID = Request::post("veranst_ID");
-	
-		if(isset($vID)) {
-				
-			// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
-// 			$veranstaltung = $vModel->getVeranstaltung($vID);
-			$veranstaltung = $vModel->getGrunddaten($vID);
-			
-			//enthält alle Studiengänge, für die die Veranstaltung noch nicht hinzugefügt wurde
-			$studgaenge = $vModel->getStudiengaengeWahlfach($vID);
-			
-			$this->View->render('veranstaltung/wahlfachbearbeiten', 
-								array ('veranstaltung' => $veranstaltung,
-									   'studiengaenge' => $studgaenge					
-			) );
-	
-		}
-	}
-	
-	/*
-	 * trägt das Wahlfach ein in die Tabelle Studiengang_hat_Wahlfach
-	 * */	
-	public function wahlfachEintragen() {
-		print_r($_POST);
-		
-		
-		// neues Veranstaltungmodel anlegen
-		$vModel = new VeranstaltungModel ();
-	
-		//POST-Daten lesen
-		$vID = Request::post("veranst_ID");
-		$stg_ID = Request::post("studiengang");
-		$semester = Request::post("semester");
-
-	
-		if(isset($vID) && isset($stg_ID)) {
-	
-			$vModel->setWahlfach($vID, $stg_ID, $semester);
-			
-			// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
-			// 			$veranstaltung = $vModel->getVeranstaltung($vID);
-			$veranstaltung = $vModel->getGrunddaten($vID);
-				
-			//enthält alle Studiengänge, für die die Veranstaltung noch nicht hinzugefügt wurde
-			$studgang = $vModel->getStudiengang($stg_ID);
-				
-			$this->View->render('veranstaltung/wahlfacheingetragen',
-					array ('veranstaltung' => $veranstaltung,
-							'studiengang' => $studgang,
-							'semester' => $semester
-					) );
-	
-		}
-	}
-	
-		
-	
-	/* sprint 6 Ende */	
 }
-
-
-
-
-

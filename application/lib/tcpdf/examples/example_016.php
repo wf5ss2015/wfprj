@@ -65,7 +65,7 @@ $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 $pdf->SetProtection(array('print', 'copy'), '', null, 0, null);
 
 // Example with public-key
-// To open the document you need to install the private key (tcpdf.p12) on the Acrobat Reader. The password is: 1234
+// To open the document you need to install the public key (tcpdf.p12) on the Acrobat Reader. The password is: 1234
 //$pdf->SetProtection($permissions=array('print', 'copy'), $user_pass='', $owner_pass=null, $mode=1, $pubkeys=array(array('c' => 'file://../config/cert/tcpdf.crt', 'p' => array('print'))));
 
 // *********************************************************

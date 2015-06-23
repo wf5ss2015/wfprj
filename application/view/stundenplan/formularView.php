@@ -11,13 +11,14 @@
 */
 ?>				
 
+
 <article>
 
 <h1>Stundenplan nach Fachsemester anzeigen</h1>
 
-<form class="formular" action="index.php?url=stundenplan/stundenplan_fachsemester" method="post" style='width: 28em; margin: 20px; padding: 25px;'>
+<form action="index.php?url=stundenplan/stundenplan_fachsemester" method="post" style='background-color: #eeeeff; width: 28em; margin: 20px; padding: 25px; border: 1px solid silver;'>
 	
-	<h3 style='color: #00436A'>Studiengang und Fachsemester ausw&aumlhlen: </h3>
+	<h3 style='color: blue'>Studiengang und Fachsemester ausw&aumlhlen: </h3>
 	
 	<p>
 		<label for='studiengang' style='width:8em; display:block; float:left'> Studiengang: </label>
@@ -52,9 +53,7 @@
 		</select>
 	</p>
 
-	<div style="text-align:center;">
-		<input class="button" type="submit" name="send" value="zeige Stundenplan"/>
-	</div>
+	<input class="button" type="submit" name="send" value="zeige Stundenplan"/>
 	
 </form>
 

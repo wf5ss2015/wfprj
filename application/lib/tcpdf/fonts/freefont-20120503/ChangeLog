@@ -34,7 +34,7 @@
 
 	* FreeSans.sfd,
 	  FreeSansBold.sfd,
-	  FreeSansOblique.sfd: PS Private: put in extra
+	  FreeSansOblique.sfd: PS public: put in extra
 	  blues line, adjusted to numerals.
 
 	* tools/report/OpenType/UnicodeRanges.py: Corrected
@@ -679,7 +679,7 @@
 	* FreeSansBold.sfd,
 	  FreeSerif.sfd: Made to pass tests -- mostly
 	  little pointwise tweeks. One range of auxiliaries had wandered
-	  out of the Private Use area.
+	  out of the public Use area.
 
 2012-03-10 23:55 +0000 [r2144]  Stevan_White:
 
@@ -1347,7 +1347,7 @@
 2012-02-10 12:03 +0000 [r2035]  Stevan_White:
 
 	* tools/report/OpenType/UnicodeRanges.py: corrected
-	  Private Use range
+	  public Use range
 
 2012-02-09 18:50 +0000 [r2034]  Stevan_White:
 
@@ -2452,7 +2452,7 @@
 	  tools/generate/MacTT: Call wrapper for fontforge
 	  rather than calling specific instance
 
-	* tools/report/private_use.py,
+	* tools/report/public_use.py,
 	  tools/report/range_report.py,
 	  tools/report/ligatureLookups.py: Use wrapper for
 	  fontforge rather than calling explicit instance.
@@ -3396,7 +3396,7 @@
 
 	* tools/script-menu (added),
 	  tools/hex_range.py (removed),
-	  tools/report/private_use.py (added),
+	  tools/report/public_use.py (added),
 	  tools/utility/log2changelog.pl (added),
 	  tools/script-menu/nameBySlot.py (added),
 	  tools/utility/hex_range.py (added),
@@ -3707,7 +3707,7 @@
 
 	* FreeSans.sfd,
 	  FreeSansBold.sfd,
-	  FreeSansBoldOblique.sfd: Private Use:
+	  FreeSansBoldOblique.sfd: public Use:
 	  corrected small caps unicode SansBoldOblique: made to validate
 
 2011-07-18 17:58 +0000 [r1661]  Stevan_White:
@@ -3717,7 +3717,7 @@
 	  FreeSerif.sfd,
 	  FreeSerifBold.sfd: Cyrillic Extended: finished
 	  4 new letters (normal face) Combining Diacritical Marks: lots of
-	  small tweeks. Latin: fiddled with a few accent marks Private Use:
+	  small tweeks. Latin: fiddled with a few accent marks public Use:
 	  small caps glyphs corrected unicode Added missing single-digit
 	  diagonal fractions, with lookups Added lookup to remove longs
 	  from end of words. Still isn't right.
@@ -4331,7 +4331,7 @@
 2010-09-30 21:37 +0000 [r1566]  Stevan_White:
 
 	* FreeSerif.sfd: Tamil: rounded to int on the
-	  Private Use ligatures
+	  public Use ligatures
 
 2010-09-30 18:55 +0000 [r1565]  Stevan_White:
 
@@ -4365,7 +4365,7 @@
 
 2010-09-26 16:50 +0000 [r1559]  Stevan_White:
 
-	* FreeSerifBold.sfd: Added PS Private OtherBlues
+	* FreeSerifBold.sfd: Added PS public OtherBlues
 
 2010-09-26 10:55 +0000 [r1558]  Stevan_White:
 
@@ -4738,7 +4738,7 @@
 
 2010-09-12 15:01 +0000 [r1503]  Stevan_White:
 
-	* tools/range_report.py: Added a Private Use total
+	* tools/range_report.py: Added a public Use total
 	  and better explanation of totals generally. Some code clean-up.
 
 2010-09-11 13:24 +0000 [r1500-1502]  Stevan_White:
@@ -5498,7 +5498,7 @@
 2009-12-26 14:12 +0000 [r1398]  Stevan_White:
 
 	* FreeSerif.sfd: Malayalam: completed Unicode
-	  range, also moving some Chillu letters from Private Use area to
+	  range, also moving some Chillu letters from public Use area to
 	  Unicode, and re-establishing ligatures
 
 2009-12-26 00:38 +0000 [r1397]  Stevan_White:
@@ -5516,7 +5516,7 @@
 
 	* FreeSans.sfd: Indic ranges: named most of the
 	  Unicode characters Tried to improve a few bad names for ligatures
-	  in Private Use Area Made a few references: not clearly an
+	  in public Use Area Made a few references: not clearly an
 	  improvement. This stuff is still a mess...
 
 2009-12-24 15:19 +0000 [r1394]  Stevan_White:
@@ -6314,7 +6314,7 @@
 	* FreeSans.sfd,
 	  FreeSansBold.sfd,
 	  FreeSansOblique.sfd,
-	  FreeSansBoldOblique.sfd: Put PS Private
+	  FreeSansBoldOblique.sfd: Put PS public
 	  BlueScale back to default. (Was really experiment to alleviate
 	  excessive overshoot. Didn't work and FontForge complained.)
 
@@ -6358,7 +6358,7 @@
 	  FreeMonoOblique.sfd,
 	  FreeSerifBold.sfd,
 	  FreeMonoBoldOblique.sfd: Explicitly disabled
-	  PS Private dictionary entry BlueFuzz as recommended in Adobe Type
+	  PS public dictionary entry BlueFuzz as recommended in Adobe Type
 	  1 Font Format, sect. 5.8.
 
 2009-05-01 07:50 +0000 [r1272]  Stevan_White:
@@ -6384,9 +6384,9 @@
 	  FreeMonoBold.sfd,
 	  FreeMonoOblique.sfd,
 	  FreeSerifBold.sfd,
-	  FreeMonoBoldOblique.sfd: Adjusted PS Private
+	  FreeMonoBoldOblique.sfd: Adjusted PS public
 	  values according to understanding of Adobe Type 1 Font Format
-	  (Ch. 5, Private Dictionary) Not completely clear on BlueScale,
+	  (Ch. 5, public Dictionary) Not completely clear on BlueScale,
 	  and StemSnap values are still a mystery. (FontForge 'guess' seems
 	  to do little or nothing, and I don't know where these values came
 	  from) Original hope was to improve appearance of overshoot in
@@ -6837,7 +6837,7 @@
 	* FreeSans.sfd: Unified Canadian Aboriginal
 	  Syllabics: moved the non-Unicode letter part glyphs ucas.ring
 	  ucas.horizline ucas.shortvert ucas.righttack ucas.lefttack to the
-	  Private Use area 59664-59668 Technique was to edit the SFD file
+	  public Use area 59664-59668 Technique was to edit the SFD file
 	  directly: It seems the encoding slot for the glyph is the first
 	  field of the "Encoding:" line for the character.
 
@@ -8561,7 +8561,7 @@
 
 2008-09-19 22:54 +0000 [r932]  Stevan_White:
 
-	* tools/checkGlyphNumbers.py: included other Private
+	* tools/checkGlyphNumbers.py: included other public
 	  Use Ranges
 
 2008-09-19 20:48 +0000 [r931]  Stevan_White:
@@ -8596,7 +8596,7 @@
 2008-09-19 20:13 +0000 [r926]  Stevan_White:
 
 	* FreeSansOblique.sfd: Numerous cases of glyphs
-	  in Private Use area incorrectly assigned Unicode numbers and
+	  in public Use area incorrectly assigned Unicode numbers and
 	  names. Gave all -1 for Unicode and named like "slot.XXXX".
 
 2008-09-19 09:51 +0000 [r921-925]  Stevan_White:
@@ -8654,7 +8654,7 @@
 	  shows a bunch of problems with Gurmukhi and 'blwf' table indeed
 	  shows those letters at 0x10000+ Sans names them like
 	  uni0A30_uni0A4D.blwf: they are in range ECC6 to ED06 I meant to
-	  move this range into Private Use in last release, and missed it.
+	  move this range into public Use in last release, and missed it.
 	  So now it is moved, into same range as Sans. Both Sans and
 	  SansBold in nukt table for Gurmukhi have duplicate entries for
 	  uni0A15 uni0A3C. Deleted dups.
@@ -8986,7 +8986,7 @@
 	  for Malayalam, Bengla, and Tamil) representing ligatures and
 	  alternative forms without their own Unicode, were moved from
 	  ranges above 0xFFFF (which ought to have been slots for other
-	  defined Unicode ranges) into the Private Use area. In Serif, I
+	  defined Unicode ranges) into the public Use area. In Serif, I
 	  segregated the scripts, in Sans it was hard to see where one
 	  began and another ended, so I moved them en masse. Note several
 	  problems with wrongly-named characters: I already re-named
@@ -9237,7 +9237,7 @@
 	  FreeMonoBold.sfd,
 	  FreeMonoBoldOblique.sfd: Validation pass
 	  SansOblique and SansBoldOblique had validation problem with
-	  BlueValues Private Dictionary Elements in BlueValues/OtherBlues
+	  BlueValues public Dictionary Elements in BlueValues/OtherBlues
 	  array are disordered Elements in BlueValues/OtherBlues array are
 	  too close (Change BlueFuzz) StemSnapV does not contain StdVW
 	  value. So I ordered the array, and based on other slanted fonts,
@@ -9689,7 +9689,7 @@
 	  FreeSansBoldOblique.sfd,
 	  FreeMono.sfd,
 	  FreeSerif.sfd,
-	  FreeSerifBold.sfd: Removed digits from Private
+	  FreeSerifBold.sfd: Removed digits from public
 	  Use Area. See bug 23050.
 
 2008-05-03 19:54 +0000 [r772]  Stevan_White:
@@ -9937,7 +9937,7 @@
 	  FreeSansBoldOblique.sfd,
 	  FreeSerif.sfd,
 	  FreeSerifBold.sfd: FreeSerifBold: deleted 3
-	  dotted Hebrew letters in Private/Corporate use (E801-3). They
+	  dotted Hebrew letters in public/Corporate use (E801-3). They
 	  weren't ligatures or in any other lookup, and they weren't
 	  present in FreeSerif. FreeSansBold: unlinked and deleted F6C3,
 	  which called itself commaaccent. Made some new spacing and
@@ -11045,7 +11045,7 @@
 2008-03-13 23:33 +0000 [r576]  Stevan_White:
 
 	* FreeMonoOblique.sfd,
-	  FreeMonoBoldOblique.sfd: removed PS Private
+	  FreeMonoBoldOblique.sfd: removed PS public
 	  StemSnapV, which was empty anyway.
 
 2008-03-13 23:28 +0000 [r574-575]  Stevan_White:
@@ -11062,7 +11062,7 @@
 
 2008-03-13 23:15 +0000 [r572]  Stevan_White:
 
-	* FreeSerifItalic.sfd: Removed PS Private
+	* FreeSerifItalic.sfd: Removed PS public
 	  StemSnapV -- wasn't right anyway added Grid Fitting made better
 	  OS/2 metrics
 
@@ -14130,7 +14130,7 @@
 
 	* tools/WGL4.lst: Correction. Added missing
 	  characters 02DC:SMALL TILDE, F001:LATIN SMALL LIGATURE FI and
-	  F002:LATIN SMALL LIGATURE FL (the latter two belong to private
+	  F002:LATIN SMALL LIGATURE FL (the latter two belong to public
 	  use area). Left 00A0:NO-BREAK SPACE in place, although some specs
 	  don't list it. Total 653 characters on the list (WGL4 is supposed
 	  to have 652 coded characters).

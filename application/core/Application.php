@@ -64,23 +64,23 @@ require '../application/model/VeranstaltungModel.php';
 require '../application/model/raumZuweisenModel.php';
 require '../application/model/raumplanModel.php';
 require '../application/model/stundenplanModel.php';
-require '../application/model/veranstaltungsterminBearbeitenModel.php';
+require '../application/model/veranstaltungsterminLoeschenModel.php';
 
 class Application {
 	/**
 	 * @var mixed Instanzen des Controllers
 	 */
-	private $controller;
+	public $controller;
 	
 	/**
 	 * @var string Controller Name, falls man in der View eine Abfrage machen möchte wo man ist.
 	 */
-	private $controller_name;
+	public $controller_name;
 	
 	/**
 	 * @var string Controller Methode, falls man in der View eine Abfrage machen möchte wo man ist.
 	 */
-	private $action_name;
+	public $action_name;
 	
 	/**
 	 *
@@ -129,7 +129,7 @@ class Application {
 	 * @author Kilian Kraus
 	 *         Macht Bananasplit aus URL
 	 */
-	private function split() {
+	public function split() {
 		if (Request::get ( 'url' )) {
 			
 			$url = trim ( Request::get ( 'url' ), '/' );
@@ -148,7 +148,7 @@ class Application {
 	 * @author Kilian Kraus
 	 *         setzt den Controller auf den richtigen Namen. Default wenn nichts gefunden (index/index).
 	 */
-	private function createController() {
+	public function createController() {
 		// Default falls kein Controller
 		if (! $this->controller_name) {
 			$this->controller_name = Config::get ( 'DEFAULT_CONTROLLER' );

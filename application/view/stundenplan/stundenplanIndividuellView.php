@@ -16,22 +16,24 @@
 <?php
 	
 	//Tabelle, welche den Stundenplan darstellt:
-
-	echo 	"<h1>Stundenplan f&uumlr <strong style='color:red;'>$this->name</strong>:</h1>
+	
+	echo 	"<h1>Stundenplan f&uumlr User $this->nutzerName:</h1>
 			
-			<table class='stundenplan' border='1'>
-				<tr class='head'>
-					<th style='width: 110px'>Stundenzeit</th>";
+			<table border='1' width='80%' style='text-align: center'>
+			<colgroup width='240' span='8'>
+				<tr>
+					<th style='background:yellow'>Stundenzeit</th>";
 
 	//Wochentage im Tabellenkopf eintragen:
 	foreach ($this->wochentage as $tag) 
 	{
 		$tag_bezeichnung = $tag['tag_bezeichnung'];
 		
-		echo "<th style='width: 113px'>$tag_bezeichnung</th>";
+		echo "<th style='background:#4C66FF'>$tag_bezeichnung</th>";
 	}
 	
 	echo "</tr>";
+	echo "</colgroup>";
 	
 	
 	//erster Veranstaltungstermin holen:
@@ -42,14 +44,14 @@
 		//neue Zeile:
 		echo "<tr>";
 		
-		for ($tag = 0; $tag <= 6; $tag++) 
+		for ($tag = 0; $tag <= 7; $tag++) 
 		{
 			if($tag == 0 && ($stundenzeit = $this->stundenzeiten->fetch_assoc()))
 			{
 				//Stundenzeit wird in der ersten Spalte der Zeile eingetragen:
 				$zeit_von = $stundenzeit['stdZeit_von'];
 				$zeit_bis = $stundenzeit['stdZeit_bis'];
-				echo "<td class='content' style='text-align:center;'><p> $zeit_von - $zeit_bis </p></td>";
+				echo "<td style='background:yellow'><p> $zeit_von - $zeit_bis </p></td>";
 			}
 			else
 			{
@@ -66,35 +68,14 @@
 				
 				if($veranstTermin['stdZeit_ID'] == $stunde && $veranstTermin['tag_ID'] == $tag)
 				{
+					echo "<td>";
+					
 					while($veranstTermin['stdZeit_ID'] == $stunde && $veranstTermin['tag_ID'] == $tag)
 					{
 						//Veranstaltungstermin in die Zelle eintragen:
-						$veranst_kurztext = $veranstTermin['veranst_kurztext'];
+						$veranst_bezeichnung = $veranstTermin['veranst_bezeichnung'];
 						$raum_bezeichnung = $veranstTermin['raum_bezeichnung'];
-						$studiengang = $veranstTermin['stg_kurztext'];
-						$semester = $veranstTermin['pflicht_im_Semester'];
-						
-						if(Session::get('user_role') == 1) //Student
-						{
-							$dozent = $veranstTermin['nachname'];
-							
-							echo "<td class='content' style='padding-left: 13px;'> 
-									</br>
-									<strong>$veranst_kurztext</strong> <br />
-									&#8227; $studiengang$semester <br /> 
-									&#8227; $raum_bezeichnung <br />";
-									if($dozent)
-										echo "&#8227; $dozent";  
-							
-						}
-						else if(Session::get('user_role') == 2) //Dozent
-						{
-							echo "<td class='content' style='padding-left: 13px;'> 
-									</br>
-									<strong>$veranst_kurztext</strong> <br />
-									&#8227; $studiengang$semester <br /> 
-									&#8227; $raum_bezeichnung";
-						}
+						echo "<p>$veranst_bezeichnung ($raum_bezeichnung)<p/>";
 					
 						//nächster Veranstaltungstermin holen:
 						if($veranstTermin = $this->veranstaltungstermine->fetch_assoc());

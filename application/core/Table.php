@@ -37,6 +37,7 @@
 			}
 			
 			// baut tabelle zusammen
+			//echo "<section style=\"overflow:auto;height:600px;width:auto;\">";
 			echo "<table>";
 			echo "<thead>";
 			// falls alias übergeben wurde
@@ -127,6 +128,7 @@
 			echo "</tr>";
 			echo "</tbody>";
 			echo "</table>";
+			//echo "</section>";
 		}
 	}
 	?>	   			

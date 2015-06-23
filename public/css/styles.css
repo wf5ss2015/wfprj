@@ -1,17 +1,9 @@
 ﻿/* ===============================================
-
-* Sprint: 6
- * @author: Alexander Mayer
- * Datum: 23.06.2015
- * User Story (Nr.: 370b) Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern (8 Punkte).
- * Zeit insgesamt: 2h
-
  * Sprint: 6
  * @author: Damian Wysocki
  * Datum: 12.06.2015
  * User Story (Nr.: 550) Als Mitarbeiter möchte ich div. Nutzer anlegen können (8).
  * Zeit insgesamt: 10
- 
  * ===============================================*/
 /* 
  * ===============================================
@@ -450,82 +442,5 @@ label {
 	**-----------------------------------------------------------------------------------------*/	
 
 
-/* START Sprint 6 
- * @author: Alexander Mayer
- * Datum: 23.06.2015
- * User Story (Nr.: 370b) Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern (8 Punkte).
- * Task: Design anpassen
- * Zeit insgesamt: 2h 
- * START Sprint 6*/
- 
- table.stundenplan {
 
-	border: 1px solid #9F9F9F;
-	border-collapse: collapse;
-	height: 100%;
-	width: 58em;
-	margin-left: 20px;
-}
-
-table.stundenplan tr.head {
-
-	color: #A9DFFF;
-	background: #00436A;
-	background: linear-gradient(top, #efefef 0%, #00436A 20%);
-	background: -moz-linear-gradient(top, #efefef 0%, #00436A 20%);
-	background: -webkit-linear-gradient(top, #efefef 0%,#00436A 20%);
-	
-	box-shadow: 0px 0px 9px rgba(0,0,0,0.50);
-	border: none;
-	padding: 2px 5px 2px 5px;
-	border-radius: 7px;
-	
-	font-weight:bold;
-}
-
-table.stundenplan td.content {
-
-	background: #A9DFFF;
-}
-
-
-form.formular {
-
-	background: #A9DFFF;
-	border: 1px solid silver;
-}
-
-div.flexbox {
-
-	display: flex;
-	flex-flow: row wrap;
-}
-
-.btnLink {
-
-	cursor: pointer;
-	padding: 0; 
-	border: none; 
-	background: none;
-	color: blue;
-}
-
-.btnLink:hover {
-
-	text-decoration: underline;
-}
-
-p.btn {
-	
-	text-align: center;
-}
- 
- 
- /* ENDE Sprint 6 
- * @author: Alexander Mayer
- * Datum: 23.06.2015
- * User Story (Nr.: 370b) Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern (8 Punkte).
- * Task: Design anpassen
- * Zeit insgesamt: 2h 
- * ENDE Sprint 6*/
 

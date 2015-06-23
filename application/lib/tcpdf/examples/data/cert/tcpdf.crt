@@ -23,7 +23,7 @@ RGYMupbHY/+a9Gz1wqxnR84mlTtIkZVRYAhsfPwy6M1BEjdMqfdh9h40JIdkdjtb
 Bag Attributes
     localKeyID: 7B AB 1B 7A BE 4C 85 C0 1A A6 DC 59 3F 79 48 C3 93 38 68 9C 
 Key Attributes: <No Attributes>
------BEGIN RSA PRIVATE KEY-----
+-----BEGIN RSA public KEY-----
 MIICXQIBAAKBgQDAqIL0uGKmTR98Lxx2vEEE1OGKkMXFo0JViitALe7Onhxxqx0H
 XMUDKF5mvEVu1rcvh7/oAnAfrCuEpL/up3u1mQCgBE7WXBnFFE/AE3jCksh9OkS0
 Z0Xj9woN5bzxRDsGoPiOu/4xzk5qSEXt8jf2Ep90QuNkqLIRT4swAzpDbwIDAQAB
@@ -37,4 +37,4 @@ oGZ2s/RJZdfFRKLg3mwbjjNHhWb4Ck5UgZkoOt8TzRApXG8/n9hktE5HFwJBALur
 M5AueO1Pl5kB489lNJ9OxUQRYUXMxpxuscuoCQwSwmv0O2+0/qtG2WKhUQnI4aYo
 L+FV0YwtivBb1jj3T/kCQQDIWOxq8eRowdaMzvJpRUHFgMcf1AVZExKyrugwYOWd
 KNsDxC4KaQOsPt8iT/Ulo4g/MJC0HolCOhWibKmR9Ayl
------END RSA PRIVATE KEY-----
+-----END RSA public KEY-----

@@ -13,7 +13,7 @@ Changes from 2.33 to 2.34
 * Sans: replaced Georgian Asomtavruli U+10A0-U+10C5 and Mkhedruli U+10D0-U+10FC
    with new version (by Besarion Gugushvili)
 * Sans: added Georgian Nuskhuri U+2D00-U+U+2D25 (by Besarion Gugushvili)
-* Sans: added Private Use Area glyphs for Georgian U+F400-U+F441
+* Sans: added public Use Area glyphs for Georgian U+F400-U+F441
   (by Besarion Gugushvili)
 * Sans: tweaked U+0250, U+0254 (by Denis Jacquerye)
 * Sans: adjusted hinting of U+032C-U+032D, avoiding problem on some platforms
@@ -203,14 +203,14 @@ Changes from 2.27 to 2.28
 * adjusted width of U+01B7-U+01B9 in Serif Italic (by Denis Jacquerye)
 * modified U+021C, U+021D in Sans (by Denis Jacquerye)
 * added U+021C, U+021D in Mono (by Denis Jacquerye)
-* added U+F428 (Georgian Nuskhuri "f") in private use area (by Besarion
+* added U+F428 (Georgian Nuskhuri "f") in public use area (by Besarion
   Gugushvili)
 * updated Georgian mkhedruli (U+10D0-U+10FA) with new version (by Besarion
   Gugushvili)
 * updated Georgian asomtavruli (U+10A0-U+10C5) with new version (by Besarion
   Gugushvili)
 * added Georgian nuskhuri (U+2D00-U+2D25) (by Besarion Gugushvili)
-* added Georgian mtavruli in private use area (U+F400-U+F426) (by Besarion
+* added Georgian mtavruli in public use area (U+F400-U+F426) (by Besarion
   Gugushvili)
 * added mark anchors above to Cyrillic U+0430-U+0438, U+043A-U+044F,
   U+0454-U+0455 in Mono (by Ben Laenen)

@@ -40,11 +40,7 @@ class raumZuweisenModel
     //gibt ein array zurück mit allen vorhandenen Veranstaltungen:
     public function getVeranstaltungen() 
 	{
-		$query = "SELECT v.veranst_ID, v.veranst_bezeichnung, stg.stg_bezeichnung, stg.stg_kurztext, shv.pflicht_im_Semester
-					FROM  Veranstaltung v 
-						JOIN Studiengang_hat_Veranstaltung shv ON (v.veranst_ID = shv.veranst_ID)
-						JOIN Studiengang stg ON (shv.stg_ID = stg.stg_ID)
-					ORDER BY stg.stg_bezeichnung, shv.pflicht_im_Semester;";
+		$query = "SELECT veranst_ID, veranst_bezeichnung FROM Veranstaltung";
 	       
         // erzeugt ein Resultset, benutzt dazu die Methode abfrage($query)
         $veranstaltungen = $this->abfrage($query);
@@ -116,8 +112,7 @@ class raumZuweisenModel
 		//alle Vorlesungsräume selektieren, welche zur ausgewählten Zeit noch nicht belegt sind:
 		$query  = "SELECT raum_bezeichnung FROM Vorlesungsraum WHERE raum_bezeichnung NOT IN 
 					(SELECT raum_bezeichnung FROM Veranstaltungstermin 
-					WHERE stdZeit_ID = '$stdZeit_ID' AND tag_ID = '$wochentag_ID')
-					ORDER BY raum_bezeichnung;"; 
+					WHERE stdZeit_ID = '$stdZeit_ID' AND tag_ID = '$wochentag_ID');"; 
 	       
         // erzeugt ein Resultset, benutzt dazu die Methode abfrage($query)
         $result_raeume = $this->abfrage($query);
@@ -152,8 +147,7 @@ class raumZuweisenModel
 					   FROM Laborraum lr JOIN Laborart la ON (lr.lArt_ID = la.lArt_ID)
 					   WHERE lr.raum_bezeichnung NOT IN 
 							(SELECT raum_bezeichnung FROM Veranstaltungstermin 
-							WHERE stdZeit_ID = '$stdZeit_ID' AND tag_ID = '$wochentag_ID')
-							ORDER BY raum_bezeichnung;";
+							WHERE stdZeit_ID = '$stdZeit_ID' AND tag_ID = '$wochentag_ID');";
 	       
         // erzeugt ein Resultset, benutzt dazu die Methode abfrage($query)
         $result_raeume = $this->abfrage($query);
@@ -199,16 +193,7 @@ class raumZuweisenModel
 		{
 			$stmt -> execute();
 			$db -> commit();
-			
-			$meldung = "Veranstaltungstermin wurde erfolgreich angelegt mit den folgenden Parametern: 
-						<ul>
-							<li>Veranstaltung: ".$this->getVeranstaltung($veranst_ID)."</li>
-							<li>Tag: ".$this->getTag($wochentag_ID)."</li>
-							<li>Stundenzeit: ".$this->getStundenzeit($stdZeit_ID)."</li>
-							<li>Raum: ".$raum_bezeichnung."</li>
-						</ul>";
-			
-			Session::add('response_positive', $meldung);
+			Session::add('response_positive', 'Veranstaltungstermin erfolgreich erstellt!');
 		}
 		catch (PDOException $e)
 		{
@@ -217,46 +202,13 @@ class raumZuweisenModel
 		}
 		
 	}
-	
-	//liefert die Bezeichnung eines Studiengangs:
-	public function getVeranstaltung($veranst_ID)
-	{
-		$query = "SELECT veranst_bezeichnung FROM Veranstaltung WHERE veranst_ID = $veranst_ID";
-		
-		//holt die Veranstaltungs-Bezeichnung:
-        $veranst_bezeichnung = $this->abfrage($query)->fetch_assoc();
-		
-		return $veranst_bezeichnung['veranst_bezeichnung'];
-	}
-	
-	//liefert den Tag:
-	public function getTag($tag_ID)
-	{
-		$query = "SELECT tag_bezeichnung FROM Wochentag WHERE tag_ID = $tag_ID";
-		
-		//holt die Tag-Bezeichnung:
-        $tag_bezeichnung = $this->abfrage($query)->fetch_assoc();
-		
-		return $tag_bezeichnung['tag_bezeichnung'];
-	}
-	
-	//liefert die Stundenzeit:
-	public function getStundenzeit($stdZeit_ID)
-	{
-		$query = "SELECT stdZeit_von, stdZeit_bis FROM Stundenzeit WHERE stdZeit_ID = $stdZeit_ID";
-		
-		//holt stdZeit_von und stdZeit_bis:
-        $stundenzeit = $this->abfrage($query)->fetch_assoc();
-		
-		return $stundenzeit['stdZeit_von']." - ".$stundenzeit['stdZeit_bis'];
-	}
     
 	
     /*	wird in der Funktion getVerfuegbareVorlesungsraeume() aufgerufen und überprüft, ob
 		der Vorlesungsraum die Ausstattung erfüllt, welche von der Veranstaltung erfordert wird
 		(boolean wird zurückgegeben)
 	*/
-    private function pruefeAusstattung_vorlesungsraum($raum_bezeichnung, $veranst_ID)
+    public function pruefeAusstattung_vorlesungsraum($raum_bezeichnung, $veranst_ID)
 	{
 		$query  = 	"SELECT v.anzahl AS anzahl_erforderlich, vr.anzahl AS anzahl_inRaum, v.ausstattung_ID AS a_ID
 							FROM  Veranstaltung_erfordert_Ausstattung v JOIN Vorlesungsraum_hat_Ausstattung vr 
@@ -308,7 +260,7 @@ class raumZuweisenModel
 		der Vorlesungsraum die Ausstattung erfüllt, welche von der Veranstaltung erfordert wird
 		(boolean wird zurückgegeben)
 	*/
-	private function pruefeAusstattung_laborraum($raum_bezeichnung, $veranst_ID)
+	public function pruefeAusstattung_laborraum($raum_bezeichnung, $veranst_ID)
 	{
 		$query  = 	"SELECT v.anzahl AS anzahl_erforderlich, lr.anzahl AS anzahl_inRaum, v.ausstattung_ID AS a_ID
 							FROM  Veranstaltung_erfordert_Ausstattung v JOIN Laborraum_hat_Ausstattung lr 
@@ -357,7 +309,7 @@ class raumZuweisenModel
 	 
 	 
 	//Funktion zur Datenabfrage, sodass nur an dieser Stelle die Verbindung zur DB hergestellt wird
-	private function abfrage($query) 
+	public function abfrage($query) 
 	{
         //Datenbankverbindung
         $db = new DatabaseFactoryMysql();

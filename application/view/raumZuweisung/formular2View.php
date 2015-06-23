@@ -14,13 +14,12 @@
 
 <!-- Formular zur Auswahl eines verfügbaren Raumes: -->
 
-<form class="formular" action="index.php?url=raumZuweisen/anlegen_veranstaltungstermin" method="post" style='width: 28em; height: 21em; margin: 20px; padding: 25px;'>
+<article>
+<form action="index.php?url=raumZuweisen/anlegen_veranstaltungstermin" method="post" style='background-color: #eeeeff; width: 25em; margin: 20px; padding: 25px; border: 1px solid silver;'>
 	
-	<h4 style='color: #00436A'>2) Raum ausw&auml;hlen:</h4> <br/>
+	<h3 style='color: blue'>Folgende R&aumlume sind verf&uumlgbar: </h3> <br/>
 	
-	<p style="text-align:center;">Folgende R&auml;ume sind zur ausgew&auml;hlten Zeit verf&uuml;gbar und erf&uuml;llen die erforderliche Ausstattung f&uuml;r die Veranstaltung: </p>
-	
-	<p style="text-align:center;">
+	<p>
 		<select class='input' name='waehleRaum' size='7' style='width: 20em'>
 			
 			<?php
@@ -61,14 +60,7 @@
 		</select>
 	</p>
 	
-	<br />
-	
-	<p class="btn">
-		<input class="button" type="submit" name="send" value="Termin erstellen"/> <br /> 
-	</p>
+	<input class="button" type="submit" name="send" value="Raum zuweisen"/>
 	
 </form>
-
-</div>
-
 </article>

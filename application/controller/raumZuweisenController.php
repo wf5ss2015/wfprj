@@ -71,7 +71,7 @@ class raumZuweisenController extends Controller
 	//erzeugt Formular zur Auswahl eines verfügbaren Raumes:
 	public function erzeugeFormular2() 
 	{
-		if(isset($_POST['send']) && $_POST['send'] == utf8_encode('Räume anzeigen >>')) 
+		if(isset($_POST['send']) && $_POST['send'] == utf8_encode('zeige Räume')) 
 		{
 			if(empty($_POST['waehleVeranstaltung']) || empty($_POST['waehleWochentag']) || empty($_POST['waehleZeit']))
 			{
@@ -84,11 +84,6 @@ class raumZuweisenController extends Controller
 				$veranst_ID = $_POST['waehleVeranstaltung'];
 				$tag_ID = $_POST['waehleWochentag'];
 				$stdZeit_ID = $_POST['waehleZeit'];
-				
-				//Eingabe-Werte für Veranstaltung, Tag und Zeit werden in Session-Variablen gespeichert:
-				$_SESSION['veranst_ID'] = $veranst_ID;
-				$_SESSION['tag_ID'] = $tag_ID;
-				$_SESSION['stdZeit_ID'] = $stdZeit_ID;
 				
 				//neues Model-Objekt für Datenfluss erstellen:
 				$rzModel = new raumZuweisenModel();
@@ -103,6 +98,11 @@ class raumZuweisenController extends Controller
 				}
 				else
 				{
+					//Eingabe-Werte für Veranstaltung, Tag und Zeit werden in Session-Variablen gespeichert:
+					$_SESSION['veranst_ID'] = $veranst_ID;
+					$_SESSION['tag_ID'] = $tag_ID;
+					$_SESSION['stdZeit_ID'] = $stdZeit_ID;
+
 					//Daten aus DB holen:
 					$veranstaltungen = $rzModel->getVeranstaltungen();
 					$wochentage = $rzModel->getWochentage();
@@ -132,7 +132,7 @@ class raumZuweisenController extends Controller
 	*/
 	public function anlegen_veranstaltungstermin()
 	{
-		if(isset($_POST['send']) && $_POST['send'] == 'Termin erstellen')
+		if(isset($_POST['send']) && $_POST['send'] == 'Raum zuweisen')
 		{
 			if(empty($_POST['waehleRaum']))
 			{
