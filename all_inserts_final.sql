@@ -351,8 +351,7 @@ INSERT INTO Wochentag (tag_bezeichnung) VALUES
 ('Mittwoch'),
 ('Donnerstag'),
 ('Freitag'),
-('Samstag'),
-('Sonntag');
+('Samstag');
 
 INSERT INTO Studiengang_hat_Veranstaltung (`stg_ID`, `veranst_ID`, `pflicht_im_Semester`) VALUES
 -- Technische Informatik:
