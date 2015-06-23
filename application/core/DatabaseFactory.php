@@ -18,8 +18,8 @@
  *        
  */
 class DatabaseFactory {
-	public static $factory;
-	public $database;
+	private static $factory;
+	private $database;
 	public static function getFactory() {
 		if (! self::$factory) {
 			self::$factory = new DatabaseFactory ();

@@ -30,6 +30,7 @@
 
 ?>
 <article>
+<h1>Veranstaltung auswählen</h1>
 	<p>Wählen Sie die Veranstaltung aus, die Sie bearbeiten m&ouml;chten: </p>
     
     <?php if ($this->veranstaltungen) { 

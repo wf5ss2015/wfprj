@@ -55,9 +55,9 @@ class TCPDF_PARSER {
 
 	/**
 	 * Raw content of the PDF document.
-	 * @public
+	 * @private
 	 */
-	public $pdfdata = '';
+	private $pdfdata = '';
 
 	/**
 	 * XREF data.
@@ -73,15 +73,15 @@ class TCPDF_PARSER {
 
 	/**
 	 * Class object for decoding filters.
-	 * @public
+	 * @private
 	 */
-	public $FilterDecoders;
+	private $FilterDecoders;
 
 	/**
 	 * Array of configuration parameters.
-	 * @public
+	 * @private
 	 */
-	public $cfg = array(
+	private $cfg = array(
 		'die_for_errors' => false,
 		'ignore_filter_decoding_errors' => true,
 		'ignore_missing_filter_decoders' => true,

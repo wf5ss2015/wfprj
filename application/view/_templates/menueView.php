@@ -25,7 +25,7 @@ class menueView{
 	 * @var menue Speichert im Moment alle Menüeinträge
 	 *	Sollte mal noch in Datenbank umziehen um ordentliche Rechteverwaltung umzusetzen.
 	 */
-	public $menue;
+	private $menue;
 	
 	/**
 	*
@@ -54,8 +54,8 @@ class menueView{
 			"Raumplan" => "raumplan/erzeugeFormular"),
 			array(
 			"Stundenplan" => "#",
-			"nach Fachsemester" => "stundenplan/erzeugeFormular",
-			"individuell" => "stundenplan/stundenplan_individuell"),
+			"Semesterstundenplan" => "stundenplan/erzeugeFormular",
+			"Studentenstundenplan" => "stundenplan/stundenplan_individuell"),
 			array(
 			"Kurse" => "#",
 			"Anmeldung" => "student/enrollClass",
@@ -80,8 +80,8 @@ class menueView{
 			"Raumplan" => "raumplan/erzeugeFormular"),
 			array(
 			"Stundenplan" => "#",
-			"nach Fachsemester" => "stundenplan/erzeugeFormular",
-			"individuell" => "stundenplan/stundenplan_individuell"),
+			"Semesterstundenplan" => "stundenplan/erzeugeFormular",
+			"Dozentenstundenplan" => "stundenplan/stundenplan_individuell"),
 			array(
 			"Teilnehmerliste" => "Dozent/auswahlVorlesung")
 		),
@@ -97,11 +97,12 @@ class menueView{
 			"Veranstaltung" => "#",
 			"erweitern" => "veranstaltungerweitern/veranstaltungErweitern",
 			"anlegen" => "veranstaltung/anlegenForm",
-			"bearbeiten" => "veranstaltung/bearbeitenSelect"),
+			"bearbeiten" => "veranstaltung/bearbeitenSelect",
+			"als Wahlfach" => "veranstaltung/wahlfachVeranstaltungSelect"),
 			array(
-			"Veranstaltungstermin" => "#",
+			"Veranstaltungstermine" => "#",
 			"erstellen" => "raumZuweisen/erzeugeFormular1",
-			"löschen" => "veranstaltungsterminLoeschen/erzeugeTabelle"),
+			"Übersicht nach Fachsemester" => "veranstaltungsterminUebersicht/erzeugeFormular"),
 			array(
 			"Räume" => "#",
 			"anlegen" => "raumAnlegen/raumAnlegen",

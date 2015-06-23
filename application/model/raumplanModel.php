@@ -20,7 +20,9 @@ class raumplanModel
     //gibt ein array zurück mit allen vorhandenen Vorlesungsräumen
     public function getVorlesungsraeume() 
 	{
-		$query = "SELECT raum_bezeichnung FROM Vorlesungsraum";
+		$query = "SELECT raum_bezeichnung 
+					FROM Vorlesungsraum
+					ORDER BY raum_bezeichnung;";
 	       
         // erzeugt ein Resultset, benutzt dazu die Methode abfrage($query)
         $vorlesungsraeume = $this->abfrage($query);
@@ -33,7 +35,8 @@ class raumplanModel
     public function getLaborraeume() 
 	{
 		$query = "SELECT lr.raum_bezeichnung, la.lArt_bezeichnung 
-					   FROM Laborraum lr JOIN Laborart la ON (lr.lArt_ID = la.lArt_ID)";
+					   FROM Laborraum lr JOIN Laborart la ON (lr.lArt_ID = la.lArt_ID)
+					   ORDER BY raum_bezeichnung;";
 	       
         // erzeugt ein Resultset, benutzt dazu die Methode abfrage($query)
         $laborraeume = $this->abfrage($query);
@@ -49,8 +52,13 @@ class raumplanModel
 			Anlegen der Tabelle im View die Veranstaltungstermine Reihe für Reihe im Raumplan eingefügt werden
 			können!
 		*/
-		$query = "SELECT vt.tag_ID, vt.stdZeit_ID, v.veranst_bezeichnung 
-							FROM Veranstaltungstermin vt JOIN Veranstaltung v ON (vt.veranst_ID = v.veranst_ID)
+		$query = "SELECT vt.tag_ID, vt.stdZeit_ID, v.veranst_kurztext, n.nachname, stg.stg_kurztext, shv.pflicht_im_Semester
+							FROM Veranstaltungstermin vt 
+								JOIN Veranstaltung v ON (vt.veranst_ID = v.veranst_ID)
+								JOIN Studiengang_hat_Veranstaltung shv ON (v.veranst_ID = shv.veranst_ID)
+								JOIN Studiengang stg ON (shv.stg_ID = stg.stg_ID)
+								LEFT JOIN Dozent doz ON (v.dozent_nutzer_name = doz.nutzer_name)
+								LEFT JOIN Nutzer n ON (doz.nutzer_name = n.nutzer_name)
 							WHERE vt.raum_bezeichnung = '$raum_bezeichnung' 
 							ORDER BY vt.stdZeit_ID, vt.tag_ID;";
 	       
@@ -62,7 +70,7 @@ class raumplanModel
 	
 	
 	//Funktion zur Datenabfrage, sodass nur an dieser Stelle die Verbindung zur DB hergestellt wird
-	public function abfrage($query) 
+	private function abfrage($query) 
 	{
         //Datenbankverbindung
         $db = new DatabaseFactoryMysql();

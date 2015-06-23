@@ -53,9 +53,9 @@ class TCPDF_STATIC {
 
 	/**
 	 * Current TCPDF version.
-	 * @public static
+	 * @private static
 	 */
-	public static $tcpdf_version = '6.2.8';
+	private static $tcpdf_version = '6.2.8';
 
 	/**
 	 * String alias for total number of pages.

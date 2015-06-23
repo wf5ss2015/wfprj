@@ -428,10 +428,10 @@ class PHPMailer
     public $DKIM_domain = '';
 
     /**
-     * DKIM public key file path.
+     * DKIM private key file path.
      * @type string
      */
-    public $DKIM_public = '';
+    public $DKIM_private = '';
 
     /**
      * Callback Action function name.
@@ -651,10 +651,10 @@ class PHPMailer
      * @param string $body Message Body
      * @param string $header Additional Header(s)
      * @param string $params Params
-     * @access public
+     * @access private
      * @return boolean
      */
-    public function mailPassthru($to, $subject, $body, $header, $params)
+    private function mailPassthru($to, $subject, $body, $header, $params)
     {
         //Check overloading of mail function to avoid double-encoding
         if (ini_get('mbstring.func_overload') & 1) {
@@ -1077,9 +1077,9 @@ class PHPMailer
 
             // Sign with DKIM if enabled
             if (!empty($this->DKIM_domain)
-                && !empty($this->DKIM_public)
+                && !empty($this->DKIM_private)
                 && !empty($this->DKIM_selector)
-                && file_exists($this->DKIM_public)) {
+                && file_exists($this->DKIM_private)) {
                 $header_dkim = $this->DKIM_Add(
                     $this->MIMEHeader . $this->mailHeader,
                     $this->encodeHeader($this->secureHeader($this->Subject)),
@@ -3366,11 +3366,11 @@ class PHPMailer
 
 
     /**
-     * Set the public and public key files and password for S/MIME signing.
+     * Set the public and private key files and password for S/MIME signing.
      * @access public
      * @param string $cert_filename
      * @param string $key_filename
-     * @param string $key_pass Password for public key
+     * @param string $key_pass Password for private key
      * @param string $extracerts_filename Optional path to chain certificate
      */
     public function sign($cert_filename, $key_filename, $key_pass, $extracerts_filename = '')
@@ -3416,9 +3416,9 @@ class PHPMailer
             }
             return '';
         }
-        $privKeyStr = file_get_contents($this->DKIM_public);
+        $privKeyStr = file_get_contents($this->DKIM_private);
         if ($this->DKIM_passphrase != '') {
-            $privKey = openssl_pkey_get_public($privKeyStr, $this->DKIM_passphrase);
+            $privKey = openssl_pkey_get_private($privKeyStr, $this->DKIM_passphrase);
         } else {
             $privKey = $privKeyStr;
         }

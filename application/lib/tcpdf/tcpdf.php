@@ -7625,7 +7625,7 @@ class TCPDF {
 					if (headers_sent()) {
 						$this->Error('Some data has already been output to browser, can\'t send PDF file');
 					}
-					header('Cache-Control: public, must-revalidate, post-check=0, pre-check=0, max-age=1');
+					header('Cache-Control: private, must-revalidate, post-check=0, pre-check=0, max-age=1');
 					//header('Cache-Control: public, must-revalidate, max-age=0'); // HTTP/1.1
 					header('Pragma: public');
 					header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Date in the past
@@ -7646,7 +7646,7 @@ class TCPDF {
 				if (headers_sent()) {
 					$this->Error('Some data has already been output to browser, can\'t send PDF file');
 				}
-				header('Cache-Control: public, must-revalidate, post-check=0, pre-check=0, max-age=1');
+				header('Cache-Control: private, must-revalidate, post-check=0, pre-check=0, max-age=1');
 				//header('Cache-Control: public, must-revalidate, max-age=0'); // HTTP/1.1
 				header('Pragma: public');
 				header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Date in the past
@@ -7679,7 +7679,7 @@ class TCPDF {
 				if ($dest == 'FI') {
 					// send headers to browser
 					header('Content-Type: application/pdf');
-					header('Cache-Control: public, must-revalidate, post-check=0, pre-check=0, max-age=1');
+					header('Cache-Control: private, must-revalidate, post-check=0, pre-check=0, max-age=1');
 					//header('Cache-Control: public, must-revalidate, max-age=0'); // HTTP/1.1
 					header('Pragma: public');
 					header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Date in the past
@@ -7695,7 +7695,7 @@ class TCPDF {
 					if (headers_sent()) {
 						$this->Error('Some data has already been output to browser, can\'t send PDF file');
 					}
-					header('Cache-Control: public, must-revalidate, post-check=0, pre-check=0, max-age=1');
+					header('Cache-Control: private, must-revalidate, post-check=0, pre-check=0, max-age=1');
 					header('Pragma: public');
 					header('Expires: Sat, 26 Jul 1997 05:00:00 GMT'); // Date in the past
 					header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
@@ -13391,8 +13391,8 @@ class TCPDF {
 	 * To export crt to p12: openssl pkcs12 -export -in tcpdf.crt -out tcpdf.p12
 	 * To convert pfx certificate to pem: openssl pkcs12 -in tcpdf.pfx -out tcpdf.crt -nodes
 	 * @param $signing_cert (mixed) signing certificate (string or filename prefixed with 'file://')
-	 * @param $public_key (mixed) public key (string or filename prefixed with 'file://')
-	 * @param $public_key_password (string) password
+	 * @param $private_key (mixed) private key (string or filename prefixed with 'file://')
+	 * @param $private_key_password (string) password
 	 * @param $extracerts (string) specifies the name of a file containing a bunch of extra certificates to include in the signature which can for example be used to help the recipient to verify the certificate that you used.
 	 * @param $cert_type (int) The access permissions granted for this document. Valid values shall be: 1 = No changes to the document shall be permitted; any change to the document shall invalidate the signature; 2 = Permitted changes shall be filling in forms, instantiating page templates, and signing; other changes shall invalidate the signature; 3 = Permitted changes shall be the same as for 2, as well as annotation creation, deletion, and modification; other changes shall invalidate the signature.
 	 * @param $info (array) array of option information: Name, Location, Reason, ContactInfo.
@@ -13401,7 +13401,7 @@ class TCPDF {
 	 * @author Nicola Asuni
 	 * @since 4.6.005 (2009-04-24)
 	 */
-	public function setSignature($signing_cert='', $public_key='', $public_key_password='', $extracerts='', $cert_type=2, $info=array(), $approval='') {
+	public function setSignature($signing_cert='', $private_key='', $private_key_password='', $extracerts='', $cert_type=2, $info=array(), $approval='') {
 		// to create self-signed signature: openssl req -x509 -nodes -days 365000 -newkey rsa:1024 -keyout tcpdf.crt -out tcpdf.crt
 		// to export crt to p12: openssl pkcs12 -export -in tcpdf.crt -out tcpdf.p12
 		// to convert pfx certificate to pem: openssl
@@ -13414,12 +13414,12 @@ class TCPDF {
 		if (strlen($signing_cert) == 0) {
 			$this->Error('Please provide a certificate file and password!');
 		}
-		if (strlen($public_key) == 0) {
-			$public_key = $signing_cert;
+		if (strlen($private_key) == 0) {
+			$private_key = $signing_cert;
 		}
 		$this->signature_data['signcert'] = $signing_cert;
-		$this->signature_data['privkey'] = $public_key;
-		$this->signature_data['password'] = $public_key_password;
+		$this->signature_data['privkey'] = $private_key;
+		$this->signature_data['password'] = $private_key_password;
 		$this->signature_data['extracerts'] = $extracerts;
 		$this->signature_data['cert_type'] = $cert_type;
 		$this->signature_data['info'] = $info;

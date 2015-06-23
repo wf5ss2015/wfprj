@@ -64,7 +64,7 @@ class LoginModel {
 	 *        	
 	 * @return bool mixed
 	 */
-	public function validateAndGetUser($user_name, $user_password) {
+	private function validateAndGetUser($user_name, $user_password) {
 		// holt sich die Daten des Nutzers
 		$result = UserModel::getUserData ( $user_name );
 		

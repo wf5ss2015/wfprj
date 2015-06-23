@@ -48,28 +48,28 @@ class Environment {
 			return 'kilian';
 		}
 		if (getenv ( 'HTTP_HOST' ) == 'wfprj-wf5.informatik.hs-ulm.de' && substr ( $_SERVER ['PHP_SELF'], 1, 2 ) == '01') {
-			return 'public';
+			return 'private';
 		}
 		if (getenv ( 'HTTP_HOST' ) == 'wfprj-wf5.informatik.hs-ulm.de' && substr ( $_SERVER ['PHP_SELF'], 1, 2 ) == '02') {
-			return 'public';
+			return 'private';
 		}
 		if (getenv ( 'HTTP_HOST' ) == 'wfprj-wf5.informatik.hs-ulm.de' && substr ( $_SERVER ['PHP_SELF'], 1, 2 ) == '03') {
-			return 'public';
+			return 'private';
 		}
 		if (getenv ( 'HTTP_HOST' ) == 'wfprj-wf5.informatik.hs-ulm.de' && substr ( $_SERVER ['PHP_SELF'], 1, 2 ) == '04') {
-			return 'public';
+			return 'private';
 		}
 		if (getenv ( 'HTTP_HOST' ) == 'wfprj-wf5.informatik.hs-ulm.de' && substr ( $_SERVER ['PHP_SELF'], 1, 2 ) == '05') {
-			return 'public';
+			return 'private';
 		}
 		if (getenv ( 'HTTP_HOST' ) == 'wfprj-wf5.informatik.hs-ulm.de' && substr ( $_SERVER ['PHP_SELF'], 1, 2 ) == '06') {
-			return 'public';
+			return 'private';
 		}
 		if (getenv ( 'HTTP_HOST' ) == 'wfprj-wf5.informatik.hs-ulm.de' && substr ( $_SERVER ['PHP_SELF'], 1, 2 ) == '07') {
-			return 'public';
+			return 'private';
 		}
 		if (getenv ( 'HTTP_HOST' ) == 'wfprj-wf5.informatik.hs-ulm.de' && substr ( $_SERVER ['PHP_SELF'], 1, 2 ) == '08') {
-			return 'public';
+			return 'private';
 		}
 		if (getenv ( 'HTTP_HOST' ) == 'wfprj-wf5.informatik.hs-ulm.de' && substr ( $_SERVER ['PHP_SELF'], 1, 2 ) == '09') {
 			return 'group';
