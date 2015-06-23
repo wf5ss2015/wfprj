@@ -444,28 +444,62 @@ class UserModel {
 	 *
 	 * @author Damian Wysocki
 	 *        
-	 *       Nutzerkonto für Studenten in Datenbank anlegen
+	 *       Nutzerkonto in Datenbank anlegen
 	 *			
 	 **/  
-	public function saveStudentUsername($nutzer, $vorname, $nachname, $passwort,
-											$telefonnummer, $geschlecht) {
-		 
+	public function saveUsername($nutzer, $vorname, $nachname, $passwort,
+											$telefonnummer, $geschlecht, $rolle) {
+		
 		$database = DatabaseFactory::getFactory ()->getConnection ();
-				
+		
 		$sql = "INSERT INTO nutzer(nutzer_name, vorname, nachname, rolle_ID, 
-					passwortHash, telefonnummer, geschlecht)
-				SELECT CONCAT('".$nutzer."', CASE WHEN COUNT(*) = 0 THEN '' ELSE COUNT(*) END), 
-					'".$vorname."', '".$nachname."', 1, '".$passwort."', '".$telefonnummer."', '".$geschlecht."'
-				FROM nutzer WHERE nutzer_name LIKE '".$nutzer."%';";
-			
+					passwortHash, telefonnummer, geschlecht) VALUES('".$nutzer."', '".$vorname."', '".$nachname."', '".$rolle."',
+				'".$passwort."', '".$telefonnummer."', '".$geschlecht."');";
+		
 		$query = $database->prepare ( $sql );
 		
-		try {
-			$query->execute ();
-			//Session::add ( 'response_positive', 'Rechte erfolgreich für '.$nutzer_name.' geändert.' );
-		} catch ( PDOException $e ) {
-			Session::add ( 'response_negative', 'Nutzerkonto konnte nicht angelegt werden.' );
-		}
+			try {
+				$query->execute ();
+				
+			} catch ( PDOException $e ) {
+				Session::add ( 'response_negative', 'Nutzerkonto konnte nicht angelegt werden.' );
+			}
+	}	 
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *       Prüfen ob Nutzername bereits existiert
+	 *			
+	 **/  
+	public function getRightUsername($nutzer) {
+		 
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+		
+		// wenn Nutzer bereits vorhanden dann fortlaufende Nummer anhängen
+		$sql = "SELECT CONCAT(nutzer_name, CASE WHEN COUNT(*) = 0 THEN '' ELSE COUNT(*) END) As nutzer
+				FROM nutzer WHERE nutzer_name LIKE '".$nutzer."%';";
+	
+		$query= $database->prepare ($sql);
+		
+			try {
+				$query->execute ();
+				
+			
+			$result = $query->fetchColumn();
+			
+			if($result){
+				$nutzer = $result;
+			}
+			
+			//print_r($nutzer);
+			
+			return $nutzer;
+			
+			} catch ( PDOException $e ) {
+				Session::add ( 'response_negative', 'Nutzername kann nicht ausgelesen werden.' );
+			}
 	}	 
 	
 	/**
@@ -538,7 +572,55 @@ class UserModel {
 			$query->execute ();
 			Session::add ( 'response_positive', 'Nutzerkonto für <b>"'.$nutzer.'"</b> erfolgreich angelegt.' );
 		} catch ( PDOException $e ) {
-			Session::add ( 'response_negative', 'Email konnte nicht angelegt werden.' );
+			Session::add ( 'response_negative', 'Nutzerdaten konnten nicht angelegt werden.' );
+		}
+	}	 
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 * 			Mitarbeiterdaten für das dazugehörige Nutzerkonto speichern
+	 *			
+	 **/  
+	public function saveMitarbeiterData($nutzer) {
+		 
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+				
+		$sql = "INSERT INTO mitarbeiter(nutzer_name)
+				VALUES('".$nutzer."');";
+			
+		$query = $database->prepare ( $sql );
+		//print_r($query);
+		try {
+			$query->execute ();
+			Session::add ( 'response_positive', 'Nutzerkonto für <b>"'.$nutzer.'"</b> erfolgreich angelegt.' );
+		} catch ( PDOException $e ) {
+			Session::add ( 'response_negative', 'Nutzerdaten konnten nicht angelegt werden.' );
+		}
+	}	 
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 * 			Dozentendaten für das dazugehörige Nutzerkonto speichern
+	 *			
+	 **/  
+	public function saveDozentData($nutzer, $titel) {
+		 
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+				
+		$sql = "INSERT INTO dozent(nutzer_name, titel)
+				VALUES('".$nutzer."', '".$titel."');";
+			
+		$query = $database->prepare ( $sql );
+		//print_r($query);
+		try {
+			$query->execute ();
+			Session::add ( 'response_positive', 'Nutzerkonto für <b>"'.$nutzer.'"</b> erfolgreich angelegt.' );
+		} catch ( PDOException $e ) {
+			Session::add ( 'response_negative', 'Nutzerdaten konnten nicht angelegt werden.' );
 		}
 	}	 
 		 

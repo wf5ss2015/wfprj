@@ -170,7 +170,7 @@ class EmployeeController extends Controller {
 	* START SPRINT 06
 	* @author: Damian Wysocki
 	* User Story (Nr.: 550)  Als Mitarbeiter möchte ich div. Nutzer anlegen können 
-	* Task: 550/01  Beschreibung: Maske zum Anlegen eines Studenten
+	* Task: 550/01  Beschreibung: Maske zum Anlegen eines Nutzers
 	* Zeitaufwand (in Stunden): 2
 	* START SPRINT 06	
 	*/
@@ -188,13 +188,45 @@ class EmployeeController extends Controller {
 				'matrikel' => $model->getMatrikel (), 'studiengaenge' => $model->getStudiengaenge () 
 		) );
 	}
-		 
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *         Maske zum Anlegen eines Mitarbeiters
+	 **/     
+	public function zeigeMitarbeiterAnlage() {
+
+		$this->View->render ( 'employee/AnlegenMitarbeiter');
+	}
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *         Maske zum Anlegen eines Dozenten
+	 **/     
+	public function zeigeDozentAnlage() {
+
+		$this->View->render ( 'employee/AnlegenDozent');
+	}
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *         Student: Passwort hashen, daten holen und Aufruf Model
+	 **/	
 	public function anlageStudent() {
 		
 		$model = new UserModel();
 		$model1 = new UserModel();
 		$model2 = new UserModel();
 		$model3 = new UserModel();
+		
+		// Richtigen User aus DatenBank extrahieren
+		$modelUser = new UserModel();
+		$strUser = $modelUser->getRightUsername(Request::post('nutzername'));
 		
 		// Passwort hashen
 		 $options = array();
@@ -205,14 +237,15 @@ class EmployeeController extends Controller {
 		//print_r($_POST);
 		
 		// Nutzerkonto
-		$model->saveStudentUsername(
-						Request::post('nutzername'), Request::post('vorname'), 
+		$model->saveUsername(
+						$strUser, Request::post('vorname'), 
 						Request::post('nachname'), $hashedPassword,
-						Request::post('telefonnummer'), Request::post('geschlecht'));
+						Request::post('telefonnummer'), Request::post('geschlecht'),
+						Request::post('rolle'));
 		
 		// Adressdaten
 		$model1->saveAddress(
-						Request::post('nutzername'), Request::post('strasse'), 
+						$strUser, Request::post('strasse'), 
 						Request::post('hausnummer'), Request::post('stadt'),
 						Request::post('land'), Request::post('plz'));
 		
@@ -220,11 +253,110 @@ class EmployeeController extends Controller {
 		
 		// Studentendaten
 		$model3->saveStudentData(
-						Request::post('nutzername'), Request::post('studiengang'), 
+						$strUser, Request::post('studiengang'), 
 						Request::post('matrikel'), Request::post('fachsemester'), 
 						Request::post('studiensemester'));
 		// View erneut rendern
 		Redirect::to ( 'employee/zeigeStudentAnlage' );		
+	}	 
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *         Mitarbeiter: Passwort hashen, daten holen und Aufruf Model
+	 **/
+	public function anlageMitarbeiter() {
+		
+		$model = new UserModel();
+		$model1 = new UserModel();
+		$model2 = new UserModel();
+		$model3 = new UserModel();
+		
+		// Richtigen User aus DatenBank extrahieren
+		$modelUser = new UserModel();
+		$strUser = $modelUser->getRightUsername(Request::post('nutzername'));
+		
+		//print_r($strUser);
+		
+		// Passwort hashen
+		 $options = array();
+		$hashedPassword = password_hash(Request::post('passwort'),1, $options);
+		
+		// Test
+		//echo $hashedPassword;
+		//print_r($_POST);
+		
+		// Nutzerkonto
+		$model->saveUsername(
+						$strUser, Request::post('vorname'), 
+						Request::post('nachname'), $hashedPassword,
+						Request::post('telefonnummer'), Request::post('geschlecht'),
+						Request::post('rolle'));
+		
+		// Adressdaten
+		$model1->saveAddress(
+						$strUser, Request::post('strasse'), 
+						Request::post('hausnummer'), Request::post('stadt'),
+						Request::post('land'), Request::post('plz'));
+		
+		$model2->saveEmail($strUser, Request::post('email'));
+		
+		// Mitarbeiterdaten
+		$model3->saveMitarbeiterData(
+						$strUser);
+						
+		// View erneut rendern
+		Redirect::to ( 'employee/zeigeMitarbeiterAnlage' );		
+
+	}
+	
+	/**
+	 *
+	 * @author Damian Wysocki
+	 *        
+	 *         Dozent: Passwort hashen, daten holen und Aufruf Model
+	 **/
+	public function anlageDozent() {
+		
+		$model = new UserModel();
+		$model1 = new UserModel();
+		$model2 = new UserModel();
+		$model3 = new UserModel();
+		
+		// Richtigen User aus DatenBank extrahieren
+		$modelUser = new UserModel();
+		$strUser = $modelUser->getRightUsername(Request::post('nutzername'));
+		
+		// Passwort hashen
+		 $options = array();
+		$hashedPassword = password_hash(Request::post('passwort'),1, $options);
+		
+		// Test
+		//echo $hashedPassword;
+		//print_r($_POST);
+		
+		// Nutzerkonto
+		$model->saveUsername(
+						$strUser, Request::post('vorname'), 
+						Request::post('nachname'), $hashedPassword,
+						Request::post('telefonnummer'), Request::post('geschlecht'),
+						Request::post('rolle'));
+		
+		// Adressdaten
+		$model1->saveAddress(
+						$strUser, Request::post('strasse'), 
+						Request::post('hausnummer'), Request::post('stadt'),
+						Request::post('land'), Request::post('plz'));
+		
+		$model2->saveEmail($strUser, Request::post('email'));
+		
+		// Mitarbeiterdaten
+		$model3->saveDozentData(
+						$strUser, Request::post('titel'));
+						
+		// View erneut rendern
+		Redirect::to ( 'employee/zeigeDozentAnlage' );		
 
 	}	 
 		 

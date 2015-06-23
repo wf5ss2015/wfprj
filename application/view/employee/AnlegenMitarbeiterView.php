@@ -12,7 +12,7 @@
 	* START SPRINT 06
 	* @author: Damian Wysocki
 	* User Story (Nr.: 550)  Als Mitarbeiter möchte ich div. Nutzer anlegen können 
-	* Task: 550/01  Beschreibung: Maske zum Anlegen eines Studenten
+	* Task: 550/01  Beschreibung: Maske zum Anlegen eines Mitarbeiters
 	* Zeitaufwand (in Stunden): 2
 	* START SPRINT 06	
 	*/
@@ -21,11 +21,11 @@
 		 *
 		 * @author Damian Wysocki
 		 *        
-		 *         Maske zum Anlegen eines Studenten
+		 *         Maske zum Anlegen eines Mitarbeiters
 		 **/     
 ?>
 <article>
-	<h1>Ein Nutzerkonto für <b>"Studenten"</b> anlegen</h1>
+	<h1>Ein Nutzerkonto für <b>"Dozenten"</b> anlegen</h1>
 	</br>			
 	</br>
 	<a>Bitte <b>alle</b> folgenden Felder ausfüllen! </a>
@@ -56,16 +56,8 @@
 	</script>
 	
 	<?php// Formular zum Anlegen?>
-<?php if ($this->matrikel and $this->studiengaenge)
-	{ ?>
-     <form action="index.php?url=Employee/anlageStudent" name="form" method="post">
+     <form action="index.php?url=Employee/anlageMitarbeiter" name="form" method="post">
 		<table>
-			<?php//Matrikel?>
-			<tr>
-              <td><label>Matrikel</label></td>
-              <td><input name="matrikel" required="required" type="text" readonly value="<?php echo htmlentities($this->matrikel->matrikelnummer +1)?>"></td>
-			  <td><label>(wird automatisch vergeben!)</label></td>
-			</tr>
 			<?php//Vorname?>
 			<tr>
               <td><label>Vorname</label></td>
@@ -140,45 +132,23 @@
               <td><label>Passwort wdh</label></td>
               <td><input id="pw2" name="passwort_widerholen" required="required" type="password" onblur="checkPW()"></td>
 			</tr>
-              <?php//Studiengang?>
-			<tr>
-              <td><label>Studiengang</label></td>
-              <td><select name="studiengang" 
-					<?php foreach($this->studiengaenge as $key => $value) { ?> required="required">
-                    <option  value="<?php echo htmlentities($value->stg_ID);?>">
-						<?php echo htmlentities($value->stg_bezeichnung); ?></option>
-							<?php } ?>
-               </select></td>
-			</tr>
-			<?php//Studiensemester?>
-			<tr>
-              <td><label>Studiensemester</label></td>
-              <td><input name="studiensemester" required="required" type="number" min="1" max="20"></td>
-			</tr>
-			<?php//Fachsemester?>
-			<tr>
-              <td><label>Fachsemester</label></td>
-              <td><input name="fachsemester" required="required" type="number" min="1" max="20"></td>
-			</tr>
-			<?php//Rolle?>
-			 <input type="hidden" name="rolle" value= 1 />
+              <?php//Rolle?>
+			 <input type="hidden" name="rolle" value= 3 />
 		</table>
 		<br>
-		<input class="button" value="Student anlegen" type="submit">
+		<input class="button" value="Mitarbeiter anlegen" type="submit">
      </form>
 	 
  
 </article>
 <!-- sonst Fehlermeldung -->
-<?php }else { ?>
-	Kein Array vorhanden
-<?php } ?>
+
 
 <?php 
 	/** ENDE SPRINT 06
 		* @author: Damian Wysocki
 		* User Story (Nr.: 550)  Als Mitarbeiter möchte ich div. Nutzer anlegen können 
-		* Task: 550/01  Beschreibung: Maske zum Anlegen eines Studenten
+		* Task: 550/01  Beschreibung: Maske zum Anlegen eines Mitarbeiters
 		* Zeitaufwand (in Stunden): 2
 		* ENDE SPRINT 06
 	**-----------------------------------------------------------------------------------------*/	?>
