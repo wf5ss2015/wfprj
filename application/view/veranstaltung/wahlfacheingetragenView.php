@@ -1,5 +1,4 @@
-<?php
-/**
+<?php /**
  * SPRINT 06
  *
  * @author : Roland Schmid
@@ -11,20 +10,32 @@
  * Zeit:
  *
  */
+
 ?>
 
+
+
 <article>
-<h1>Wahlfach: Veranstaltung auswählen</h1>
-<p>Wählen Sie die Veranstaltung aus, die Sie einem Studiengang als Wahlfach hinzuf&uuml;gen m&ouml;chten: </p>
- 
-    
-    <?php if ($this->veranstaltungen) { 
+
+<h1>????</h1>
+
+Veranstaltung erfolgreich als Wahlfach eingetragen
+
+<?php
+
+
+
+
+
+
+
+
 
 	/* Tabelle drucken mit alias & link
 	 * generische Tabelle mit Linkauswahl von Kilian Kraus
 	 * Tabelle mit "hidden input" ermöglicht die Übergabe der Veranstaltungs-ID
-	 * */ 
-	
+	 * */
+
 	$table = new Table ();
 	$alias = array (
 			"0" => "Veranstaltungsnummer",
@@ -33,37 +44,48 @@
 			"3" => "Credits",
 			"4" => "SWS",
 			"5" => "maximale Anzahl Teilnehmer",
-			"6" => "Veranstaltungsart" 
+			"6" => "Veranstaltungsart"
+	);
+	$alias = ( object ) $alias;
+
+	// key=name des links - value=action
+	$table->table ( array (
+			'table' => $this->veranstaltung,
+			'alias' => array (
+					$alias
+			)
+	) );
+	
+	
+	
+	
+	
+	
+	
+	$table = new Table ();
+	$alias = array (
+			"0" => "Studiengangnummer",
+			"1" => "Bezeichnung",
+			"2" => "Typ",
 	);
 	$alias = ( object ) $alias;
 	
 	// key=name des links - value=action
-	$link = array (
-			"bearbeiten" => "index.php?url=veranstaltung/bearbeitenWahlfach"
-	);
-	
-	$link = (object)$link;
-	
 	$table->table ( array (
-			'table' => $this->veranstaltungen,
+			'table' => $this->studiengang,
 			'alias' => array (
-					$alias 
-			),
-			'link' => array (
-					$link 
-			) 
+					$alias
+			)
 	) );
 
-	
-	
-        } else {
-        	echo "error";
-        }
-		?>	
-			
-			
-			
-			
-			
+	print "ab Semester : " . $this->semester;
+
+
+
+
+
+?>
+
 
 </article>
+
