@@ -1,3 +1,16 @@
+/**
+ * SPRINT 06
+ *
+ * @author : Roland Schmid
+ * Datum: 	23.6.2015
+ * User­ Story:  Als Mitarbeiter möchte ich einem Studiengang Wahlfächer zuordnen können.
+ * Task: 	Tabelle anlegen
+ * Nr:		630
+ * Points:	5
+ * Zeit: 	0.5
+ * 
+ */
+ 
 /*	---------- SPRINT 6 ----------
 
 	- Autor: 				Alexander Mayer
@@ -504,6 +517,32 @@ CREATE  TABLE `Studiengang_hat_Veranstaltung`
     FOREIGN KEY (`stg_ID` ) REFERENCES `Studiengang` (`stg_ID` ),
     FOREIGN KEY (`veranst_ID` ) REFERENCES `Veranstaltung` (`veranst_ID` )
 );
+
+
+
+  /* sprint 6 Anfang
+   * Roland Schmid
+  */
+
+-- -----------------------------------------------------
+-- Table `Studiengang_hat_Wahlfach`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Studiengang_hat_Wahlfach`;
+
+CREATE  TABLE `Studiengang_hat_Wahlfach`
+(
+	`stg_ID` INT NOT NULL,
+	`veranst_ID` INT NOT NULL,
+	`ab_Semester` TINYINT(1) DEFAULT 1,
+	PRIMARY KEY (`stg_ID`, `veranst_ID`) ,
+    FOREIGN KEY (`stg_ID` ) REFERENCES `Studiengang` (`stg_ID` ),
+    FOREIGN KEY (`veranst_ID` ) REFERENCES `Veranstaltung` (`veranst_ID` )
+);
+
+  /* sprint 6 Ende
+   * Roland Schmid
+  */
+
 
 
 -- -----------------------------------------------------
