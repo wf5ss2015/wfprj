@@ -32,7 +32,7 @@
 	//Table-Objekt für die Ausgabe
 	$table = new Table ();
 
-echo "voher: <br>";
+echo "voher: <br><br>";
 	// Tabele drucken mit alias
 	$alias = array (
 			"0" => "Veranstaltungsnummer",
@@ -52,7 +52,7 @@ echo "voher: <br>";
 	) );
 	
 
-	echo "nachher: <br>";
+	echo "<br><br>nachher: <br><br>";
 	$table->table ( array (
 			'table' => $this->neueVeranstaltung,
 			'alias' => array (
@@ -63,6 +63,11 @@ echo "voher: <br>";
 	
 ?>
 	</table>
+	
+	<br><br><br><br>
+	<a href="index.php?url=veranstaltung/bearbeitenSelect">weitere Veranstaltung bearbeiten</a>
+	<br><br>
+	
 </article>
 
 
