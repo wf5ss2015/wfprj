@@ -1,3 +1,17 @@
+/*	---------- SPRINT 6 ----------
+
+	- Autor: 				Alexander Mayer
+	- Datum: 				23.06.2015
+	
+	********************************************************************************************************************
+	
+	- User Story (Nr. 650):	Als Mitarbeiter möchte ich festlegen können, welcher Dozent welche Veranstaltungen halten kann.
+	- User Story Punkte:	5
+	- Task 650.1:			Tabellenstruktur anlegen
+	- Zeitaufwand:			0.5h
+
+*/
+
 /*	---------- SPRINT 5 ----------
 
 	- Autor: 				Alexander Mayer
@@ -388,6 +402,9 @@ CREATE  TABLE `Veranstaltung`
 );
 
 
+/*	Autor: Alexander Mayer 
+	Sprint 6, Task 650.1 BEGIN */
+
 -- -----------------------------------------------------
 -- Table `Dozent_berechtigtFuer_Veranstaltung`
 -- -----------------------------------------------------
@@ -401,6 +418,9 @@ CREATE  TABLE `Dozent_berechtigtFuer_Veranstaltung`
 	FOREIGN KEY (`veranst_ID` ) REFERENCES `Veranstaltung` (`veranst_ID` ),
 	FOREIGN KEY (`dozent_nutzer_name` ) REFERENCES `Dozent` (`nutzer_name` )
 );
+
+/*	Autor: Alexander Mayer
+	Sprint 6, Task 650.1 END */
 
 
 /*	Autor: Alexander Mayer

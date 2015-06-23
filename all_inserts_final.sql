@@ -1,3 +1,16 @@
+/*	---------- SPRINT 6 ----------
+
+	- Autor: 				Alexander Mayer
+	- Datum: 				23.06.2015
+	
+	********************************************************************************************************************
+	
+	- User Story (Nr. 650):	Als Mitarbeiter möchte ich festlegen können, welcher Dozent welche Veranstaltungen halten kann.
+	- User Story Punkte:	5
+	- Task 650.1:			Insert-Statement erstellen
+	- Zeitaufwand:			0.1h
+*/
+
 /*	---------- SPRINT 5 ----------
 
 	- Autor: 				Alexander Mayer
@@ -267,6 +280,10 @@ INSERT INTO Veranstaltung (veranst_bezeichnung, veranst_kurztext, credits, SWS, 
 ('Strahlentechnik', 'STechnik', 5, 4, 30, 16, NULL),
 ('Maschinenbau Grundlagen', 'MBau-GRDL', 5, 4, 30, 16, NULL);
 
+
+/*	Autor: Alexander Mayer 
+	Sprint 6, Task 650.1 BEGIN */
+	
 INSERT INTO Dozent_berechtigtFuer_Veranstaltung (dozent_nutzer_name, veranst_ID) VALUES
 ('dozent', 1),
 ('dozent', 2),
@@ -274,6 +291,10 @@ INSERT INTO Dozent_berechtigtFuer_Veranstaltung (dozent_nutzer_name, veranst_ID)
 ('clstei', 6),
 ('clstei', 7),
 ('clstei', 8);
+
+/*	Autor: Alexander Mayer 
+	Sprint 6, Task 650.1 END */
+	
 
 INSERT INTO Student_angemeldetAn_Veranstaltung (veranst_ID, student_nutzer_name) VALUES
 	-- Medizintechnik3, Strahlentechnik:
