@@ -1,6 +1,15 @@
 <?php
 /*
     autor: Kris Klamser
+    datum: 22.6.2015
+    projekt: lehrveranstaltungsmanagement
+	sprint: 6	
+	zeitaufwand: 1.0
+	user story (Nr. 560): Als Mitarbeiter möchte ich einer Veranstaltung einen Dozenten zuordnen können. (8 pkt.)
+	-> Erweiterung
+*/
+/*
+    autor: Kris Klamser
     datum: 28.4.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 04	
@@ -43,7 +52,7 @@ class veranstaltungErweiternModel {
 		}
 	}
 	
-	// insertet die Erweiterung einer Veranstaltung mit einer Person
+	// insertet die Erweiterung einer Veranstaltung mit einem Student
 	public function setErweiterungStudent($veranst_ID, $user_name) {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		$sql = "Insert into Student_angemeldetAn_Veranstaltung (veranst_ID, student_nutzer_name) Values ('$veranst_ID', '$user_name')";
@@ -53,10 +62,28 @@ class veranstaltungErweiternModel {
 			Session::add ( 'response_positive', 'Person wurde erfolgreich hinzugefügt.' );
 		} catch ( PDOException $e ){
 			if ($e->errorInfo [1] == 1062) {
-				Session::add ( 'response_warning', 'Die Person ist bereits an Veranstaltung beteiligt.' );
+				Session::add ( 'response_warning', 'Der Student ist bereits an Veranstaltung beteiligt.' );
 			} else {
 				Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 			}
+		}
+	}
+	/*
+		Kris Klamser
+		Sprint 6
+		22.6.2015
+		Erweiterung um Veranstaltung mit Dozenten zu erweitern.
+	*/
+	// insertet die Erweiterung einer Veranstaltung mit eines Dozenten
+	public function setErweiterungDozent($veranst_ID, $user_name) {
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+		$sql = "UPDATE Veranstaltung SET dozent_nutzer_name = '$user_name' WHERE veranst_ID = '$veranst_ID';";
+		$query = $database->prepare ( $sql );
+		try{
+			$query->execute ();
+			Session::add ( 'response_positive', 'Dozent wurde erfolgreich hinzugefügt.');
+		} catch ( PDOException $e ){
+			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 		}
 	}
 }

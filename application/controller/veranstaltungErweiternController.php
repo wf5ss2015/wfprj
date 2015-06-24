@@ -1,6 +1,14 @@
 <?php
 /*
     autor: Kris Klamser
+    datum: 22.6.2015
+    projekt: lehrveranstaltungsmanagement
+	sprint: 6
+	zeitaufwand: 2
+	user story (Nr. 560): Als Mitarbeiter möchte ich einer Veranstaltung einen Dozenten zuordnen können. (8 Pkt.)
+*/
+/*
+    autor: Kris Klamser
     datum: 28.4.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 03	
@@ -36,16 +44,20 @@ class veranstaltungErweiternController extends Controller {
 			$user_array = explode ( ",", $user_string );
 			$user_name = $user_array [0];
 			$user_rolle = $user_array[1];
-			echo $user_rolle;
-			if($user_rolle != 'Student'){
-				Session::add ( 'response_warning', 'Es können nur Studenten hinzugefügt werden.' );
-				$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
-			} else {
+			//START Änderungen Klamser Sprint 6: Veranstaltungen können auch mit Dozenten erweitert werden.
+			if(stristr($user_rolle, 'Student') !== FALSE){
 				// inserten der Erweiterung
 				veranstaltungErweiternModel::setErweiterungStudent ( $veranst_ID, $user_name );
 				$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
+			} else if (stristr($user_rolle, 'Dozent') !== FALSE){
+				// inserten der Erweiterung
+				veranstaltungErweiternModel::setErweiterungDozent( $veranst_ID, $user_name );
+				$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
+			} else {
+				Session::add ( 'response_warning', 'Die Veranstaltung konnte nicht erweitert werden.' );
+				$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
 			}
-			
+			//ENDE Änderungen Klamser Sprint 6
 		} else {
 			// Wenn schon bei der Auswahl von Veranstaltung und User etwas nicht beachtet wurde, bekommt man eine Fehlermeldung.
 			if(empty( $_POST ['veranstaltung'] )){

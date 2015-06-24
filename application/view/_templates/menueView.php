@@ -10,6 +10,12 @@
  * Task:  menue OOP 
  * ===============================================
  */	
+  /* Erweiterung des Menüs -> Brotkrümelnavigation
+  * autor: Kris Klamser
+  * Sprint: 6
+  * datum: 23.6.2015 
+  * Zeitaufwand: 1
+  */
  /* Erweiterung des Menüs für Studenten
   * autor: Kris Klamser
   * Sprint: 5
@@ -212,6 +218,21 @@ class menueView{
 	}	
 	echo "</ul>";
 	echo "</nav>";
+	
+	/* 	START Änderungen Klamser
+		Sprint 6
+		23.6.2015
+	*/
+	echo "<p>";
+        $url = $_SERVER['REQUEST_URI'];
+		$url_array = explode("=", $url);
+		$pfad = explode("/", $url_array[1]);
+		echo "<a href='../public/index.php?url=index/index' title='Startseite'>
+                  Home
+              </a>";
+        echo " > ".$pfad[0];
+    echo "</p>";
+	//ENDE Klamser Sprint 6
 	}
 }?>
 
