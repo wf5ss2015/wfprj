@@ -11,6 +11,11 @@
  *
  */
 
+/*
+ * Auf dieser Seite hat der Benutzer die Veranstaltung schon gewählt und wählt nun
+ * den Studiengang und das Semester aus, für das die Veranstaltung als Wahlfach
+ * angeboten werden soll.
+ * */
 ?>
 
 

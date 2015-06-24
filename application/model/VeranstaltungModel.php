@@ -648,7 +648,7 @@ class VeranstaltungModel {
 	
 	
 	/* sprint 6 Anfang
-	 * Task:
+	 * Task: Maske, um ein Fach einem Studiengang als Wahlfach zuordnen zu können.
 	 */
 	/*
 	 * ruft alle Studiengänge aus der Datenbank ab, die dem Studiengang hinzugefügt werden können 

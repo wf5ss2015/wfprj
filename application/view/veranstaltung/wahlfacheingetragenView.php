@@ -11,6 +11,11 @@
  *
  */
 
+/*
+ * An dieser Stelle wurde die Veranstaltung dem Studiengang als Wahlfach zugeordnet
+ * (und in der Datenbank eingetragen)
+ * */
+
 ?>
 
 
@@ -21,9 +26,6 @@
 
 
 <?php
-
-
-
 
 	/* Tabelle drucken mit alias & link
 	 * generische Tabelle mit Linkauswahl von Kilian Kraus
@@ -73,10 +75,6 @@
 	) );
 
 	print "ab Semester : " . $this->semester;
-
-
-
-
 
 ?>
 

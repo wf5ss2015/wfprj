@@ -11,6 +11,11 @@
  * Zeit:	5
  *
  */
+
+/*
+ * Auf dieser Seite wird die Veranstaltung ausgewählt, die ein Mitarbeiter einem Studiengang als Wahlfach
+ * hinzufügen möchte
+ * */
 ?>
 
 <article>
@@ -61,9 +66,4 @@
         }
 		?>	
 			
-			
-			
-			
-			
-
 </article>
