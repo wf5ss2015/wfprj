@@ -8,7 +8,7 @@
  * Task: 	Maske, um ein Fach einem Studiengang als Wahlfach zuordnen zu können. 
  * Nr:		630
  * Points:	8
- * Zeit:
+ * Zeit:	5
  *
  */
 
