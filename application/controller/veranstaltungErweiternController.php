@@ -4,8 +4,9 @@
     datum: 22.6.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 6
-	zeitaufwand: 2
+	zeitaufwand: 3
 	user story (Nr. 560): Als Mitarbeiter möchte ich einer Veranstaltung einen Dozenten zuordnen können. (8 Pkt.)
+	-> Erweiterung um typSelected-function und Änderung in selected-function
 */
 /*
     autor: Kris Klamser
@@ -20,15 +21,43 @@ class veranstaltungErweiternController extends Controller {
 	public function __construct() {
 		parent::__construct ();
 	}
-	// rendert die View veranstaltungErweitern und übergibt das array mit den veranstaltungen und usern
+	// rendert die View veranstaltungErweitern 
 	public function veranstaltungErweitern() {
-		$this->View->render ( 'veranstaltungerweitern/veranstaltungErweitern', array (
-				'veranstaltung_list' => veranstaltungErweiternModel::getVeranstaltung (),
-				'user_list' => veranstaltungErweiternModel::getUser () 
-		) );
+		$this->View->render ( 'veranstaltungerweitern/veranstaltungErweitern');
 	}
 	
-	// wird ausgeführt, wenn in der veranstaltungErweitern-View der Button geklickt wird.
+	//START Änderungen Klamser Sprint 6
+	//Wird ausgeführt wenn Personentyp ausgewählt wurde.
+	public function typSelected() {
+		if (isset ( $_POST['typ'])){
+			$typ = $_POST ['typ'];
+			switch ($typ) {
+				case "dozent" :
+					//umDozentErweitern-View wird gezeigt und die arrays veranstaltung_list und user_list übergeben
+					$this->View->render ( 'veranstaltungerweitern/umDozentErweitern', array (
+							'veranstaltung_list' => veranstaltungErweiternModel::getVeranstaltung (),
+							'user_list' => veranstaltungErweiternModel::getDozent () 
+					) );
+					break;
+				case "student":
+					//umStudentErweitern-View wird gezeigt und die arrays veranstaltung_list und user_list übergeben
+					$this->View->render ( 'veranstaltungerweitern/umStudentErweitern', array (
+							'veranstaltung_list' => veranstaltungErweiternModel::getVeranstaltung (),
+							'user_list' => veranstaltungErweiternModel::getStudent () 
+					) );
+					break;
+				default:
+					default :
+					Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
+			} 
+		} else {
+				Session::add ( 'response_warning', 'Es ist kein	Personentyp ausgewählt.' );
+				$this->View->render( 'veranstaltungerweitern/veranstaltungErweitert' );
+		}
+	}
+	//ENDE Änderungen Klamser Sprint 
+	
+	// wird ausgeführt, wenn auf der umStudent-/umDonzentErweitern-View der Button geklickt wird.
 	public function selected() {
 		// Prüfung ob sowohl Veranstaltung als auch User selected sind.
 		if (isset ( $_POST ['veranstaltung'] ) and isset ( $_POST ['user'] )) {
@@ -43,13 +72,13 @@ class veranstaltungErweiternController extends Controller {
 			$user_string = $_POST ['user'];
 			$user_array = explode ( ",", $user_string );
 			$user_name = $user_array [0];
-			$user_rolle = $user_array[1];
+			$user_rolle = $_POST['personentyp'];
 			//START Änderungen Klamser Sprint 6: Veranstaltungen können auch mit Dozenten erweitert werden.
-			if(stristr($user_rolle, 'Student') !== FALSE){
+			if(stristr($user_rolle, 'Student') !== false){
 				// inserten der Erweiterung
 				veranstaltungErweiternModel::setErweiterungStudent ( $veranst_ID, $user_name );
 				$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
-			} else if (stristr($user_rolle, 'Dozent') !== FALSE){
+			} else if (stristr($user_rolle, 'Dozent') !== false){
 				// inserten der Erweiterung
 				veranstaltungErweiternModel::setErweiterungDozent( $veranst_ID, $user_name );
 				$this->View->render('veranstaltungerweitern/veranstaltungErweitert');

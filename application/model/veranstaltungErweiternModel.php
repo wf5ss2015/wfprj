@@ -4,9 +4,9 @@
     datum: 22.6.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 6	
-	zeitaufwand: 1.0
+	zeitaufwand: 1.5
 	user story (Nr. 560): Als Mitarbeiter möchte ich einer Veranstaltung einen Dozenten zuordnen können. (8 pkt.)
-	-> Erweiterung
+	-> Erweiterung: getStudent, getDozent, setErweiterungDozent($veranst_ID, $user_name)
 */
 /*
     autor: Kris Klamser
@@ -51,6 +51,34 @@ class veranstaltungErweiternModel {
 			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 		}
 	}
+	
+	//START Änderungen Klamser Sprint 6
+	// selected alle Studenten
+	public function getStudent() {
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+		$sql = 'Select nutzer_name, "Student" AS rolle_bezeichnung from Student;';
+		$query = $database->prepare ( $sql );
+		try{
+			$query->execute ();
+			return $query->fetchAll ();
+		} catch (PDOException $e){
+			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
+		}
+	}
+	
+	// selected alle Dozenten
+	public function getDozent() {
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+		$sql = 'Select nutzer_name, "Dozent" AS rolle_bezeichnung from Dozent;';
+		$query = $database->prepare ( $sql );
+		try{
+			$query->execute ();
+			return $query->fetchAll ();
+		} catch (PDOException $e){
+			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
+		}
+	}
+	//ENDE Änderungen Klamser Sprint 6
 	
 	// insertet die Erweiterung einer Veranstaltung mit einem Student
 	public function setErweiterungStudent($veranst_ID, $user_name) {
