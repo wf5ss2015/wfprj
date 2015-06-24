@@ -7,10 +7,15 @@
  * Task: 	Maske, um ein Fach einem Studiengang als Wahlfach zuordnen zu können. 
  * Nr:		630
  * Points:	8
- * Zeit:
+ * Zeit:	5
  *
  */
 
+/*
+ * Auf dieser Seite hat der Benutzer die Veranstaltung schon gewählt und wählt nun
+ * den Studiengang und das Semester aus, für das die Veranstaltung als Wahlfach
+ * angeboten werden soll.
+ * */
 ?>
 
 

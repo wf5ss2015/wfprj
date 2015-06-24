@@ -7,9 +7,14 @@
  * Task: 	Maske, um ein Fach einem Studiengang als Wahlfach zuordnen zu können. 
  * Nr:		630
  * Points:	8
- * Zeit:
+ * Zeit:	5
  *
  */
+
+/*
+ * An dieser Stelle wurde die Veranstaltung dem Studiengang als Wahlfach zugeordnet
+ * (und in der Datenbank eingetragen)
+ * */
 
 ?>
 
@@ -21,9 +26,6 @@
 
 
 <?php
-
-
-
 
 	/* Tabelle drucken mit alias & link
 	 * generische Tabelle mit Linkauswahl von Kilian Kraus
@@ -73,10 +75,6 @@
 	) );
 
 	print "ab Semester : " . $this->semester;
-
-
-
-
 
 ?>
 

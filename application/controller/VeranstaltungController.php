@@ -8,7 +8,7 @@
  * Task: 	Maske, um ein Fach einem Studiengang als Wahlfach zuordnen zu können. 
  * Nr:		630
  * Points:	8
- * Zeit:
+ * Zeit:	5
  *
  */
 
@@ -333,7 +333,7 @@ class VeranstaltungController extends Controller {
 	
 	
 	/* sprint 6 Anfang
-	 * Task:
+	 * Task: Maske, um ein Fach einem Studiengang als Wahlfach zuordnen zu können.
 	 */
 	/*
 	 * ruft alle vorhandenen Veranstaltungen aus der Datenbank ab und übergibt sie
@@ -382,6 +382,7 @@ class VeranstaltungController extends Controller {
 		}
 	}
 	
+	
 	/*
 	 * trägt das Wahlfach ein in die Tabelle Studiengang_hat_Wahlfach
 	 * */	
@@ -422,8 +423,3 @@ class VeranstaltungController extends Controller {
 	
 	/* sprint 6 Ende */	
 }
-
-
-
-
-

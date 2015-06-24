@@ -103,8 +103,7 @@ class menueView{
 			"Veranstaltung" => "#",
 			"erweitern" => "veranstaltungerweitern/veranstaltungErweitern",
 			"anlegen" => "veranstaltung/anlegenForm",
-			"bearbeiten" => "veranstaltung/bearbeitenSelect",
-			"als Wahlfach" => "veranstaltung/wahlfachVeranstaltungSelect"),
+			"bearbeiten" => "veranstaltung/bearbeitenSelect"),
 			array(
 			"Veranstaltungstermine" => "#",
 			"erstellen" => "raumZuweisen/erzeugeFormular1",
@@ -115,9 +114,9 @@ class menueView{
 			"Raumplan" => "raumplan/erzeugeFormular"),
 			array(
 			"Nutzer" => "#",
-			"Anlegen - Student" => "#",
-			"Anlegen - Mitarbeiter" => "#",
-			"Anlegen - Dozent" => "#",
+			"Anlegen - Student" => "Employee/zeigeStudentAnlage",
+			"Anlegen - Mitarbeiter" => "Employee/zeigeMitarbeiterAnlage",
+			"Anlegen - Dozent" => "Employee/zeigeDozentAnlage",
 			"Passwort Verwaltung" => "#",
 			"Nutzer bearbeiten" => "#",
 			"Nutzer löschen" => "#",

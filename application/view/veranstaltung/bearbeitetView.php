@@ -1,4 +1,18 @@
 <?php 
+
+/**
+ * SPRINT 06
+ *
+ * @author : Roland Schmid
+ * Datum: 	23.6.2015
+ * User­ Story: Als Entwickler möchte ich die Teile aus den vorigen Sprints nachbessern. (erneut)
+ * Task: 	Link zurück zum Start (Veranstaltung bearbeiten)
+ * Nr:		370b
+ * Points:	8
+ * Zeit: 	1
+ *
+ */
+
 /**
  * SPRINT 04
  *
@@ -63,10 +77,19 @@ echo "voher: <br><br>";
 	
 ?>
 	</table>
-	
+	<?php 
+	/* sprint 6 Anfang
+	 * Task: Link zurück zum Start (Veranstaltung bearbeiten)
+	 */
+	?>
 	<br><br><br><br>
 	<a href="index.php?url=veranstaltung/bearbeitenSelect">weitere Veranstaltung bearbeiten</a>
 	<br><br>
+	
+	<?php 
+	/* sprint 6 Ende
+	 */
+	?>
 	
 </article>
 

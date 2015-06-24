@@ -5,10 +5,10 @@
  * @author : Roland Schmid
  * Datum: 	23.6.2015
  * User­ Story: Als Mitarbeiter möcht ich einem Studiengang Wahlfächer zuordnen könnenn.
- * Task: 	Maske, um ein Fach einem Studiengang als Wahlfach zuordnen zu können. 
+ * Task: 	Model anpassen. 
  * Nr:		630
  * Points:	8
- * Zeit:
+ * Zeit:	1.25
  *
  */
 
@@ -648,7 +648,7 @@ class VeranstaltungModel {
 	
 	
 	/* sprint 6 Anfang
-	 * Task:
+	 * Task: Maske, um ein Fach einem Studiengang als Wahlfach zuordnen zu können.
 	 */
 	/*
 	 * ruft alle Studiengänge aus der Datenbank ab, die dem Studiengang hinzugefügt werden können 
