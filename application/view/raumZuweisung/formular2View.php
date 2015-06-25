@@ -14,9 +14,9 @@
 
 <!-- Formular zur Auswahl eines verfügbaren Raumes: -->
 
-<form class="formular" action="index.php?url=raumZuweisen/anlegen_veranstaltungstermin" method="post" style='width: 28em; height: 21em; margin: 20px; padding: 25px;'>
+<form class="formular" action="index.php?url=raumZuweisen/anlegen_veranstaltungstermin" method="post" style='width: 28em; height: 32em; margin: 20px; padding: 25px;'>
 	
-	<h4 style='color: #00436A'>2) Raum ausw&auml;hlen:</h4> <br/>
+	<h3 style='color: #00436A'>2) Raum ausw&auml;hlen:</h3> <br/>
 	
 	<p style="text-align:center;">Folgende R&auml;ume sind zur ausgew&auml;hlten Zeit verf&uuml;gbar und erf&uuml;llen die erforderliche Ausstattung f&uuml;r die Veranstaltung: </p>
 	

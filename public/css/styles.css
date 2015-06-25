@@ -458,7 +458,7 @@ label {
  * Zeit insgesamt: 2h 
  * START Sprint 6*/
  
- table.stundenplan {
+table.stundenplan {
 
 	border: 1px solid #9F9F9F;
 	border-collapse: collapse;
@@ -506,8 +506,8 @@ div.flexbox {
 	cursor: pointer;
 	padding: 0; 
 	border: none; 
-	background: none;
 	color: blue;
+	background: #A9DFFF;
 }
 
 .btnLink:hover {

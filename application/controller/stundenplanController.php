@@ -1,4 +1,15 @@
 <?php
+/*	---------- SPRINT 6 ----------
+
+	- Autor: 				Alexander Mayer
+	- Datum: 				24.06.2015
+	
+	- User Story (Nr. 580):	Als Student und Dozent möchte ich meinen individuellen Stundenplan ausdrucken können.
+	- User Story Punkte:	8
+	- Task:					Funktion printStundenplan() im Controller erstellen.
+	- Zeitaufwand:			1h
+*/
+
 /*	---------- SPRINT 4 ----------
 
 	- Autor: 				Alexander Mayer
@@ -105,4 +116,51 @@ class stundenplanController extends Controller
 														  'stundenzeiten' => $stundenZeiten,
 														  'name' => $name));
 	}
+	
+/*	SPRINT 6 BEGIN
+
+	- User Story (Nr. 580):	Als Student und Dozent möchte ich meinen individuellen Stundenplan ausdrucken können.
+	- Task:					Funktion printStundenplan() im Controller erstellen.
+	- Zeitaufwand:			1h
+*/
+	
+	public function printStundenplan() //Anzeige des Stundenplans als pdf file:
+	{
+		if(isset($_POST['send']) && $_POST['send'] == "Stundenplan drucken")
+		{
+		
+		/*
+			TCPDF Tool von Kris Klamser wird genutzt (im Ordner ../application/lib)
+			Inhalt ist die Variable $html. 
+		*/
+		
+		require_once('../application/lib/tcpdf/tcpdf.php');
+		ob_start();
+		$pdf = new TCPDF("L","mm","A4", true, "UTF-8", true);
+		$pdf->SetCreator(PDF_CREATOR);
+		$pdf->SetAuthor("Admin/Mitarbeiter");
+		$pdf->SetMargins(25, 25, 25, true);
+		$pdf->SetAutoPageBreak(true, 25);
+		$pdf->SetPrintHeader(false);
+		$pdf->SetPrintFooter(false); 
+		$pdf->SetFont('helvetica', '', 10); 
+		$pdf->AddPage();
+		
+		//html code, der auf der PDF angezeigt werden soll, holen (über hidden value): 
+		$htmlCode = $_POST['htmlCode'];
+	
+		$pdf->writeHTML ($htmlCode, $ln=true, $fill=false, $reseth=false, $cell=false, $align='');
+		$pdf->lastPage();
+		//Output der PDF 
+		$pdf->Output('stundenplan.pdf', 'I');
+		
+		}
+	}
+	
+/*	SPRINT 6 END
+
+	- User Story (Nr. 580):	Als Student und Dozent möchte ich meinen individuellen Stundenplan ausdrucken können.
+	- Task:					Funktion printStundenplan() im Controller erstellen.
+	- Zeitaufwand:			1h
+*/
 }

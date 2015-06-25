@@ -1,15 +1,14 @@
 <?php 
  
- /*	---------- SPRINT 3 ----------
+/*	---------- SPRINT 6 ----------
+
+	- Autor: 				Alexander Mayer
+	- Datum: 				24.06.2015
 	
-	- Autor:				Alexander Mayer
-	- Datum: 				06.05.2015
-	
-	- User Story (Nr. 340): Als Entwickler möchte ich im MVC-Pattern programmieren können.
-	- User Story Punkte:	40	
-	- User Story Aufwand:	6h
-	
-	- Task: View erstellen, indem User Stories aus den ersten beiden Sprints angepasst werden
+	- User Story (Nr. 590):	Als Mitarbeiter möchte ich einen Veranstaltungstermin ändern können.
+	- User Story Punkte:	5
+	- Task:					View für Zeit-Änderung eines Termins erstellen.
+	- Zeitaufwand:			1.5h
 */
  
 ?> 				
@@ -23,11 +22,11 @@
 echo "<h1>Veranstaltungstermin &auml;ndern (Fachsemester $this->fachsemester, $this->studiengang):</h1>";
 ?>
 
-<form action="index.php?url=veranstaltungsterminUebersicht/verarbeiteAenderungen" method="post" style='background: #A9DFFF; width: 32em; height: 16em; margin-left: 20px; padding: 8px; border: 1px solid silver;'>
+<form class="formular" action="index.php?url=veranstaltungsterminUebersicht/verarbeiteAenderungen" method="post" style='width: 33em; height: 21em; margin-left: 20px; padding: 8px;'>
 	
 	<p style='margin-left: 20px;'> 
 		<?php
-		echo "<b>aktuelle Daten des Termins f&uuml;r $this->veranst_bezeichnung: </b>";
+		echo "<h3 style='color: #00436A;'>aktuelle Daten des Termins f&uuml;r $this->veranst_bezeichnung: </h3>";
 		
 		echo "	<ul>
 					<li>Tag: $this->tag_bezeichnung</li>
@@ -37,11 +36,11 @@ echo "<h1>Veranstaltungstermin &auml;ndern (Fachsemester $this->fachsemester, $t
 		?>
 	</p>
 	
-	<h4 style='color: #A9DFFF; text-align: center; background: #00436A;'>Zeit des Termins &auml;ndern:</h4>
+	<h3 style='color: #A9DFFF; text-align: center; background: #00436A;'>Zeit des Termins &auml;ndern:</h3>
 	
 	<p style='margin-left: 20px;'>
 		<label for='wochentag' style='width:7em; display:block; float:left; '> Wochentag: </label>
-		<select class='input' name='waehleWochentag' id='wochentag' style='width: 22em'>
+		<select class='input' name='waehleWochentag' id='wochentag' style='width: 17em'>
 			<?php
 		
 			//alle Wochentage in Option-List anzeigen:
@@ -63,7 +62,7 @@ echo "<h1>Veranstaltungstermin &auml;ndern (Fachsemester $this->fachsemester, $t
 	
 	<p style='margin-left: 20px;'>
 		<label for='stundenzeit' style='width:7em; display:block; float:left;'> Stundenzeit:</label>
-		<select class='input' name='waehleZeit' id='stundenzeit' style='width: 22em'>
+		<select class='input' name='waehleZeit' id='stundenzeit' style='width: 17em'>
 			<?php
 		
 			//alle Stundenzeiten in Option-List anzeigen:

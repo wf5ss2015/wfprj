@@ -1,21 +1,16 @@
 <?php
-/*	---------- SPRINT 4 ----------
+
+/*	---------- SPRINT 6 ----------
 
 	- Autor: 				Alexander Mayer
-	- Datum: 				20.05.2015
+	- Datum: 				24.06.2015
 	
-	- User Story (Nr. 400):	Als Dozent/Student möchte ich mir meinen Stundenplan anzeigen können.
-	- User Story Punkte:	13
-	- Task:					Funktion stundenplan_individuell() im Controller erstellen.
-	- Zeitaufwand:			1h
-	
-	//////////
-	
-	- User Story (Nr. 410):	Als Dozent/Student möchte ich mir einen Stundenplan für Fachsemester anzeigen können.
-	- User Story Punkte:	13
-	- Task:					Funktionen erzeugeFormular() und stundenplan_fachsemester() im Controller erstellen.
-	- Zeitaufwand:			1h
+	- User Story (Nr. 590):	Als Mitarbeiter möchte ich einen Veranstaltungstermin ändern können.
+	- User Story Punkte:	5
+	- Task:					Controller erstellen und Methoden implementieren.
+	- Zeitaufwand:			3h
 */
+
 ?>	
 
 <?php
@@ -44,7 +39,7 @@ class veranstaltungsterminUebersichtController extends Controller
         $this->View->render('veranstaltungsterminUebersicht/formular', array('studiengaenge' => $studiengaenge));
 	}
 	
-	//erzeugt eine Tabelle, welche den Stundenplan nach Fachsemester anzeigt:
+	//erzeugt eine Tabelle, welche alle Veranstaltungstermine eines Fachsemesters anzeigt:
 	public function stundenplan_fachsemester()
 	{
 		if(isset($_POST['send']) && $_POST['send'] == 'zeige Termine') 
@@ -86,6 +81,9 @@ class veranstaltungsterminUebersichtController extends Controller
 		}
 	}
 	
+	/*	Funktion, welche Formulardaten entgegen nimmt und anhand dieser entscheidet, 
+		ob Termin geköscht oder geändert werden soll
+	*/
 	public function bearbeiteVeranstaltungstermin()
 	{
 		if(isset($_POST['send']) && $_POST['send'] == utf8_encode("ändern")) //Veranstaltungstermin ändern
@@ -160,6 +158,7 @@ class veranstaltungsterminUebersichtController extends Controller
 		}
 	}
 	
+	//Funktion ruft Formular zur Raum-Änderung des Veranstaltungstermins auf
 	public function verarbeiteAenderungen()
 	{
 		if(isset($_POST['send']) && $_POST['send'] == 'weiter') 
@@ -236,6 +235,7 @@ class veranstaltungsterminUebersichtController extends Controller
 		}
 	}
 	
+	//Änderung des Veranstaltungstermins (Zeit und Raum) 
 	public function aendereVeranstaltungstermin()
 	{
 		if(isset($_POST['send']) && $_POST['send'] == utf8_encode("Änderungen speichern"))

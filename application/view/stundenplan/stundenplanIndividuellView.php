@@ -1,4 +1,16 @@
 <?php
+
+/*	---------- SPRINT 6 ----------
+
+	- Autor: 				Alexander Mayer
+	- Datum: 				24.06.2015
+	
+	- User Story (Nr. 580):	Als Student und Dozent möchte ich meinen individuellen Stundenplan ausdrucken können.
+	- User Story Punkte:	8
+	- Task:					View um Formular mit hidden value für den auszugebenden HTML-Code erweitern.
+	- Zeitaufwand:			1.5h
+*/
+
 /*	---------- SPRINT 4 ----------
 
 	- Autor: 				Alexander Mayer
@@ -14,25 +26,26 @@
 <article>
 
 <?php
+	$html = "";
+	$thtml = "";
 	
 	//Tabelle, welche den Stundenplan darstellt:
 
-	echo 	"<h1>Stundenplan f&uumlr <strong style='color:red;'>$this->name</strong>:</h1>
+	$html =	"<h1>Stundenplan f&uuml;r <strong style='color:red;'>$this->name</strong>:</h1>";
 			
-			<table class='stundenplan' border='1'>
+	$html .=	"<table class='stundenplan' border='1'>
 				<tr class='head'>
-					<th style='width: 110px'>Stundenzeit</th>";
+					<th style='width: 110px;'>Stundenzeit</th>";
 
 	//Wochentage im Tabellenkopf eintragen:
 	foreach ($this->wochentage as $tag) 
 	{
 		$tag_bezeichnung = $tag['tag_bezeichnung'];
 		
-		echo "<th style='width: 113px'>$tag_bezeichnung</th>";
+		$html .= "<th style='width: 113px'>$tag_bezeichnung</th>";
 	}
 	
-	echo "</tr>";
-	
+	$html .= "</tr>";
 	
 	//erster Veranstaltungstermin holen:
 	if($veranstTermin = $this->veranstaltungstermine->fetch_assoc());
@@ -40,7 +53,7 @@
 	for ($stunde = 1; $stunde <= 7; $stunde++) 
 	{
 		//neue Zeile:
-		echo "<tr>";
+		$html .= "<tr>";
 		
 		for ($tag = 0; $tag <= 6; $tag++) 
 		{
@@ -49,7 +62,7 @@
 				//Stundenzeit wird in der ersten Spalte der Zeile eingetragen:
 				$zeit_von = $stundenzeit['stdZeit_von'];
 				$zeit_bis = $stundenzeit['stdZeit_bis'];
-				echo "<td class='content' style='text-align:center;'><p> $zeit_von - $zeit_bis </p></td>";
+				$html .= "<td class='content' style='text-align:center;'><p> $zeit_von - $zeit_bis </p></td>";
 			}
 			else
 			{
@@ -78,43 +91,59 @@
 						{
 							$dozent = $veranstTermin['nachname'];
 							
-							echo "<td class='content' style='padding-left: 13px;'> 
-									</br>
-									<strong>$veranst_kurztext</strong> <br />
-									&#8227; $studiengang$semester <br /> 
-									&#8227; $raum_bezeichnung <br />";
-									if($dozent)
-										echo "&#8227; $dozent";  
+							$html .= 	"<td class='content' style='padding-left: 13px;'> 
+										<br />
+										<strong>$veranst_kurztext</strong> <br />
+										&#8227; $studiengang$semester <br /> 
+										&#8227; $raum_bezeichnung <br />";
+										if($dozent)
+											$html .= "&#8227; $dozent </td>";  
+										else
+											$html .= "</td>";  
 							
 						}
 						else if(Session::get('user_role') == 2) //Dozent
 						{
-							echo "<td class='content' style='padding-left: 13px;'> 
-									</br>
-									<strong>$veranst_kurztext</strong> <br />
-									&#8227; $studiengang$semester <br /> 
-									&#8227; $raum_bezeichnung";
+							$html .= 	"<td class='content' style='padding-left: 13px;'> 
+										<br />
+										<strong>$veranst_kurztext</strong> <br />
+										&#8227; $studiengang$semester <br /> 
+										&#8227; $raum_bezeichnung
+										</td>";
 						}
 					
 						//nächster Veranstaltungstermin holen:
 						if($veranstTermin = $this->veranstaltungstermine->fetch_assoc());
 					}
-					
-					echo "</td>";
 				}
 				else
 				{
 					//leerer Eintrag:
-					echo "<td> </td>";
+					$html .= "<td> </td>";
 				}
 			}
 		}
 		
-		echo "</tr>";
+		$html .= "</tr>";
 	}
 	
-	echo "</table>";
+	$html .= "</table>";
+	
+	$thtml = $html;
+	
+	echo $html;
 	?>
+	
+	<br />
+	
+	<div style='margin-left:20px;'>
+	<form action="index.php?url=stundenplan/printStundenplan" method="post" target="_blank">
+		<input type='hidden' name='htmlCode' value="<?php echo $thtml; ?>" />
+		<input class="button" type="submit" name="send" value="Stundenplan drucken" />
+	</form>
+	</div>
+	
+	<br />
 	
 </article>
 

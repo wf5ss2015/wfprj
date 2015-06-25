@@ -1,16 +1,23 @@
 <?php
-/*	---------- SPRINT 5 ----------
+
+/*	---------- SPRINT 6 ----------
 
 	- Autor: 				Alexander Mayer
-	- Datum: 				09.06.2015
+	- Datum: 				24.06.2015
 	
-	- User Story (Nr. 530):	Als Mitarbeiter möchte ich einen Veranstaltungstermin löschen können.
+	- User Story (Nr. 590):	Als Mitarbeiter möchte ich einen Veranstaltungstermin ändern können.
 	- User Story Punkte:	5
-	- Task:					
-	- Zeitaufwand:			
+	- Task:					im Model Funktion loescheVeranstaltungstermin() erstellen.
+	- Zeitaufwand:			1h
 	
 	//////////
+	
+	- User Story (Nr. 590):	Als Mitarbeiter möchte ich einen Veranstaltungstermin ändern können.
+	- User Story Punkte:	5
+	- Task:					im Model Funktion aendereVeranstaltungstermin() erstellen.
+	- Zeitaufwand:			1.5h
 */
+
 ?>	
 
 <?php

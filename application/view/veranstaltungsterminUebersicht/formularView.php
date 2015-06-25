@@ -1,13 +1,13 @@
 <?php
-/*	---------- SPRINT 4 ----------
+/*	---------- SPRINT 6 ----------
 
 	- Autor: 				Alexander Mayer
-	- Datum: 				20.05.2015
+	- Datum: 				24.06.2015
 	
-	- User Story (Nr. 410):	Als Dozent/Student möchte ich mir einen Stundenplan für Fachsemester anzeigen können.
-	- User Story Punkte:	13
-	- Task:					formularView anlegen
-	- Zeitaufwand:			2h
+	- User Story (Nr. 590):	Als Mitarbeiter möchte ich einen Veranstaltungstermin ändern können.
+	- User Story Punkte:	5
+	- Task:					View erstellen zur Auswahl von Studiengang und Fachsemester.
+	- Zeitaufwand:			1h
 */
 ?>				
 
@@ -15,12 +15,12 @@
 
 <h1>Veranstaltungstermine nach Fachsemester anzeigen</h1>
 
-<form class="formular" action="index.php?url=veranstaltungsterminUebersicht/stundenplan_fachsemester" method="post" style='width: 28em; height: 16em; margin: 20px; padding: 25px;'>
+<form class="formular" action="index.php?url=veranstaltungsterminUebersicht/stundenplan_fachsemester" method="post" style='width: 28em; height: 24em; margin: 20px; padding: 25px;'>
 	
 	<h3 style="color: #00436A;">Studiengang und Fachsemester ausw&aumlhlen: </h3>
 	
 	<p>
-		<label for='studiengang' style='width:8em; display:block; float:left'> Studiengang: </label>
+		<label for='studiengang' style='width:8em; display:block; float:left;'> Studiengang: </label>
 		<select class='input' name='waehleStudiengang' id='studiengang' size='4' style='width: 22em'>
 			<?php
 		

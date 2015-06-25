@@ -1,13 +1,14 @@
 <?php
-/*	---------- SPRINT 4 ----------
+/*	---------- SPRINT 6 ----------
 
 	- Autor: 				Alexander Mayer
-	- Datum: 				20.05.2015
+	- Datum: 				24.06.2015
 	
-	- User Story (Nr. 410):	Als Dozent/Student möchte ich mir einen Stundenplan für Fachsemester anzeigen können.
-	- User Story Punkte:	13
-	- Task:					stundenplanFachsemesterView anlegen
-	- Zeitaufwand:			2h
+	- User Story (Nr. 590):	Als Mitarbeiter möchte ich einen Veranstaltungstermin ändern können.
+	- User Story Punkte:	5
+	- Task:					View erstellen zum Anzeigen aller Veranstaltungstermine eines Fachsemesters 
+							mit Optionen ändern und löschen.
+	- Zeitaufwand:			3h
 */
 ?>	
 
@@ -90,7 +91,7 @@
 								echo "&#8227; $dozent"; 
 					
 					//Formular mit Button zum Löschen und Bearbeiten platzieren (mit hidden values):
-					echo "<form action='index.php?url=veranstaltungsterminUebersicht/bearbeiteVeranstaltungstermin' method='post'>";
+					echo "<form class='formular' style='width: 95px;' action='index.php?url=veranstaltungsterminUebersicht/bearbeiteVeranstaltungstermin' method='post'>";
 						
 						//hidden values:
 						echo "<input type='hidden' name='veranst_ID' value='$veranst_ID'>";

@@ -26,9 +26,9 @@ if(property_exists($this, 'verfuegbareVorlesungsraeume'))
 	echo "<div class='flexbox'>";
 ?>
 
-<form class="formular" action="index.php?url=raumZuweisen/erzeugeFormular2" method="post" style='width: 28em; height: 21em; margin: 20px; padding: 25px;'>
+<form class="formular" action="index.php?url=raumZuweisen/erzeugeFormular2" method="post" style='width: 28em; height: 32em; margin: 20px; padding: 25px;'>
 	
-	<h4 style='color: #00436A'>1) Veranstaltung und Zeit f&uuml;r Termin ausw&auml;hlen:</h4> <br/>
+	<h3 style='color: #00436A; padding-bottom: 0px;'>1) Veranstaltung und Zeit f&uuml;r Termin ausw&auml;hlen:</h3> <br/>
 	
 	<p>
 		<label for='veranstaltung' style='width:8em; display:block; float:left'> Veranstaltung: </label>
