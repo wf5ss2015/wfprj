@@ -103,7 +103,9 @@ class menueView{
 			"Veranstaltung" => "#",
 			"erweitern" => "veranstaltungerweitern/veranstaltungErweitern",
 			"anlegen" => "veranstaltung/anlegenForm",
-			"bearbeiten" => "veranstaltung/bearbeitenSelect"),
+			"bearbeiten" => "veranstaltung/bearbeitenSelect",
+			"als Wahlfach" => "veranstaltung/wahlfachVeranstaltungSelect"
+			),
 			array(
 			"Veranstaltungstermine" => "#",
 			"erstellen" => "raumZuweisen/erzeugeFormular1",
