@@ -220,20 +220,7 @@ class menueView{
 	echo "</ul>";
 	echo "</nav>";
 	
-	/* 	START Änderungen Klamser
-		Sprint 6
-		23.6.2015
-	*/
-	echo "<p>";
-        $url = $_SERVER['REQUEST_URI'];
-		$url_array = explode("=", $url);
-		$pfad = explode("/", $url_array[1]);
-		echo "<a href='../public/index.php?url=index/index' title='Startseite'>
-                  Home
-              </a>";
-        echo " > ".$pfad[0];
-    echo "</p>";
-	//ENDE Klamser Sprint 6
+	
 	}
 }?>
 

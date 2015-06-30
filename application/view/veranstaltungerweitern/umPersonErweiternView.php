@@ -1,7 +1,7 @@
 <?php
 /*
     autor: Kris Klamser
-    datum: 22.6.2015
+    datum: 30.6.2015
     projekt: lehrveranstaltungsmanagement
 	sprint: 6
 	zeitaufwand: 1
@@ -11,7 +11,14 @@
 ?>
 <article>
 	<h1>Veranstaltung - Dozent</h1>
-	<p>Hier können Sie einen Dozenten einer Veranstaltung zuweisen.</p>
+	<?php	
+		$typ = $_POST['typ'];
+		if($typ == "dozent"){
+			echo '<p>Hier können Sie einen Dozenten einer Veranstaltung zuweisen.</p>';
+		} else if ($typ == "student"){
+			echo '<p>Hier können Sie einen Studenten zu den Teilnehmern einer Veranstaltung hinzufügen.</p>';
+		}
+	?>
 	<!-- Sobald der "Veranstaltung erweitern"-Button geclickt wird, wird die selected-function ausgeführt-->
 	<form action="index.php?url=veranstaltungErweitern/selected" method="post" />
 	<table style="font-size: 14px; text-align: left;"><tr>
@@ -35,9 +42,14 @@
 	<tr><th></th><th></th></tr>
 	<!-- Zur Auswahl des Users, der hinzugefügt werden soll, eine Liste mit allen Dozenten -->
 	<tr>
-		<th>Dozent </th><th><select name="user">
-				 <?php
-				 
+		<?php
+			$typ = $_POST['typ'];
+			if($typ == "dozent"){
+				echo '<th>Dozent </th>';
+			} else if ($typ == "student"){
+				echo '<th>Student </th>';
+			}
+					echo '<th><select name="user">';
 					if ($this->user_list) {
 						foreach ( $this->user_list as $key => $value ) {
 							echo '<option>';
@@ -49,8 +61,8 @@
 					} else {
 						Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 					}
-					?>
-				</select></th>
+			echo '</select></th>';
+		?>
 	</tr></table>
 	<input type="hidden" name="personentyp" value="dozent">
 	<p><br>
