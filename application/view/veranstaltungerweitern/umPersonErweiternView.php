@@ -10,13 +10,16 @@
 */
 ?>
 <article>
-	<h1>Veranstaltung - Dozent</h1>
 	<?php	
 		$typ = $_POST['typ'];
 		if($typ == "dozent"){
+			echo '<h1>Veranstaltung - Dozent</h1>';
 			echo '<p>Hier können Sie einen Dozenten einer Veranstaltung zuweisen.</p>';
+			echo '<input type="hidden" name="personentyp" value="dozent">';
 		} else if ($typ == "student"){
+			echo '<h1>Veranstaltung - Student</h1>';
 			echo '<p>Hier können Sie einen Studenten zu den Teilnehmern einer Veranstaltung hinzufügen.</p>';
+			echo '<input type="hidden" name="personentyp" value="student">';
 		}
 	?>
 	<!-- Sobald der "Veranstaltung erweitern"-Button geclickt wird, wird die selected-function ausgeführt-->

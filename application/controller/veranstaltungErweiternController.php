@@ -79,9 +79,24 @@ class veranstaltungErweiternController extends Controller {
 				veranstaltungErweiternModel::setErweiterungStudent ( $veranst_ID, $user_name );
 				$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
 			} else if (stristr($user_rolle, 'Dozent') !== false){
-				// inserten der Erweiterung
-				veranstaltungErweiternModel::setErweiterungDozent( $veranst_ID, $user_name );
-				$this->View->render('veranstaltungerweitern/veranstaltungErweitert');
+				$data = array ('pruefziffer' =>  veranstaltungErweiternModel::pruefenDozent($veranst_ID, $user_name));
+				// print_r($data);
+				foreach ( $data as $key => $value ) {
+					$this->{$key} = $value;
+					// print_r($value);
+				}
+				foreach ( $this->pruefziffer as $key => $value ) {
+					// echo htmlentities($value[0]);
+					$zahl = $value->zahl;
+				}
+				if($zahl == '0'){
+					Session::add ( 'response_warning', 'Der Dozent ist nicht für die ausgewählte Veranstaltung berechtigt. Daher wurde keine Erweiterung durchgeführt.' );
+					$this->View->render('veranstaltungerweitern/veranstaltungErweitert');	
+				} else if($zahl == '1'){
+					// inserten der Erweiterung
+					veranstaltungErweiternModel::setErweiterungDozent( $veranst_ID, $user_name );
+					$this->View->render('veranstaltungerweitern/veranstaltungErweitert');	
+				}
 			} else {
 				Session::add ( 'response_warning', 'Die Veranstaltung konnte nicht erweitert werden.' );
 				$this->View->render('veranstaltungerweitern/veranstaltungErweitert');

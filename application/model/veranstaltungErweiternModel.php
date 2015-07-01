@@ -114,5 +114,17 @@ class veranstaltungErweiternModel {
 			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 		}
 	}
+	
+	public function pruefenDozent($veranst_ID, $user_name){
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+		$sql = "SELECT count(dozent_nutzer_name) AS zahl FROM Dozent_berechtigtFuer_Veranstaltung WHERE dozent_nutzer_name = '$user_name' AND veranst_ID = '$veranst_ID';";
+		$query = $database->prepare($sql);
+		try {
+			$query->execute ();
+			return $query->fetchAll ();
+		} catch ( PDOException $e ){
+			Session::add( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
+		}
+	}
 }
 ?>
