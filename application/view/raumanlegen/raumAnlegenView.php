@@ -13,7 +13,6 @@
 
 <article>
 	<h1>Raumkategorie auswählen</h1>
-
 	<!-- raumSelected-function des Controllers wird ausgeführt nach der Bestätigung -->
 	<form action="index.php?url=raumAnlegen/raumSelected" method="post" />
 	<input type="radio" name="typ" id="vorlesungsraum"

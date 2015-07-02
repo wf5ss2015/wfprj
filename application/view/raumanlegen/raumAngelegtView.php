@@ -18,5 +18,4 @@
 	<form action="index.php?url=index/index" method="post" />
 		<input class="button" type="submit" id="b2" value="Startseite"></a>
 	</form>
-
 </article>

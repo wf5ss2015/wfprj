@@ -87,7 +87,7 @@ class veranstaltungErweiternModel {
 		$query = $database->prepare ( $sql );
 		try{
 			$query->execute ();
-			Session::add ( 'response_positive', 'Person wurde erfolgreich hinzugefügt.' );
+			Session::add ( 'response_positive', 'Student wurde erfolgreich hinzugefügt.' );
 		} catch ( PDOException $e ){
 			if ($e->errorInfo [1] == 1062) {
 				Session::add ( 'response_warning', 'Der Student ist bereits an Veranstaltung beteiligt.' );

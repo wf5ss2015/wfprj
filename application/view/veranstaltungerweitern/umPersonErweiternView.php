@@ -10,20 +10,20 @@
 */
 ?>
 <article>
+	<!-- Sobald der "Veranstaltung erweitern"-Button geclickt wird, wird die selected-function ausgeführt-->
+	<form action="index.php?url=veranstaltungErweitern/selected" method="post" />
 	<?php	
 		$typ = $_POST['typ'];
 		if($typ == "dozent"){
 			echo '<h1>Veranstaltung - Dozent</h1>';
 			echo '<p>Hier können Sie einen Dozenten einer Veranstaltung zuweisen.</p>';
-			echo '<input type="hidden" name="personentyp" value="dozent">';
-		} else if ($typ == "student"){
+			echo "<input type='hidden' name='personentyp' value='dozent'>";
+		} elseif ($typ == "student"){
 			echo '<h1>Veranstaltung - Student</h1>';
 			echo '<p>Hier können Sie einen Studenten zu den Teilnehmern einer Veranstaltung hinzufügen.</p>';
-			echo '<input type="hidden" name="personentyp" value="student">';
+			echo "<input type='hidden' name='personentyp' value='student'>";
 		}
 	?>
-	<!-- Sobald der "Veranstaltung erweitern"-Button geclickt wird, wird die selected-function ausgeführt-->
-	<form action="index.php?url=veranstaltungErweitern/selected" method="post" />
 	<table style="font-size: 14px; text-align: left;"><tr>
 	<!-- Zur Auswahl der Veranstaltung eine Liste mit allen Veranstaltung und deren ID -->
 		<th>Veranstaltung  </th><th><select name="veranstaltung">
@@ -67,7 +67,6 @@
 			echo '</select></th>';
 		?>
 	</tr></table>
-	<input type="hidden" name="personentyp" value="dozent">
 	<p><br>
 			<?php
 			echo '<input class="button" type="button" value="Zurück" onClick="history.back();">';
