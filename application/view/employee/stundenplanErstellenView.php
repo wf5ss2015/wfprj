@@ -45,17 +45,18 @@
 					
 	
 					if($i==0){
-						echo "<td>Slot ". $j." </td>";
+						echo "<td class='content' style='text-align:center'>Slot ". $j." </td>";
 					}
-					echo "<td>";
+					echo "<td >";
 					$first=0;
+					$empty=1;
 					for($k=0;$k<(count($schedule[$counter]));$k++){
-						
+
 						if(isset($schedule[$counter][$k])){
 
-							
+							$empty=0;
 							for($n=0;$n<count($schedule[$counter][$k]);$n++){
-
+							
 							echo $schedule[$counter][$k][$n];
 							echo "<br>";
 							$first=1;
@@ -66,8 +67,9 @@
 							$first=0;
 						}
 						
+						
 					}
-
+					
 					
 					echo "</td>";
 					//echo $k<count($schedule[$counter]);
