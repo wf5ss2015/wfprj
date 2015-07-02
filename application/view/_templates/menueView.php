@@ -126,7 +126,10 @@ class menueView{
 			"Rechte ändern" => "Employee/selectUser"),
 			array(
 			"Studenten" => "#",
-			"Notenliste bearbeiten" => "Employee/startNotenListe")
+			"Notenliste bearbeiten" => "Employee/startNotenListe"),
+			array(
+			"Stundenplan" => "#",
+			"Stundenplan erstellen" => "Employee/stundenplanErstellen")
 		),
 		// Tutor
 		array (

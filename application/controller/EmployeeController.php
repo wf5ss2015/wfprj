@@ -91,6 +91,18 @@ class EmployeeController extends Controller {
 		Redirect::to ( 'employee/selectUser' );
 	}
 	
+	/**
+	 *
+	 * @author Kilian Kraus
+	 *        
+	 *         Neue Rolle in DB speichern.
+	 */
+	public function stundenplanErstellen() {
+		
+		$this->View->render ('employee/stundenplanErstellen');
+		//Redirect::to ( 'employee/selectUser' );
+	}
+	
 	/**-----------------------------------------------------------------------------------------
 	* START SPRINT 05
 	* @author: Damian Wysocki
