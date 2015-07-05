@@ -95,11 +95,62 @@ class EmployeeController extends Controller {
 	 *
 	 * @author Kilian Kraus
 	 *        
-	 *         Neue Rolle in DB speichern.
+	 *         Erstellt einen gültigen Stundenplan
 	 */
-	public function stundenplanErstellen() {
+	public function createSchedule() {
+		$model = new ScheduleModel();
 		
-		$this->View->render ('employee/stundenplanErstellen');
+		// speichert die benötigten daten in array
+		$room = $model->getRoom();
+		$docent = $model->getDocent();
+		$lecture = $model->getLecture();
+		$semester = $model->getSemester();
+
+		
+		// umwandeln array $Vorlesung
+		$lectureNew=array();
+		foreach($lecture as $key => $value) {
+			//echo "key: ". $key. " value: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
+			array_push($lectureNew, $value->veranst_id);
+		}	
+		
+		
+		// umwandeln array $semester
+		$semesterNew;
+		foreach($semester as $key => $value) {
+			//echo "key: ". $key. " value: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
+			$semesterNew[$value->stg_kurztext . $value->pflicht_im_Semester]=array();
+		}
+		
+		foreach($semester as $key => $value) {
+			//echo "key1: ". $key. " value1: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
+			array_push($semesterNew[$value->stg_kurztext . $value->pflicht_im_Semester], $value->veranst_id);
+		}
+		
+		// umwandeln array $dozent
+		$docentNew;
+		foreach($docent as $key => $value) {
+			//echo "key: ". $key. " value: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
+			$docentNew[$value->dozent_nutzer_name]=array();
+		}
+		
+		foreach($docent as $key => $value) {
+			//echo "key1: ". $key. " value1: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
+			array_push($docentNew[$value->dozent_nutzer_name], $value->veranst_ID);
+		}
+		
+		// umwandeln array $raum
+		$roomNew=array();
+		foreach($room as $key => $value){
+			array_push($roomNew, $value->raum_bezeichnung);
+		}
+		
+		//erstellt einen gültigen stundenplan
+		$generate = new schedule($lectureNew, $roomNew, $docentNew, $semesterNew);
+		$schedule=$generate->match($generate);
+		
+		//zeigt den gültigen stundenplan an
+		$this->View->render ('employee/createSchedule', array('schedule' => $schedule, 'lecture' =>$lecture));
 		//Redirect::to ( 'employee/selectUser' );
 	}
 	

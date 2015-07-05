@@ -48,6 +48,7 @@ require '../application/model/veranstaltungErweiternModel.php';
 require '../application/core/Table.php';
 require '../application/view/_templates/menueView.php';
 require '../application/core/schedule.php';
+require '../application/model/ScheduleModel.php';
 
 // Damian Wysocki
 require '../application/lib/PHPMailer/class.phpmailer.php';

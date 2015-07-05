@@ -6,8 +6,13 @@ class schedule{
 		public $semester=array();
 
 		
-		
-		function __construct (){
+		function __construct($vorlesung, $raum, $dozent, $semester){
+			$this->vorlesung = $vorlesung;
+			$this->raum = $raum;
+			$this->dozent = $dozent;
+			$this->semester = $semester;
+		}
+		/*function __construct (){
 		$this->vorlesung = array (
 		"VL_1",
 		"VL_2",
@@ -49,9 +54,12 @@ class schedule{
 		"sem2"=>array("VL_7","VL_8", "VL_9", "VL_10", "VL_11", "VL_12"),
 		"sem3"=>array("VL_13","VL_14", "VL_15", "VL_16", "VL_17", "VL_18"),
 		"sem4"=>array("VL_19","VL_20", "VL_21", "VL_22", "VL_23", "VL_24"));
-		//print_r($this->dozent);
+		print_r($this->dozent);
+		print_r($this->semester);
+		print_r($this->raum);
+		print_r($this->vorlesung);
 		}
-		
+		*/
 		
 		function match ($obj){
 		$vorlesung=$obj->vorlesung; //vorlesungen

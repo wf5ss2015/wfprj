@@ -129,7 +129,7 @@ class menueView{
 			"Notenliste bearbeiten" => "Employee/startNotenListe"),
 			array(
 			"Stundenplan" => "#",
-			"Stundenplan erstellen" => "Employee/stundenplanErstellen")
+			"Stundenplan erstellen" => "Employee/createSchedule")
 		),
 		// Tutor
 		array (

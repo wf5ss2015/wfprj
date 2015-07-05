@@ -15,17 +15,8 @@
 <article>
 	<h1>Stundenplan generieren</h1>
 
-	<?php
-	$generate = new schedule();
-	echo "<pre>";
-	$schedule=$generate->match($generate);
-
-	print_r($schedule);
-		
-	
-?>	
 	<table class='stundenplan' border='1'>
-		<tr>
+		
 		<tr class='head'>
 					<th style='width: 110px;'>Stundenzeit</th>
 			<th>Montag</th>
@@ -42,22 +33,30 @@
 				$i=0;
 				echo "<tr>";
 				while($i<6){
-					
-	
 					if($i==0){
 						echo "<td class='content' style='text-align:center'>Slot ". $j." </td>";
 					}
 					echo "<td >";
 					$first=0;
 					$empty=1;
-					for($k=0;$k<(count($schedule[$counter]));$k++){
+		
+					for($k=0;$k<(count($this->schedule[$counter]));$k++){
 
-						if(isset($schedule[$counter][$k])){
+						if(isset($this->schedule[$counter][$k])){
 
 							$empty=0;
-							for($n=0;$n<count($schedule[$counter][$k]);$n++){
+							for($n=0;$n<count($this->schedule[$counter][$k]);$n++){
 							
-							echo $schedule[$counter][$k][$n];
+							if($n==3){
+								foreach($this->lecture as $key => $value){
+									if($value->veranst_id==$this->schedule[$counter][$k][$n]){
+										echo $value->veranst_kurztext;
+									}
+								}
+							}else{
+								echo $this->schedule[$counter][$k][$n];
+							}
+							
 							echo "<br>";
 							$first=1;
 							}
@@ -65,33 +64,15 @@
 								echo "<br>";
 							}
 							$first=0;
-						}
-						
-						
+						}	
 					}
-					
-					
 					echo "</td>";
-					//echo $k<count($schedule[$counter]);
-					
-					
 					$i++;
 					$counter++;
 				}
 				echo "</tr>";
 				$j++;
 				}
-				
-			
-			
-			
 		?>
-		<tr></tr>
-		<tr></tr>
-		<tr></tr>
-		<tr></tr>
-		<tr></tr>
-		<tr></tr>
-		<tr></tr>
 	</table>
 </article>
