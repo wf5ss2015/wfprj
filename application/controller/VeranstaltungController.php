@@ -135,8 +135,7 @@ class VeranstaltungController extends Controller {
 			//Ausstattung wird hier eingetragen
 			$ausstattung = Request::post('veranstaltung_ausstattung');
 			
-			$vModel->ausstattungEintragen($vID, $ausstattung);
-			
+			$vModel->ausstattungEintragen($vID, $ausstattung);			
 			
 			// hole Daten der eben eingetragenen Veranstaltung als ein Array aus Objekten
 			$veranstaltung = $vModel->getVeranstaltung ($vID);
@@ -147,9 +146,6 @@ class VeranstaltungController extends Controller {
 					'veranstaltung' => $veranstaltung 
 			) );
 		} else {
-			
-			// TODO errer ausgeben
-			
 			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 		}
 	}

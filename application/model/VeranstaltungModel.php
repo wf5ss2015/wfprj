@@ -112,17 +112,7 @@ class VeranstaltungModel {
 	 */
 	
 	
-	
-	
-	public function dbgPrint($val , $name) {		
-		print "<br>";
-		print $name;
-		print ": " . $val;
-		print "<br>";		
-	}
 
-	
-	
 	/* sprint 5 Anfang
 	 *
 	 */
@@ -380,12 +370,11 @@ class VeranstaltungModel {
 		$fachsemester = Request::post('veranstaltung_fachsemester');
 		/* sprint 4 Ende
 		 */
-// print "<br>vID:: " . $this->erstelleVID($stg_ID) . "<br>";		
+
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
 		
-		// TO-DO : Ausstattung löschen (inbes. für Änderungen)
-		
+	
 		// einfache Prüfung, ob überall was drin steht
 		if (strlen ( $bez ) < 1)
 			$valid = false;
@@ -398,7 +387,6 @@ class VeranstaltungModel {
 
 		if (! ($this->checkIntegerInput ( $maxNo, 1, 1000 ))) {
 			$valid = false;
-			/* TODO : Fehlermeldung ausgeben */
 		}
 		
 		/* sprint 3 Ende */
