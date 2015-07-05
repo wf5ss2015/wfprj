@@ -98,11 +98,63 @@ INSERT INTO Fakultaet (fak_bezeichnung) VALUES
 ('Mechatronik und Medizintechnik');
 
 INSERT INTO Studiengang (stg_bezeichnung, stg_kurztext, stgTyp_ID, fak_ID) VALUES
+-- ALT:
+/*
 ('Technische Informatik', 'TI', 1, 3),
 ('Wirtschaftsinformatik', 'WF', 1, 3),
 ('Medizintechnik', 'MT', 1, 6),
 ('Maschinenbau', 'MB', 1, 4),
 ('Information Systems', 'IS', 2, 3);
+*/
+
+-- FAK 1 Elektrotechnik und Informationstechnik
+
+('Digital Media', 'DM', 1, 1),
+('Elektrotechnik und Informationstechnik', 'ETIT', 1, 1),
+('Fahrzeugelektronik', 'FZE', 1, 1),
+('Industrieelektronik', 'IE', 1, 1),
+('Nachrichtentechnik', 'NT', 1, 1),
+('Systems Engineering and Management, Electrical Engineering', 'SEMEE', 2, 1),
+('Elektrische Energiesysteme und Elektromobilität', 'EESEM', 2, 1),
+('Systems Engineering and Management (International Program)', 'SEMINT', 2, 1),
+
+-- FAK 2 Mathematik und Naturwissenschaften
+('Computational Science and Engineering', 'CSE', 1, 2),
+('Computational Science and Engineering (Master)', 'CSEM', 2, 2),
+
+-- FAK 3 Informatik
+('Computer Science', 'CS', 1, 3),
+('Computer Science - International Program', 'CSI', 1, 3),
+('Data Science in der Medizin', 'DSM', 1, 3),
+('Informatik', 'INF', 1, 3),
+('Technische Informatik', 'TI', 1, 3),
+('Wirtschaftsinformatik', 'WF', 1, 3),
+('Information Systems', 'IS', 2, 3),
+
+
+-- FAK 4 Maschinenbau und Fahrzeugtechnik
+('Fahrzeugtechnik', 'FT', 1, 4),
+('Maschinenbau', 'MB', 1, 4),
+('Systems Engineering and Management, Mechanical Engineering', 'SEMME', 2, 3),
+
+
+-- FAK 5 Produktionstechnik und Produktionswirtschaft
+('Energiesysteme', 'ES', 1, 5),
+('Energiesystemtechnik', 'EST', 1, 5),
+('Internationale Energiewirtschaft', 'IEW', 1, 5),
+('Produktionstechnik und Organisation', 'PTO', 1, 5),
+('Wirtschaftsingenieurwesen', 'WIN', 1, 5),
+('Wirtschaftsingenieurwesen - Logistik', 'WINL', 1, 5),
+('Systems Engineering and Management, Industrial Management', 'SEMIM', 2, 5),
+('Systems Engineering and Management, Logistics', 'SEMLO', 2, 5),
+('Sustainable Energy Competence', 'SEC', 2, 5),
+
+-- FAK 6 Mechatronik und Medizintechnik
+('Mechatronik', 'MC', 1, 6),
+('Medizintechnik', 'MT', 1, 6),
+('Medizintechnik', 'MTM', 2, 6);
+
+
 
 INSERT INTO Nutzer (nutzer_name, vorname, nachname, geschlecht, passwortHash, rolle_ID) VALUES
 -- ------------------------- Studenten -------------------------:
