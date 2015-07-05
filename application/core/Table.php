@@ -45,9 +45,9 @@
 				foreach ( $this->alias [0] as $key => $value ) {
 					echo "<td>";
 					echo utf8_encode ( $value );
-					echo "</td>";
+					echo "</td>\n";
 				}
-				echo "</tr>";
+				echo "</tr>\n";
 				echo "</thead>";
 			} else {
 				// falls keine alias übergeben, dann spaltenname
@@ -55,9 +55,9 @@
 				foreach ( $this->table [0] as $key => $value ) {
 					echo "<td>";
 					echo utf8_encode ( $key );
-					echo "</td>";
+					echo "</td>\n";
 				}
-				echo "</tr>";
+				echo "</tr>\n";
 				echo "</thead>";
 			}
 			// befüllt tabelle mit daten
@@ -74,7 +74,7 @@
 					}
 					//echo utf8_encode ( $value );
 					echo utf8_encode($value);
-					echo "</td>";
+					echo "</td>\n";
 				}
 				// falls link
 				if (isset ( $this->link )) {
@@ -119,13 +119,13 @@
 						echo utf8_encode ( $submitName );
 						echo "\">";
 						echo "</form>";
-						echo "</td>";
+						echo "</td>\n";
 					}
 				}
-				echo "</tr>";
+				echo "</tr>\n";
 				$i ++;
 			}
-			echo "</tr>";
+			echo "</tr>\n";
 			echo "</tbody>";
 			echo "</table>";
 		}
