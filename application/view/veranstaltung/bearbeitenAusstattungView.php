@@ -28,7 +28,7 @@ $vArtID = $data['vArtID'];
 
 $ausstattung = $data['ausstattung'];
 
-print_r($this->ausstattung);
+
 
 // echo "<pre>";
 // echo "DATA:\n";
@@ -70,10 +70,11 @@ print_r($this->ausstattung);
                 //ausstattung[] gruppiert die so benannten Eingabefelder; 
                 //in PHP wird dies zu einem Sub-Array zusammengefasst
                 // TODO hidden value für id? 
-                echo "\n\t<td><input type=\"text\"  name=\"veranstaltung_ausstattung[]\"";
-                echo " size=\"1\" /> </td>";
+                echo "\n\t<td><input type=\"text\"  name=\"veranstaltung_ausstattung[]\" " . "value=\"" . $value->anzahl;
+                echo "\" size=\"1\" /> </td>";
 
-                echo "\n\t<td> " . $value->ausstattung_bezeichnung;
+                echo "\n\t<td> " . utf8_encode($value->ausstattung_bezeichnung);
+                
                                 
 //              echo " <input type=\"hidden\" name=\"veranstaltung_ausstattungid[]\" value=\"" . $value->ausstattung_ID . "\" />";
                 

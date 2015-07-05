@@ -615,6 +615,27 @@ class VeranstaltungModel {
 		return $result;
 	}
 	
+	
+	
+	/*
+	 * Holt alle Ausstattungsgegenstände einer Veranstaltung aus der Datenbank
+	 */
+	public function getAusstattungVonVeranstaltung($vID) {
+		// query-string
+		//$q = "SELECT ausstattung_ID, ausstattung_bezeichnung from Ausstattung";
+		
+		$q = "SELECT a.ausstattung_ID, a.ausstattung_bezeichnung, vea.anzahl
+		FROM Ausstattung a join Veranstaltung_erfordert_Ausstattung vea ON a.ausstattung_ID = vea.ausstattung_ID
+		where vea.veranst_ID = $vID;";
+		
+		// erzeugt ein Resultset, benutzt dazu die Methode abfrage($q)
+		$result = $this->abfrage ( $q );
+	
+		return $result;
+	}
+	
+	
+	
 	/*
 	 * Liest alle Studiengaenge aus der Datenbank
 	 *

@@ -274,7 +274,8 @@ class VeranstaltungController extends Controller {
 		// neues Veranstaltungmodel anlegen
 		$vModel = new VeranstaltungModel ();
 		
-		$ausstattung = $vModel->getAusstattung();
+		//$ausstattung = $vModel->getAusstattung();
+		$ausstattung = $vModel->getAusstattungVonVeranstaltung(Request::post("vID"));
 		
 		
 		$this->View->render('veranstaltung/bearbeitenAusstattung', array ('grunddaten' => $grunddaten,
