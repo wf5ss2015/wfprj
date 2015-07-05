@@ -28,6 +28,8 @@ $vArtID = $data['vArtID'];
 
 $ausstattung = $data['ausstattung'];
 
+print_r($this->ausstattung);
+
 // echo "<pre>";
 // echo "DATA:\n";
 // print_r($data);
@@ -57,7 +59,7 @@ $ausstattung = $data['ausstattung'];
     <table id="veranstaltungausstattung-bearbeiten">
    
     
-    <table>
+    
 	
 	<?php
 	
@@ -84,8 +86,7 @@ $ausstattung = $data['ausstattung'];
 	
 
 	?>
-	</table>
-    	</td></tr>
+
     	
       <tr><td><input class="button" type="submit" value="weiter" /></td><td>&nbsp;</td></tr>		
     </table>
