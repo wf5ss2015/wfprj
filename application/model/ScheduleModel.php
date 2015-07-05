@@ -19,7 +19,7 @@ class ScheduleModel {
 	public function getLecture() {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
-		$sql = "select veranst_id, veranst_kurztext from veranstaltung;";
+		$sql = "select veranst_id, veranst_kurztext, SWS from veranstaltung;";
 		$query = $database->prepare ( $sql );
 		
 		$query->execute ();
@@ -52,7 +52,7 @@ class ScheduleModel {
 	public function getSemester() {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
-		$sql = "select studiengang.stg_id, studiengang_hat_veranstaltung.pflicht_im_Semester, stg_kurztext, studiengang_hat_veranstaltung.veranst_id 
+		$sql = "select studiengang.stg_id, studiengang_hat_veranstaltung.pflicht_im_Semester, stg_kurztext, studiengang_hat_veranstaltung.veranst_id, SWS
 				from studiengang 
 				join studiengang_hat_veranstaltung 
 				join veranstaltung 

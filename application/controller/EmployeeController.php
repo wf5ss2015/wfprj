@@ -105,12 +105,15 @@ class EmployeeController extends Controller {
 		$lecture = $model->getLecture();
 		$semester = $model->getSemester();
 
-		
 		// umwandeln array $Vorlesung
 		$lectureNew=array();
 		foreach($lecture as $key => $value) {
 			//echo "key: ". $key. " value: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
+			$SWS=$value->SWS;
+			while($SWS>1){
 			array_push($lectureNew, $value->veranst_id);
+			$SWS=$SWS-2;
+			}
 		}	
 		
 		
@@ -120,12 +123,17 @@ class EmployeeController extends Controller {
 			//echo "key: ". $key. " value: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
 			$semesterNew[$value->stg_kurztext . $value->pflicht_im_Semester]=array();
 		}
-		
+				
+
 		foreach($semester as $key => $value) {
 			//echo "key1: ". $key. " value1: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
-			array_push($semesterNew[$value->stg_kurztext . $value->pflicht_im_Semester], $value->veranst_id);
+			
+			
+				array_push($semesterNew[$value->stg_kurztext . $value->pflicht_im_Semester], $value->veranst_id);
+				
+			
 		}
-		
+
 		// umwandeln array $dozent
 		$docentNew;
 		foreach($docent as $key => $value) {
