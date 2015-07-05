@@ -98,7 +98,7 @@ class schedule{
 						}
 					}
 				}
-				$randomR=rand(0,4);//zufälliger raum
+				$randomR=rand(0,$numberOfRooms);//zufälliger raum
 				$randomS=rand(0,$numberOfSlots-1);//zufälliger slot
 				//echo $randomS. "  <br>";
 				$currentV=array_pop($vorlesung); //letzte vorlesung des arrays

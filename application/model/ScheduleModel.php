@@ -64,4 +64,41 @@ class ScheduleModel {
 		
 		return $query->fetchAll();
 	}
+	
+	public function saveSchedule($schedule) {
+		$database = DatabaseFactory::getFactory ()->getConnection ();
+		
+		$sql = "truncate table veranstaltungstermin";
+		$query = $database->prepare ( $sql );
+		
+		$query->execute ();
+		$countZeit=1;
+		$countTag=1;
+		for($i=0;$i<count($schedule);$i++){
+			//print_r($schedule[$i]);
+			
+			for($k=0;$k<count($schedule[$i]);$k++){
+				
+				if(isset($schedule[$i][$k])){
+					echo "zeit: " . ($countZeit) . " tag: " . $countTag . "<br>";
+						$sql = "insert into veranstaltungstermin values (:veranst_id, :tag_id, :stdZeit_id, :raum_bezeichnung);";
+						$query = $database->prepare ( $sql );
+						$query->execute ( array (
+							':veranst_id' => $schedule[$i][$k][3], 'tag_id' => $countTag, 'stdZeit_id' => $countZeit, 'raum_bezeichnung' => $schedule[$i][$k][2]
+						) );
+						print_r($schedule[$i][$k]);
+				}
+			
+				
+			}
+			if($countZeit==7){
+				$countZeit=0;
+				$countTag++;
+			}
+			$countZeit++;
+		}
+		//print_r($schedule);
+		
+		
+	}
 }

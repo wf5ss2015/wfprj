@@ -32,7 +32,6 @@
  */
 class EmployeeController extends Controller {
 	
-	
 	/**
 	 *
 	 * @author Kilian Kraus
@@ -153,6 +152,25 @@ class EmployeeController extends Controller {
 		$this->View->render ('employee/createSchedule', array('schedule' => $schedule, 'lecture' =>$lecture));
 		//Redirect::to ( 'employee/selectUser' );
 	}
+	
+	/**
+	 *
+	 * @author Kilian Kraus
+	 *        
+	 *         Den erstellten Stundenplan speichern.
+	 */
+	public function saveSchedule() {
+		$schedule=unserialize(Request::post('schedule'));
+		echo "<pre>";
+		print_r($schedule);
+		$model = new ScheduleModel();
+		$model->saveSchedule($schedule);
+		//$this->View->render ( 'employee/NotenListeStart', array (
+			//	'vorlesung' => $model->getVorlesungAll(), 'students' => $model2->getAllStudents()
+				
+		//) );
+	}
+	
 	
 	/**-----------------------------------------------------------------------------------------
 	* START SPRINT 05

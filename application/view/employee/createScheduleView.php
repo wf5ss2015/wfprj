@@ -75,4 +75,17 @@
 				}
 		?>
 	</table>
-</article>
+	
+	<table>
+	<tr><td><form action="index.php?url=Employee/createSchedule" method="post">
+	<input type="submit" class="button" style="margin-left:20px; margin-top:10px;" value="neu generieren">
+	</form></td>
+	<?php $str=serialize($this->schedule);?>
+	<td><form action="index.php?url=Employee/saveSchedule" method="post">
+	
+	<input name="schedule" type="hidden" value='<?php echo $str;?>'>
+	<input type="submit" class="button" style="margin-left:10px; margin-top:10px;" value="Stundenplan speichern">
+	</form></td>
+	</table>
+	
+	</article>
