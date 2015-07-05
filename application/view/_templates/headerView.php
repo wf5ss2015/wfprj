@@ -3,7 +3,7 @@
 <!--<!DOCTYPE HTML>!-->
 <html lang="de">
 <head>
-<title>Lehrveranstaltungs Software</title>
+<title>Lehrveranstaltungssoftware</title>
 <meta charset="utf-8">
 <meta name="description"
 	content="Das wird die zukünftige lehrveranstaltunsseite">
