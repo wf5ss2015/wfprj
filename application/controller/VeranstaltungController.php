@@ -387,7 +387,10 @@ class VeranstaltungController extends Controller {
 				
 			// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
 // 			$veranstaltung = $vModel->getVeranstaltung($vID);
-			$veranstaltung = $vModel->getGrunddaten($vID);
+			//$veranstaltung = $vModel->getGrunddaten($vID);
+			$veranstaltung = $vModel->getVeranstaltung($vID);
+			
+			
 			
 			//enthält alle Studiengänge, für die die Veranstaltung noch nicht hinzugefügt wurde
 			$studgaenge = $vModel->getStudiengaengeWahlfach($vID);
@@ -405,7 +408,6 @@ class VeranstaltungController extends Controller {
 	 * trägt das Wahlfach ein in die Tabelle Studiengang_hat_Wahlfach
 	 * */	
 	public function wahlfachEintragen() {
-		print_r($_POST);
 		
 		
 		// neues Veranstaltungmodel anlegen
@@ -416,14 +418,18 @@ class VeranstaltungController extends Controller {
 		$stg_ID = Request::post("studiengang");
 		$semester = Request::post("semester");
 
+
 	
 		if(isset($vID) && isset($stg_ID)) {
-	
-			$vModel->setWahlfach($vID, $stg_ID, $semester);
+
+			
+			$vModel->setWahlfach($stg_ID, $vID, $semester);
+			
 			
 			// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
 			// 			$veranstaltung = $vModel->getVeranstaltung($vID);
-			$veranstaltung = $vModel->getGrunddaten($vID);
+			//$veranstaltung = $vModel->getGrunddaten($vID);
+			$veranstaltung = $vModel->getVeranstaltung($vID);
 				
 			//enthält alle Studiengänge, für die die Veranstaltung noch nicht hinzugefügt wurde
 			$studgang = $vModel->getStudiengang($stg_ID);

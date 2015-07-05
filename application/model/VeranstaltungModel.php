@@ -714,15 +714,16 @@ class VeranstaltungModel {
 	/*
 	 * trägt Wahlfach in Datenbank ein
 	 * */
-	public function setWahlfach($vID, $studiengang, $semester) {
+	public function setWahlfach($studiengang, $vID, $semester) {
 		
 		
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
 		
 		$insertString = "INSERT INTO Studiengang_hat_Wahlfach (stg_ID, veranst_ID, ab_Semester) "
-				        . " VALUES ($vID, $studiengang, $semester);";
+				        . " VALUES ($studiengang, $vID, $semester);";
 		
+	
 		$database->insert ( $insertString );		
 	}
 	

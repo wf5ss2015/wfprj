@@ -96,7 +96,7 @@
 	    	echo "\n\t<option value=\"" . $value->stg_ID . "\"";
 	
 	    	echo ">";
-	    	echo $value->stg_ID . " - " . $value->stg_bezeichnung . " " . $value->stgTyp_kuerzel . "</option>";    
+	    	echo $value->stg_ID . " - " . utf8_encode($value->stg_bezeichnung) . " " . $value->stgTyp_kuerzel . "</option>";    
   	  }
             ?>
 
