@@ -44,7 +44,7 @@
 				echo "<tr>";
 				foreach ( $this->alias [0] as $key => $value ) {
 					echo "<td>";
-					echo htmlentities ( $value );
+					echo utf8_encode ( $value );
 					echo "</td>";
 				}
 				echo "</tr>";
@@ -54,7 +54,7 @@
 				echo "<tr>";
 				foreach ( $this->table [0] as $key => $value ) {
 					echo "<td>";
-					echo htmlentities ( $key );
+					echo utf8_encode ( $key );
 					echo "</td>";
 				}
 				echo "</tr>";
@@ -72,7 +72,8 @@
 					} else {
 						echo "<td>";
 					}
-					echo htmlentities ( $value );
+					//echo utf8_encode ( $value );
+					echo utf8_encode($value);
 					echo "</td>";
 				}
 				// falls link
@@ -81,13 +82,13 @@
 						$submitName = $key;
 						echo "<td align=center>";
 						echo "<form action=\"";
-						echo htmlentities ( $value );
+						echo utf8_encode ( $value );
 						echo "\" method=\"post\">";
 						foreach ( $this->table [$i] as $key => $value ) {
 							echo "<input type=\"hidden\" name=\"";
-							echo htmlentities ( $key );
+							echo utf8_encode ( $key );
 							echo "\" value=\"";
-							echo htmlentities ( $value );
+							echo utf8_encode ( $value );
 							echo "\">";
 						}
 	/*
@@ -101,9 +102,9 @@
 							if(isset($this->hidden)){
 								foreach ( $this->hidden[0] as $key => $value ) {
 									echo "<input type=\"hidden\" name=\"";
-									echo htmlentities ( $key );
+									echo utf8_encode ( $key );
 									echo "\" value=\"";
-									echo htmlentities ( $value );
+									echo utf8_encode ( $value );
 									echo "\">";
 								}
 							}
@@ -115,7 +116,7 @@
 	 * ===============================================
 	 */
 						echo "<input class=\"button\" type=\"submit\" value=\"";
-						echo htmlentities ( $submitName );
+						echo utf8_encode ( $submitName );
 						echo "\">";
 						echo "</form>";
 						echo "</td>";
