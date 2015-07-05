@@ -126,7 +126,7 @@
             // erzeugt die Liste mit "option"-HTML-Elementen aus dem Array vArten
             foreach($this->vArten as $key => $value) {                 
                 echo "\n\t<option value=\"" . $value->vArt_ID . "\">";                
-                echo utf8_encode($value->vArt_bezeichnung) . "</option>";                
+                echo utf8_encode($value->vArt_bezeichnung) . "</option>";                     
 //                echo htmlentities($value->vArt_bezeichnung) . "</option>";                
                 
             }	

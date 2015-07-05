@@ -58,7 +58,7 @@ $vArten = $data['vArten'];
     		echo " selected";    		
     	} 		
     	echo ">";
-    	echo utf8_encode($value->vArt_bezeichnung) . "</option>";    
+    	echo utf8_encode($value->vArt_bezeichnung) . "</option>";        
     }
     ?>
     	</select>
