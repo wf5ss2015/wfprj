@@ -428,7 +428,8 @@ class VeranstaltungController extends Controller {
 			
 			// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
 			// 			$veranstaltung = $vModel->getVeranstaltung($vID);
-			$veranstaltung = $vModel->getGrunddaten($vID);
+			//$veranstaltung = $vModel->getGrunddaten($vID);
+			$veranstaltung = $vModel->getVeranstaltung($vID);
 				
 			//enthält alle Studiengänge, für die die Veranstaltung noch nicht hinzugefügt wurde
 			$studgang = $vModel->getStudiengang($stg_ID);
