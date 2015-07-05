@@ -22,7 +22,7 @@
 
 <article>
 
-<h1>Wahlfach: Veranstaltung erfolgreich eingetragen</h1>
+
 
 
 <?php
