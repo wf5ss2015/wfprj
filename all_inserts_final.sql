@@ -322,15 +322,49 @@ INSERT INTO Veranstaltungsart (vArt_bezeichnung) VALUES
 ('Zusatzübung');
 
 INSERT INTO Veranstaltung (veranst_bezeichnung, veranst_kurztext, credits, SWS, maxTeilnehmer, vArt_ID, dozent_nutzer_name) VALUES
-('Programmieren 1', 'Prog1', 5, 4, 32, 18, 'dozent'),
-('Programmieren 2', 'Prog2', 5, 4, 32, 18, 'dozent'),
-('Rechnernetze', 'RNET', 5, 4, 30, 16, 'dozent'),
-('Seminar Wirtschaftsinformatik', 'SEMWIF', 4, 2, 30, 10, 'clstei'),
-('Database Programming', 'DAPRO', 5, 4, 30, 17, NULL),
-('Physik 1', 'PH1', 5, 4, 30, 16, NULL),
-('Chemie 1', 'CH1', 5, 4, 30, 16, NULL),
-('Strahlentechnik', 'STechnik', 5, 4, 30, 16, NULL),
-('Maschinenbau Grundlagen', 'MBau-GRDL', 5, 4, 30, 16, NULL);
+-- WF1
+('Programmieren 1', 'PROG1', 5, 4, 32, 18, NULL),
+('Grundlagen BWL', 'ABWL', 5, 4, 32, 18, NULL),
+('Grundzüge Wirtschaftsinformatik', 'GRWF', 5, 4, 32, 18, NULL),
+('Rechnungswesen', 'RW', 5, 4, 32, 18, NULL),
+('Mathematik 1', 'MATH', 5, 4, 32, 18, NULL),
+('Technologische Grundlagen', 'TEGR', 5, 4, 32, 18, NULL),
+
+-- WF2 
+('Programmieren 2', 'PROG2', 5, 4, 32, 18, NULL),
+('Schwerpunkt BWL', 'SBWL', 5, 4, 32, 18, NULL),
+('Business Englisch', 'BUSE-NU', 5, 4, 32, 18, NULL),
+('Projektmanagement', 'PMAN', 5, 4, 32, 18, NULL),
+('Mathematik 2', 'MATH', 5, 4, 32, 18, NULL),
+('Wirtschafts- und IT-Recht', 'WIPR', 5, 4, 32, 18, NULL),
+('Datenbanken', 'DABA', 5, 4, 32, 18, NULL),
+
+-- WF3
+('Business and Technical English', 'BTENG', 5, 4, 32, 18, NULL),
+('Marketing', 'MARK', 5, 4, 32, 18, NULL),
+('ERP Systeme', 'ERPS', 5, 4, 32, 18, NULL),
+('Betriebssysteme', 'BSYS', 5, 4, 32, 18, NULL),
+('Alorithmen und Datenstrukturen', 'ALDS', 5, 4, 32, 18, NULL),
+('Statistik', 'STAK', 5, 4, 32, 18, NULL),
+
+-- WF4
+('Rechnernetze', 'RNET', 5, 4, 32, 18, NULL),
+('Database Programming', 'DAPRO', 5, 4, 32, 18, NULL),
+('Informationsmanagement', 'INFM', 5, 4, 32, 18, NULL),
+('Corporate Communication', 'COCM', 5, 4, 32, 18, NULL),
+('Software Engeneering', 'SOFEN', 5, 4, 32, 18, NULL),
+
+-- WF5
+('Operations Research', 'OR', 5, 4, 32, 18, NULL),
+('Datawarehouse', 'DAWA', 5, 4, 32, 18, NULL),
+('Seminar der Wirtschaftsinformatik', 'SEMWF', 5, 4, 32, 18, NULL),
+('Interkulturelle Kommunikation', 'IKOM', 5, 4, 32, 18, NULL),
+('IT Anwendungen', 'ITA', 5, 4, 32, 18, NULL),
+('Führungsinstrumente', 'FUEBIT', 5, 4, 32, 18, NULL),
+('Wirtschaftsinformatik Projekt', 'WFPRJ', 5, 4, 32, 18, NULL);
+
+
+
 
 
 /*	Autor: Alexander Mayer 
@@ -339,10 +373,35 @@ INSERT INTO Veranstaltung (veranst_bezeichnung, veranst_kurztext, credits, SWS, 
 INSERT INTO Dozent_berechtigtFuer_Veranstaltung (dozent_nutzer_name, veranst_ID) VALUES
 ('dozent', 1),
 ('dozent', 2),
+('dozent', 3),
+('dozent', 4),
 ('dozent', 5),
-('clstei', 6),
-('clstei', 7),
-('clstei', 8);
+('dozent', 6),
+('dozent', 7),
+('dozent', 8),
+('clstei', 9),
+('clstei', 10),
+('clstei', 11),
+('dozent', 12),
+('dozent', 13),
+('dozent', 14),
+('dozent', 15),
+('clstei', 16),
+('clstei', 17),
+('clstei', 18),
+('dozent', 19),
+('clstei', 20),
+('clstei', 21),
+('dozent', 22),
+('dozent', 23),
+('dozent', 24),
+('dozent', 25),
+('clstei', 26),
+('clstei', 27),
+('clstei', 28),
+('dozent', 29),
+('clstei', 30),
+('dozent', 31);
 
 /*	Autor: Alexander Mayer 
 	Sprint 6, Task 650.1 END */
@@ -406,24 +465,48 @@ INSERT INTO Wochentag (tag_bezeichnung) VALUES
 ('Samstag');
 
 INSERT INTO Studiengang_hat_Veranstaltung (`stg_ID`, `veranst_ID`, `pflicht_im_Semester`) VALUES
--- Technische Informatik:
 
--- Wirtschaftsinformatik: 
-(2, 1, 1), -- Programmieren 1
-(2, 2, 2), -- Programmieren 2
-(2, 3, 4), -- Rechnernetze
-(2, 4, 5), -- Seminar Wirtschaftsinformatik
-(2, 5, 4), -- Database Programming
+-- WF1
+(16, 1, 1), 
+(16, 2, 1), 
+(16, 3, 1), 
+(16, 4, 1), 
+(16, 5, 1), 
+(16, 6, 1), 
 
--- Medizintechnik:
-(3, 7, 1), -- Chemie 1
-(3, 8, 3), -- Strahlentechnik
+-- WF2
+(16, 7, 2), 
+(16, 8, 2), 
+(16, 9, 2), 
+(16, 10, 2), 
+(16, 11, 2), 
+(16, 12, 2),
+(16, 13, 2),
 
--- Maschinenbau:
-(4, 6, 1), -- Physik 1
-(4, 9, 1); -- Maschinenbau Grundlagen
+-- WF3
+(16, 14, 3), 
+(16, 15, 3), 
+(16, 16, 3), 
+(16, 17, 3), 
+(16, 18, 3), 
+(16, 19, 3),
 
--- Information Systems:
+-- WF4
+(16, 20, 4), 
+(16, 21, 4), 
+(16, 22, 4), 
+(16, 23, 4), 
+(16, 24, 4), 
+
+-- WF5
+(16, 25, 5), 
+(16, 26, 5), 
+(16, 27, 5), 
+(16, 28, 5), 
+(16, 29, 5), 
+(16, 30, 5),
+(16, 31, 5); 
+
 
 
 INSERT INTO Ausstattung(ausstattung_bezeichnung) VALUES
