@@ -312,10 +312,15 @@ class VeranstaltungController extends Controller {
 	
 		//Array mit benötigter Ausstattung
 		$ausstattung = Request::post("veranstaltung_ausstattung");
-
+		//print_r($ausstattung);
 		
+				
 		// neues Veranstaltungmodel anlegen
 		$vModel = new VeranstaltungModel ();
+		
+		//trägt Ausstattung ein
+		$vModel->ausstattungEintragen(Request::post("vID"), $ausstattung);
+		
 		
 		//alte Veranstaltung, für Vorher-Nachher
 		$alteVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));

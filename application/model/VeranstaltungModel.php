@@ -243,28 +243,35 @@ class VeranstaltungModel {
 // Methode trägt benötigte Ausstattung im Array $ausstattung für eine Veranstaltung $vID ein 
 	public function ausstattungEintragen($vID, $ausstattung) {
 		
-		// POST-Inhalt auslesen
-		$insertValues = "";
-		$veranstaltungAusstattung = $ausstattung;
-
-
 		// Datenbankverbindung
 		$database = new DatabaseFactoryMysql ();
+		
+		// alle vorhandenen Einträge in Tabelle  Veranstaltung_erfordert_Ausstattung mit $vID löschen
+
+		$deleteString = "DELETE FROM Veranstaltung_erfordert_Ausstattung WHERE veranst_ID = $vID;";
+		$database->insert($deleteString);
+		
+
+		$insertValues = "";
+		// $veranstaltungAusstattung = $ausstattung;
+
+
+
 
 
 		// Plausibilität prüfen
-		for($i = 0; $i < count ( $veranstaltungAusstattung ); $i ++) {
+		for($i = 0; $i < count ( $ausstattung ); $i ++) {
 			// prüft, ob eingegebener Wert wirklich eine Zahl ist
-			if (is_numeric ( $veranstaltungAusstattung [$i] )) {
+			if (is_numeric ( $ausstattung [$i] )) {
 				
 				// prüft, ob die angebenen Zahlen sinnvoll sind
-				if($veranstaltungAusstattung[$i] < 100 && $veranstaltungAusstattung[$i] > 0) {
-					$insertValues = $vID . ", " . ($i + 1) . ", " . $veranstaltungAusstattung[$i];
+				if($ausstattung[$i] < 100 && $ausstattung[$i] >= 0) {
+					$insertValues = $vID . ", " . ($i + 1) . ", " . $ausstattung[$i];
 					
 					// insert für mysql vorbereiten
-					$insertString = "INSERT INTO Veranstaltung_erfordert_Ausstattung" 
-									. " (veranst_ID, ausstattung_ID, anzahl)" 
-									. " VALUES (" . $insertValues . ");";
+					$insertString = "INSERT INTO Veranstaltung_erfordert_Ausstattung"
+							. " (veranst_ID, ausstattung_ID, anzahl)"
+							. " VALUES (" . $insertValues . ");";
 					
 					
 				}
