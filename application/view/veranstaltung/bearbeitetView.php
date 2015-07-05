@@ -44,6 +44,7 @@
 	//alte und neue Veranstaltung
 	$alteVeranstaltung = $data['alteVeranstaltung'];
 	$neueVeranstaltung = $data['neueVeranstaltung'];
+	$ausstattungNeu  =$data['ausstattung'];
 	
 	//Table-Objekt für die Ausgabe
 	$table = new Table ();
@@ -75,6 +76,30 @@ echo "<H2>voher: </H2>";
 					$alias
 			)
 	) );
+	
+
+	//print_r($ausstattungNeu);
+	echo "<h3>Ausstattung:</h3><table>";
+	$size = count($ausstattungNeu);
+	//foreach($this->$ausstattungNeu as $key => $value) {
+	for($i = 0; $i < $size; $i++) {
+		echo "\n<tr>";
+	
+		echo "\n\t<td><input type=\"text\"  name=\"veranstaltung_ausstattung[]\" " . "value=\"" . $ausstattungNeu[$i]->anzahl;
+		echo "\" size=\"1\" readonly /> </td>";
+	
+		echo "\n\t<td> " . utf8_encode($ausstattungNeu[$i]->ausstattung_bezeichnung);
+	
+	
+		//              echo " <input type=\"hidden\" name=\"veranstaltung_ausstattungid[]\" value=\"" . $value->ausstattung_ID . "\" />";
+	
+		echo "</td>";
+	
+	
+	
+		echo " \n</tr>";
+	}
+	echo "</table>";
 	
 	
 ?>

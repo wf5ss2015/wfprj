@@ -321,10 +321,13 @@ class VeranstaltungController extends Controller {
 		//trägt Ausstattung ein
 		$vModel->ausstattungEintragen(Request::post("vID"), $ausstattung);
 		
+		//$ausstattung = $vModel->getAusstattung();
+		$ausstattungNeu = $vModel->getAusstattungVonVeranstaltung(Request::post("vID"));
+		
 		
 		//alte Veranstaltung, für Vorher-Nachher
 		$alteVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));
-		
+						
 		
 		$vModel->updateVeranstaltung(array('grunddaten' => $grunddaten, 
 				'vArtID' => $vArtID,
@@ -337,7 +340,8 @@ class VeranstaltungController extends Controller {
 		Session::add ( 'response_positive', 'Veranstaltung erfolgreich bearbeitet.' );
 		
 		$this->View->render('veranstaltung/bearbeitet', array ('alteVeranstaltung' => $alteVeranstaltung,
-						'neueVeranstaltung' => $neueVeranstaltung
+						'neueVeranstaltung' => $neueVeranstaltung,
+						'ausstattung' => $ausstattungNeu
 		) );
 		
 	}
