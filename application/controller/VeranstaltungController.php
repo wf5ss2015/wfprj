@@ -140,12 +140,17 @@ class VeranstaltungController extends Controller {
 			
 			// hole Daten der eben eingetragenen Veranstaltung als ein Array aus Objekten
 			$veranstaltung = $vModel->getVeranstaltung ($vID);
+			
+			Session::add ( 'response_positive', 'Neue Veranstaltung erfolgreich angelegt.' );
+			
 			$this->View->render ( 'veranstaltung/angelegt', array (
 					'veranstaltung' => $veranstaltung 
 			) );
 		} else {
 			
 			// TODO errer ausgeben
+			
+			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 		}
 	}
 	
@@ -322,6 +327,9 @@ class VeranstaltungController extends Controller {
 		
 		//neue Veranstaltung, für Vorher-Nachher
 		$neueVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));
+		
+		Session::add ( 'response_positive', 'Veranstaltung erfolgreich bearbeitet.' );
+		
 		$this->View->render('veranstaltung/bearbeitet', array ('alteVeranstaltung' => $alteVeranstaltung,
 						'neueVeranstaltung' => $neueVeranstaltung
 		) );
@@ -409,6 +417,8 @@ class VeranstaltungController extends Controller {
 				
 			//enthält alle Studiengänge, für die die Veranstaltung noch nicht hinzugefügt wurde
 			$studgang = $vModel->getStudiengang($stg_ID);
+			
+			Session::add ( 'response_positive', 'Wahlfach erfolgreich eingetragen.' );
 				
 			$this->View->render('veranstaltung/wahlfacheingetragen',
 					array ('veranstaltung' => $veranstaltung,
