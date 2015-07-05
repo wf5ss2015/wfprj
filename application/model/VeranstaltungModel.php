@@ -112,123 +112,6 @@ class VeranstaltungModel {
 	 */
 	
 	
-
-	/* sprint 5 Anfang
-	 *
-	 */
-	
-	
-	/* Erstellt eine mit Fakultät-Studiengang-Veranstaltung codierte Veranstaltungs-ID.
-	 * FFSSVVVV, VVVV in Zehner-Schritten (später sollen noch Tutorien, 
-	 * 			 Übungsgruppen etc angehängt werden können in Einer-Schritten)
-	 * F = fakultät
-	 * S = studiengang
-	 * V = veranstaltung (dynamisch)
-	 */
-	public function erstelleVID($stg_ID) {
-		
-		$vID = "0";		
-	
-		if($stg_ID > 0) {
-
-			//Query-String
-			$q = "select fak_ID from Studiengang where stg_ID = $stg_ID;";
-			
-			//Query ausführen
-			$result = $this->abfrage($q);
-
-			
-			//Enthält die Fakultäts-ID			
-			$fak_ID = $result[0]->fak_ID;
-
-				
-			//vID soll aussehen: FFSSVVVV. Dafür ist es u.U. nötig, der Fakultäts-ID eine führende Null zu geben
-			if($fak_ID < 10) {
-				$fak_ID = str_pad($fak_ID, 2, '0', STR_PAD_LEFT);	
-			}
-			
-
-			
-			//vID soll aussehen: FFSSVVVV. Dafür ist es u.U. nötig, der Fakultäts-ID eine führende Null zu geben
-			if($stg_ID < 10) {
-				$stg_ID = str_pad($stg_ID, 2, '0', STR_PAD_LEFT);
-			}
-
-			
-			
-			//erste Hälfte der erstellten $vID zusammensetzen
-			$vID = $fak_ID . $stg_ID;			
-
-		} else {
-			//wenn die Veranstaltung keinem Studiengang zugeordnet werden soll, nimm 0000 als führende Ziffern	
-			$vID = "0000";
-		}
-
-		
-
-		//Query-String
-		//gesucht wird die größte vID, die bereits der Fakultät/dem Studiengang zugeordnet ist
-		//(Anm.: QUOTING wichtig: '_expr_', '%expr%')
-		$q = "select max(veranst_ID) as vID from Veranstaltung where veranst_ID like '" . ($vID . "____") . "';";
-
-
-
-		//Query ausführen
-		$result = $this->abfrage($q);
-		
-
-
-
-		//sollte noch keine Veranstaltungs-ID für den Studiengang vorhanden sein, nimm 0000
-		$max_vID = "0";
-		if(empty($result[0]->vID)) {
-			$max_vID = "0000";
-
-		} else {
-			$max_vID = $result[0]->vID;
-			//die ersten vier Ziffern (FFSS) entfernen
-			$max_vID = substr($max_vID, -4);
-
-		}
-		
-
-		
-
-		//entferne führende Nullen
-		$count = 0;
-//alt:		
-// 		for($i=1; $i<3; $i++) {
-// 			if($max_vID[$i] == "0") {
-// 				$count++;
-// 			}
-// 		}
-		//zählt nur so lange, wie Nullen links stehen; bei erster Ziffer ungleich 0 wird abgebrochen.
-		for($i=1; $i<3; $i++) {
-			if($max_vID[$i] != "0") {
-				$i=3;
-			} else {
-				$count++;
-			}
-		}
-		
-		//liefert Substring ab $count (exklusiv)
-		$max_vID = substr($max_vID, $count);		
-// 		// größte vorhandene Veranstaltungs-ID auf nach unten 10 runden und 10 addieren
-		$max_vID = $max_vID - ($max_vID % 10) + 10;
-
-// 		// füllt den String VVVV links mit Nullen auf
-		$max_vID = str_pad($max_vID, 4, '0', STR_PAD_LEFT);
-// 		//setze die Veranstaltungs-ID zusammen
-		$vID = $vID . $max_vID;
-		
-		return $vID;	
-	}
-	
-	
-	/* sprint 5 Ende
-	 */
-	
-	
 	
 // Methode trägt benötigte Ausstattung im Array $ausstattung für eine Veranstaltung $vID ein 
 	public function ausstattungEintragen($vID, $ausstattung) {
@@ -652,7 +535,120 @@ class VeranstaltungModel {
 	
 	
 	
+	/* sprint 5 Anfang
+	 *
+	 */
 	
+	
+	/* Erstellt eine mit Fakultät-Studiengang-Veranstaltung codierte Veranstaltungs-ID.
+	 * FFSSVVVV, VVVV in Zehner-Schritten (später sollen noch Tutorien,
+	 * 			 Übungsgruppen etc angehängt werden können in Einer-Schritten)
+	 * F = fakultät
+	 * S = studiengang
+	 * V = veranstaltung (dynamisch)
+	 */
+	public function erstelleVID($stg_ID) {
+	
+		$vID = "0";
+	
+		if($stg_ID > 0) {
+	
+			//Query-String
+			$q = "select fak_ID from Studiengang where stg_ID = $stg_ID;";
+				
+			//Query ausführen
+			$result = $this->abfrage($q);
+	
+				
+			//Enthält die Fakultäts-ID
+			$fak_ID = $result[0]->fak_ID;
+	
+	
+			//vID soll aussehen: FFSSVVVV. Dafür ist es u.U. nötig, der Fakultäts-ID eine führende Null zu geben
+			if($fak_ID < 10) {
+				$fak_ID = str_pad($fak_ID, 2, '0', STR_PAD_LEFT);
+			}
+				
+	
+				
+			//vID soll aussehen: FFSSVVVV. Dafür ist es u.U. nötig, der Fakultäts-ID eine führende Null zu geben
+			if($stg_ID < 10) {
+				$stg_ID = str_pad($stg_ID, 2, '0', STR_PAD_LEFT);
+			}
+	
+				
+				
+			//erste Hälfte der erstellten $vID zusammensetzen
+			$vID = $fak_ID . $stg_ID;
+	
+		} else {
+			//wenn die Veranstaltung keinem Studiengang zugeordnet werden soll, nimm 0000 als führende Ziffern
+			$vID = "0000";
+		}
+	
+	
+	
+		//Query-String
+		//gesucht wird die größte vID, die bereits der Fakultät/dem Studiengang zugeordnet ist
+		//(Anm.: QUOTING wichtig: '_expr_', '%expr%')
+		$q = "select max(veranst_ID) as vID from Veranstaltung where veranst_ID like '" . ($vID . "____") . "';";
+	
+	
+	
+		//Query ausführen
+		$result = $this->abfrage($q);
+	
+	
+	
+	
+		//sollte noch keine Veranstaltungs-ID für den Studiengang vorhanden sein, nimm 0000
+		$max_vID = "0";
+		if(empty($result[0]->vID)) {
+			$max_vID = "0000";
+	
+		} else {
+			$max_vID = $result[0]->vID;
+			//die ersten vier Ziffern (FFSS) entfernen
+			$max_vID = substr($max_vID, -4);
+	
+		}
+	
+	
+	
+	
+		//entferne führende Nullen
+		$count = 0;
+		//alt:
+		// 		for($i=1; $i<3; $i++) {
+		// 			if($max_vID[$i] == "0") {
+		// 				$count++;
+		// 			}
+		// 		}
+		//zählt nur so lange, wie Nullen links stehen; bei erster Ziffer ungleich 0 wird abgebrochen.
+		for($i=1; $i<3; $i++) {
+			if($max_vID[$i] != "0") {
+				$i=3;
+			} else {
+				$count++;
+			}
+		}
+	
+		//liefert Substring ab $count (exklusiv)
+		$max_vID = substr($max_vID, $count);
+		// 		// größte vorhandene Veranstaltungs-ID auf nach unten 10 runden und 10 addieren
+		$max_vID = $max_vID - ($max_vID % 10) + 10;
+	
+		// 		// füllt den String VVVV links mit Nullen auf
+		$max_vID = str_pad($max_vID, 4, '0', STR_PAD_LEFT);
+		// 		//setze die Veranstaltungs-ID zusammen
+		$vID = $vID . $max_vID;
+	
+		return $vID;
+	}
+	
+	
+	/* sprint 5 Ende
+	 */
 	
 	
 	
