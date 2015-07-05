@@ -204,7 +204,7 @@
             // erzeugt die Liste mit "option"-HTML-Elementen aus dem Array studiengaenge
             foreach($this->studiengaenge as $key => $value) {                 
                 echo "\n\t<option value=\"" . $value->stg_ID . "\">";
-                echo $value->stg_bezeichnung;
+                echo utf8_encode($value->stg_bezeichnung);
                 echo ", " . $value->stgTyp_kuerzel; 
                 echo "</option>";
             }	
@@ -216,7 +216,9 @@
 		 * Auswahl Fachsemester für "Pflichtvorlesung im Studiengang" hinzugefügt
 		 */ 
 		?>
-         in Fachsemester: 
+        </td></tr>
+        <tr>
+        <td> in Fachsemester: </td><td>
         <select class="input " name="veranstaltung_fachsemester" style="; width: 3em">
         <?php 
  			for ($i=1; $i<=7; $i++) {
@@ -269,7 +271,7 @@
 	 ?>
 	
 	
-	
+		<tr><td>&nbsp;</td><td>&nbsp;</td><tr>
 	<tr><td><input class="button" type="submit" value="anlegen" /></td><td>&nbsp;</td></tr>		
     </table>
 </form>
