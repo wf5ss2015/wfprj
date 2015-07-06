@@ -169,14 +169,11 @@ class EmployeeController extends Controller {
 	 */
 	public function saveSchedule() {
 		$schedule=unserialize(Request::post('schedule'));
-		echo "<pre>";
-		print_r($schedule);
+
 		$model = new ScheduleModel();
 		$model->saveSchedule($schedule);
-		//$this->View->render ( 'employee/NotenListeStart', array (
-			//	'vorlesung' => $model->getVorlesungAll(), 'students' => $model2->getAllStudents()
-				
-		//) );
+		Session::add ( 'response_positive', 'Stundenplan erfolgreich gespeichert.' );
+		Redirect::to('Employee/createSchedule');
 	}
 	
 	

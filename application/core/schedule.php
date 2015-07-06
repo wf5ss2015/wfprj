@@ -12,54 +12,7 @@ class schedule{
 			$this->dozent = $dozent;
 			$this->semester = $semester;
 		}
-		/*function __construct (){
-		$this->vorlesung = array (
-		"VL_1",
-		"VL_2",
-		"VL_3",
-		"VL_4",
-		"VL_5",
-		"VL_6",
-		"VL_7",
-		"VL_8",
-		"VL_9",
-		"VL_10",
-		"VL_11",
-		"VL_12",
-		"VL_13",
-		"VL_14",
-		"VL_15",
-		"VL_16",
-		"VL_17",
-		"VL_18",
-		"VL_19",
-		"VL_20",
-		"VL_21",
-		"VL_22",
-		"VL_23",
-		"VL_24",);
-		$this->raum = array(
-		"raum1",
-		"raum2",
-		"raum3",
-		"raum4",
-		"raum5");
-		$this->dozent = array(
-		"dozent1"=>array("VL_7","VL_8", "VL_9", "VL_4", "VL_5", "VL_6"),
-		"dozent2"=>array("VL_1","VL_2", "VL_3", "VL_10", "VL_11", "VL_12"),
-		"dozent3"=>array("VL_19","VL_20", "VL_21", "VL_16", "VL_17", "VL_18", "VL_24"),
-		"dozent4"=>array("VL_13","VL_14", "VL_15", "VL_22", "VL_23", "VL_24"));
-		$this->semester = array(
-		"sem1"=>array("VL_1","VL_2", "VL_3", "VL_4", "VL_5", "VL_6"),
-		"sem2"=>array("VL_7","VL_8", "VL_9", "VL_10", "VL_11", "VL_12"),
-		"sem3"=>array("VL_13","VL_14", "VL_15", "VL_16", "VL_17", "VL_18"),
-		"sem4"=>array("VL_19","VL_20", "VL_21", "VL_22", "VL_23", "VL_24"));
-		print_r($this->dozent);
-		print_r($this->semester);
-		print_r($this->raum);
-		print_r($this->vorlesung);
-		}
-		*/
+		
 		
 		function match ($obj){
 		$vorlesung=$obj->vorlesung; //vorlesungen
@@ -81,7 +34,7 @@ class schedule{
 
 			}
 		}
-		//print_r($scheduleMatrix);
+		
 		//print_r($scheduleMatrix);
 		$counter =0;
 		while (!empty($vorlesung)){
@@ -204,6 +157,8 @@ class schedule{
 					//echo " counter :".$counter."  ";
 				}
 		} 
+		//echo "<pre>";
+		print_r($scheduleMatrix);
 		//array_multisort($scheduleMatrix);
 		return $scheduleMatrix;
 		}	
