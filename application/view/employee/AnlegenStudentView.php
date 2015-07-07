@@ -71,7 +71,8 @@
 			<?php//Matrikel?>
 			<tr>
               <td><label>Matrikel</label></td>
-              <td><input name="matrikel" required="required" type="text" readonly value="<?php echo htmlentities($this->matrikel->matrikelnummer +1)?>"></td>
+              <td><input name="matrikel" required="required" type="text" readonly value="
+				<?php echo htmlentities($this->matrikel->matrikelnummer +1)?>"></td>
 			</tr>
 			<tr>
 			  <td><label style="font-size: 100%; font-style: italic">(wird automatisch vergeben!)</label></td>
