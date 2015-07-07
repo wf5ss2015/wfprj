@@ -36,7 +36,7 @@
 							<?php echo htmlentities($value->veranst_bezeichnung); ?></option>
 							<?php } ?>
 							
-						</select> <input type="submit" value="weiter">
+						</select> <input class="button" type="submit" value="weiter">
 	</form>
 
 	<!-- sonst Fehlermeldung -->

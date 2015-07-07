@@ -55,6 +55,7 @@ class menueView{
 			"Mein Profil" => "#",
 			"Bearbeiten" => "Dozent/meinProfil",
 			"Passwort ändern" => "#",
+			"Email" => "Dozent/emailStudentsEmployees"
 			),
 			array(
 			"Raumplan" => "raumplan/erzeugeFormular"),
@@ -81,7 +82,7 @@ class menueView{
 			"Mein Profil" => "#",
 			"Bearbeiten" => "Dozent/meinProfil",
 			"Passwort ändern" => "#",
-			"Email" => "Dozent/emailDozent"),
+			"Email" => "Dozent/emailStudentsEmployees"),
 			array(
 			"Raumplan" => "raumplan/erzeugeFormular"),
 			array(
@@ -97,7 +98,8 @@ class menueView{
 			"Home" => "index/index"),
 			array(
 			"Mein Profil" => "#",
-			"Bearbeiten" => "Dozent/meinProfil"
+			"Bearbeiten" => "Dozent/meinProfil",
+			"Email" => "Dozent/emailStudentsEmployees"
 			),
 			array(
 			"Veranstaltung" => "#",

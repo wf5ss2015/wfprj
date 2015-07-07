@@ -26,7 +26,7 @@
 		$this->{$key} = $value;
 		}
 	
-	 } ?>
+	 } //print_r($_POST);?>
 
 	<h1>Teilnehmerliste für Kurs "<?php echo htmlentities($value->Bezeichnung); ?>" </h1>
 	</br>			
@@ -57,10 +57,19 @@ if ($this->teilnehmer) {
 	
 	// key=name des links - value=action
 	$link = array (
-			"Anzeigen" => "index.php?url=login/helloDocent" 
+			"Email verschicken" => "index.php?url=Dozent/emailDozent" 
 	);
 	
 	$link = ( object ) $link;
+	
+	$kid = $_POST['id'];
+	
+	$hidden =array(
+			"kurs" => "$kid"
+			);
+	
+	$hidden = ( object ) $hidden;
+	
 	$table->table ( array (
 			'table' => $this->teilnehmer,
 			'dozentTeilnehmer' => array (
@@ -68,6 +77,9 @@ if ($this->teilnehmer) {
 			),
 			'link' => array (
 					$link 
+			),
+			'hidden' => array (
+					$hidden 
 			) 
 	) );
 	?>
@@ -75,8 +87,16 @@ if ($this->teilnehmer) {
 	<form method="post" action="index.php?url=email/writeMailAll">
 		<input type="hidden" name="id"
 			value="<?php echo htmlentities($_POST['id']); ?>" /> <input class="button"
-			type="submit" value='email an alle' />
+			type="submit" value='Email an Alle'/>
+			</br>
+			</br>
+			</br>
 	</form>
+			
+	<form> <input class="button" type="submit" name="laden" value="Zurück Auswahl"
+				formaction="index.php?url=Dozent/auswahlVorlesung" formmethod="post">
+	</form>
+				
 	<?php
 } else {
 ?>

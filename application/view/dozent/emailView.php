@@ -30,7 +30,7 @@
 		</br>
 		</br>
 
-	<?php if ($this->profil) {
+	<?php if ($this->profil){
 
 	// PHP Fehlermeldungen (1 um das Formular zu testen) anzeigen.
 	error_reporting(1);// (0/1)
@@ -59,14 +59,18 @@
 	"pdf" => "application/pdf",
 	"zip" => "application/x-zip-compressed",
 	);
-
+	//print_r($_POST);
+	
 	// Ausgabe der Datentypen und Dateigröße formatieren
 	$Dtype = implode(", ", array_unique(array_keys($Datentyp)));
 	$Dsize = ($Maxgroesse >= 1048576) ? number_format(($Maxgroesse / 1024 / 1024), 1, ",", ".") .
 	 " MB" : number_format(($Maxgroesse / 1024), 1, ",", ".") . " KB";
-
+	
+	// Kurs id speichern
+	$kurs = $_POST['kurs'];
+	
 	$name = htmlentities($this->profil->Vorname.' '.$this->profil->Nachname);  // Name
-	$email = isset($_POST["email"]) ? strip_tags(trim($_POST["email"])) : ""; // E-Mail
+	$email = isset($_POST["Email"]) ? strip_tags(trim($_POST["Email"])) : ""; // E-Mail
 	$betreff = isset($_POST["betreff"]) ? strip_tags(trim($_POST["betreff"])) : ""; // Betreff
 	$nachricht = isset($_POST["nachricht"]) ? strip_tags(trim($_POST["nachricht"])) : ""; // Nachricht
 
@@ -162,7 +166,7 @@
 	  <td>
 	   <input type='file' name='File[]' id='Anhang' size='20' multiple='multiple'>
 	   <span class='pflichtfeld'>" . $Fehler["File"] . "</span>
-	   <input type='reset' name='löschen' value='Anhang löschen'>
+	   <input class='button' type='reset' name='löschen' value='Anhang löschen'>
 	   <br>
 	   <small>Dateiformat: " . $Dtype . " - Dateigröße max.: " . $Dsize . " </small>
 	  </td>
@@ -170,7 +174,10 @@
 	 <tr>
 	  <th colspan='2'>
 	   <br>
-	   <input type='submit' name='submit' value='Email senden'>
+	   
+	    <input type='hidden' name='id' value= '" . $kurs . "'/>
+	   <input class='button' type='submit' name='submit' value='Email senden'>
+	   
 	  </th>
 	 </tr>
 
@@ -192,6 +199,12 @@
 	Kein Array vorhanden
 	<?php } ?>	
 
+
+			
+	<form> <input class="button" type="submit" name="laden" value="Zurück Auswahl"
+				formaction="index.php?url=Dozent/teilnehmerListe" formmethod="post">
+			 <input type="hidden" name= "id" value= "<?php echo htmlentities($_POST['kurs']); ?>" />
+	</form>
 	
 </article>
  <?

@@ -70,7 +70,8 @@
 	"pdf" => "application/pdf",
 	"zip" => "application/x-zip-compressed",
 	);
-
+	
+	
 	// Ausgabe der Datentypen und Dateigröße formatieren
 	$Dtype = implode(", ", array_unique(array_keys($Datentyp)));
 	$Dsize = ($Maxgroesse >= 1048576) ? number_format(($Maxgroesse / 1024 / 1024), 1, ",", ".") .
@@ -156,7 +157,7 @@
 	  <td>
 	   <input type='file' name='File[]' id='Anhang' size='20' multiple='multiple'>
 	   <span class='pflichtfeld'>" . $Fehler["File"] . "</span>
-	   <input type='reset' name='löschen' value='Anhang löschen'>
+	   <input class='button' type='reset' name='löschen' value='Anhang löschen'>
 	   <br>
 	   <small>Dateiformat: " . $Dtype . " - Dateigröße max.: " . $Dsize . " </small>
 	  </td>
@@ -164,7 +165,7 @@
 	 <tr>
 	  <th colspan='2'>
 	   <br>
-	   <input type='submit' name='submit' value='Email senden'>
+	   <input class='button' type='submit' name='submit' value='Email senden'>
 	  </th>
 	 </tr>
 
@@ -180,10 +181,13 @@
 
 	// Formular ausgeben
 	echo $Formular;
-
-	
-
 	?>	
+
+	<form> 
+	<input class="button" type="submit" name="laden" value="Zurück Auswahl"
+				formaction="index.php?url=Dozent/teilnehmerListe" formmethod="post">
+				<input type="hidden" name= "id" value= "<?php echo htmlentities($_POST['id']); ?>" />
+	</form>
 
 
 </article>

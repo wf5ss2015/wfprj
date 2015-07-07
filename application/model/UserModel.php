@@ -498,7 +498,7 @@ class UserModel {
 			return $nutzer;
 			
 			} catch ( PDOException $e ) {
-				Session::add ( 'response_negative', 'Nutzername kann nicht ausgelesen werden.' );
+				Session::add ( 'response_negative', 'Fehler: neuer Nutzername' );
 			}
 	}	 
 	
@@ -522,7 +522,7 @@ class UserModel {
 		//print_r($query);
 		try {
 			$query->execute ();
-			//Session::add ( 'response_positive', 'Rechte erfolgreich für '.$nutzer_name.' geändert.' );
+			
 		} catch ( PDOException $e ) {
 			Session::add ( 'response_negative', 'Adressdaten konnten nicht angelegt werden.' );
 		}
@@ -546,7 +546,7 @@ class UserModel {
 		//print_r($query);
 		try {
 			$query->execute ();
-			//Session::add ( 'response_positive', 'Rechte erfolgreich für '.$nutzer_name.' geändert.' );
+			
 		} catch ( PDOException $e ) {
 			Session::add ( 'response_negative', 'Email konnte nicht angelegt werden.' );
 		}
@@ -620,7 +620,7 @@ class UserModel {
 			$query->execute ();
 			Session::add ( 'response_positive', 'Nutzerkonto für <b>"'.$nutzer.'"</b> erfolgreich angelegt.' );
 		} catch ( PDOException $e ) {
-			Session::add ( 'response_negative', 'Nutzerdaten konnten nicht angelegt werden.' );
+			Session::add ( 'response_negative', 'Fehler: Anlage Nutzerkonto' );
 		}
 	}	 
 		 
