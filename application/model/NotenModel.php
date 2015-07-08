@@ -151,7 +151,8 @@ class NotenModel {
 					ON nu.nutzer_name = n.student_nutzer_name
 					JOIN Studiengang st 
 					ON st.stg_ID = s.stg_ID 
-				 GROUP BY n.student_nutzer_name; ";
+				 GROUP BY n.veranst_ID, v.veranst_bezeichnung, n.student_nutzer_name, n.note, s.matrikelnummer,
+					nu.vorname, nu.nachname, stg_bezeichnung; ";
 		 
 		  $query = $database->prepare($sql);
 		 
