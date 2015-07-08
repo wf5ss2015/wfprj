@@ -110,6 +110,39 @@ class raumZuweisenModel
 		return $zeitgleich;
 	}
 	
+	//überprüft, ob der ausgewählten Veranstaltung bereits ein Dozent zugeordnet ist:
+	public function dozentZugeordnet($veranst_ID)
+	{
+		$dozentZugeordnet = 0;
+		
+		//holt Nutzername des Dozenten der ausgewählten Veranstaltung 
+		$veranstaltung = $this->abfrage(
+			"SELECT dozent_nutzer_name FROM Veranstaltung WHERE veranst_ID = '$veranst_ID';")->fetch_assoc();
+				
+		if($veranstaltung['dozent_nutzer_name'] != NULL)
+			$dozentZugeordnet = 1;
+			
+		return $dozentZugeordnet;
+	}
+	
+	//überprüft, ob der zur Veranstaltung zugeordnete Dozent zur ausgewählten Zeit bereits eine andere Veranstaltung hält:
+	public function dozentVerfuegbar($veranst_ID, $wochentag_ID, $stdZeit_ID)
+	{
+		$dozentVerfuegbar = 0;
+		
+		//Veranstaltungen, welche zur ausgewählten Zeit stattfinden und den Dozenten der ausgewählten Veranstaltung beanspruchen 
+		$veranstaltungen = $this->abfrage(
+			"SELECT * FROM Veranstaltungstermin vt 
+			JOIN Veranstaltung v ON (vt.veranst_ID = v.veranst_ID)
+			WHERE vt.tag_ID = '$wochentag_ID' AND vt.stdZeit_ID = '$stdZeit_ID' 
+				AND v.dozent_nutzer_name = (SELECT dozent_nutzer_name FROM Veranstaltung WHERE veranst_ID = '$veranst_ID');");
+				
+		if(! $veranstaltungen->num_rows > 0)
+			$dozentVerfuegbar = 1;
+			
+		return $dozentVerfuegbar;
+	}
+	
 	//gibt ein array zurück mit allen verfügbaren Vorlesungsräumen:
     public function getVerfuegbareVorlesungsraeume($veranst_ID, $wochentag_ID, $stdZeit_ID) 
 	{

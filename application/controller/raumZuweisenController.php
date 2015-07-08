@@ -101,6 +101,16 @@ class raumZuweisenController extends Controller
 					Session::add('response_negative', utf8_encode('Überschneidung: eine Veranstaltung aus demselben Fachsemester findet bereits zur ausgewählten Zeit statt!'));
 					$this->erzeugeFormular1();
 				}
+				else if(! $rzModel->dozentZugeordnet($veranst_ID))
+				{
+					Session::add('response_negative', utf8_encode('Der Veranstaltung muss erst ein Dozent zugeordnet werden, bevor ein Termin erstellt werden kann!'));
+					$this->erzeugeFormular1();
+				}
+				else if(! $rzModel->dozentVerfuegbar($veranst_ID, $tag_ID, $stdZeit_ID))
+				{
+					Session::add('response_negative', utf8_encode('Der zur Veranstaltung zugewiesene Dozent hat zur ausgewählten Zeit bereits ein Veranstaltungstermin!'));
+					$this->erzeugeFormular1();
+				}
 				else
 				{
 					//Daten aus DB holen:

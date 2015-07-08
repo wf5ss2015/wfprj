@@ -27,13 +27,12 @@
 
 <?php
 	$html = "";
-	$thtml = "";
 	
 	//Tabelle, welche den Stundenplan darstellt:
 
 	$html =	"<h1>Stundenplan f&uuml;r <strong style='color:red;'>$this->name</strong>:</h1>";
 			
-	$html .=	"<table class='stundenplan' border='1'>
+	$html .=	"<table class='stundenplan' border= '1px'>
 				<tr class='head'>
 					<th style='width: 110px;'>Stundenzeit</th>";
 
@@ -79,6 +78,8 @@
 				
 				if($veranstTermin['stdZeit_ID'] == $stunde && $veranstTermin['tag_ID'] == $tag)
 				{
+					$html .= "<td class='content' style='padding-left: 13px;'>";
+					
 					while($veranstTermin['stdZeit_ID'] == $stunde && $veranstTermin['tag_ID'] == $tag)
 					{
 						//Veranstaltungstermin in die Zelle eintragen:
@@ -91,30 +92,27 @@
 						{
 							$dozent = $veranstTermin['nachname'];
 							
-							$html .= 	"<td class='content' style='padding-left: 13px;'> 
-										<br />
+							$html .= 	"<br />
 										<strong>$veranst_kurztext</strong> <br />
 										&#8227; $studiengang$semester <br /> 
 										&#8227; $raum_bezeichnung <br />";
 										if($dozent)
-											$html .= "&#8227; $dozent </td>";  
-										else
-											$html .= "</td>";  
+											$html .= "&#8227; $dozent <br />";  
 							
 						}
 						else if(Session::get('user_role') == 2) //Dozent
 						{
-							$html .= 	"<td class='content' style='padding-left: 13px;'> 
-										<br />
+							$html .= 	"<br />
 										<strong>$veranst_kurztext</strong> <br />
 										&#8227; $studiengang$semester <br /> 
-										&#8227; $raum_bezeichnung
-										</td>";
+										&#8227; $raum_bezeichnung <br />";
 						}
 					
 						//nächster Veranstaltungstermin holen:
 						if($veranstTermin = $this->veranstaltungstermine->fetch_assoc());
 					}
+					
+					$html .= "</td>";
 				}
 				else
 				{
@@ -129,8 +127,6 @@
 	
 	$html .= "</table>";
 	
-	$thtml = $html;
-	
 	echo $html;
 	?>
 	
@@ -138,7 +134,7 @@
 	
 	<div style='margin-left:20px;'>
 	<form action="index.php?url=stundenplan/printStundenplan" method="post" target="_blank">
-		<input type='hidden' name='htmlCode' value="<?php echo $thtml; ?>" />
+		<input type='hidden' name='htmlCode' value="<?php echo $html; ?>" />
 		<input class="button" type="submit" name="send" value="Stundenplan drucken" />
 	</form>
 	</div>
