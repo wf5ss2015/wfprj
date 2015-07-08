@@ -106,7 +106,7 @@ class DozentModel {
 		$user_name = Session::get ( 'user_name' );
 		
 		$sql = "SELECT sav.student_nutzer_name, sav.veranst_ID as veranst_ID, v.veranst_bezeichnung 
-				FROM Student_angemeldetAn_Veranstaltung sav 
+				FROM student_angemeldetan_veranstaltung sav 
 				JOIN Veranstaltung v 
 				ON v.veranst_ID = sav.veranst_ID 
 				WHERE v.dozent_nutzer_name = :user_name 

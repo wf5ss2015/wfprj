@@ -479,7 +479,8 @@ class UserModel {
 		
 		// wenn Nutzer bereits vorhanden dann fortlaufende Nummer anhängen
 		$sql = "SELECT CONCAT(nutzer_name, CASE WHEN COUNT(*) = 0 THEN '' ELSE COUNT(*) END) As nutzer
-				FROM nutzer WHERE nutzer_name LIKE '".$nutzer."%';";
+				FROM nutzer WHERE nutzer_name LIKE '".$nutzer."%'
+				GROUP BY nutzer_name;";
 	
 		$query= $database->prepare ($sql);
 		

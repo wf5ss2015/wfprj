@@ -72,6 +72,7 @@
 							<?php } ?>
 							
 		</select> 
+		<input type='hidden' name='id' value= "<?php echo htmlentities($value->Nutzer); ?>"/>
 		<input type="submit" class="button" value="weiter">
 	</form>
 

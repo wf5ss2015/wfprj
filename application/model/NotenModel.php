@@ -82,7 +82,8 @@ class NotenModel {
 					  ON s.nutzer_name = n.student_nutzer_name
 					  JOIN Veranstaltung v
 					  ON v.veranst_ID = n.veranst_ID
-				  WHERE n.veranst_ID = :id ";
+				  WHERE n.veranst_ID = :id 
+				  GROUP BY n.student_nutzer_name";
 		 
 		  $query = $database->prepare($sql);
 		 
@@ -185,7 +186,8 @@ class NotenModel {
 					  ON s.nutzer_name = n.student_nutzer_name
 					  JOIN Veranstaltung v
 					  ON v.veranst_ID = n.veranst_ID
-				  WHERE n.student_nutzer_name = :id ;";
+				  WHERE n.student_nutzer_name = :id
+					GROUP BY n.student_nutzer_name;";
 		 
 		  $query = $database->prepare($sql);
 		 

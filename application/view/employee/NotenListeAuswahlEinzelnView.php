@@ -33,9 +33,9 @@
 	 foreach($this->notenlisteStudent as $key => $value){
 		$this->{$key} = $value;
 	
-	 } ?>
+	 } //print_r($_POST); ?>
 	 
-	<h3>Notenliste für Nutzer <b>"<?php echo htmlentities($_POST['id2']);?>"</b> </h3>
+	<h3>Notenliste für Nutzer <b>"<?php  echo htmlentities($value->Nutzer);?>"</b> </h3>
 	</br>			
 	</br>
 	
@@ -62,10 +62,14 @@
 	
 	// key=name des links - value=action
 	$link = array (
-			"Note eintragen" => "index.php?url=employee/aendernNote" 
+			"Note eintragen" => "index.php?url=employee/aendernNoteEinzeln" 
 	);
 	
+	
 	$link = ( object ) $link;
+	
+	$hidden = 
+	
 	
 	$table->table ( array (
 			'table' => $this->notenlisteStudent,

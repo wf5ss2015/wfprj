@@ -88,6 +88,15 @@ class DozentController extends Controller {
 				'profil' => DozentModel::getDozentProfil(Session::get('user_name')) 
 		)  );
 	}
+	
+	public function emailStEm() {
+		//$auth = new Auth(2);
+		$this->View->render ( 'user/emailStudentEmployee', array (	
+				'profil' => DozentModel::getDozentProfil(Session::get('user_name')) 
+		)  );
+	}
+	
+	
 	public function updateDozent() {
 	
 			// Nachname

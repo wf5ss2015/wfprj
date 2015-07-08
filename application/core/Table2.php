@@ -130,11 +130,21 @@
 		 *         Nur Zahlen mit Schritten von 0,3 als Noteneintrag erlaubt
 		 **/     
 
-					echo "<input type=\"number\" min=\"1\" max=\"5\" step=\"0.35\" name=\"";
-					echo htmlentities ( $key );
-					echo "\" value=\"";
-					echo htmlentities ( $value );
-					echo "\">";
+					
+					
+					echo "<select name=\"Note\" required=\"required\" style=\"max-width:45%\" >
+				<option value=\"1.0\">1.0</option>
+				<option value=\"1.3\">1.3</option>
+				<option value=\"1.7\">1.7</option>
+				<option value=\"2.0\">2.0</option>
+				<option value=\"2.3\">2.3</option>
+				<option value=\"2.7\">2.7</option>
+				<option value=\"3.0\">3.0</option>
+				<option value=\"3.3\">3.3</option>
+				<option value=\"3.7\">3.7</option>
+				<option value=\"4.0\">4.0</option>
+				<option value=\"5.0\">5.0</option>				
+				<\"select>";
 					
 						echo "<input class=\"button\" type=\"submit\" onClick=\"return confirm('Wollen Sie die Note wirklich ändern?')\" value=\"";
 						/**

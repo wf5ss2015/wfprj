@@ -223,10 +223,24 @@ class EmployeeController extends Controller {
 	 *         Action-Handling wenn Note geändert wird
 	 */
 	public function aendernNote(){
+		
+		
 		$model = new NotenModel();
 		//print_r($_POST);
 		$model->saveNote (Request::post('Veranstaltungsnummer'), Request::post('Nutzer'), Request::post('Note'));
-		$this->startNotenListe();
+		$this->View->render ( 'employee/NotenListeAuswahlGesamt', array (
+				'notenliste' => $model->getVorlesungAllParticipants(Request::post('Veranstaltungsnummer'))
+		) );
+	}
+	
+	public function aendernNoteEinzeln(){
+		
+		$model = new NotenModel();
+		//print_r($_POST);
+		$model->saveNote (Request::post('Veranstaltungsnummer'), Request::post('Nutzer'), Request::post('Note'));
+		$this->View->render ( 'employee/NotenListeAuswahlEinzeln', array (
+				'notenlisteStudent' => $model->getSpecificStudents(Request::post('Nutzer'))
+		) );
 	}
 	
 	/**

@@ -27,7 +27,7 @@
 class EmailController extends Controller {
 	
 	public function __construct() {
-		$auth = new Auth(2);
+		//$auth = new Auth(2);
 		parent::__construct ();
 	}
 	
@@ -39,12 +39,12 @@ class EmailController extends Controller {
 		
 		try{
 			$mail->Host = Config::get('smtp_host'); //SMTP-Server setzen
-			$mail->SMTPDebug  = 2; // Debug information
+			$mail->SMTPDebug  = 0; // Debug information
 			
 			// Testing
 			$mail->SMTPAuth = true; //Authentifizierung aktivieren
 			$mail->Port = Config::get('smtp_port');
-			
+			//print_r($_POST);
 			// Server
 			$mail->Username = Config::get('smtp_user');  // SMTP Benutzername
 			$mail->Password = Config::get('smtp_pass'); // SMTP Passwort
@@ -53,6 +53,26 @@ class EmailController extends Controller {
 			$mail->AddReplyTo = Config::get('smtp_email');
 			$mail->From = Config::get('smtp_email');
 			$mail->FromName =  Request::post('name');
+			$mail->AddBCC('wysdam@googlemail.com');
+			
+			
+			$validAttachments = array();
+			foreach($_FILES['File']['name'] as $index => $fileName)
+			{
+				$filePath = $_FILES['File']['tmp_name'][$index];
+				if(is_uploaded_file($filePath))
+				{
+					$attachment = new stdClass;
+					$attachment->fileName = $fileName;
+					$attachment->filePath = $filePath;
+					$validAttachments[] = $attachment;
+				}        
+			}	
+			
+			foreach($validAttachments as $attachment)
+			{
+			$mail->AddAttachment($attachment->filePath, $attachment->fileName);
+			}
 			
 			$mail->Subject = Request::post('betreff');
 			$mail->Body = Request::post('nachricht')."\n\n Viele Gruesse\n\n". Request::post('name');
@@ -66,12 +86,78 @@ class EmailController extends Controller {
 			{
 				Session::add('response_positive', 'Email wurde versandt.');
 			}
-			Redirect::to('dozent/emailDozent');
+			$this->View->render ( 'dozent/teilnehmerListe', array (
+				'teilnehmer' => DozentModel::getTeilnehmer(Request::post ( 'id' ) ) 
+			) );
 		
 		}catch (phpmailerException $e){
 				echo $e->getMessage();
 		}
 	}
+	
+	public function sendMailStudentEmployee(){
+	
+		$mail = new PHPMailer(true);
+
+		$mail->IsSMTP(); //Versand über SMTP festlegen
+		
+		try{
+			$mail->Host = Config::get('smtp_host'); //SMTP-Server setzen
+			$mail->SMTPDebug  = 0; // Debug information
+			
+			// Testing
+			$mail->SMTPAuth = true; //Authentifizierung aktivieren
+			$mail->Port = Config::get('smtp_port');
+			
+			// Server
+			$mail->Username = Config::get('smtp_user');  // SMTP Benutzername
+			$mail->Password = Config::get('smtp_pass'); // SMTP Passwort
+			$mail->AddAddress(Request::post('email'));
+			
+			$mail->AddReplyTo = Config::get('smtp_email');
+			$mail->From = Config::get('smtp_email');
+			$mail->FromName =  Request::post('name');
+			$mail->AddBCC('wysdam@googlemail.com');
+			
+			
+			$validAttachments = array();
+			foreach($_FILES['File']['name'] as $index => $fileName)
+			{
+				$filePath = $_FILES['File']['tmp_name'][$index];
+				if(is_uploaded_file($filePath))
+				{
+					$attachment = new stdClass;
+					$attachment->fileName = $fileName;
+					$attachment->filePath = $filePath;
+					$validAttachments[] = $attachment;
+				}        
+			}	
+			
+			foreach($validAttachments as $attachment)
+			{
+			$mail->AddAttachment($attachment->filePath, $attachment->fileName);
+			}
+			
+			
+			$mail->Subject = Request::post('betreff');
+			$mail->Body = Request::post('nachricht')."\n\n Viele Gruesse\n\n". Request::post('name');
+			
+			if(!$mail->Send())
+			{
+				Session::add('response_negative', 'Email wurde nicht versandt. Es ist ein Fehler aufgetreten: '.$mail->ErrorInfo);
+				//print_r($mail);
+			}
+			else
+			{
+				Session::add('response_positive', 'Email wurde versandt.');
+			}
+			Redirect::to('Dozent/emailStEm');
+		
+		}catch (phpmailerException $e){
+				echo $e->getMessage();
+		}
+	}
+	
 public function writeMailAll(){
 
 		$model = new DozentModel();
@@ -91,8 +177,8 @@ public function sendMailAll(){
 		
 		try{
 			$mail->Host = Config::get('smtp_host'); //SMTP-Server setzen
-			$mail->SMTPDebug  = 2; // Debug information
-			echo Config::get('smtp_host');
+			$mail->SMTPDebug  = 0; // Debug information
+			//echo Config::get('smtp_host');
 	
 			// Testing
 			$mail->SMTPAuth = true; //Authentifizierung aktivieren
@@ -118,6 +204,25 @@ public function sendMailAll(){
 			//Betreff der Email setzen
 			$mail->Subject = Request::post('betreff');
 			$mail->AddReplyTo = Config::get('smtp_email');
+			
+			$validAttachments = array();
+			foreach($_FILES['File']['name'] as $index => $fileName)
+			{
+				$filePath = $_FILES['File']['tmp_name'][$index];
+				if(is_uploaded_file($filePath))
+				{
+					$attachment = new stdClass;
+					$attachment->fileName = $fileName;
+					$attachment->filePath = $filePath;
+					$validAttachments[] = $attachment;
+				}        
+			}	
+			
+			foreach($validAttachments as $attachment)
+			{
+			$mail->AddAttachment($attachment->filePath, $attachment->fileName);
+			}
+			
 			$mail->From = Config::get('smtp_email');
 			$mail->FromName = Request::post('name');
 			$mail->Subject = Request::post('betreff');
