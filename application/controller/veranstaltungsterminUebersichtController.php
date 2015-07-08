@@ -82,7 +82,7 @@ class veranstaltungsterminUebersichtController extends Controller
 	}
 	
 	/*	Funktion, welche Formulardaten entgegen nimmt und anhand dieser entscheidet, 
-		ob Termin geköscht oder geändert werden soll
+		ob Termin gelöscht oder geändert werden soll
 	*/
 	public function bearbeiteVeranstaltungstermin()
 	{
@@ -179,9 +179,12 @@ class veranstaltungsterminUebersichtController extends Controller
 				bereits eine Veranstaltung aus demselben Fachsemester stattfindet (in diesem Fall wäre die 
 				Zeit-Änderung nicht möglich und es müsste eine andere Zeit ausgewählt werden)
 			*/
-			if(($tag_ID != $_SESSION['tag_ID'] || $stdZeit_ID != $_SESSION['stdZeit_ID']) && $rzModel->veranstaltungZeitgleich($_SESSION['veranst_ID'], $tag_ID, $stdZeit_ID)) 
+			if($rzModel->veranstaltungZeitgleich($_SESSION['veranst_ID'], $tag_ID, $stdZeit_ID) || !$rzModel->dozentVerfuegbar($_SESSION['veranst_ID'], $tag_ID, $stdZeit_ID)) 
 			{
-				Session::add('response_negative', utf8_encode('Zeit-Änderung nicht möglich: eine Veranstaltung aus demselben Fachsemester findet bereits zur ausgewählten Zeit statt!'));
+				if($rzModel->veranstaltungZeitgleich($_SESSION['veranst_ID'], $tag_ID, $stdZeit_ID))
+					Session::add('response_negative', utf8_encode('Zeit-Änderung nicht möglich: eine Veranstaltung aus demselben Fachsemester findet bereits zur ausgewählten Zeit statt!'));
+				else if(!$rzModel->dozentVerfuegbar($_SESSION['veranst_ID'], $tag_ID, $stdZeit_ID))
+					Session::add('response_negative', utf8_encode('Zeit-Änderung nicht möglich: der zur Veranstaltung zugewiesene Dozent hat zur ausgewählten Zeit bereits ein Veranstaltungstermin!'));
 				
 				/*	mit renderMulti() erneut Formular zum Ändern der Zeit (Tag und Stundenzeit) des Veranstaltungstermins
 					und Veranstaltungstermin-Übersicht aufrufen:
