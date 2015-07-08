@@ -18,7 +18,7 @@
  */
 ?>
 <!--Startbereich für einen eingeloggten Dozenten -->
-<article>
+ <article> <!-- 
 	<h1>Startbereich für Dozenten</h1>
 	<nav>
 		<ol>
@@ -51,7 +51,7 @@
 		voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 		Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
 		dolor sit amet.</p>
-</article>
+ --></article>
 
 
 

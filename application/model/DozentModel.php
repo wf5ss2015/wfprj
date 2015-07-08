@@ -53,7 +53,8 @@ class DozentModel {
 					JOIN veranstaltung v 
 					ON ubv.veranst_ID = v.veranst_ID 
 				WHERE ubv.veranst_ID = :id 
-				GROUP BY s.nutzer_name ASC; ";
+				GROUP BY ubv.student_nutzer_name, e.email_name, s.matrikelnummer, n.vorname, n.nachname, n.telefonnummer,
+						st.stg_bezeichnung, v.veranst_bezeichnung; ";
 		
 		$query = $database->prepare ( $sql );
 		
@@ -105,12 +106,12 @@ class DozentModel {
 		
 		$user_name = Session::get ( 'user_name' );
 		
-		$sql = "SELECT sav.student_nutzer_name, sav.veranst_ID as veranst_ID, v.veranst_bezeichnung 
-				FROM student_angemeldetan_veranstaltung sav 
-				JOIN Veranstaltung v 
-				ON v.veranst_ID = sav.veranst_ID 
-				WHERE v.dozent_nutzer_name = :user_name 
-				GROUP BY v.veranst_bezeichnung ASC ;";
+		$sql = "SELECT dbfv.dozent_nutzer_name, dbfv.veranst_ID as veranst_ID, v.veranst_bezeichnung 
+				FROM  dozent_berechtigtfuer_veranstaltung dbfv 
+				JOIN Veranstaltung v
+				ON v.veranst_ID = dbfv.veranst_ID
+				WHERE dbfv.dozent_nutzer_name = :user_name;
+				GROUP BY dbfv.dozent_nutzer_name, dbfv.veranst_ID, v.veranst_bezeichnung";
 		
 		$result = $database->prepare ( $sql );
 		

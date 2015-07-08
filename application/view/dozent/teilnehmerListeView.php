@@ -101,6 +101,10 @@ if ($this->teilnehmer) {
 } else {
 ?>
 kein array übergeben
- <?php } ?>			
+ <?php ?> <form> <input class="button" type="submit" name="laden" value="Zurück Auswahl"
+				formaction="index.php?url=Dozent/auswahlVorlesung" formmethod="post">
+	</form> <?php } ?>		
+
+	
 </article>
 
