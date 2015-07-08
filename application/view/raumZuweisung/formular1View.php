@@ -41,7 +41,7 @@ if(property_exists($this, 'verfuegbareVorlesungsraeume'))
 			
 			foreach ($this->veranstaltungen as $veranstaltung) 
 			{
-				$veranst_bezeichnung = $veranstaltung['veranst_bezeichnung'];
+				$veranst_bezeichnung = utf8_encode($veranstaltung['veranst_bezeichnung']);
 				$veranst_ID = $veranstaltung['veranst_ID'];
 				$stg_bezeichnung = $veranstaltung['stg_bezeichnung'];
 				$stg_kurztext = $veranstaltung['stg_kurztext'];

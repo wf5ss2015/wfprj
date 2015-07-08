@@ -29,8 +29,10 @@
 	$html = "";
 	
 	//Tabelle, welche den Stundenplan darstellt:
+	
+	$name = utf8_encode($this->name);
 
-	$html =	"<h1>Stundenplan f&uuml;r <strong style='color:red;'>$this->name</strong>:</h1>";
+	$html =	"<h1>Stundenplan f&uuml;r <strong style='color:red;'>$name</strong>:</h1>";
 			
 	$html .=	"<table class='stundenplan' border= '1px'>
 				<tr class='head'>
@@ -90,7 +92,7 @@
 						
 						if(Session::get('user_role') == 1) //Student
 						{
-							$dozent = $veranstTermin['nachname'];
+							$dozent = utf8_encode($veranstTermin['nachname']);
 							
 							$html .= 	"<br />
 										<strong>$veranst_kurztext</strong> <br />

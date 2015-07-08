@@ -78,7 +78,7 @@
 					$veranst_ID = $veranstTermin['veranst_ID'];
 					$veranst_bezeichnung = $veranstTermin['veranst_bezeichnung'];
 					$veranst_kurztext = $veranstTermin['veranst_kurztext'];
-					$dozent = $veranstTermin['nachname'];
+					$dozent = utf8_encode($veranstTermin['nachname']);
 					$tag_ID = $veranstTermin['tag_ID'];
 					$stdZeit_ID = $veranstTermin['stdZeit_ID'];
 					$raum_bezeichnung = $veranstTermin['raum_bezeichnung'];

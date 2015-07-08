@@ -72,7 +72,7 @@
 					$veranst_kurztext = $veranstTermin['veranst_kurztext'];
 					$studiengang = $veranstTermin['stg_kurztext'];
 					$semester = $veranstTermin['pflicht_im_Semester'];
-					$dozent = $veranstTermin['nachname'];
+					$dozent = utf8_encode($veranstTermin['nachname']);
 					
 					echo "<td class='content' style='padding-left: 13px;'> 
 							</br>
