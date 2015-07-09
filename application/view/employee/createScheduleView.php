@@ -1,15 +1,5 @@
 <?php
-/*
- * ===============================================
- * Sprint: 4
- * @author: Kilian Kraus
- * Datum: 19.05.2015
- * Zeitaufwand (in Stunden): 0.5 (alle views)
- * User Story Nr.: 480
- * User Story: Als Admin/Verwalter möchte ich Rechte vergeben können.
- * Task: views erstellen
- * ===============================================
- */
+
 ?>
 
 <article>
@@ -29,12 +19,13 @@
 		<?php 
 		$counter=0;
 		$j=0;
+		$slots=array("08:00-09:30", "09:50-11:20", "11:30-13:00", "14:00-15:30", "15:45-17:15", "17:25-18:55", "19:00-20:30");
 			while ($j<7){
 				$i=0;
 				echo "<tr>";
 				while($i<6){
 					if($i==0){
-						echo "<td class='content' style='text-align:center'>Slot ". $j." </td>";
+						echo "<td class='content' style='text-align:center'>". $slots[$j]." </td>";
 					}
 					echo "<td >";
 					$first=0;

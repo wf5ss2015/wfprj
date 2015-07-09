@@ -108,7 +108,6 @@ class EmployeeController extends Controller {
 		// umwandeln array $Vorlesung
 		$lectureNew=array();
 		foreach($lecture as $key => $value) {
-			//echo "key: ". $key. " value: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
 			$SWS=$value->SWS;
 			while($SWS>1){
 			array_push($lectureNew, $value->veranst_id);
@@ -120,29 +119,21 @@ class EmployeeController extends Controller {
 		// umwandeln array $semester
 		$semesterNew;
 		foreach($semester as $key => $value) {
-			//echo "key: ". $key. " value: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
 			$semesterNew[$value->stg_kurztext . $value->pflicht_im_Semester]=array();
 		}
 				
 
 		foreach($semester as $key => $value) {
-			//echo "key1: ". $key. " value1: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
-			
-			
 				array_push($semesterNew[$value->stg_kurztext . $value->pflicht_im_Semester], $value->veranst_id);
-				
-			
 		}
 
 		// umwandeln array $dozent
 		$docentNew;
 		foreach($docent as $key => $value) {
-			//echo "key: ". $key. " value: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
 			$docentNew[$value->dozent_nutzer_name]=array();
 		}
 		
 		foreach($docent as $key => $value) {
-			//echo "key1: ". $key. " value1: " . $value->veranst_ID . " ". $value->dozent_nutzer_name . " <br>";
 			array_push($docentNew[$value->dozent_nutzer_name], $value->veranst_ID);
 		}
 		
