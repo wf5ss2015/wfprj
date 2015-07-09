@@ -149,7 +149,6 @@ class EmployeeController extends Controller {
 		
 		//zeigt den gültigen stundenplan an
 		$this->View->render ('employee/createSchedule', array('schedule' => $schedule, 'lecture' =>$lecture));
-		//Redirect::to ( 'employee/selectUser' );
 	}
 	
 	/**
@@ -164,7 +163,7 @@ class EmployeeController extends Controller {
 		$model = new ScheduleModel();
 		$model->saveSchedule($schedule);
 		Session::add ( 'response_positive', 'Stundenplan erfolgreich gespeichert.' );
-		Redirect::to('Employee/createSchedule');
+		Redirect::to('veranstaltungsterminUebersicht/erzeugeFormular');
 	}
 	
 	
