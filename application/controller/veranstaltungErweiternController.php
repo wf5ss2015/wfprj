@@ -33,14 +33,14 @@ class veranstaltungErweiternController extends Controller {
 			$typ = $_POST ['typ'];
 			switch ($typ) {
 				case "dozent" :
-					//umDozentErweitern-View wird gezeigt und die arrays veranstaltung_list und user_list übergeben
+					//umPersonErweitern-View wird gezeigt und die arrays veranstaltung_list und user_list übergeben
 					$this->View->render ( 'veranstaltungerweitern/umPersonErweitern', array (
 							'veranstaltung_list' => veranstaltungErweiternModel::getVeranstaltung (),
 							'user_list' => veranstaltungErweiternModel::getDozent () 
 					) );
 					break;
 				case "student":
-					//umStudentErweitern-View wird gezeigt und die arrays veranstaltung_list und user_list übergeben
+					//umPersonErweitern-View wird gezeigt und die arrays veranstaltung_list und user_list übergeben
 					$this->View->render ( 'veranstaltungerweitern/umPersonErweitern', array (
 							'veranstaltung_list' => veranstaltungErweiternModel::getVeranstaltung (),
 							'user_list' => veranstaltungErweiternModel::getStudent () 
