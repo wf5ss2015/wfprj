@@ -58,11 +58,11 @@ return array(
 	 * ==> Charset 
 	 * @see http://www.w3schools.com/charsets/ref_html_utf8.asp
 	 */
-	'DB_TYPE' => 'mysql',
-	'DB_HOST' => 'localhost',
-	'DB_NAME' => 'wfprj_wf5_09',
-	'DB_USER' => 'root',
-	'DB_PASS' => '',
+		'DB_TYPE' => 'mysql',
+	'DB_HOST' => 'i-intra-03.informatik.hs-ulm.de',
+	'DB_NAME' => 'wfprj_wf5_04',
+	'DB_USER' => 'wfprj_wf5_04',
+	'DB_PASS' => '!daba!',
 	'DB_PORT' => '3306',
 	'DB_CHARSET' => 'utf8',
 	'protocol'  => 'smtp',

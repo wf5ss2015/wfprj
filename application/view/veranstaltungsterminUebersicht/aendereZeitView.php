@@ -19,13 +19,17 @@
 <article>
 
 <?php
-echo "<h1>Veranstaltungstermin &auml;ndern (Fachsemester $this->fachsemester, $this->studiengang):</h1>";
+
+$studiengang = utf8_encode($this->studiengang);
+
+echo "<h1>Veranstaltungstermin &auml;ndern (Fachsemester $this->fachsemester, $studiengang):</h1>";
 ?>
 
-<form class="formular" action="index.php?url=veranstaltungsterminUebersicht/verarbeiteAenderungen" method="post" style='width: 33em; height: 21em; margin-left: 20px; padding: 8px;'>
+<form class="formular" action="index.php?url=veranstaltungsterminUebersicht/verarbeiteAenderungen" method="post" style='width: 33em; height: 22em; margin-left: 20px; padding: 8px;'>
 	
 	<p style='margin-left: 20px;'> 
 		<?php
+		
 		echo "<h3 style='color: #00436A;'>aktuelle Daten des Termins f&uuml;r $this->veranst_bezeichnung: </h3>";
 		
 		echo "	<ul>

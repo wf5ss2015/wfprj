@@ -188,7 +188,25 @@ INSERT INTO Nutzer (nutzer_name, vorname, nachname, geschlecht, passwortHash, ro
 
 -- ------------------------- Dozenten -------------------------:
 ('dozent', 'Klaus', 'Kopf', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
-('clstei', 'Claudia', 'Stein', 'w', '$2y$10$2amC8qNgJE6n/YkOnB82d.Dxmv.aMXppzaDqwcT.oxBcSd6PkMUOu', 2),
+('erklip', 'Erich', 'Klippel', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('geschi', 'Georg', 'Schied', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('hegewa', 'Heiko', 'Gewald', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('olvogt', 'Oliver', 'Vogt', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('heferc', 'Herbert', 'Ferchenbauer', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('gugram', 'Günther', 'Gramlich', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('uwfeed', 'Uwe', 'Feeder', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('johalt', 'John', 'Halton', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('acdehn', 'Achim', 'Dehnert', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('frneyh', 'Frederik', 'Neyheusel', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('revons', 'Reinhold', 'von Schwerin', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('ulreis', 'Ulrike', 'Reisach', 'w', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('thhasb', 'Thorsten', 'Hasbargen', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('lescho', 'Leopold', 'Schöndorf', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('kllang', 'Klaus', 'Lang', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('phgraf', 'Philipp', 'Graf', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('voherb', 'Volker', 'Herbort', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('olgrie', 'Oliver', 'Grieble', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
+('hewald', 'Herbert', 'Waldert', 'm', '$2y$10$9hp5twC0HZKV4iDzE5pVku/wlMcG7GyazH.hUAzxNQkac.j0yuZwW', 2),
 
 -- ------------------------- Mitarbeiter -------------------------:
 ('mitarbeiter', 'Roberto', 'Firmino', 'm', '$2y$10$PfLvMjTQ/6xNaodgDPcdP.edJJ17bK3vvexaF6sknagAvW.YBeu1.', 3),
@@ -197,7 +215,7 @@ INSERT INTO Nutzer (nutzer_name, vorname, nachname, geschlecht, passwortHash, ro
 
 INSERT INTO Student (nutzer_name, stg_ID, matrikelnummer, fachsemester, studiensemester) VALUES
 	-- Medizintechnik3:
-('student', 3, 1111111, 3, 3),
+('student', 16, 1111111, 5, 5),
 	-- Machinenbau1:
 ('modoof', 4, 2111111, 1, 1),
 	-- WF1:
@@ -227,7 +245,25 @@ INSERT INTO Student (nutzer_name, stg_ID, matrikelnummer, fachsemester, studiens
 
 INSERT INTO Dozent (nutzer_name, titel) VALUES
 ('dozent', 'Prof. Dr.'),
-('clstei', 'Prof. Dipl.-Ing.');
+('geschi', 'Prof. Dr.'),
+('hegewa', 'Prof. Dr.'),
+('olvogt', 'Prof. Dr.'),
+('heferc', 'Prof. Dr.'),
+('erklip', 'Prof. Dr.'),
+('gugram', 'Prof. Dr.'),
+('uwfeed', 'Prof. Dr.'),
+('johalt', 'Prof. Dr.'),
+('acdehn', 'Prof. Dr.'),
+('frneyh', 'Prof. Dr.'),
+('revons', 'Prof. Dr.'),
+('ulreis', 'Prof. Dr.'),
+('thhasb', 'Prof. Dr.'),
+('lescho', 'Prof. Dr.'),
+('kllang', 'Prof. Dr.'),
+('phgraf', 'Prof. Dr.'),
+('voherb', 'Prof. Dr.'),
+('olgrie', 'Prof. Dr.'),
+('hewald', 'Prof. Dr.');
 
 
 INSERT INTO Mitarbeiter (nutzer_name) VALUES
@@ -263,7 +299,7 @@ INSERT INTO Adresse (straßenname, hausnummer, stadt, land, plz, nutzer_name, ge
 
 -- ------------------------- Dozenten -------------------------:
 ('Schaffnerstraße', 10, 'Ulm', 'Deutschland', 89073, 'dozent', NULL),
-('Schaffnerstraße', 5, 'Ulm', 'Deutschland', 89073, 'clstei', NULL),
+('Schaffnerstraße', 5, 'Ulm', 'Deutschland', 89073, 'erklip', NULL),
 
 -- ------------------------- Mitarbeiter -------------------------:
 ('Traminerweg', 35, 'Ulm', 'Deutschland', 89075, 'mitarbeiter', NULL),
@@ -293,7 +329,7 @@ INSERT INTO EMail (email_name, nutzer_name) VALUES
 
 -- ------------------------- Dozenten -------------------------:
 ('dozent@hs-ulm.de', 'dozent'),
-('claudia.stein@hs-ulm.de', 'clstei'),
+('erich.klippel@hs-ulm.de', 'erklip'),
 
 -- ------------------------- Mitarbeiter -------------------------:
 ('mitarbeiter@hs-ulm.de', 'mitarbeiter'),
@@ -323,45 +359,45 @@ INSERT INTO Veranstaltungsart (vArt_bezeichnung) VALUES
 
 INSERT INTO Veranstaltung (veranst_bezeichnung, veranst_kurztext, credits, SWS, maxTeilnehmer, vArt_ID, dozent_nutzer_name) VALUES
 -- WF1
-('Programmieren 1', 'PROG1', 5, 4, 32, 18, NULL),
-('Grundlagen BWL', 'ABWL', 5, 4, 32, 18, NULL),
-('Grundzüge Wirtschaftsinformatik', 'GRWF', 5, 4, 32, 18, NULL),
-('Rechnungswesen', 'RW', 5, 4, 32, 18, NULL),
-('Mathematik 1', 'MATH', 5, 4, 32, 18, NULL),
-('Technologische Grundlagen', 'TEGR', 5, 4, 32, 18, NULL),
+('Programmieren 1', 'PROG1', 5, 4, 32, 18, 'geschi'),
+('Grundlagen BWL', 'ABWL', 5, 4, 32, 18, 'hegewa'),
+('Grundzüge Wirtschaftsinformatik', 'GRWF', 5, 4, 32, 18, 'olvogt'),
+('Rechnungswesen', 'RW', 5, 4, 32, 18, 'heferc'),
+('Mathematik 1', 'MATH', 5, 4, 32, 18, 'gugram'),
+('Technologische Grundlagen', 'TEGR', 5, 4, 32, 18, 'erklip'),
 
 -- WF2 
-('Programmieren 2', 'PROG2', 5, 4, 32, 18, NULL),
-('Schwerpunkt BWL', 'SBWL', 5, 4, 32, 18, NULL),
-('Business Englisch', 'BUSE-NU', 5, 4, 32, 18, NULL),
-('Projektmanagement', 'PMAN', 5, 4, 32, 18, NULL),
-('Mathematik 2', 'MATH', 5, 4, 32, 18, NULL),
-('Wirtschafts- und IT-Recht', 'WIPR', 5, 4, 32, 18, NULL),
-('Datenbanken', 'DABA', 5, 4, 32, 18, NULL),
+('Programmieren 2', 'PROG2', 5, 4, 32, 18, 'geschi'),
+('Schwerpunkt BWL', 'SBWL', 5, 4, 32, 18, 'uwfeed'),
+('Business Englisch', 'BUSE-NU', 5, 4, 32, 18, 'johalt'),
+('Projektmanagement', 'PMAN', 5, 4, 32, 18, 'acdehn'),
+('Mathematik 2', 'MATH', 5, 4, 32, 18, 'gugram'),
+('Wirtschafts- und IT-Recht', 'WIPR', 5, 4, 32, 18, 'frneyh'),
+('Datenbanken', 'DABA', 5, 4, 32, 18, 'revons'),
 
 -- WF3
-('Business and Technical English', 'BTENG', 5, 4, 32, 18, NULL),
-('Marketing', 'MARK', 5, 4, 32, 18, NULL),
-('ERP Systeme', 'ERPS', 5, 4, 32, 18, NULL),
-('Betriebssysteme', 'BSYS', 5, 4, 32, 18, NULL),
-('Alorithmen und Datenstrukturen', 'ALDS', 5, 4, 32, 18, NULL),
-('Statistik', 'STAK', 5, 4, 32, 18, NULL),
+('Business and Technical English', 'BTENG', 5, 4, 32, 18, 'johalt'),
+('Marketing', 'MARK', 5, 4, 32, 18, 'ulreis'),
+('ERP Systeme', 'ERPS', 5, 4, 32, 18, 'olvogt'),
+('Betriebssysteme', 'BSYS', 5, 4, 32, 18, 'thhasb'),
+('Alorithmen und Datenstrukturen', 'ALDS', 5, 4, 32, 18, 'geschi'),
+('Statistik', 'STAK', 5, 4, 32, 18, 'gugram'),
 
 -- WF4
-('Rechnernetze', 'RNET', 5, 4, 32, 18, NULL),
-('Database Programming', 'DAPRO', 5, 4, 32, 18, NULL),
-('Informationsmanagement', 'INFM', 5, 4, 32, 18, NULL),
-('Corporate Communication', 'COCM', 5, 4, 32, 18, NULL),
-('Software Engeneering', 'SOFEN', 5, 4, 32, 18, NULL),
+('Rechnernetze', 'RNET', 5, 4, 32, 18, 'lescho'),
+('Database Programming', 'DAPRO', 5, 4, 32, 18, 'erklip'),
+('Informationsmanagement', 'INFM', 5, 4, 32, 18, 'kllang'),
+('Corporate Communication', 'COCM', 5, 4, 32, 18, 'ulreis'),
+('Software Engeneering', 'SOFEN', 5, 4, 32, 18, 'phgraf'),
 
 -- WF5
-('Operations Research', 'OR', 5, 4, 32, 18, NULL),
-('Datawarehouse', 'DAWA', 5, 4, 32, 18, NULL),
-('Seminar der Wirtschaftsinformatik', 'SEMWF', 5, 4, 32, 18, NULL),
-('Interkulturelle Kommunikation', 'IKOM', 5, 4, 32, 18, NULL),
-('IT Anwendungen', 'ITA', 5, 4, 32, 18, NULL),
-('Führungsinstrumente', 'FUEBIT', 5, 4, 32, 18, NULL),
-('Wirtschaftsinformatik Projekt', 'WFPRJ', 5, 4, 32, 18, NULL);
+('Operations Research', 'OR', 5, 4, 32, 18, 'gugram'),
+('Datawarehouse', 'DAWA', 5, 4, 32, 18, 'voherb'),
+('Seminar der Wirtschaftsinformatik', 'SEMWF', 5, 4, 32, 18, 'olgrie'),
+('Interkulturelle Kommunikation', 'IKOM', 5, 4, 32, 18, 'ulreis'),
+('IT Anwendungen', 'ITA', 5, 4, 32, 18, 'hegewa'),
+('Führungsinstrumente', 'FUEBIT', 5, 4, 32, 18, 'hewald'),
+('Wirtschaftsinformatik Projekt', 'WFPRJ', 5, 4, 32, 18, 'erklip');
 
 
 
@@ -371,45 +407,43 @@ INSERT INTO Veranstaltung (veranst_bezeichnung, veranst_kurztext, credits, SWS, 
 	Sprint 6, Task 650.1 BEGIN */
 	
 INSERT INTO Dozent_berechtigtFuer_Veranstaltung (dozent_nutzer_name, veranst_ID) VALUES
-('dozent', 1),
-('dozent', 2),
-('dozent', 3),
-('dozent', 4),
-('dozent', 5),
-('dozent', 6),
-('dozent', 7),
-('dozent', 8),
-('clstei', 9),
-('clstei', 10),
-('clstei', 11),
-('dozent', 12),
-('dozent', 13),
-('dozent', 14),
-('dozent', 15),
-('clstei', 16),
-('clstei', 17),
-('clstei', 18),
-('dozent', 19),
-('clstei', 20),
-('clstei', 21),
-('dozent', 22),
-('dozent', 23),
-('dozent', 24),
-('dozent', 25),
-('clstei', 26),
-('clstei', 27),
-('clstei', 28),
-('dozent', 29),
-('clstei', 30),
-('dozent', 31);
+('geschi', 1),
+('hegewa', 2),
+('olvogt', 3),
+('heferc', 4),
+('gugram', 5),
+('erklip', 6),
+('geschi', 7),
+('uwfeed', 8),
+('johalt', 9),
+('acdehn', 10),
+('gugram', 11),
+('frneyh', 12),
+('revons', 13),
+('johalt', 14),
+('ulreis', 15),
+('olvogt', 16),
+('thhasb', 17),
+('geschi', 18),
+('gugram', 19),
+('lescho', 20),
+('erklip', 21),
+('kllang', 22),
+('ulreis', 23),
+('phgraf', 24),
+('gugram', 25),
+('voherb', 26),
+('olgrie', 27),
+('ulreis', 28),
+('hegewa', 29),
+('hewald', 30),
+('erklip', 31);
 
 /*	Autor: Alexander Mayer 
 	Sprint 6, Task 650.1 END */
 	
 
 INSERT INTO Student_angemeldetAn_Veranstaltung (veranst_ID, student_nutzer_name) VALUES
-	-- Medizintechnik3, Strahlentechnik:
-	(8, 'student'),
 	
 	-- Maschinenbau1, Physik 1:
 	(6, 'modoof'),
@@ -438,13 +472,14 @@ INSERT INTO Student_angemeldetAn_Veranstaltung (veranst_ID, student_nutzer_name)
 	(5, 'deduck'),
 	(5, 'otott'),
 	
-	-- WF5, Seminar Wirtschaftsinformatik:
-	(4, 'orwest'),
-	(4, 'ladanz');
-	
-	-- WF6:
-	
-	-- WF7:
+	-- WF5:
+	(25, 'student'), -- OR
+	(26, 'student'), -- DAWA
+	(27, 'student'), -- SEMWIF
+	(28, 'student'), -- IKOM
+	(29, 'student'), -- ITA
+	(30, 'student'), -- FÜBIT
+	(31, 'student'); -- WFPRJ
 
 	
 INSERT INTO Stundenzeit (stdZeit_von, stdZeit_bis) VALUES
@@ -1085,43 +1120,8 @@ INSERT INTO Laborraum_hat_Ausstattung (raum_bezeichnung, ausstattung_ID, anzahl)
 ('F007', 9, 0),
 ('F007', 10, 0);
 
-INSERT INTO Veranstaltungstermin (`veranst_ID`, `tag_ID`, `stdZeit_ID`, `raum_bezeichnung`) VALUES
-(1, 1, 1, 'A100'), -- Programmieren 1
-(1, 1, 2, 'A100'), -- Programmieren 1
-(1, 5, 4, 'A100'), -- Programmieren 1
-(1, 5, 5, 'A100'), -- Programmieren 1
-
-(4, 4, 1, 'A104'), -- Seminar Wirtschaftsinformatik
-(4, 4, 2, 'A104'), -- Seminar Wirtschaftsinformatik
-(4, 4, 3, 'A104'), -- Seminar Wirtschaftsinformatik
-
-(6, 1, 1, 'B055'), -- Physik 1
-(6, 1, 2, 'B055'), -- Physik 1
-(6, 5, 1, 'B055'), -- Physik 1
-
-(3, 2, 1, 'B107'), -- Rechnernetze
-(3, 2, 2, 'B107'), -- Rechnernetze
-(3, 2, 3, 'B107'), -- Rechnernetze
-
-(9, 3, 3, 'F007'), -- Maschinenbau Grundlagen
-(9, 3, 4, 'F007'), -- Maschinenbau Grundlagen
-(9, 3, 5, 'F007'), -- Maschinenbau Grundlagen
-
-(5, 3, 2, 'Q027'), -- Database Programming
-(5, 3, 3, 'Q027'), -- Database Programming
-(5, 3, 4, 'Q027'), -- Database Programming
-
-(7, 4, 1, 'Q209'), -- Chemie 1
-(7, 4, 2, 'Q209'), -- Chemie 1
-(7, 4, 3, 'Q209'), -- Chemie 1
-
-(2, 1, 4, 'V001'), -- Programmieren 2
-(2, 1, 5, 'V001'), -- Programmieren 2
-(2, 3, 1, 'V001'), -- Programmieren 2
-(2, 3, 2, 'V001'), -- Programmieren 2
-
-(8, 2, 4, 'Z107'), -- Strahlentechnik
-(8, 2, 5, 'Z107'); -- Strahlentechnik
+/*INSERT INTO Veranstaltungstermin (`veranst_ID`, `tag_ID`, `stdZeit_ID`, `raum_bezeichnung`) VALUES
+(1, 1, 1, 'A100'), -- Programmieren 1*/
 
 
 /*-----------------------------------------------------------------------------------------

@@ -15,13 +15,13 @@
 
 <h1>Veranstaltungstermine nach Fachsemester anzeigen</h1>
 
-<form class="formular" action="index.php?url=veranstaltungsterminUebersicht/stundenplan_fachsemester" method="post" style='width: 28em; height: 24em; margin: 20px; padding: 25px;'>
+<form class="formular" action="index.php?url=veranstaltungsterminUebersicht/stundenplan_fachsemester" method="post" style='width: 35em; height: 24em; margin: 20px; padding: 25px;'>
 	
 	<h3 style="color: #00436A;">Studiengang und Fachsemester ausw&aumlhlen: </h3>
 	
 	<p>
 		<label for='studiengang' style='width:8em; display:block; float:left;'> Studiengang: </label>
-		<select class='input' name='waehleStudiengang' id='studiengang' size='4' style='width: 22em'>
+		<select class='input' name='waehleStudiengang' id='studiengang' size='4' style='width: 31em'>
 			<?php
 		
 			//alle Studiengänge in Option-List anzeigen:
@@ -29,7 +29,7 @@
 			foreach ($this->studiengaenge as $studiengang) 
 			{
 				$stg_ID = $studiengang['stg_ID'];
-				$stg_bezeichnung = $studiengang['stg_bezeichnung'];
+				$stg_bezeichnung = utf8_encode($studiengang['stg_bezeichnung']);
 				
 				echo "<option value='$stg_ID'>$stg_bezeichnung</option>";
 			}
@@ -39,7 +39,7 @@
 	
 	<p>
 		<label for='fachsemester' style='width:8em; display:block; float:left'> Fachsemester: </label>
-		<select class='input' name='waehleFachsemester' id='fachsemester' size='4' style='width: 22em'>
+		<select class='input' name='waehleFachsemester' id='fachsemester' size='4' style='width: 31em'>
 			<?php
 		
 			//alle Fachsemester in Option-List anzeigen:

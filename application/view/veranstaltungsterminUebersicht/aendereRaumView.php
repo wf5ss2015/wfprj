@@ -22,7 +22,7 @@
 echo "<h1>Veranstaltungstermin &auml;ndern (Fachsemester $this->fachsemester, $this->studiengang):</h1>";
 ?>
 
-<form class="formular" action="index.php?url=veranstaltungsterminUebersicht/aendereVeranstaltungstermin" method="post" style='width: 33em; height: 24em; margin-left: 20px; padding: 8px;'>
+<form class="formular" action="index.php?url=veranstaltungsterminUebersicht/aendereVeranstaltungstermin" method="post" style='width: 33em; height: 26em; margin-left: 20px; padding: 8px;'>
 	
 	<p style='margin-left: 20px;'> 
 		<?php

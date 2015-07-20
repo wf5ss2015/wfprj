@@ -457,7 +457,7 @@ class UserModel {
 				'".$passwort."', '".$telefonnummer."', '".$geschlecht."');";
 		
 		$query = $database->prepare ( $sql );
-		
+		//print_r($query);
 			try {
 				$query->execute ();
 				
@@ -478,24 +478,25 @@ class UserModel {
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 		
 		// wenn Nutzer bereits vorhanden dann fortlaufende Nummer anhängen
-		$sql = "SELECT CONCAT(nutzer_name, CASE WHEN COUNT(*) = 0 THEN '' ELSE COUNT(*) END) As nutzer
-				FROM nutzer WHERE nutzer_name LIKE '".$nutzer."%'
-				GROUP BY nutzer_name;";
-	
+		$sql = "SELECT max( nutzer_name )
+				FROM nutzer
+				WHERE nutzer_name LIKE '".$nutzer."%'";
+		
+		
 		$query= $database->prepare ($sql);
 		
 			try {
 				$query->execute ();
-				
-			
+
 			$result = $query->fetchColumn();
 			
 			if($result){
-				$nutzer = $result;
+				$result2 = $result.rand(1,10);
+				//print_r($result);
+				$nutzer = $result2;
 			}
 			
 			//print_r($nutzer);
-			
 			return $nutzer;
 			
 			} catch ( PDOException $e ) {
@@ -562,6 +563,7 @@ class UserModel {
 	 **/  
 	public function saveStudentData($nutzer, $stid, $matrikel, $fachs, $studs) {
 		 
+		
 		$database = DatabaseFactory::getFactory ()->getConnection ();
 				
 		$sql = "INSERT INTO student(nutzer_name, stg_ID, matrikelnummer, fachsemester, studiensemester)

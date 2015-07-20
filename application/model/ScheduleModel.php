@@ -84,6 +84,11 @@ class ScheduleModel {
 						$query->execute ( array (
 							':veranst_id' => $schedule[$i][$k][3], 'tag_id' => $countTag, 'stdZeit_id' => $countZeit, 'raum_bezeichnung' => $schedule[$i][$k][2]
 						) );
+						$sql = "update veranstaltung set dozent_nutzer_name=:nutzer_name where veranst_ID = :veranst_id";
+						$query = $database->prepare ( $sql );
+						$query->execute ( array (
+							':veranst_id' => $schedule[$i][$k][3], 'nutzer_name' => $schedule[$i][$k][1]
+						) );
 				}
 			
 				
@@ -94,7 +99,14 @@ class ScheduleModel {
 			}
 			$countZeit++;
 		}
-		//print_r($schedule);
+		$sql = "truncate table student_angemeldetan_veranstaltung;";
+						$query = $database->prepare ( $sql );
+						$query->execute ();
+		$sql = "insert into student_angemeldetan_veranstaltung(
+				select veranst_ID, nutzer_name from studiengang_hat_veranstaltung join student where pflicht_im_Semester=fachsemester and studiengang_hat_veranstaltung.stg_ID = student.stg_ID);";
+						$query = $database->prepare ( $sql );
+						$query->execute ();
+
 		
 		
 	}
