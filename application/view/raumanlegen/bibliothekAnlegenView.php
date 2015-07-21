@@ -27,14 +27,16 @@
 		Folgende Buchkategorien liegen in der Bibliothek vor: <br>
 				<?php
 				if ($this->buchKat_list) {
-					echo "<p>";
+					echo "<table>";
 					foreach ( $this->buchKat_list as $key => $value ) {
+						echo '<tr><th>';
 						echo htmlentities ( $value->buchKat_bezeichnung );
-						echo '<input type="checkbox" name="';
+						echo '</th><th><input type="checkbox" name="';
 						echo htmlentities ( $value->buchKat_bezeichnung );
-						echo '" value="1"><br>';
+						echo '" value="1"></th>';
+						echo '</tr>';
 					}
-					echo "</p>";
+					echo "</table>";
 				} else {
 					echo "Es sind keine Buchkategorien in der Datenbank.";
 				}
