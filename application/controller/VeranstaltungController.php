@@ -250,8 +250,8 @@ class VeranstaltungController extends Controller {
 	 */
 	public function bearbeitenAusstattung() { 
 		
-		//POST-Daten lesen
-		// Array mit "Grunddaten", ohne Veranstaltungsart
+		// POST-Daten lesen
+		// Array mit "Grunddaten"
 		$grunddaten = array (
 				'vID' 			=> Request::post("vID"),
 				'vBezeichnung' 	=> Request::post("vBezeichnung"),
@@ -288,10 +288,7 @@ class VeranstaltungController extends Controller {
 	 */
 	public function bearbeitenEintragen() {
 	
-		//POST-Daten lesen
 		// Array mit "Grunddaten", ohne Veranstaltungsart
-		
-// 		print_r($_POST);
 		$grunddaten = array (
 				'vID' 			=> Request::post("vID"),
 				'vBezeichnung' 	=> Request::post("vBezeichnung"),
@@ -299,36 +296,27 @@ class VeranstaltungController extends Controller {
 				'vSWS'		 	=> Request::post("vSWS"),
 				'vCredits'	 	=> Request::post("vCredits"),
 				'vMaxTeilnehmer'=> Request::post("vMaxTeilnehmer")
-				//'Veranstaltungsart' => Request::post("Veranstaltungsart")
 		);
-	
 	
 		//(neu gewählte) Veranstaltungsart als ID
 		$vArtID = Request::post("vArtID");
 	
 		//Array mit benötigter Ausstattung
 		$ausstattung = Request::post("veranstaltung_ausstattung");
-		//print_r($ausstattung);
-		
 				
 		// neues Veranstaltungmodel anlegen
 		$vModel = new VeranstaltungModel ();
 		
 		//trägt Ausstattung ein
 		$vModel->ausstattungEintragen(Request::post("vID"), $ausstattung);
-		
-		//$ausstattung = $vModel->getAusstattung();
 		$ausstattungNeu = $vModel->getAusstattungVonVeranstaltung(Request::post("vID"));
-		
 		
 		//alte Veranstaltung, für Vorher-Nachher
 		$alteVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));
-						
 		
 		$vModel->updateVeranstaltung(array('grunddaten' => $grunddaten, 
-				'vArtID' => $vArtID,
-				'ausstattung' => $ausstattung ));
-		
+								           'vArtID' => $vArtID,
+						                   'ausstattung' => $ausstattung ));
 		
 		//neue Veranstaltung, für Vorher-Nachher
 		$neueVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));

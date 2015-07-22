@@ -374,45 +374,33 @@ class VeranstaltungModel {
 	 // (Bezeichnung, Kurztext, SWS, Credits, max. Anzahl Teilnehmer, VeranstaltungsartID) aus der Datenbank
 	 public function getGrunddaten($vID) {
 	
-	 //Query-String
-	 $q = "select veranst_ID, veranst_bezeichnung, veranst_kurztext, "
-	 . "credits, SWS, maxTeilnehmer, vArt_ID "
-	 . "from Veranstaltung"
-	 . " where veranst_ID = $vID;";
-	
-	 //führt die Abfrage aus und speichert sie in $result
-	 $result = $this->abfrage($q);
-	
-	 return $result;
+		 //Query-String
+		 $q = "select veranst_ID, veranst_bezeichnung, veranst_kurztext, "
+		 . "credits, SWS, maxTeilnehmer, vArt_ID "
+		 . "from Veranstaltung"
+		 . " where veranst_ID = $vID;";
+		
+		 //führt die Abfrage aus und speichert sie in $result
+		 $result = $this->abfrage($q);
+		
+		 return $result;
 	 }
 	 
 	 
 	 public function updateVeranstaltung($data) {
-	 	$valid = true;
 	 	
 	 	$grunddaten = $data['grunddaten'];
-	 
-// 	 	'vID' 			=> Request::post("vID"),
-// 	 	'vBezeichnung' 	=> Request::post("vBezeichnung"),
-// 	 	'vKurztext' 	=> Request::post("vKurztext"),
-// 	 	'vSWS'		 	=> Request::post("vSWS"),
-// 	 	'vCredits'	 	=> Request::post("vCredits"),
-// 	 	'vMaxTeilnehmer'=> Request::post("vMaxTeilnehmer")
-	 	
 	 	$vID 			= $grunddaten['vID'];
 	 	$vBezeichnung 	= $grunddaten['vBezeichnung'];
 	 	$vKurztext 		= $grunddaten['vKurztext'];
 	 	$vSWS			= $grunddaten['vSWS'];
 	 	$vCredits 		= $grunddaten['vCredits'];
 	 	$vMaxTeilnehmer	= $grunddaten['vMaxTeilnehmer'];
-	 	
-	 	
+
 	 	$vArtID			= $data['vArtID'];
 	 	
 	 	$ausstattung 	= $data['ausstattung'];
-	 	
-	 	
-	 	// Datenbankverbindung
+
 	 	$database = new DatabaseFactoryMysql ();
 	
 	 	$updateString = "UPDATE Veranstaltung SET veranst_bezeichnung = '$vBezeichnung', "

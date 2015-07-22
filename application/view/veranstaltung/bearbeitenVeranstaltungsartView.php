@@ -31,20 +31,18 @@ $vArten = $data['vArten'];
 	
 	
 	<?php 
-	//die bereits übergenen Werte aus vorigen Fenstern werden hier als hidden values eingetragen, damit diese 
-	//weitergegebenwerden können
+	// die bereits übergenen Werte aus vorigen Fenstern werden hier als hidden values eingetragen,
+	// damit diese weitergegebenwerden können
 
 	foreach($grunddaten as $key => $value) {
 		echo "<input name=\"" . $key . "\" value=\"" . $value . "\" type=\"hidden\">\n";		
 	}
 
 	?>
-	
-	
+		
     <table id="veranstaltungsart-bearbeiten">
     <tr><td>Veranstaltungsart: </td><td>
     <select class="input " name="veranstaltung_veranstaltungsart" style="; width: 32em">
-    
     
     <?php
     // erzeugt die Liste mit "option"-HTML-Elementen aus dem Array vArten

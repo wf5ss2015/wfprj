@@ -63,17 +63,14 @@
 	
 	<form action="index.php?url=veranstaltung/bearbeitenVeranstaltungsart" method="post">
 	
-		<?php 
-			//wichtig, hier die ID per hidden input mitzuübergeben
-		?>
-		<input name="veranst_ID" value=<?php echo "\"$veranst->veranst_ID\""?> type="hidden">
-		<?php //<input name="Veranstaltungsart" value=<?php echo "\"$veranst->Veranstaltungsart\"" type="hidden">?>
-		
-		<input name="vArt_ID" value=<?php echo "\"$veranst->vArt_ID\""?> type="hidden">
-		
+	<?php 
+		//Hier wird die Veranstaltungs-ID per hidden field gespeichert
+	?>
 	
-	
-    <table id="veranstaltung-bearbeiten">
+	<input name="veranst_ID" value=<?php echo "\"$veranst->veranst_ID\""?> type="hidden">
+	<input name="vArt_ID" value=<?php echo "\"$veranst->vArt_ID\""?> type="hidden">
+		
+	<table id="veranstaltung-bearbeiten">
 	<tr><td>Bezeichnung: </td> <td><input type="text"  name="veranstaltung_bezeichnung" 
 		value=<?php echo "\"$veranst->veranst_bezeichnung\""?> size="36" maxlength="100" required/></td></tr>
 	<tr><td>Kurztext: </td> <td><input type="text"  name="veranstaltung_kurztext" 
@@ -93,11 +90,8 @@
  		
 						echo ">" . $i . "</option>";
                     }
-			
             ?>
-
             </select> 
-	
 	</td></tr>
 	
 	
