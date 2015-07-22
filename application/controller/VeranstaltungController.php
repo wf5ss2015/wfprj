@@ -128,23 +128,33 @@ class VeranstaltungController extends Controller {
 		// legt die neue Veranstaltung an und speichert die ID, unter
 		// der sie gespeichert wurde
 		
-		$vID = $vModel->veranstaltungAnlegen ();
+		if($vID = $vModel->veranstaltungAnlegen ()) {
 		
-		if ($vID > 1) {
-			
-			//Ausstattung wird hier eingetragen
-			$ausstattung = Request::post('veranstaltung_ausstattung');
-			
-			$vModel->ausstattungEintragen($vID, $ausstattung);			
-			
-			// hole Daten der eben eingetragenen Veranstaltung als ein Array aus Objekten
-			$veranstaltung = $vModel->getVeranstaltung ($vID);
-			
-			Session::add ( 'response_positive', 'Neue Veranstaltung erfolgreich angelegt.' );
-			
-			$this->View->render ( 'veranstaltung/angelegt', array (
-					'veranstaltung' => $veranstaltung 
-			) );
+			if ($vID > 1) {
+				
+				//Ausstattung wird hier eingetragen
+				$ausstattung = Request::post('veranstaltung_ausstattung');
+				
+				if($vModel->ausstattungEintragen($vID, $ausstattung)) {
+					
+					
+					// hole Daten der eben eingetragenen Veranstaltung als ein Array aus Objekten
+					$veranstaltung = $vModel->getVeranstaltung ($vID);
+						
+					Session::add ( 'response_positive', 'Neue Veranstaltung erfolgreich angelegt.' );
+					
+					
+				} else {
+					Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );				
+				}
+							
+				
+				$this->View->render ( 'veranstaltung/angelegt', array (
+						'veranstaltung' => $veranstaltung 
+				) );
+			} else {
+				Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
+			}
 		} else {
 			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
 		}
@@ -308,25 +318,31 @@ class VeranstaltungController extends Controller {
 		$vModel = new VeranstaltungModel ();
 		
 		//trägt Ausstattung ein
-		$vModel->ausstattungEintragen(Request::post("vID"), $ausstattung);
-		$ausstattungNeu = $vModel->getAusstattungVonVeranstaltung(Request::post("vID"));
-		
-		//alte Veranstaltung, für Vorher-Nachher
-		$alteVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));
-		
-		$vModel->updateVeranstaltung(array('grunddaten' => $grunddaten, 
-								           'vArtID' => $vArtID,
-						                   'ausstattung' => $ausstattung ));
-		
-		//neue Veranstaltung, für Vorher-Nachher
-		$neueVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));
-		
-		Session::add ( 'response_positive', 'Veranstaltung erfolgreich bearbeitet.' );
-		
-		$this->View->render('veranstaltung/bearbeitet', array ('alteVeranstaltung' => $alteVeranstaltung,
-						'neueVeranstaltung' => $neueVeranstaltung,
-						'ausstattung' => $ausstattungNeu
-		) );
+		if($vModel->ausstattungEintragen(Request::post("vID"), $ausstattung)) {
+			$ausstattungNeu = $vModel->getAusstattungVonVeranstaltung(Request::post("vID"));
+			
+			//alte Veranstaltung, für Vorher-Nachher
+			$alteVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));
+			
+			if($vModel->updateVeranstaltung(array('grunddaten' => $grunddaten, 
+									           'vArtID' => $vArtID,
+							                   'ausstattung' => $ausstattung ))) {
+			
+			//neue Veranstaltung, für Vorher-Nachher
+			$neueVeranstaltung = $vModel->getVeranstaltung(Request::post("vID"));
+			
+			Session::add ( 'response_positive', 'Veranstaltung erfolgreich bearbeitet.' );
+			
+			$this->View->render('veranstaltung/bearbeitet', array ('alteVeranstaltung' => $alteVeranstaltung,
+							'neueVeranstaltung' => $neueVeranstaltung,
+							'ausstattung' => $ausstattungNeu
+			) );
+			} else {
+				Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
+			}
+		} else {
+			Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
+		}
 		
 	}
 	
@@ -406,26 +422,30 @@ class VeranstaltungController extends Controller {
 	
 		if(isset($vID) && isset($stg_ID)) {
 
-			
-			$vModel->setWahlfach($stg_ID, $vID, $semester);
-			
-			
-			// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
-			// 			$veranstaltung = $vModel->getVeranstaltung($vID);
-			//$veranstaltung = $vModel->getGrunddaten($vID);
-			$veranstaltung = $vModel->getVeranstaltung($vID);
+		
+			if($vModel->setWahlfach($stg_ID, $vID, $semester)) {			
 				
-			//enthält alle Studiengänge, für die die Veranstaltung noch nicht hinzugefügt wurde
-			$studgang = $vModel->getStudiengang($stg_ID);
-			
-			Session::add ( 'response_positive', 'Wahlfach erfolgreich eingetragen.' );
+				// holt die Veranstaltung mit vID aus der Datenbank und speichert sie in $veranstaltung
+				// 			$veranstaltung = $vModel->getVeranstaltung($vID);
+				//$veranstaltung = $vModel->getGrunddaten($vID);
+				$veranstaltung = $vModel->getVeranstaltung($vID);
+					
+				//enthält alle Studiengänge, für die die Veranstaltung noch nicht hinzugefügt wurde
+				$studgang = $vModel->getStudiengang($stg_ID);
 				
-			$this->View->render('veranstaltung/wahlfacheingetragen',
-					array ('veranstaltung' => $veranstaltung,
-							'studiengang' => $studgang,
-							'semester' => $semester
-					) );
-	
+				Session::add ( 'response_positive', 'Wahlfach erfolgreich eingetragen.' );
+					
+				$this->View->render('veranstaltung/wahlfacheingetragen',
+						array ('veranstaltung' => $veranstaltung,
+								'studiengang' => $studgang,
+								'semester' => $semester
+						) );
+		
+			} else {
+				Session::add ( 'response_negative', 'Es ist ein Fehler aufgetreten.' );
+			}
+			
+			
 		}
 	}
 	

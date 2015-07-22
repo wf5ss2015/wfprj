@@ -163,9 +163,7 @@ class VeranstaltungModel {
 			}
 			
 			//insert ausführen
-			if (! $database->insert ( $insertString )) {
-				// error ausgeben
-			}
+			return $database->insert ( $insertString );
 		}
 	/* sprint 5 Ende
 	 */
@@ -182,7 +180,9 @@ class VeranstaltungModel {
 
 		$deleteString = "delete from Veranstaltung_erfordert_Ausstattung where veranst_ID = " . $vID . ";";
 
-		$database->insert($deleteString);		
+		
+		//insert ausführen
+		return $database->insert($deleteString);		
 	}
 	
 	/* sprint 4 Ende
@@ -302,13 +302,16 @@ class VeranstaltungModel {
 					/* sprint 4 Anfang
 					 * Paramterliste angepasst, jetzt wird das Fachsemsester mit übergeben.
 					 */
-					$this->setPflichtVeranstaltung ( $stg_ID, $vID, $fachsemester );
+					if($this->setPflichtVeranstaltung ( $stg_ID, $vID, $fachsemester )) {
+						return $vID;
+					} else {
+						return -1;
+					}
 					/* sprint 4 Ende
 					 */
-				}
-					
+				}				
 				// holt die letzte eingetragene ID
-				return $vID;
+				
 			} else {
 				return - 1;
 			}
@@ -336,7 +339,7 @@ class VeranstaltungModel {
 						. "veranst_ID, pflicht_im_Semester) VALUES ($stg_ID, $veranst_ID, $fachsemester);";
 		/* sprint 4 Ende
 		 */
-		$database->insert ( $insertString );
+		return $database->insert ( $insertString );
 	}
 	
 	
@@ -408,14 +411,14 @@ class VeranstaltungModel {
 				. "maxTeilnehmer = $vMaxTeilnehmer, vArt_ID = $vArtID "
 				. "where veranst_ID = $vID;";
 				
-	 	$database->insert($updateString);
-	 	
-	 	// löscht Einträge in der Datenbank Veranstaltung_erfordert_Ausstattung
-	 	$this->loescheAusstattung($vID);
-	 	
-	 	// trägt die neun Austattungsmerkmale ein
-	 	$this->ausstattungEintragen($vID, $ausstattung);
-	 	
+	 	if($database->insert($updateString)) {
+
+	 		// löscht Einträge in der Datenbank Veranstaltung_erfordert_Ausstattung
+	 		if($this->loescheAusstattung($vID)) {	 		 
+		 		// trägt die neun Austattungsmerkmale ein
+		 		return $this->ausstattungEintragen($vID, $ausstattung);
+	 		}
+	 	}	 	
  	}
  	
  	
@@ -429,7 +432,7 @@ class VeranstaltungModel {
  		// Datenbankverbindung
  		$database = new DatabaseFactoryMysql ();
  		
- 		$database->insert($delteString);
+ 		return $database->insert($delteString);
  	
  	}
 	 		
@@ -696,7 +699,7 @@ class VeranstaltungModel {
 				        . " VALUES ($studiengang, $vID, $semester);";
 		
 	
-		$database->insert ( $insertString );		
+		return $database->insert ( $insertString );		
 	}
 	
 
